@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>backgroundColor</key>
+	<string>#fcf3e9</string>
+	<key>backgroundImage</key>
+	<string></string>
+	<key>toolbarColor</key>
+	<string>#6587c7</string>
+	<key>toolbarImage</key>
+	<string></string>
+	<key>navibarColor</key>
+	<string>#6587c7</string>
+	<key>navibarImage</key>
+	<string></string>
+	<key>themeName</key>
+	<string>_fxThemeNameDefault</string>
+	<key>mainColor</key>
+	<string>#6587c7</string>
+</dict>
+</plist>
