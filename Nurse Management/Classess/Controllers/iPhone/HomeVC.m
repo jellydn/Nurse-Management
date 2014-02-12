@@ -51,12 +51,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Notification
+- (void)eventListenerDidReceiveNotification:(NSNotification *)notif
+{
+    if ([[notif name] isEqualToString:_fxThemeNotificationChangeTheme])
+    {
+        [self loadHomeNaivBar];
+        [self loadHomeToolBar];
+    }
+}
 
 
 #pragma mark - Others
 
 - (void)loadHomeNaivBar
 {
+    if (_naviView) {
+        [_naviView removeFromSuperview];
+        _naviView = nil;
+    }
+    
     int detalIOS = [Common isIOS7] ? 0 : - 20;
     
     _naviView                    = [[NSBundle mainBundle] loadNibNamed:[[FXThemeManager shared] getThemeValueWithKey:_fxThemeXibHomeNaviBar]
@@ -76,6 +90,11 @@
 
 - (void)loadHomeToolBar
 {
+    if (_toolBarView) {
+        [_toolBarView removeFromSuperview];
+        _toolBarView = nil;
+    }
+    
     _toolBarView                    = [[NSBundle mainBundle] loadNibNamed:[[FXThemeManager shared] getThemeValueWithKey:_fxThemeXibHomeToolBar]
                                                                     owner:self
                                                                   options:nil][0];

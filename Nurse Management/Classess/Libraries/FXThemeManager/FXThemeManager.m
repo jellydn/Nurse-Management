@@ -46,7 +46,7 @@ static FXThemeManager *shared = nil;
         
     } else if ([themeName isEqualToString:_fxThemeNameDefaultGreen]) {
         
-        _themeType      = FXThemeManagerTypeDefault;
+        _themeType      = FXThemeManagerTypeDefaultGreen;
         _themeFileData  = @"theme_default_green";
         
     }
@@ -78,6 +78,20 @@ static FXThemeManager *shared = nil;
     
     //load data for theme
     [self loadDataForTheme];
+}
+
+- (void) changeThemeWithName:(NSString*)themeName
+{
+    self.themeName = themeName;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:self.themeName forKey:_fxThemeStringName];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    //load data for theme
+    [self loadDataForTheme];
+    
+    //post notification
+    [[NSNotificationCenter defaultCenter] postNotificationName:_fxThemeNotificationChangeTheme object:nil userInfo:nil];
 }
 
 #pragma mark - get value

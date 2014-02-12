@@ -9,23 +9,26 @@
 #import <Foundation/Foundation.h>
 
 //name
-#define _fxThemeNameDefault         @"_fxThemeNameDefault"
-#define _fxThemeNameDefaultGreen    @"_fxThemeNameDefaultGreen"
+#define _fxThemeNameDefault                 @"_fxThemeNameDefault"
+#define _fxThemeNameDefaultGreen            @"_fxThemeNameDefaultGreen"
+
+//notification
+#define _fxThemeNotificationChangeTheme     @"_fxThemeNotificationChangeTheme"
 
 //property
-#define _fxThemeStringName          @"themeName"
+#define _fxThemeStringName                  @"themeName"
 
-#define _fxThemeColorBackground     @"backgroundColor"
-#define _fxThemeColorNaviBar        @"navibarColor"
-#define _fxThemeColorToolBar        @"toolbarColor"
-#define _fxThemeColorMain           @"mainColor"
+#define _fxThemeColorBackground             @"backgroundColor"
+#define _fxThemeColorNaviBar                @"navibarColor"
+#define _fxThemeColorToolBar                @"toolbarColor"
+#define _fxThemeColorMain                   @"mainColor"
 
-#define _fxThemeImageBackground     @"backgroundImage"
-#define _fxThemeImageNavi           @"navibarImage"
-#define _fxThemeImageToolbar        @"toolbarImage"
+#define _fxThemeImageBackground             @"backgroundImage"
+#define _fxThemeImageNavi                   @"navibarImage"
+#define _fxThemeImageToolbar                @"toolbarImage"
 
-#define _fxThemeXibHomeNaviBar      @"homeNaviBarFileXib"
-#define _fxThemeXibHomeToolBar      @"homeToolBarFileXib"
+#define _fxThemeXibHomeNaviBar              @"homeNaviBarFileXib"
+#define _fxThemeXibHomeToolBar              @"homeToolBarFileXib"
 
 
 typedef enum {
@@ -43,10 +46,11 @@ typedef enum {
 
 @property (nonatomic, strong) NSDictionary      *themeData;
 
-@property (nonatomic) FXThemeManagerType        *themeType;
+@property (nonatomic) FXThemeManagerType        themeType;
 
 //Method
 - (void) loadTheme;
+- (void) changeThemeWithName:(NSString*)themeName;
 
 // getValue
 - (NSString*)getThemeValueWithKey:(NSString*)key;

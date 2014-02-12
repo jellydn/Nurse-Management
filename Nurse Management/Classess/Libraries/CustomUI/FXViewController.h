@@ -9,13 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "FXThemeManager.h"
 
+typedef void (^FXReloadThemeOfView)(NSString *themeName);
+
 @interface FXViewController : UIViewController
 
 @property (nonatomic) BOOL isHideNaviBarWhenBack;
+@property (nonatomic, strong) FXReloadThemeOfView blockReloadThemeOfView;
+
+- (void) setBlockReloadThemeOfView:(FXReloadThemeOfView)blockReloadThemeOfView;
 
 - (void) loadHomeNaivBar;
 - (void) enableNaviBarDefault;
 
 - (void) enableBackButtonWithHideNaviBar:(BOOL)isHideNaviBarWhenBack;
+
+- (void)eventListenerDidReceiveNotification:(NSNotification *)notif;
 
 @end

@@ -12,6 +12,9 @@
 #import "HomeNaviBarView.h"
 
 @interface FXViewController ()
+{
+    
+}
 
 @end
 
@@ -38,6 +41,12 @@
 {
     [super viewDidLoad];
     
+    //add
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(eventListenerDidReceiveNotification:)
+                                                 name:_fxThemeNotificationChangeTheme
+                                               object:nil];
+    
     //set background
     self.view.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorBackground];
     
@@ -51,6 +60,16 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:_fxThemeNotificationChangeTheme object:nil];
+}
+
+- (void) viewDidDisappear:(BOOL)animated
+{
+    
 }
 
 #pragma mark - Private method
@@ -94,5 +113,27 @@
     [btBack setFrame:CGRectMake(0, 0, 38, 18)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btBack];
 }
+
+- (void) setBlockReloadThemeOfView:(FXReloadThemeOfView)blockReloadThemeOfView
+{
+    _blockReloadThemeOfView = blockReloadThemeOfView;
+}
+
+- (void)eventListenerDidReceiveNotification:(NSNotification *)notif
+{
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

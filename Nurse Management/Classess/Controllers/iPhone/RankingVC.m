@@ -54,5 +54,15 @@
     _lbTile.text = @"Ranking";
 }
 
+#pragma mark - Notification
+- (void)eventListenerDidReceiveNotification:(NSNotification *)notif
+{
+    if ([[notif name] isEqualToString:_fxThemeNotificationChangeTheme])
+    {
+        _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
+    }
+}
+
+
 
 @end

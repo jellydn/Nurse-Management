@@ -19,6 +19,9 @@
 }
 - (IBAction)backVC:(id)sender;
 
+- (IBAction)changeThemeBlue:(id)sender;
+- (IBAction)changeThemeGreen:(id)sender;
+
 @end
 
 @implementation ChangeThemeVC
@@ -36,6 +39,8 @@
 {
     [super viewDidLoad];
     [self configView];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,8 +48,18 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Action
+
 - (IBAction)backVC:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)changeThemeBlue:(id)sender {
+    [[FXThemeManager shared] changeThemeWithName:_fxThemeNameDefault];
+}
+
+- (IBAction)changeThemeGreen:(id)sender {
+    [[FXThemeManager shared] changeThemeWithName:_fxThemeNameDefaultGreen];
 }
 
 #pragma mark - Others
@@ -53,5 +68,25 @@
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     _lbTile.text = @"Change Theme";
 }
+
+#pragma mark - Others
+
+
+#pragma mark - Notification
+- (void)eventListenerDidReceiveNotification:(NSNotification *)notif
+{
+    if ([[notif name] isEqualToString:_fxThemeNotificationChangeTheme])
+    {
+        _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
+    }
+}
+
+
+
+
+
+
+
+
 
 @end
