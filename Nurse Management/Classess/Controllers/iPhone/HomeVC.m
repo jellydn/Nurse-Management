@@ -14,14 +14,18 @@
 
 #import "HomeNaviBarView.h"
 #import "HomeToolBarView.h"
+#import "AddShiftView.h"
 
 #import "RankingVC.h"
 #import "MoreVC.h"
 
-@interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate>
+@interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate>
 {
     HomeNaviBarView *_naviView ;
     HomeToolBarView *_toolBarView;
+    AddShiftView    *_addShiftView;
+    
+    BOOL _isShowAddShiftView;
 }
 
 @end
@@ -43,6 +47,7 @@
     
     [self loadHomeNaivBar];
     [self loadHomeToolBar];
+    [self loadHomeAddShiftView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,11 +63,19 @@
     {
         [self loadHomeNaivBar];
         [self loadHomeToolBar];
+        [self loadHomeAddShiftView];
     }
 }
 
 
 #pragma mark - Others
+
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (_isShowAddShiftView) {
+        [self hideAddShift];
+    }
+}
 
 - (void)loadHomeNaivBar
 {
@@ -105,6 +118,22 @@
     [self.view addSubview:_toolBarView];
 }
 
+- (void)loadHomeAddShiftView
+{
+    if (_addShiftView) {
+        [_addShiftView removeFromSuperview];
+        _addShiftView = nil;
+    }
+    
+    _addShiftView                    = [[NSBundle mainBundle] loadNibNamed:[[FXThemeManager shared] getThemeValueWithKey:_fxThemeXibHomeAddShift]
+                                                                    owner:self
+                                                                  options:nil][0];
+    _addShiftView.delegate           = self;
+    _addShiftView.frame = CGRectMake(0, self.view.frame.size.height, 320, 200);
+    
+    [self.view addSubview:_addShiftView];
+}
+
 #pragma mark - HomeNaviBarViewDelegate
 - (void) homeNaviBarViewDidSelectToDay:(HomeNaviBarView*)homeNaviBarView
 {
@@ -124,6 +153,7 @@
     switch (index) {
         case 0:
         {
+            [self showAddShift];
             break;
         }
         case 1:
@@ -148,6 +178,44 @@
             break;
     }
 }
+
+#pragma mark - Add Shift
+- (void) showAddShift
+{
+    CGRect rect = _addShiftView.frame;
+    rect.origin.y -= _addShiftView.frame.size.height;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        _addShiftView.frame = rect;
+    } completion:^(BOOL finished) {
+        _isShowAddShiftView = YES;
+    }];
+}
+
+- (void) hideAddShift
+{
+    CGRect rect     = _addShiftView.frame;
+    rect.origin.y   += _addShiftView.frame.size.height;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        _addShiftView.frame = rect;
+    } completion:^(BOOL finished) {
+        _isShowAddShiftView = NO;
+    }];
+}
+
+#pragma mark - AddShiftViewDelegate
+- (void) addShiftView:(AddShiftView*)addShiftView didSelectWithIndex:(int)index
+{
+    NSLog(@"Add Shift select item with index: %d", index);
+}
+
+
+
+
+
+
+
 
 
 
