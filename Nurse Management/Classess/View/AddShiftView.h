@@ -15,11 +15,13 @@
 @property(nonatomic, weak) id<AddShiftViewDelegate> delegate;
 
 - (IBAction)selectItem:(id)sender;
+- (IBAction)showListShiftPattern:(id)sender;
 
 @end
 
 @protocol AddShiftViewDelegate <NSObject>
 
 - (void) addShiftView:(AddShiftView*)addShiftView didSelectWithIndex:(int)index;
+- (void) addShiftViewDidSelectShowListShiftPattern:(AddShiftView*)addShiftView;
 
 @end

@@ -22,5 +22,12 @@
     }
 }
 
+- (IBAction)showListShiftPattern:(id)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(addShiftViewDidSelectShowListShiftPattern:)]) {
+        [_delegate addShiftViewDidSelectShowListShiftPattern:self];
+    }
+}
+
 
 @end

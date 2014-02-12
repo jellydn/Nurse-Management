@@ -85,6 +85,14 @@
 		2A3C24D118AB593300C20A04 /* icon_r3_c9.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24C718AB593300C20A04 /* icon_r3_c9.png */; };
 		2A3C24D518AB5CC100C20A04 /* img_add_shift_home_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24D318AB5CC100C20A04 /* img_add_shift_home_title.png */; };
 		2A3C24D618AB5CC100C20A04 /* img_add_shift_home_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24D418AB5CC100C20A04 /* img_add_shift_home_title@2x.png */; };
+		2A3C24DB18AB6CC500C20A04 /* ListShiftPatternVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C24D918AB6CC500C20A04 /* ListShiftPatternVC.m */; };
+		2A3C24DC18AB6CC500C20A04 /* ListShiftPatternVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24DA18AB6CC500C20A04 /* ListShiftPatternVC.xib */; };
+		2A3C24DF18AB6DFF00C20A04 /* ic_bt_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24DD18AB6DFF00C20A04 /* ic_bt_add.png */; };
+		2A3C24E018AB6DFF00C20A04 /* ic_bt_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24DE18AB6DFF00C20A04 /* ic_bt_add@2x.png */; };
+		2A3C24E518AB701500C20A04 /* AddShiftVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C24E318AB701500C20A04 /* AddShiftVC.m */; };
+		2A3C24E618AB701500C20A04 /* AddShiftVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24E418AB701500C20A04 /* AddShiftVC.xib */; };
+		2A3C24E918AB710700C20A04 /* ic_bg_bar_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24E718AB710700C20A04 /* ic_bg_bar_button.png */; };
+		2A3C24EA18AB710700C20A04 /* ic_bg_bar_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24E818AB710700C20A04 /* ic_bg_bar_button@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +202,16 @@
 		2A3C24C718AB593300C20A04 /* icon_r3_c9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_r3_c9.png; sourceTree = "<group>"; };
 		2A3C24D318AB5CC100C20A04 /* img_add_shift_home_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_add_shift_home_title.png; sourceTree = "<group>"; };
 		2A3C24D418AB5CC100C20A04 /* img_add_shift_home_title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_add_shift_home_title@2x.png"; sourceTree = "<group>"; };
+		2A3C24D818AB6CC500C20A04 /* ListShiftPatternVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListShiftPatternVC.h; sourceTree = "<group>"; };
+		2A3C24D918AB6CC500C20A04 /* ListShiftPatternVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListShiftPatternVC.m; sourceTree = "<group>"; };
+		2A3C24DA18AB6CC500C20A04 /* ListShiftPatternVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListShiftPatternVC.xib; sourceTree = "<group>"; };
+		2A3C24DD18AB6DFF00C20A04 /* ic_bt_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bt_add.png; sourceTree = "<group>"; };
+		2A3C24DE18AB6DFF00C20A04 /* ic_bt_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bt_add@2x.png"; sourceTree = "<group>"; };
+		2A3C24E218AB701500C20A04 /* AddShiftVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddShiftVC.h; sourceTree = "<group>"; };
+		2A3C24E318AB701500C20A04 /* AddShiftVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddShiftVC.m; sourceTree = "<group>"; };
+		2A3C24E418AB701500C20A04 /* AddShiftVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddShiftVC.xib; sourceTree = "<group>"; };
+		2A3C24E718AB710700C20A04 /* ic_bg_bar_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bg_bar_button.png; sourceTree = "<group>"; };
+		2A3C24E818AB710700C20A04 /* ic_bg_bar_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bg_bar_button@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +336,8 @@
 		2A394C0118A9FF7600F30F2D /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				2A3C24E118AB6FFF00C20A04 /* AddShiftVC */,
+				2A3C24D718AB6C8500C20A04 /* ListShiftPatternVC */,
 				2A3C24B118AB293E00C20A04 /* ChangeThemeVC */,
 				2A3C249F18AB1BE000C20A04 /* MoreVC */,
 				2A3C249E18AB1BCD00C20A04 /* RankingVC */,
@@ -568,6 +588,10 @@
 		2A3C24AA18AB1E8600C20A04 /* Button */ = {
 			isa = PBXGroup;
 			children = (
+				2A3C24E718AB710700C20A04 /* ic_bg_bar_button.png */,
+				2A3C24E818AB710700C20A04 /* ic_bg_bar_button@2x.png */,
+				2A3C24DD18AB6DFF00C20A04 /* ic_bt_add.png */,
+				2A3C24DE18AB6DFF00C20A04 /* ic_bt_add@2x.png */,
 				2A3C24AB18AB1EF500C20A04 /* ic_bt_back.png */,
 				2A3C24AC18AB1EF500C20A04 /* ic_bt_back@2x.png */,
 			);
@@ -618,6 +642,26 @@
 				2A3C24D418AB5CC100C20A04 /* img_add_shift_home_title@2x.png */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		2A3C24D718AB6C8500C20A04 /* ListShiftPatternVC */ = {
+			isa = PBXGroup;
+			children = (
+				2A3C24D818AB6CC500C20A04 /* ListShiftPatternVC.h */,
+				2A3C24D918AB6CC500C20A04 /* ListShiftPatternVC.m */,
+				2A3C24DA18AB6CC500C20A04 /* ListShiftPatternVC.xib */,
+			);
+			name = ListShiftPatternVC;
+			sourceTree = "<group>";
+		};
+		2A3C24E118AB6FFF00C20A04 /* AddShiftVC */ = {
+			isa = PBXGroup;
+			children = (
+				2A3C24E218AB701500C20A04 /* AddShiftVC.h */,
+				2A3C24E318AB701500C20A04 /* AddShiftVC.m */,
+				2A3C24E418AB701500C20A04 /* AddShiftVC.xib */,
+			);
+			name = AddShiftVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -703,6 +747,8 @@
 				2A3C249618AB062F00C20A04 /* ic_toolbar_ranking@2x.png in Resources */,
 				2A394BD718A9FD5300F30F2D /* InfoPlist.strings in Resources */,
 				2A3C24CC18AB593300C20A04 /* icon_r1_c9.png in Resources */,
+				2A3C24E618AB701500C20A04 /* AddShiftVC.xib in Resources */,
+				2A3C24E018AB6DFF00C20A04 /* ic_bt_add@2x.png in Resources */,
 				2A3C24D618AB5CC100C20A04 /* img_add_shift_home_title@2x.png in Resources */,
 				2A394C2118A9FF7600F30F2D /* Icon@2x.png in Resources */,
 				2A3C24CF18AB593300C20A04 /* icon_r3_c5.png in Resources */,
@@ -718,6 +764,7 @@
 				2A3C24A918AB1BFE00C20A04 /* MoreVC.xib in Resources */,
 				2A394C2618A9FF7600F30F2D /* Default-568h@2x.png in Resources */,
 				2A394C1F18A9FF7600F30F2D /* Icon-Small@2x_ios7.png in Resources */,
+				2A3C24DF18AB6DFF00C20A04 /* ic_bt_add.png in Resources */,
 				2A394C5118AA1EE300F30F2D /* HomeNaviBarView.xib in Resources */,
 				2A3C24AD18AB1EF500C20A04 /* ic_bt_back.png in Resources */,
 				2A394C4718AA129600F30F2D /* theme_default.plist in Resources */,
@@ -726,6 +773,7 @@
 				2A394BE218A9FD5300F30F2D /* Images.xcassets in Resources */,
 				2A394C2018A9FF7600F30F2D /* Icon.png in Resources */,
 				2A394C5B18AA25AE00F30F2D /* ic_bt_bar_today@2x.png in Resources */,
+				2A3C24E918AB710700C20A04 /* ic_bg_bar_button.png in Resources */,
 				2A394C1E18A9FF7600F30F2D /* Icon-Small@2x.png in Resources */,
 				2A3C24CB18AB593300C20A04 /* icon_r1_c7.png in Resources */,
 				2A394C1D18A9FF7600F30F2D /* Icon-Small.png in Resources */,
@@ -739,11 +787,13 @@
 				2A394C1B18A9FF7600F30F2D /* Icon-60@2x.png in Resources */,
 				2A3C24D018AB593300C20A04 /* icon_r3_c7.png in Resources */,
 				2A3C24C918AB593300C20A04 /* icon_r1_c3.png in Resources */,
+				2A3C24DC18AB6CC500C20A04 /* ListShiftPatternVC.xib in Resources */,
 				2A3C24CA18AB593300C20A04 /* icon_r1_c5.png in Resources */,
 				2A3C249118AB062F00C20A04 /* ic_toolbar_add_shift.png in Resources */,
 				2A3C249218AB062F00C20A04 /* ic_toolbar_add_shift@2x.png in Resources */,
 				2A3C24CD18AB593300C20A04 /* icon_r3_c1.png in Resources */,
 				2A394C5A18AA25AE00F30F2D /* ic_bt_bar_today.png in Resources */,
+				2A3C24EA18AB710700C20A04 /* ic_bg_bar_button@2x.png in Resources */,
 				2A3C24C818AB593300C20A04 /* icon_r1_c1.png in Resources */,
 				2A3C24CE18AB593300C20A04 /* icon_r3_c3.png in Resources */,
 			);
@@ -768,9 +818,11 @@
 				2A3C24A318AB1BF100C20A04 /* RankingVC.m in Sources */,
 				2A394C2E18A9FFBC00F30F2D /* User.m in Sources */,
 				2A3C24A818AB1BFE00C20A04 /* MoreVC.m in Sources */,
+				2A3C24DB18AB6CC500C20A04 /* ListShiftPatternVC.m in Sources */,
 				2A3C249C18AB084900C20A04 /* HomeToolBarView.m in Sources */,
 				2A394C2B18A9FFB000F30F2D /* Common.m in Sources */,
 				2A394C5018AA1EE300F30F2D /* HomeNaviBarView.m in Sources */,
+				2A3C24E518AB701500C20A04 /* AddShiftVC.m in Sources */,
 				2A3C24BB18AB586B00C20A04 /* AddShiftView.m in Sources */,
 				2A394C4518AA0C9D00F30F2D /* FXThemeManager.m in Sources */,
 				2A394C3718AA024A00F30F2D /* HomeVC.m in Sources */,

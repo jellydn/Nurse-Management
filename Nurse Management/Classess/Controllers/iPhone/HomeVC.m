@@ -18,6 +18,7 @@
 
 #import "RankingVC.h"
 #import "MoreVC.h"
+#import "ListShiftPatternVC.h"
 
 @interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate>
 {
@@ -72,9 +73,7 @@
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (_isShowAddShiftView) {
-        [self hideAddShift];
-    }
+    [self hideAddShift];
 }
 
 - (void)loadHomeNaivBar
@@ -148,8 +147,6 @@
 #pragma mark - HomeToolBarViewDelegate 
 - (void) homeToolBarView:(HomeToolBarView*) homeToolBarView didSelectWithIndex:(int)index
 {
-    NSLog(@"Toolbar select item: %d", index);
-    
     switch (index) {
         case 0:
         {
@@ -182,6 +179,10 @@
 #pragma mark - Add Shift
 - (void) showAddShift
 {
+    if (_isShowAddShiftView) {
+        return;
+    }
+    
     CGRect rect = _addShiftView.frame;
     rect.origin.y -= _addShiftView.frame.size.height;
     
@@ -194,6 +195,10 @@
 
 - (void) hideAddShift
 {
+    if (!_isShowAddShiftView) {
+        return;
+    }
+    
     CGRect rect     = _addShiftView.frame;
     rect.origin.y   += _addShiftView.frame.size.height;
     
@@ -208,6 +213,12 @@
 - (void) addShiftView:(AddShiftView*)addShiftView didSelectWithIndex:(int)index
 {
     NSLog(@"Add Shift select item with index: %d", index);
+}
+
+- (void) addShiftViewDidSelectShowListShiftPattern:(AddShiftView*)addShiftView
+{
+    ListShiftPatternVC *vc = [[ListShiftPatternVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
