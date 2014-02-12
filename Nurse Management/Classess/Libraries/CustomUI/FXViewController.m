@@ -53,6 +53,13 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Private method
+
+- (void)backVC
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 #pragma mark - Public mehtod
 
 - (void)loadHomeNaivBar
@@ -68,6 +75,24 @@
         [self.view addSubview:naviView];
         
     }
+}
+
+- (void) enableNaviBarDefault
+{
+    [self.navigationController.navigationBar setHidden:NO];
+}
+
+- (void) enableBackButtonWithHideNaviBar:(BOOL)isHideNaviBarWhenBack
+{
+    
+    _isHideNaviBarWhenBack = isHideNaviBarWhenBack;
+    
+    UIButton *btBack =  [UIButton buttonWithType:UIButtonTypeCustom];
+    [btBack setImage:[UIImage imageNamed:@"ic_bt_back.png"] forState:UIControlStateNormal];
+    [btBack setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    [btBack addTarget:self action:@selector(backVC) forControlEvents:UIControlEventTouchUpInside];
+    [btBack setFrame:CGRectMake(0, 0, 38, 18)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btBack];
 }
 
 @end

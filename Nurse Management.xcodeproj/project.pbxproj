@@ -66,6 +66,8 @@
 		2A3C24A418AB1BF100C20A04 /* RankingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24A218AB1BF100C20A04 /* RankingVC.xib */; };
 		2A3C24A818AB1BFE00C20A04 /* MoreVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C24A618AB1BFE00C20A04 /* MoreVC.m */; };
 		2A3C24A918AB1BFE00C20A04 /* MoreVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24A718AB1BFE00C20A04 /* MoreVC.xib */; };
+		2A3C24AD18AB1EF500C20A04 /* ic_bt_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24AB18AB1EF500C20A04 /* ic_bt_back.png */; };
+		2A3C24AE18AB1EF500C20A04 /* ic_bt_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24AC18AB1EF500C20A04 /* ic_bt_back@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +156,8 @@
 		2A3C24A518AB1BFE00C20A04 /* MoreVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreVC.h; sourceTree = "<group>"; };
 		2A3C24A618AB1BFE00C20A04 /* MoreVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreVC.m; sourceTree = "<group>"; };
 		2A3C24A718AB1BFE00C20A04 /* MoreVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreVC.xib; sourceTree = "<group>"; };
+		2A3C24AB18AB1EF500C20A04 /* ic_bt_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bt_back.png; sourceTree = "<group>"; };
+		2A3C24AC18AB1EF500C20A04 /* ic_bt_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bt_back@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,6 +451,7 @@
 		2A394C5218AA259B00F30F2D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2A3C24AA18AB1E8600C20A04 /* Button */,
 				2A3C248618AB061C00C20A04 /* Toolbar */,
 				2A394C5318AA259F00F30F2D /* Navi */,
 			);
@@ -517,6 +522,15 @@
 				2A3C24A718AB1BFE00C20A04 /* MoreVC.xib */,
 			);
 			name = MoreVC;
+			sourceTree = "<group>";
+		};
+		2A3C24AA18AB1E8600C20A04 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				2A3C24AB18AB1EF500C20A04 /* ic_bt_back.png */,
+				2A3C24AC18AB1EF500C20A04 /* ic_bt_back@2x.png */,
+			);
+			name = Button;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -605,12 +619,14 @@
 				2A394C2318A9FF7600F30F2D /* iTunesArtwork@2x.png in Resources */,
 				2A394C3818AA024A00F30F2D /* HomeVC.xib in Resources */,
 				2A394C2718A9FF7600F30F2D /* Default.png in Resources */,
+				2A3C24AE18AB1EF500C20A04 /* ic_bt_back@2x.png in Resources */,
 				2A394C1C18A9FF7600F30F2D /* Icon-Small-40@2x.png in Resources */,
 				2A3C248F18AB062F00C20A04 /* ic_toolbar_add_schedule.png in Resources */,
 				2A3C24A918AB1BFE00C20A04 /* MoreVC.xib in Resources */,
 				2A394C2618A9FF7600F30F2D /* Default-568h@2x.png in Resources */,
 				2A394C1F18A9FF7600F30F2D /* Icon-Small@2x_ios7.png in Resources */,
 				2A394C5118AA1EE300F30F2D /* HomeNaviBarView.xib in Resources */,
+				2A3C24AD18AB1EF500C20A04 /* ic_bt_back.png in Resources */,
 				2A394C4718AA129600F30F2D /* theme_default.plist in Resources */,
 				2A394C2418A9FF7600F30F2D /* iTunesArtwork@2x_ios7.png in Resources */,
 				2A3C249418AB062F00C20A04 /* ic_toolbar_more@2x.png in Resources */,

@@ -7,8 +7,17 @@
 //
 
 #import "MoreVC.h"
+#import "Define.h"
+#import "Common.h"
+#import "FXThemeManager.h"
 
 @interface MoreVC ()
+{
+    
+    __weak IBOutlet UIView *_viewNavi;
+    __weak IBOutlet UILabel *_lbTile;
+}
+- (IBAction)backVC:(id)sender;
 
 @end
 
@@ -26,13 +35,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self configView];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)backVC:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+#pragma mark - Others
+- (void) configView
+{
+    _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
+    _lbTile.text = @"More";
+}
+
 
 @end

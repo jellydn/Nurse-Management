@@ -11,6 +11,11 @@
 
 @interface FXViewController : UIViewController
 
+@property (nonatomic) BOOL isHideNaviBarWhenBack;
+
 - (void) loadHomeNaivBar;
+- (void) enableNaviBarDefault;
+
+- (void) enableBackButtonWithHideNaviBar:(BOOL)isHideNaviBarWhenBack;
 
 @end

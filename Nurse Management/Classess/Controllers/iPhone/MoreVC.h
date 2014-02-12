@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FXViewController.h"
 
-@interface MoreVC : UIViewController
+@interface MoreVC : FXViewController
 
 @end

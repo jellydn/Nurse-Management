@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FXViewController.h"
 
-@interface RankingVC : UIViewController
+@interface RankingVC : FXViewController
 
 @end
