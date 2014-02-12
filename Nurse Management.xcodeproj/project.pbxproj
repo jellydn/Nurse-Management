@@ -62,6 +62,10 @@
 		2A3C249618AB062F00C20A04 /* ic_toolbar_ranking@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C248E18AB062F00C20A04 /* ic_toolbar_ranking@2x.png */; };
 		2A3C249C18AB084900C20A04 /* HomeToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C249A18AB084900C20A04 /* HomeToolBarView.m */; };
 		2A3C249D18AB084900C20A04 /* HomeToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C249B18AB084900C20A04 /* HomeToolBarView.xib */; };
+		2A3C24A318AB1BF100C20A04 /* RankingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C24A118AB1BF100C20A04 /* RankingVC.m */; };
+		2A3C24A418AB1BF100C20A04 /* RankingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24A218AB1BF100C20A04 /* RankingVC.xib */; };
+		2A3C24A818AB1BFE00C20A04 /* MoreVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C24A618AB1BFE00C20A04 /* MoreVC.m */; };
+		2A3C24A918AB1BFE00C20A04 /* MoreVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24A718AB1BFE00C20A04 /* MoreVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +148,12 @@
 		2A3C249918AB084900C20A04 /* HomeToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeToolBarView.h; sourceTree = "<group>"; };
 		2A3C249A18AB084900C20A04 /* HomeToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeToolBarView.m; sourceTree = "<group>"; };
 		2A3C249B18AB084900C20A04 /* HomeToolBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeToolBarView.xib; sourceTree = "<group>"; };
+		2A3C24A018AB1BF100C20A04 /* RankingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingVC.h; sourceTree = "<group>"; };
+		2A3C24A118AB1BF100C20A04 /* RankingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingVC.m; sourceTree = "<group>"; };
+		2A3C24A218AB1BF100C20A04 /* RankingVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingVC.xib; sourceTree = "<group>"; };
+		2A3C24A518AB1BFE00C20A04 /* MoreVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreVC.h; sourceTree = "<group>"; };
+		2A3C24A618AB1BFE00C20A04 /* MoreVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreVC.m; sourceTree = "<group>"; };
+		2A3C24A718AB1BFE00C20A04 /* MoreVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +278,8 @@
 		2A394C0118A9FF7600F30F2D /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				2A3C249F18AB1BE000C20A04 /* MoreVC */,
+				2A3C249E18AB1BCD00C20A04 /* RankingVC */,
 				2A394C3218AA01EF00F30F2D /* HomeVC */,
 			);
 			path = iPhone;
@@ -487,6 +499,26 @@
 			name = ToolBar;
 			sourceTree = "<group>";
 		};
+		2A3C249E18AB1BCD00C20A04 /* RankingVC */ = {
+			isa = PBXGroup;
+			children = (
+				2A3C24A018AB1BF100C20A04 /* RankingVC.h */,
+				2A3C24A118AB1BF100C20A04 /* RankingVC.m */,
+				2A3C24A218AB1BF100C20A04 /* RankingVC.xib */,
+			);
+			name = RankingVC;
+			sourceTree = "<group>";
+		};
+		2A3C249F18AB1BE000C20A04 /* MoreVC */ = {
+			isa = PBXGroup;
+			children = (
+				2A3C24A518AB1BFE00C20A04 /* MoreVC.h */,
+				2A3C24A618AB1BFE00C20A04 /* MoreVC.m */,
+				2A3C24A718AB1BFE00C20A04 /* MoreVC.xib */,
+			);
+			name = MoreVC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -575,6 +607,7 @@
 				2A394C2718A9FF7600F30F2D /* Default.png in Resources */,
 				2A394C1C18A9FF7600F30F2D /* Icon-Small-40@2x.png in Resources */,
 				2A3C248F18AB062F00C20A04 /* ic_toolbar_add_schedule.png in Resources */,
+				2A3C24A918AB1BFE00C20A04 /* MoreVC.xib in Resources */,
 				2A394C2618A9FF7600F30F2D /* Default-568h@2x.png in Resources */,
 				2A394C1F18A9FF7600F30F2D /* Icon-Small@2x_ios7.png in Resources */,
 				2A394C5118AA1EE300F30F2D /* HomeNaviBarView.xib in Resources */,
@@ -590,6 +623,7 @@
 				2A394C5918AA25AE00F30F2D /* ic_bt_bar_email@2x.png in Resources */,
 				2A394C5818AA25AE00F30F2D /* ic_bt_bar_email.png in Resources */,
 				2A3C249D18AB084900C20A04 /* HomeToolBarView.xib in Resources */,
+				2A3C24A418AB1BF100C20A04 /* RankingVC.xib in Resources */,
 				2A394C1B18A9FF7600F30F2D /* Icon-60@2x.png in Resources */,
 				2A3C249118AB062F00C20A04 /* ic_toolbar_add_shift.png in Resources */,
 				2A3C249218AB062F00C20A04 /* ic_toolbar_add_shift@2x.png in Resources */,
@@ -613,7 +647,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A394C3118AA009100F30F2D /* Reachability.m in Sources */,
+				2A3C24A318AB1BF100C20A04 /* RankingVC.m in Sources */,
 				2A394C2E18A9FFBC00F30F2D /* User.m in Sources */,
+				2A3C24A818AB1BFE00C20A04 /* MoreVC.m in Sources */,
 				2A3C249C18AB084900C20A04 /* HomeToolBarView.m in Sources */,
 				2A394C2B18A9FFB000F30F2D /* Common.m in Sources */,
 				2A394C5018AA1EE300F30F2D /* HomeNaviBarView.m in Sources */,

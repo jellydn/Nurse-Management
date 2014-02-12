@@ -15,6 +15,9 @@
 #import "HomeNaviBarView.h"
 #import "HomeToolBarView.h"
 
+#import "RankingVC.h"
+#import "MoreVC.h"
+
 @interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate>
 {
     HomeNaviBarView *_naviView ;
@@ -96,6 +99,33 @@
 - (void) homeToolBarView:(HomeToolBarView*) homeToolBarView didSelectWithIndex:(int)index
 {
     NSLog(@"Toolbar select item: %d", index);
+    
+    switch (index) {
+        case 0:
+        {
+            break;
+        }
+        case 1:
+        {
+            break;
+        }
+        case 2:
+        {
+            RankingVC *rankingVC = [[RankingVC alloc] init];
+            [self.navigationController pushViewController:rankingVC animated:YES];
+            
+            break;
+        }
+        case 3:
+        {
+            MoreVC *moreVC = [[MoreVC alloc] init];
+            [self.navigationController pushViewController:moreVC animated:YES];
+            
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 
