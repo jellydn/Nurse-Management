@@ -11,6 +11,8 @@
 #import "Common.h"
 #import "FXThemeManager.h"
 
+#import "ChangeThemeVC.h"
+
 @interface MoreVC ()
 {
     
@@ -18,6 +20,7 @@
     __weak IBOutlet UILabel *_lbTile;
 }
 - (IBAction)backVC:(id)sender;
+- (IBAction)goChangeThemeVC:(id)sender;
 
 @end
 
@@ -43,8 +46,15 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Action
+
 - (IBAction)backVC:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)goChangeThemeVC:(id)sender {
+    ChangeThemeVC *vc = [[ChangeThemeVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Others

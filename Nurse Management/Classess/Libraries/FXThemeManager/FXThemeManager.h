@@ -10,6 +10,7 @@
 
 //name
 #define _fxThemeNameDefault         @"_fxThemeNameDefault"
+#define _fxThemeNameDefaultGreen    @"_fxThemeNameDefaultGreen"
 
 //property
 #define _fxThemeStringName          @"themeName"
@@ -28,7 +29,8 @@
 
 
 typedef enum {
-    FXThemeManagerTypeDefault
+    FXThemeManagerTypeDefault,
+    FXThemeManagerTypeDefaultGreen
 } FXThemeManagerType;
 
 @interface FXThemeManager : NSObject

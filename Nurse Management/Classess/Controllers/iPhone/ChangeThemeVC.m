@@ -1,17 +1,17 @@
 //
-//  RankingVC.m
+//  ChangeThemeVC.m
 //  Nurse Management
 //
 //  Created by Le Phuong Tien on 2/12/14.
 //  Copyright (c) 2014 Le Phuong Tien. All rights reserved.
 //
 
-#import "RankingVC.h"
+#import "ChangeThemeVC.h"
 #import "Define.h"
 #import "Common.h"
 #import "FXThemeManager.h"
 
-@interface RankingVC ()
+@interface ChangeThemeVC ()
 {
     
     __weak IBOutlet UIView *_viewNavi;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation RankingVC
+@implementation ChangeThemeVC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,8 +51,7 @@
 - (void) configView
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
-    _lbTile.text = @"Ranking";
+    _lbTile.text = @"Change Theme";
 }
-
 
 @end

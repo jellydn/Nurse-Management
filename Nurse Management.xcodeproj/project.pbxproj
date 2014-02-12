@@ -68,6 +68,9 @@
 		2A3C24A918AB1BFE00C20A04 /* MoreVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24A718AB1BFE00C20A04 /* MoreVC.xib */; };
 		2A3C24AD18AB1EF500C20A04 /* ic_bt_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24AB18AB1EF500C20A04 /* ic_bt_back.png */; };
 		2A3C24AE18AB1EF500C20A04 /* ic_bt_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24AC18AB1EF500C20A04 /* ic_bt_back@2x.png */; };
+		2A3C24B018AB271F00C20A04 /* theme_default_green.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24AF18AB271F00C20A04 /* theme_default_green.plist */; };
+		2A3C24B518AB295500C20A04 /* ChangeThemeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C24B318AB295400C20A04 /* ChangeThemeVC.m */; };
+		2A3C24B618AB295500C20A04 /* ChangeThemeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24B418AB295400C20A04 /* ChangeThemeVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +161,10 @@
 		2A3C24A718AB1BFE00C20A04 /* MoreVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreVC.xib; sourceTree = "<group>"; };
 		2A3C24AB18AB1EF500C20A04 /* ic_bt_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bt_back.png; sourceTree = "<group>"; };
 		2A3C24AC18AB1EF500C20A04 /* ic_bt_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bt_back@2x.png"; sourceTree = "<group>"; };
+		2A3C24AF18AB271F00C20A04 /* theme_default_green.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = theme_default_green.plist; sourceTree = "<group>"; };
+		2A3C24B218AB295400C20A04 /* ChangeThemeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeThemeVC.h; sourceTree = "<group>"; };
+		2A3C24B318AB295400C20A04 /* ChangeThemeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeThemeVC.m; sourceTree = "<group>"; };
+		2A3C24B418AB295400C20A04 /* ChangeThemeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeThemeVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +289,7 @@
 		2A394C0118A9FF7600F30F2D /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				2A3C24B118AB293E00C20A04 /* ChangeThemeVC */,
 				2A3C249F18AB1BE000C20A04 /* MoreVC */,
 				2A3C249E18AB1BCD00C20A04 /* RankingVC */,
 				2A394C3218AA01EF00F30F2D /* HomeVC */,
@@ -444,6 +452,7 @@
 				2A394C4318AA0C9D00F30F2D /* FXThemeManager.h */,
 				2A394C4418AA0C9D00F30F2D /* FXThemeManager.m */,
 				2A394C4618AA129600F30F2D /* theme_default.plist */,
+				2A3C24AF18AB271F00C20A04 /* theme_default_green.plist */,
 			);
 			path = FXThemeManager;
 			sourceTree = "<group>";
@@ -531,6 +540,16 @@
 				2A3C24AC18AB1EF500C20A04 /* ic_bt_back@2x.png */,
 			);
 			name = Button;
+			sourceTree = "<group>";
+		};
+		2A3C24B118AB293E00C20A04 /* ChangeThemeVC */ = {
+			isa = PBXGroup;
+			children = (
+				2A3C24B218AB295400C20A04 /* ChangeThemeVC.h */,
+				2A3C24B318AB295400C20A04 /* ChangeThemeVC.m */,
+				2A3C24B418AB295400C20A04 /* ChangeThemeVC.xib */,
+			);
+			name = ChangeThemeVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -622,6 +641,7 @@
 				2A3C24AE18AB1EF500C20A04 /* ic_bt_back@2x.png in Resources */,
 				2A394C1C18A9FF7600F30F2D /* Icon-Small-40@2x.png in Resources */,
 				2A3C248F18AB062F00C20A04 /* ic_toolbar_add_schedule.png in Resources */,
+				2A3C24B618AB295500C20A04 /* ChangeThemeVC.xib in Resources */,
 				2A3C24A918AB1BFE00C20A04 /* MoreVC.xib in Resources */,
 				2A394C2618A9FF7600F30F2D /* Default-568h@2x.png in Resources */,
 				2A394C1F18A9FF7600F30F2D /* Icon-Small@2x_ios7.png in Resources */,
@@ -640,6 +660,7 @@
 				2A394C5818AA25AE00F30F2D /* ic_bt_bar_email.png in Resources */,
 				2A3C249D18AB084900C20A04 /* HomeToolBarView.xib in Resources */,
 				2A3C24A418AB1BF100C20A04 /* RankingVC.xib in Resources */,
+				2A3C24B018AB271F00C20A04 /* theme_default_green.plist in Resources */,
 				2A394C1B18A9FF7600F30F2D /* Icon-60@2x.png in Resources */,
 				2A3C249118AB062F00C20A04 /* ic_toolbar_add_shift.png in Resources */,
 				2A3C249218AB062F00C20A04 /* ic_toolbar_add_shift@2x.png in Resources */,
@@ -674,6 +695,7 @@
 				2A394BDD18A9FD5300F30F2D /* AppDelegate.m in Sources */,
 				2A394C3C18AA028100F30F2D /* FXNavigationController.m in Sources */,
 				2A394BD918A9FD5300F30F2D /* main.m in Sources */,
+				2A3C24B518AB295500C20A04 /* ChangeThemeVC.m in Sources */,
 				2A394C5E18AA2AA600F30F2D /* FXCalendarData.m in Sources */,
 				2A394BE018A9FD5300F30F2D /* Nurse_Management.xcdatamodeld in Sources */,
 				2A394C4018AA02AA00F30F2D /* FXViewController.m in Sources */,

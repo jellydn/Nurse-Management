@@ -40,8 +40,15 @@ static FXThemeManager *shared = nil;
     _themeName = themeName;
     
     if ([themeName isEqualToString:_fxThemeNameDefault]) {
+        
         _themeType      = FXThemeManagerTypeDefault;
         _themeFileData  = @"theme_default";
+        
+    } else if ([themeName isEqualToString:_fxThemeNameDefaultGreen]) {
+        
+        _themeType      = FXThemeManagerTypeDefault;
+        _themeFileData  = @"theme_default_green";
+        
     }
 }
 
@@ -57,15 +64,15 @@ static FXThemeManager *shared = nil;
 #pragma mark - Public Method
 - (void) loadTheme
 {
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:_fxThemeNameDefault]) {
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:_fxThemeStringName]) {
         
         self.themeName = _fxThemeNameDefault;
-        [[NSUserDefaults standardUserDefaults] setObject:_fxThemeNameDefault forKey:_fxThemeNameDefault];
+        [[NSUserDefaults standardUserDefaults] setObject:self.themeName forKey:_fxThemeStringName];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
     } else {
         
-        self.themeName = [[NSUserDefaults standardUserDefaults] objectForKey:_fxThemeNameDefault];
+        self.themeName = [[NSUserDefaults standardUserDefaults] objectForKey:_fxThemeStringName];
         
     }
     
