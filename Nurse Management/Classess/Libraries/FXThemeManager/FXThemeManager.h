@@ -23,6 +23,9 @@
 #define _fxThemeImageNavi           @"navibarImage"
 #define _fxThemeImageToolbar        @"toolbarImage"
 
+#define _fxThemeXibHomeNaviBar      @"homeNaviBarFileXib"
+#define _fxThemeXibHomeToolBar      @"homeToolBarFileXib"
+
 
 typedef enum {
     FXThemeManagerTypeDefault

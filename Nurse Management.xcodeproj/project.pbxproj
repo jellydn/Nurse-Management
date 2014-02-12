@@ -60,6 +60,8 @@
 		2A3C249418AB062F00C20A04 /* ic_toolbar_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C248C18AB062F00C20A04 /* ic_toolbar_more@2x.png */; };
 		2A3C249518AB062F00C20A04 /* ic_toolbar_ranking.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C248D18AB062F00C20A04 /* ic_toolbar_ranking.png */; };
 		2A3C249618AB062F00C20A04 /* ic_toolbar_ranking@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C248E18AB062F00C20A04 /* ic_toolbar_ranking@2x.png */; };
+		2A3C249C18AB084900C20A04 /* HomeToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C249A18AB084900C20A04 /* HomeToolBarView.m */; };
+		2A3C249D18AB084900C20A04 /* HomeToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C249B18AB084900C20A04 /* HomeToolBarView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +141,9 @@
 		2A3C248C18AB062F00C20A04 /* ic_toolbar_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_toolbar_more@2x.png"; sourceTree = "<group>"; };
 		2A3C248D18AB062F00C20A04 /* ic_toolbar_ranking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_toolbar_ranking.png; sourceTree = "<group>"; };
 		2A3C248E18AB062F00C20A04 /* ic_toolbar_ranking@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_toolbar_ranking@2x.png"; sourceTree = "<group>"; };
+		2A3C249918AB084900C20A04 /* HomeToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeToolBarView.h; sourceTree = "<group>"; };
+		2A3C249A18AB084900C20A04 /* HomeToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeToolBarView.m; sourceTree = "<group>"; };
+		2A3C249B18AB084900C20A04 /* HomeToolBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeToolBarView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,9 +389,8 @@
 		2A394C3318AA022600F30F2D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2A394C4D18AA1EE300F30F2D /* HomeNaviBarView.h */,
-				2A394C4E18AA1EE300F30F2D /* HomeNaviBarView.m */,
-				2A394C4F18AA1EE300F30F2D /* HomeNaviBarView.xib */,
+				2A3C249818AB07C900C20A04 /* ToolBar */,
+				2A3C249718AB07BA00C20A04 /* NaviBar */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -461,6 +465,26 @@
 				2A3C248E18AB062F00C20A04 /* ic_toolbar_ranking@2x.png */,
 			);
 			name = Toolbar;
+			sourceTree = "<group>";
+		};
+		2A3C249718AB07BA00C20A04 /* NaviBar */ = {
+			isa = PBXGroup;
+			children = (
+				2A394C4D18AA1EE300F30F2D /* HomeNaviBarView.h */,
+				2A394C4E18AA1EE300F30F2D /* HomeNaviBarView.m */,
+				2A394C4F18AA1EE300F30F2D /* HomeNaviBarView.xib */,
+			);
+			name = NaviBar;
+			sourceTree = "<group>";
+		};
+		2A3C249818AB07C900C20A04 /* ToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				2A3C249918AB084900C20A04 /* HomeToolBarView.h */,
+				2A3C249A18AB084900C20A04 /* HomeToolBarView.m */,
+				2A3C249B18AB084900C20A04 /* HomeToolBarView.xib */,
+			);
+			name = ToolBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -565,6 +589,7 @@
 				2A394C2218A9FF7600F30F2D /* iTunesArtwork.png in Resources */,
 				2A394C5918AA25AE00F30F2D /* ic_bt_bar_email@2x.png in Resources */,
 				2A394C5818AA25AE00F30F2D /* ic_bt_bar_email.png in Resources */,
+				2A3C249D18AB084900C20A04 /* HomeToolBarView.xib in Resources */,
 				2A394C1B18A9FF7600F30F2D /* Icon-60@2x.png in Resources */,
 				2A3C249118AB062F00C20A04 /* ic_toolbar_add_shift.png in Resources */,
 				2A3C249218AB062F00C20A04 /* ic_toolbar_add_shift@2x.png in Resources */,
@@ -589,6 +614,7 @@
 			files = (
 				2A394C3118AA009100F30F2D /* Reachability.m in Sources */,
 				2A394C2E18A9FFBC00F30F2D /* User.m in Sources */,
+				2A3C249C18AB084900C20A04 /* HomeToolBarView.m in Sources */,
 				2A394C2B18A9FFB000F30F2D /* Common.m in Sources */,
 				2A394C5018AA1EE300F30F2D /* HomeNaviBarView.m in Sources */,
 				2A394C4518AA0C9D00F30F2D /* FXThemeManager.m in Sources */,

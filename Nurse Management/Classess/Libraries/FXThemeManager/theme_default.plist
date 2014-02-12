@@ -18,5 +18,9 @@
 	<string>_fxThemeNameDefault</string>
 	<key>mainColor</key>
 	<string>#6587c7</string>
+	<key>homeNaviBarFileXib</key>
+	<string>HomeNaviBarView</string>
+	<key>homeToolBarFileXib</key>
+	<string>HomeToolBarView</string>
 </dict>
 </plist>
