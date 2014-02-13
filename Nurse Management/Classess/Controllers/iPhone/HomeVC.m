@@ -21,7 +21,6 @@
 #import "MoreVC.h"
 #import "ListShiftPatternVC.h"
 #import "ScheduleCategoryVC.h"
-#import "ListMembersVC.h"
 
 @interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate>
 {
