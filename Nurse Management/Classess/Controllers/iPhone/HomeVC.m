@@ -181,6 +181,9 @@
 - (void) homeNaviBarViewDidSelectMail:(HomeNaviBarView*)homeNaviBarView
 {
     NSLog(@"send mail");
+    
+    ListMembersVC *listMembers = [[ListMembersVC alloc] init];
+    [self.navigationController pushViewController:listMembers animated:YES];
 }
 
 #pragma mark - HomeToolBarViewDelegate 
