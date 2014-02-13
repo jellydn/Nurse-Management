@@ -137,6 +137,13 @@
     return  [[self getCalendarCurrent] dateFromComponents:comp];
 }
 
++ (NSDate*) datePrevMonthFormDate:(NSDate*)date
+{
+    NSDateComponents *comp = [[self getCalendarCurrent] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:date];
+    [comp setMonth:[comp month] - 1];
+    return  [[self getCalendarCurrent] dateFromComponents:comp];
+}
+
 + (NSDate*) dateWithAddDay:(NSInteger) day month:(NSInteger) month year:(NSInteger)year fromDate:(NSDate*)date
 {
     NSDateComponents *comp = [[self getCalendarCurrent] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:date];

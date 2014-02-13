@@ -22,13 +22,17 @@
 #import "ListShiftPatternVC.h"
 #import "ScheduleCategoryVC.h"
 
-@interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate>
+#import "FXCalendarView.h"
+
+@interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate, FXCalendarViewDelegate>
 {
     HomeNaviBarView *_naviView ;
     HomeToolBarView *_toolBarView;
     
     AddShiftView    *_addShiftView;
     AddScheduleView *_addScheduleView;
+    
+    FXCalendarView  *_calendarView;
     
     BOOL _isShowAddShiftView, _isShowAddScheduleView;
 }
@@ -50,10 +54,14 @@
 {
     [super viewDidLoad];
     
+    [self loadCalendar];
+    
     [self loadHomeNaivBar];
     [self loadHomeToolBar];
     [self loadHomeAddShiftView];
     [self loadHomeAddScheduleView];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,6 +84,18 @@
 
 
 #pragma mark - Others
+
+- (void) loadCalendar
+{
+    int detalIOS = [Common isIOS7] ? 0 : - 20;
+    
+    _calendarView                   = [[NSBundle mainBundle] loadNibNamed:@"FXCalendarView" owner:self options:nil][0];
+    _calendarView.delegate          = self;
+    _calendarView.frame             = CGRectMake(0, 64 + detalIOS, 320, 350);
+    [_calendarView initCalendar];
+    
+    [self.view addSubview:_calendarView];
+}
 
 - (void)loadHomeNaivBar
 {
@@ -155,7 +175,7 @@
 #pragma mark - HomeNaviBarViewDelegate
 - (void) homeNaviBarViewDidSelectToDay:(HomeNaviBarView*)homeNaviBarView
 {
-    NSLog(@"select today");
+    [_calendarView reloadToday];
 }
 
 - (void) homeNaviBarViewDidSelectMail:(HomeNaviBarView*)homeNaviBarView
@@ -264,7 +284,13 @@
 }
 
 
-
+#pragma mark - FXCalendarViewDelegate
+- (void) fXCalendarView:(FXCalendarView*)fXCalendarView didChangeMonthWithFirstDay:(NSDate*)date
+{
+    [_naviView setTitleWithDay:[FXCalendarData getDayWithDate:date]
+                         month:[FXCalendarData getMonthWithDate:date]
+                          year:[FXCalendarData getYearWithDate:date]];
+}
 
 
 

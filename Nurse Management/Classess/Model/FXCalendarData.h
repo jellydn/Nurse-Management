@@ -38,6 +38,7 @@
 //Date
 + (NSDate*) dateWithDay:(NSInteger) day month:(NSInteger) month year:(NSInteger)year;
 + (NSDate*) dateNextMonthFormDate:(NSDate*)date;
++ (NSDate*) datePrevMonthFormDate:(NSDate*)date;
 + (NSDate*) dateWithAddDay:(NSInteger) day month:(NSInteger) month year:(NSInteger)year fromDate:(NSDate*)date;
 + (NSDate*) nextDateFrom:(NSDate*)date;
 + (NSDate*) prevDateFrom:(NSDate*)date;

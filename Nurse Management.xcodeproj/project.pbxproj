@@ -103,6 +103,12 @@
 		2A516C9918AC5C1A00F82B5A /* ScheduleCategoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A516C9718AC5C1A00F82B5A /* ScheduleCategoryVC.xib */; };
 		2A516C9E18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A516C9C18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m */; };
 		2A516C9F18AC5E1800F82B5A /* AddScheduleCategoryNameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A516C9D18AC5E1800F82B5A /* AddScheduleCategoryNameVC.xib */; };
+		2A516CA818AC77E400F82B5A /* FXMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A516CA718AC77E400F82B5A /* FXMonthView.m */; };
+		2AF0757E18ACABFD0008D875 /* FXDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0757D18ACABFD0008D875 /* FXDayView.m */; };
+		2AF0758118ACAC250008D875 /* FXDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0758018ACAC250008D875 /* FXDay.m */; };
+		2AF0758318ACB60A0008D875 /* FXDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF0758218ACB60A0008D875 /* FXDayView.xib */; };
+		2AF0758718ACC4B00008D875 /* FXCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0758518ACC4B00008D875 /* FXCalendarView.m */; };
+		2AF0758818ACC4B00008D875 /* FXCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF0758618ACC4B00008D875 /* FXCalendarView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -235,6 +241,16 @@
 		2A516C9B18AC5E1800F82B5A /* AddScheduleCategoryNameVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddScheduleCategoryNameVC.h; sourceTree = "<group>"; };
 		2A516C9C18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddScheduleCategoryNameVC.m; sourceTree = "<group>"; };
 		2A516C9D18AC5E1800F82B5A /* AddScheduleCategoryNameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddScheduleCategoryNameVC.xib; sourceTree = "<group>"; };
+		2A516CA618AC77E400F82B5A /* FXMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXMonthView.h; sourceTree = "<group>"; };
+		2A516CA718AC77E400F82B5A /* FXMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXMonthView.m; sourceTree = "<group>"; };
+		2AF0757C18ACABFD0008D875 /* FXDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDayView.h; sourceTree = "<group>"; };
+		2AF0757D18ACABFD0008D875 /* FXDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXDayView.m; sourceTree = "<group>"; };
+		2AF0757F18ACAC250008D875 /* FXDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDay.h; sourceTree = "<group>"; };
+		2AF0758018ACAC250008D875 /* FXDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXDay.m; sourceTree = "<group>"; };
+		2AF0758218ACB60A0008D875 /* FXDayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FXDayView.xib; sourceTree = "<group>"; };
+		2AF0758418ACC4B00008D875 /* FXCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXCalendarView.h; sourceTree = "<group>"; };
+		2AF0758518ACC4B00008D875 /* FXCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXCalendarView.m; sourceTree = "<group>"; };
+		2AF0758618ACC4B00008D875 /* FXCalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FXCalendarView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,6 +420,7 @@
 		2A394C0618A9FF7600F30F2D /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
+				2A516CA018AC76EC00F82B5A /* FXMonthView */,
 				2A394C3D18AA028700F30F2D /* FXViewController */,
 				2A394C3918AA025600F30F2D /* FXNavigationController */,
 			);
@@ -724,6 +741,23 @@
 			name = AddScheduleCategoryNameVC;
 			sourceTree = "<group>";
 		};
+		2A516CA018AC76EC00F82B5A /* FXMonthView */ = {
+			isa = PBXGroup;
+			children = (
+				2AF0758418ACC4B00008D875 /* FXCalendarView.h */,
+				2AF0758518ACC4B00008D875 /* FXCalendarView.m */,
+				2AF0758618ACC4B00008D875 /* FXCalendarView.xib */,
+				2A516CA618AC77E400F82B5A /* FXMonthView.h */,
+				2A516CA718AC77E400F82B5A /* FXMonthView.m */,
+				2AF0757C18ACABFD0008D875 /* FXDayView.h */,
+				2AF0757D18ACABFD0008D875 /* FXDayView.m */,
+				2AF0758218ACB60A0008D875 /* FXDayView.xib */,
+				2AF0757F18ACAC250008D875 /* FXDay.h */,
+				2AF0758018ACAC250008D875 /* FXDay.m */,
+			);
+			name = FXMonthView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -809,6 +843,7 @@
 				2A3C24CC18AB593300C20A04 /* icon_r1_c9.png in Resources */,
 				2A3C24E618AB701500C20A04 /* AddShiftVC.xib in Resources */,
 				2A3C24E018AB6DFF00C20A04 /* ic_bt_add@2x.png in Resources */,
+				2AF0758818ACC4B00008D875 /* FXCalendarView.xib in Resources */,
 				2A3C24D618AB5CC100C20A04 /* img_add_shift_home_title@2x.png in Resources */,
 				2A394C2118A9FF7600F30F2D /* Icon@2x.png in Resources */,
 				2A3C24CF18AB593300C20A04 /* icon_r3_c5.png in Resources */,
@@ -827,6 +862,7 @@
 				2A394C1F18A9FF7600F30F2D /* Icon-Small@2x_ios7.png in Resources */,
 				2A3C24DF18AB6DFF00C20A04 /* ic_bt_add.png in Resources */,
 				2A3C24F318AB7FFA00C20A04 /* img_add_schedule_home_title.png in Resources */,
+				2AF0758318ACB60A0008D875 /* FXDayView.xib in Resources */,
 				2A516C9F18AC5E1800F82B5A /* AddScheduleCategoryNameVC.xib in Resources */,
 				2A394C5118AA1EE300F30F2D /* HomeNaviBarView.xib in Resources */,
 				2A516C9918AC5C1A00F82B5A /* ScheduleCategoryVC.xib in Resources */,
@@ -881,6 +917,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AF0758118ACAC250008D875 /* FXDay.m in Sources */,
 				2A394C3118AA009100F30F2D /* Reachability.m in Sources */,
 				2A3C24A318AB1BF100C20A04 /* RankingVC.m in Sources */,
 				2A394C2E18A9FFBC00F30F2D /* User.m in Sources */,
@@ -890,9 +927,12 @@
 				2A394C2B18A9FFB000F30F2D /* Common.m in Sources */,
 				2A394C5018AA1EE300F30F2D /* HomeNaviBarView.m in Sources */,
 				2A3C24E518AB701500C20A04 /* AddShiftVC.m in Sources */,
+				2AF0758718ACC4B00008D875 /* FXCalendarView.m in Sources */,
 				2A3C24BB18AB586B00C20A04 /* AddShiftView.m in Sources */,
 				2A394C4518AA0C9D00F30F2D /* FXThemeManager.m in Sources */,
 				2A394C3718AA024A00F30F2D /* HomeVC.m in Sources */,
+				2A516CA818AC77E400F82B5A /* FXMonthView.m in Sources */,
+				2AF0757E18ACABFD0008D875 /* FXDayView.m in Sources */,
 				2A394BDD18A9FD5300F30F2D /* AppDelegate.m in Sources */,
 				2A3C24EF18AB78C900C20A04 /* AddScheduleView.m in Sources */,
 				2A394C3C18AA028100F30F2D /* FXNavigationController.m in Sources */,
