@@ -24,5 +24,7 @@
 	<string>HomeToolBarView</string>
 	<key>homeAddShiftFileXib</key>
 	<string>AddShiftView</string>
+	<key>homeAddScheduleFileXib</key>
+	<string>AddScheduleView</string>
 </dict>
 </plist>

@@ -23,6 +23,9 @@
                                 <color key="titleColor" red="0.39607843139999999" green="0.52941176469999995" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="closeAddShiftView:" destination="Hk0-Ui-vno" eventType="touchUpInside" id="AHA-Gg-FUt"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6zL-jQ-ihs">
                             <rect key="frame" x="15" y="18" width="83" height="18"/>

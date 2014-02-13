@@ -30,6 +30,7 @@
 #define _fxThemeXibHomeNaviBar              @"homeNaviBarFileXib"
 #define _fxThemeXibHomeToolBar              @"homeToolBarFileXib"
 #define _fxThemeXibHomeAddShift             @"homeAddShiftFileXib"
+#define _fxThemeXibHomeAddSchedule          @"homeAddScheduleFileXib"
 
 
 typedef enum {

@@ -16,6 +16,7 @@
 
 - (IBAction)selectItem:(id)sender;
 - (IBAction)showListShiftPattern:(id)sender;
+- (IBAction)closeAddShiftView:(id)sender;
 
 @end
 
@@ -23,5 +24,6 @@
 
 - (void) addShiftView:(AddShiftView*)addShiftView didSelectWithIndex:(int)index;
 - (void) addShiftViewDidSelectShowListShiftPattern:(AddShiftView*)addShiftView;
+- (void) addShiftViewDidSelectCloseView:(AddShiftView*)addShiftView;
 
 @end

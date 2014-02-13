@@ -93,6 +93,16 @@
 		2A3C24E618AB701500C20A04 /* AddShiftVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24E418AB701500C20A04 /* AddShiftVC.xib */; };
 		2A3C24E918AB710700C20A04 /* ic_bg_bar_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24E718AB710700C20A04 /* ic_bg_bar_button.png */; };
 		2A3C24EA18AB710700C20A04 /* ic_bg_bar_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24E818AB710700C20A04 /* ic_bg_bar_button@2x.png */; };
+		2A3C24EF18AB78C900C20A04 /* AddScheduleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C24ED18AB78C900C20A04 /* AddScheduleView.m */; };
+		2A3C24F018AB78C900C20A04 /* AddScheduleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24EE18AB78C900C20A04 /* AddScheduleView.xib */; };
+		2A3C24F318AB7FFA00C20A04 /* img_add_schedule_home_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24F118AB7FFA00C20A04 /* img_add_schedule_home_title.png */; };
+		2A3C24F418AB7FFA00C20A04 /* img_add_schedule_home_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24F218AB7FFA00C20A04 /* img_add_schedule_home_title@2x.png */; };
+		2A3C24F718AB822D00C20A04 /* ic_bt_home_add_schedule_step1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24F518AB822D00C20A04 /* ic_bt_home_add_schedule_step1.png */; };
+		2A3C24F818AB822D00C20A04 /* ic_bt_home_add_schedule_step1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C24F618AB822D00C20A04 /* ic_bt_home_add_schedule_step1@2x.png */; };
+		2A516C9818AC5C1A00F82B5A /* ScheduleCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A516C9618AC5C1A00F82B5A /* ScheduleCategoryVC.m */; };
+		2A516C9918AC5C1A00F82B5A /* ScheduleCategoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A516C9718AC5C1A00F82B5A /* ScheduleCategoryVC.xib */; };
+		2A516C9E18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A516C9C18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m */; };
+		2A516C9F18AC5E1800F82B5A /* AddScheduleCategoryNameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A516C9D18AC5E1800F82B5A /* AddScheduleCategoryNameVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +222,19 @@
 		2A3C24E418AB701500C20A04 /* AddShiftVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddShiftVC.xib; sourceTree = "<group>"; };
 		2A3C24E718AB710700C20A04 /* ic_bg_bar_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bg_bar_button.png; sourceTree = "<group>"; };
 		2A3C24E818AB710700C20A04 /* ic_bg_bar_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bg_bar_button@2x.png"; sourceTree = "<group>"; };
+		2A3C24EC18AB78C900C20A04 /* AddScheduleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddScheduleView.h; sourceTree = "<group>"; };
+		2A3C24ED18AB78C900C20A04 /* AddScheduleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddScheduleView.m; sourceTree = "<group>"; };
+		2A3C24EE18AB78C900C20A04 /* AddScheduleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddScheduleView.xib; sourceTree = "<group>"; };
+		2A3C24F118AB7FFA00C20A04 /* img_add_schedule_home_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_add_schedule_home_title.png; sourceTree = "<group>"; };
+		2A3C24F218AB7FFA00C20A04 /* img_add_schedule_home_title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_add_schedule_home_title@2x.png"; sourceTree = "<group>"; };
+		2A3C24F518AB822D00C20A04 /* ic_bt_home_add_schedule_step1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bt_home_add_schedule_step1.png; sourceTree = "<group>"; };
+		2A3C24F618AB822D00C20A04 /* ic_bt_home_add_schedule_step1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bt_home_add_schedule_step1@2x.png"; sourceTree = "<group>"; };
+		2A516C9518AC5C1A00F82B5A /* ScheduleCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCategoryVC.h; sourceTree = "<group>"; };
+		2A516C9618AC5C1A00F82B5A /* ScheduleCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCategoryVC.m; sourceTree = "<group>"; };
+		2A516C9718AC5C1A00F82B5A /* ScheduleCategoryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCategoryVC.xib; sourceTree = "<group>"; };
+		2A516C9B18AC5E1800F82B5A /* AddScheduleCategoryNameVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddScheduleCategoryNameVC.h; sourceTree = "<group>"; };
+		2A516C9C18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddScheduleCategoryNameVC.m; sourceTree = "<group>"; };
+		2A516C9D18AC5E1800F82B5A /* AddScheduleCategoryNameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddScheduleCategoryNameVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,6 +359,8 @@
 		2A394C0118A9FF7600F30F2D /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				2A516C9A18AC5DF700F82B5A /* AddScheduleCategoryNameVC */,
+				2A516C9418AC5BFD00F82B5A /* ScheduleCategoryVC */,
 				2A3C24E118AB6FFF00C20A04 /* AddShiftVC */,
 				2A3C24D718AB6C8500C20A04 /* ListShiftPatternVC */,
 				2A3C24B118AB293E00C20A04 /* ChangeThemeVC */,
@@ -462,6 +487,7 @@
 		2A394C3318AA022600F30F2D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2A3C24EB18AB78B300C20A04 /* AddScheduleView */,
 				2A3C24B718AB56DB00C20A04 /* AddShiftView */,
 				2A3C249818AB07C900C20A04 /* ToolBar */,
 				2A3C249718AB07BA00C20A04 /* NaviBar */,
@@ -588,6 +614,8 @@
 		2A3C24AA18AB1E8600C20A04 /* Button */ = {
 			isa = PBXGroup;
 			children = (
+				2A3C24F518AB822D00C20A04 /* ic_bt_home_add_schedule_step1.png */,
+				2A3C24F618AB822D00C20A04 /* ic_bt_home_add_schedule_step1@2x.png */,
 				2A3C24E718AB710700C20A04 /* ic_bg_bar_button.png */,
 				2A3C24E818AB710700C20A04 /* ic_bg_bar_button@2x.png */,
 				2A3C24DD18AB6DFF00C20A04 /* ic_bt_add.png */,
@@ -638,6 +666,8 @@
 		2A3C24D218AB5BF700C20A04 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2A3C24F118AB7FFA00C20A04 /* img_add_schedule_home_title.png */,
+				2A3C24F218AB7FFA00C20A04 /* img_add_schedule_home_title@2x.png */,
 				2A3C24D318AB5CC100C20A04 /* img_add_shift_home_title.png */,
 				2A3C24D418AB5CC100C20A04 /* img_add_shift_home_title@2x.png */,
 			);
@@ -662,6 +692,36 @@
 				2A3C24E418AB701500C20A04 /* AddShiftVC.xib */,
 			);
 			name = AddShiftVC;
+			sourceTree = "<group>";
+		};
+		2A3C24EB18AB78B300C20A04 /* AddScheduleView */ = {
+			isa = PBXGroup;
+			children = (
+				2A3C24EC18AB78C900C20A04 /* AddScheduleView.h */,
+				2A3C24ED18AB78C900C20A04 /* AddScheduleView.m */,
+				2A3C24EE18AB78C900C20A04 /* AddScheduleView.xib */,
+			);
+			name = AddScheduleView;
+			sourceTree = "<group>";
+		};
+		2A516C9418AC5BFD00F82B5A /* ScheduleCategoryVC */ = {
+			isa = PBXGroup;
+			children = (
+				2A516C9518AC5C1A00F82B5A /* ScheduleCategoryVC.h */,
+				2A516C9618AC5C1A00F82B5A /* ScheduleCategoryVC.m */,
+				2A516C9718AC5C1A00F82B5A /* ScheduleCategoryVC.xib */,
+			);
+			name = ScheduleCategoryVC;
+			sourceTree = "<group>";
+		};
+		2A516C9A18AC5DF700F82B5A /* AddScheduleCategoryNameVC */ = {
+			isa = PBXGroup;
+			children = (
+				2A516C9B18AC5E1800F82B5A /* AddScheduleCategoryNameVC.h */,
+				2A516C9C18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m */,
+				2A516C9D18AC5E1800F82B5A /* AddScheduleCategoryNameVC.xib */,
+			);
+			name = AddScheduleCategoryNameVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -754,6 +814,7 @@
 				2A3C24CF18AB593300C20A04 /* icon_r3_c5.png in Resources */,
 				2A3C24BC18AB586B00C20A04 /* AddShiftView.xib in Resources */,
 				2A394C2318A9FF7600F30F2D /* iTunesArtwork@2x.png in Resources */,
+				2A3C24F018AB78C900C20A04 /* AddScheduleView.xib in Resources */,
 				2A394C3818AA024A00F30F2D /* HomeVC.xib in Resources */,
 				2A394C2718A9FF7600F30F2D /* Default.png in Resources */,
 				2A3C24D518AB5CC100C20A04 /* img_add_shift_home_title.png in Resources */,
@@ -765,7 +826,10 @@
 				2A394C2618A9FF7600F30F2D /* Default-568h@2x.png in Resources */,
 				2A394C1F18A9FF7600F30F2D /* Icon-Small@2x_ios7.png in Resources */,
 				2A3C24DF18AB6DFF00C20A04 /* ic_bt_add.png in Resources */,
+				2A3C24F318AB7FFA00C20A04 /* img_add_schedule_home_title.png in Resources */,
+				2A516C9F18AC5E1800F82B5A /* AddScheduleCategoryNameVC.xib in Resources */,
 				2A394C5118AA1EE300F30F2D /* HomeNaviBarView.xib in Resources */,
+				2A516C9918AC5C1A00F82B5A /* ScheduleCategoryVC.xib in Resources */,
 				2A3C24AD18AB1EF500C20A04 /* ic_bt_back.png in Resources */,
 				2A394C4718AA129600F30F2D /* theme_default.plist in Resources */,
 				2A394C2418A9FF7600F30F2D /* iTunesArtwork@2x_ios7.png in Resources */,
@@ -790,10 +854,13 @@
 				2A3C24DC18AB6CC500C20A04 /* ListShiftPatternVC.xib in Resources */,
 				2A3C24CA18AB593300C20A04 /* icon_r1_c5.png in Resources */,
 				2A3C249118AB062F00C20A04 /* ic_toolbar_add_shift.png in Resources */,
+				2A3C24F418AB7FFA00C20A04 /* img_add_schedule_home_title@2x.png in Resources */,
+				2A3C24F818AB822D00C20A04 /* ic_bt_home_add_schedule_step1@2x.png in Resources */,
 				2A3C249218AB062F00C20A04 /* ic_toolbar_add_shift@2x.png in Resources */,
 				2A3C24CD18AB593300C20A04 /* icon_r3_c1.png in Resources */,
 				2A394C5A18AA25AE00F30F2D /* ic_bt_bar_today.png in Resources */,
 				2A3C24EA18AB710700C20A04 /* ic_bg_bar_button@2x.png in Resources */,
+				2A3C24F718AB822D00C20A04 /* ic_bt_home_add_schedule_step1.png in Resources */,
 				2A3C24C818AB593300C20A04 /* icon_r1_c1.png in Resources */,
 				2A3C24CE18AB593300C20A04 /* icon_r3_c3.png in Resources */,
 			);
@@ -827,12 +894,15 @@
 				2A394C4518AA0C9D00F30F2D /* FXThemeManager.m in Sources */,
 				2A394C3718AA024A00F30F2D /* HomeVC.m in Sources */,
 				2A394BDD18A9FD5300F30F2D /* AppDelegate.m in Sources */,
+				2A3C24EF18AB78C900C20A04 /* AddScheduleView.m in Sources */,
 				2A394C3C18AA028100F30F2D /* FXNavigationController.m in Sources */,
 				2A394BD918A9FD5300F30F2D /* main.m in Sources */,
+				2A516C9E18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m in Sources */,
 				2A3C24B518AB295500C20A04 /* ChangeThemeVC.m in Sources */,
 				2A394C5E18AA2AA600F30F2D /* FXCalendarData.m in Sources */,
 				2A394BE018A9FD5300F30F2D /* Nurse_Management.xcdatamodeld in Sources */,
 				2A394C4018AA02AA00F30F2D /* FXViewController.m in Sources */,
+				2A516C9818AC5C1A00F82B5A /* ScheduleCategoryVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

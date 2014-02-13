@@ -15,18 +15,22 @@
 #import "HomeNaviBarView.h"
 #import "HomeToolBarView.h"
 #import "AddShiftView.h"
+#import "AddScheduleView.h"
 
 #import "RankingVC.h"
 #import "MoreVC.h"
 #import "ListShiftPatternVC.h"
+#import "ScheduleCategoryVC.h"
 
-@interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate>
+@interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate>
 {
     HomeNaviBarView *_naviView ;
     HomeToolBarView *_toolBarView;
-    AddShiftView    *_addShiftView;
     
-    BOOL _isShowAddShiftView;
+    AddShiftView    *_addShiftView;
+    AddScheduleView *_addScheduleView;
+    
+    BOOL _isShowAddShiftView, _isShowAddScheduleView;
 }
 
 @end
@@ -49,6 +53,7 @@
     [self loadHomeNaivBar];
     [self loadHomeToolBar];
     [self loadHomeAddShiftView];
+    [self loadHomeAddScheduleView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,16 +70,12 @@
         [self loadHomeNaivBar];
         [self loadHomeToolBar];
         [self loadHomeAddShiftView];
+        [self loadHomeAddScheduleView];
     }
 }
 
 
 #pragma mark - Others
-
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self hideAddShift];
-}
 
 - (void)loadHomeNaivBar
 {
@@ -133,6 +134,24 @@
     [self.view addSubview:_addShiftView];
 }
 
+- (void)loadHomeAddScheduleView
+{
+    if (_addScheduleView) {
+        [_addScheduleView removeFromSuperview];
+        _addScheduleView = nil;
+    }
+    
+    _addScheduleView                    = [[NSBundle mainBundle] loadNibNamed:[[FXThemeManager shared] getThemeValueWithKey:_fxThemeXibHomeAddSchedule]
+                                                                     owner:self
+                                                                   options:nil][0];
+    _addScheduleView.delegate           = self;
+    _addScheduleView.frame              = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [_addScheduleView initLayoutView];
+    
+    [self.view addSubview:_addScheduleView];
+    
+}
+
 #pragma mark - HomeNaviBarViewDelegate
 - (void) homeNaviBarViewDidSelectToDay:(HomeNaviBarView*)homeNaviBarView
 {
@@ -155,6 +174,7 @@
         }
         case 1:
         {
+            [_addScheduleView show];
             break;
         }
         case 2:
@@ -220,6 +240,44 @@
     ListShiftPatternVC *vc = [[ListShiftPatternVC alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+- (void) addShiftViewDidSelectCloseView:(AddShiftView*)addShiftView
+{
+    [self hideAddShift];
+}
+
+#pragma mark - AddScheduleViewDelegate 
+- (void) didShowCategoryName:(AddScheduleView*)addScheduleView
+{
+    ScheduleCategoryVC *vc = [[ScheduleCategoryVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void) didShowView:(AddScheduleView*)addScheduleView
+{
+    _isShowAddScheduleView = YES;
+}
+
+- (void) didHideView:(AddScheduleView*)addScheduleView
+{
+    _isShowAddScheduleView = NO;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

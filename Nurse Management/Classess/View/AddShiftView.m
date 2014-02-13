@@ -29,5 +29,12 @@
     }
 }
 
+- (IBAction)closeAddShiftView:(id)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(addShiftViewDidSelectCloseView:)]) {
+        [_delegate addShiftViewDidSelectCloseView:self];
+    }
+}
+
 
 @end
