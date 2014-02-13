@@ -21,6 +21,7 @@
 #import "MoreVC.h"
 #import "ListShiftPatternVC.h"
 #import "ScheduleCategoryVC.h"
+#import "ListMembersVC.h"
 
 @interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate>
 {
@@ -161,6 +162,9 @@
 - (void) homeNaviBarViewDidSelectMail:(HomeNaviBarView*)homeNaviBarView
 {
     NSLog(@"send mail");
+    
+    ListMembersVC *listMembers = [[ListMembersVC alloc] init];
+    [self.navigationController pushViewController:listMembers animated:YES];
 }
 
 #pragma mark - HomeToolBarViewDelegate 
