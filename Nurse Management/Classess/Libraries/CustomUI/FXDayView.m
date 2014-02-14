@@ -10,6 +10,11 @@
 
 @implementation FXDayView
 
+- (void)dealloc
+{
+    self.day = nil;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -22,14 +27,10 @@
 
 - (void) initLayout
 {
-    _lbDay                  = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, self.frame.size.width - 5, 20)];
-    _lbDay.textColor        = self.outOfMonthDayColor;
-    _lbDay.font             = [UIFont systemFontOfSize:14.0];
-    _lbDay.text             = @"1";
-    _lbDay.backgroundColor  = [UIColor clearColor];
+ 
     
-    [self addSubview:_lbDay];
 }
+
 
 #pragma mark - Geter
 - (UIColor*) borderColor
@@ -83,6 +84,9 @@
 #pragma mark - Public mehtod
 - (void) reloadInfo:(FXDay*)day
 {
+
+    _day = day;
+    
     _lbDay.text = [NSString stringWithFormat:@"%d",day.dayIndex];
     
     if (day.isOutOfDay) {
@@ -103,12 +107,35 @@
     }
     
     if (day.isCurrent) {
-        self.backgroundColor = [UIColor colorWithRed:218.0/255.0 green:228.0/255.0 blue:254.0/255.0 alpha:1.0];
+        if (day.isSelect) {
+            self.backgroundColor = [UIColor clearColor];
+        } else {
+            self.backgroundColor = [UIColor colorWithRed:218.0/255.0 green:228.0/255.0 blue:254.0/255.0 alpha:1.0];
+        }
     } else {
         self.backgroundColor = [UIColor clearColor];
     }
     
 }
+
+#pragma mark - Others
+
+- (IBAction)selectDay:(id)sender
+{
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

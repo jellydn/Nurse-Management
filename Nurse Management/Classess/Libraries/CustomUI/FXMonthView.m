@@ -26,6 +26,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _indexSelect        = -1;
         _widthCell          = frame.size.width / 7;
         _heightCell         = 50;
         
@@ -122,6 +123,15 @@
     return _backgoundSundayColor;
 }
 
+- (UIColor*) backgoundSelectDay
+{
+    if (!_backgoundSelectDay) {
+        _backgoundSelectDay = [UIColor colorWithRed:254.0/255.0 green:236.0/255.0 blue:170.0/255.0 alpha:1.0];
+    }
+    
+    return _backgoundSelectDay;
+}
+
 - (UIFont*) font
 {
     if (!_font) {
@@ -191,17 +201,39 @@
     
     [self addSubview:_viewLines];
     
+    //view container select
+    _viewContainerSelect                    = [[UIView alloc] initWithFrame:_viewLines.frame];
+    _viewContainerSelect.backgroundColor    = [UIColor clearColor];
+    
+    _viewSelect                     = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _widthCell, _heightCell)];
+    _viewSelect.backgroundColor     = self.selectColor;
+    _viewSelect.hidden              = YES;
+    
+    UIView *viewBGSelect            = [[UIView alloc] initWithFrame:CGRectMake(2, 2, _viewSelect.frame.size.width - 2, _viewSelect.frame.size.height - 2)];
+    viewBGSelect.backgroundColor    = self.backgoundSelectDay;
+    viewBGSelect.clipsToBounds      = YES;
+    
+    [_viewSelect addSubview:viewBGSelect];
+    [_viewContainerSelect addSubview:_viewSelect];
+    [self addSubview:_viewContainerSelect];
+    
     //view container days
     _viewContainerDays                  = [[UIView alloc] initWithFrame:_viewLines.frame];
     _viewContainerDays.backgroundColor  = [UIColor clearColor];
     
     //add day view
-    CGRect rect = CGRectMake(1, 1, _widthCell  - 1, _heightCell - 1);
+    CGRect rect = CGRectMake(1, 1, _widthCell  - 1.5, _heightCell - 1.5);
     
     for (int i = 0; i < 42; i++) {
         
-        FXDayView *dayView = [[FXDayView alloc] initWithFrame:rect];
-        dayView.tag        = i;
+        
+        FXDayView *dayView              = [[NSBundle mainBundle] loadNibNamed:@"FXDayView" owner:self options:nil][0];
+        dayView.clipsToBounds           = YES;
+        dayView.frame                   = rect;
+        dayView.tag                     = i;
+        dayView.btButtonMaks.tag        = i;
+        
+        
         [_viewContainerDays addSubview:dayView];
         
         rect.origin.x += _widthCell;
@@ -215,9 +247,70 @@
     [self addSubview:_viewContainerDays];
 }
 
+#pragma mark - Action
+
+- (IBAction)selectDay:(id)sender
+{
+    
+    UIButton *button = (UIButton*)sender;
+    
+    NSLog(@"old select %d",_indexSelect);
+    
+    FXDay *day = _days[button.tag];
+    
+    if (!day.isOutOfDay) {
+        
+        if (_indexSelect != -1) {
+            FXDay *oldday = _days[_indexSelect];
+            oldday.isSelect = NO;
+        }
+        
+        day.isSelect = YES;
+        
+        [self reloadSelectViewWith:_indexSelect newSelect:button.tag];
+        
+        _indexSelect = button.tag;
+        NSLog(@"new select %d",_indexSelect);
+        
+        if (_daySelect) {
+            _daySelect = nil;
+        }
+        
+        _daySelect          = day;
+        
+        _viewSelect.hidden  = NO;
+        _viewSelect.frame   = CGRectMake(_widthCell * (button.tag%7) - 1, _heightCell * (button.tag/7) - 1, _widthCell + 2, _heightCell + 2);
+        
+        
+    } else {
+        
+    }
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(fxMonthView:didSelectDayWith:)]) {
+        [_delegate fxMonthView:self didSelectDayWith:day];
+    }
+}
+
+- (void) reloadSelectViewWith:(int)oldSelect newSelect:(int)newSelect
+{
+    for (FXDayView *dayView in _viewContainerDays.subviews) {
+        if (dayView.tag == oldSelect) {
+            [dayView reloadInfo:_days[oldSelect]];
+            continue;
+        }
+        
+        if (dayView.tag == newSelect) {
+            [dayView reloadInfo:_days[newSelect]];
+            [_viewContainerDays bringSubviewToFront:dayView];
+            continue;
+        }
+    }
+}
+
+
 #pragma mark - Data
 
-- (void) loadDataForDate:(NSDate*)date
+- (void) loadDataForDate:(NSDate*)date isSetFirstDay:(BOOL)isSet
 {
     self.date = date;
     
@@ -229,8 +322,12 @@
     
     _totalDay = [FXCalendarData numberDayOfMonthWithDate:date];
     
-    
-    NSLog(@"index First: %d -- end: %d", _firstdayIndex, _enddayIndex);
+    if (isSet) {
+        _daySelect = nil;
+        _daySelect = [[FXDay alloc] init];
+        _daySelect.date = _firstDay;
+        
+    }
     
     if (!_days) {
         _days = [[NSMutableArray alloc] init];
@@ -245,7 +342,7 @@
         
         FXDay *day = [[FXDay alloc] init];
         day.isOutOfDay = YES;
-    
+        
         [_days addObject:day];
     }
     
@@ -291,20 +388,117 @@
         
         [_days addObject:day];
         
-        NSLog(@"%d",day.dayIndex);
+        tempDate = [FXCalendarData nextDateFrom:tempDate];
+    }
+    
+    [self reloadInfoDay];
+}
+
+- (void) loadDataForDate:(NSDate *)date setSelectDay:(NSDate*)selectDate
+{
+    self.date = date;
+    
+    _firstDay = [FXCalendarData getFirstDayOfMonthWithDate:date];
+    _firstdayIndex = [FXCalendarData getWeekDayWithDate:_firstDay];
+    
+    _endDay   = [FXCalendarData getEndDayOfMonthWithDate:date];
+    _enddayIndex = [FXCalendarData getWeekDayWithDate:_endDay];
+    
+    _totalDay = [FXCalendarData numberDayOfMonthWithDate:date];
+    
+    _daySelect = nil;
+    _daySelect = [[FXDay alloc] init];
+    _daySelect.date = selectDate;
+    
+    if (!_days) {
+        _days = [[NSMutableArray alloc] init];
+    } else {
+        [_days removeAllObjects];
+    }
+    
+    
+    
+    //get out of day with first week
+    for (int i = _firstdayIndex - 1; i > 0; i--) {
+        
+        FXDay *day = [[FXDay alloc] init];
+        day.isOutOfDay = YES;
+        
+        [_days addObject:day];
+    }
+    
+    // add day in out of days
+    NSDate *tempDate = _firstDay;
+    for (int i = [_days count] - 1; i >= 0; i--) {
+        
+        tempDate = [FXCalendarData prevDateFrom:tempDate];
+        FXDay *day = _days[i];
+        day.date   = tempDate;
+        
+    }
+    
+    //add day in month
+    tempDate = _firstDay;
+    for (int i = 1; i <= _totalDay; i++) {
+        
+        FXDay *day      = [[FXDay alloc] init];
+        day.isOutOfDay  = NO;
+        day.date        = tempDate;
+        
+        [_days addObject:day];
+        
+        tempDate = [FXCalendarData nextDateFrom:tempDate];
+        
+    }
+    
+    float allDay        = 35;
+    _is6Week            = NO;
+    _numberWeekOfMonth  = 5;
+    
+    if ([_days count] > 35) {
+        
+        allDay              = 42;
+        _is6Week            = YES;
+        _numberWeekOfMonth  = 6;
+    }
+    
+    for (int i = [_days count]; i < allDay ; i++) {
+        FXDay *day = [[FXDay alloc] init];
+        day.isOutOfDay = YES;
+        day.date = tempDate;
+        
+        [_days addObject:day];
         
         tempDate = [FXCalendarData nextDateFrom:tempDate];
     }
     
-    NSLog(@"total day: %d", [_days count]);
     [self reloadInfoDay];
 }
 
 - (void) reloadInfoDay
 {
+    _viewSelect.hidden = YES;
+    
     for (FXDayView *dayView in _viewContainerDays.subviews) {
         if (dayView.tag < [_days count]) {
-            [dayView reloadInfo:_days[dayView.tag]];
+            
+            FXDay *day = _days[dayView.tag];
+            day.isSelect = NO;
+            
+            if (_daySelect &&
+                
+                _daySelect.dayIndex == day.dayIndex &&
+                _daySelect.monthIndex == day.monthIndex &&
+                _daySelect.yearIndex == day.yearIndex) {
+                
+                _viewSelect.hidden  = NO;
+                _viewSelect.frame   = CGRectMake(_widthCell * (dayView.tag%7) - 1, _heightCell * (dayView.tag/7) - 1, _widthCell + 2, _heightCell + 2);
+                
+                day.isSelect = YES;
+            }
+            
+            [dayView reloadInfo:day];
+            
         }
     }
 }

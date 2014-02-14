@@ -176,6 +176,11 @@
 #pragma mark - HomeNaviBarViewDelegate
 - (void) homeNaviBarViewDidSelectToDay:(HomeNaviBarView*)homeNaviBarView
 {
+    NSDate *date = [NSDate date];
+    [_naviView setTitleWithDay:[FXCalendarData getDayWithDate:date]
+                         month:[FXCalendarData getMonthWithDate:date]
+                          year:[FXCalendarData getYearWithDate:date]];
+    
     [_calendarView reloadToday];
 }
 
@@ -290,6 +295,13 @@
 
 #pragma mark - FXCalendarViewDelegate
 - (void) fXCalendarView:(FXCalendarView*)fXCalendarView didChangeMonthWithFirstDay:(NSDate*)date
+{
+    [_naviView setTitleWithDay:[FXCalendarData getDayWithDate:date]
+                         month:[FXCalendarData getMonthWithDate:date]
+                          year:[FXCalendarData getYearWithDate:date]];
+}
+
+- (void) fXCalendarView:(FXCalendarView*)fXCalendarView didSelectDay:(NSDate*)date
 {
     [_naviView setTitleWithDay:[FXCalendarData getDayWithDate:date]
                          month:[FXCalendarData getMonthWithDate:date]

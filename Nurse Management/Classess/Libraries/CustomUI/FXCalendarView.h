@@ -15,6 +15,7 @@
 @property(nonatomic, weak) IBOutlet UIScrollView *scrollView;
 
 @property (nonatomic, weak) id <FXCalendarViewDelegate> delegate;
+@property (nonatomic, strong) NSDate *selectDate;
 
 - (void) initCalendar;
 - (void) reloadToday;
@@ -24,5 +25,6 @@
 @protocol FXCalendarViewDelegate <NSObject>
 
 - (void) fXCalendarView:(FXCalendarView*)fXCalendarView didChangeMonthWithFirstDay:(NSDate*)date;
+- (void) fXCalendarView:(FXCalendarView*)fXCalendarView didSelectDay:(NSDate*)date;
 
 @end

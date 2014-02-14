@@ -13,7 +13,7 @@
 #import "FXMonthView.h"
 #import "FXDayView.h"
 
-@interface FXCalendarView ()<UIScrollViewDelegate>
+@interface FXCalendarView ()<UIScrollViewDelegate, FXMonthViewDelegate>
 {
     FXMonthView *_monthView1;
     FXMonthView *_monthView2;
@@ -33,18 +33,19 @@
     NSDate *date = [NSDate date];
     
     _monthView1 = [[FXMonthView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
-    [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:date]];
+    [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:date] isSetFirstDay:NO];
     [_scrollView addSubview:_monthView1];
     [_monthView1 reloadHeighForWeekWithAnimate:NO];
     
     
     _monthView2 = [[FXMonthView alloc] initWithFrame:CGRectMake(320, 0, 320, 0)];
-    [_monthView2 loadDataForDate:date];
+    _monthView2.delegate = self;
+    [_monthView2 loadDataForDate:date isSetFirstDay:NO];
     [_scrollView addSubview:_monthView2];
     [_monthView2 reloadHeighForWeekWithAnimate:YES];
     
     _monthView3 = [[FXMonthView alloc] initWithFrame:CGRectMake(640, 0, 320, 0)];
-    [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:date]];
+    [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:date] isSetFirstDay:NO];
     [_scrollView addSubview:_monthView3];
     [_monthView3 reloadHeighForWeekWithAnimate:NO];
     
@@ -59,13 +60,13 @@
 
             NSDate *date = _monthView1.date;
             
-            [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:date]];
+            [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:date] isSetFirstDay:NO];
             [_monthView1 reloadHeighForWeekWithAnimate:NO];
             
-            [_monthView2 loadDataForDate:date];
+            [_monthView2 loadDataForDate:date isSetFirstDay:YES];
             [_monthView2 reloadHeighForWeekWithAnimate:NO];
             
-            [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:date]];
+            [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:date] isSetFirstDay:NO];
             [_monthView3 reloadHeighForWeekWithAnimate:NO];
             
             [_scrollView setContentOffset:CGPointMake(320, 0)];
@@ -74,13 +75,13 @@
             
             NSDate *date = _monthView3.date;
             
-            [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:date]];
+            [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:date] isSetFirstDay:NO];
             [_monthView1 reloadHeighForWeekWithAnimate:NO];
             
-            [_monthView2 loadDataForDate:date];
+            [_monthView2 loadDataForDate:date isSetFirstDay:YES];
             [_monthView2 reloadHeighForWeekWithAnimate:NO];
             
-            [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:date]];
+            [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:date] isSetFirstDay:NO];
             [_monthView3 reloadHeighForWeekWithAnimate:NO];
             
             [_scrollView setContentOffset:CGPointMake(320, 0)];
@@ -99,13 +100,13 @@
         
         NSDate *date = _monthView1.date;
         
-        [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:date]];
+        [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:date] isSetFirstDay:NO];
         [_monthView1 reloadHeighForWeekWithAnimate:NO];
         
-        [_monthView2 loadDataForDate:date];
+        [_monthView2 loadDataForDate:date isSetFirstDay:YES];
         [_monthView2 reloadHeighForWeekWithAnimate:NO];
         
-        [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:date]];
+        [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:date] isSetFirstDay:NO];
         [_monthView3 reloadHeighForWeekWithAnimate:NO];
         
         [_scrollView setContentOffset:CGPointMake(320, 0)];
@@ -114,13 +115,13 @@
         
         NSDate *date = _monthView3.date;
         
-        [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:date]];
+        [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:date] isSetFirstDay:NO];
         [_monthView1 reloadHeighForWeekWithAnimate:NO];
         
-        [_monthView2 loadDataForDate:date];
+        [_monthView2 loadDataForDate:date isSetFirstDay:YES];
         [_monthView2 reloadHeighForWeekWithAnimate:NO];
         
-        [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:date]];
+        [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:date] isSetFirstDay:NO];
         [_monthView3 reloadHeighForWeekWithAnimate:NO];
         
         [_scrollView setContentOffset:CGPointMake(320, 0)];
@@ -137,17 +138,27 @@
 {
     NSDate *date = [FXCalendarData getFirstDayOfMonthWithDate:[NSDate date]];
     
-    [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:date]];
+    [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:date] isSetFirstDay:NO];
     [_monthView1 reloadHeighForWeekWithAnimate:NO];
     
-    [_monthView2 loadDataForDate:date];
+    [_monthView2 loadDataForDate:date setSelectDay:[NSDate date]];
     [_monthView2 reloadHeighForWeekWithAnimate:YES];
     
-    [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:date]];
+    [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:date] isSetFirstDay:NO];
     [_monthView3 reloadHeighForWeekWithAnimate:NO];
     
     if (_delegate && [_delegate respondsToSelector:@selector(fXCalendarView:didChangeMonthWithFirstDay:)]) {
-        [_delegate fXCalendarView:self didChangeMonthWithFirstDay:_monthView2.date];
+        [_delegate fXCalendarView:self didChangeMonthWithFirstDay:[NSDate date]];
+    }
+}
+
+#pragma mark - FXMonthViewDelegate
+- (void) fxMonthView:(FXMonthView*) fxMonthView didSelectDayWith:(FXDay*)day
+{
+    if (!day.isOutOfDay &&
+        _delegate &&
+        [_delegate respondsToSelector:@selector(fXCalendarView:didSelectDay:)]) {
+        [_delegate fXCalendarView:self didSelectDay:day.date];
     }
 }
 
