@@ -79,6 +79,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="headerView" destination="cva-PQ-d5r" id="HkZ-RE-7bN"/>
                 <outlet property="scrollView" destination="ddP-En-Nzr" id="MNt-41-xE8"/>
             </connections>
         </view>

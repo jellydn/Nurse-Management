@@ -25,6 +25,10 @@
 #import "FXCalendarView.h"
 #import "ListMembersVC.h"
 
+#import "HomeCellAddShift.h"
+#import "HomeCellAddSchedule.h"
+#import "HomeCellSchedule.h"
+
 @interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate, FXCalendarViewDelegate>
 {
     HomeNaviBarView *_naviView ;
@@ -35,8 +39,12 @@
     
     FXCalendarView  *_calendarView;
     
+    __weak IBOutlet UITableView *_tableView;
+    
     BOOL _isShowAddShiftView, _isShowAddScheduleView;
 }
+
+@property (nonatomic, strong) NSDate *selectDate;
 
 @end
 
@@ -55,12 +63,17 @@
 {
     [super viewDidLoad];
     
+    _selectDate = [NSDate date];
+    
     [self loadCalendar];
+    [self resetLayoutTableWithAnimate:NO];
+    [self.view bringSubviewToFront:_tableView];
     
     [self loadHomeNaivBar];
     [self loadHomeToolBar];
     [self loadHomeAddShiftView];
     [self loadHomeAddScheduleView];
+    
     
     
 }
@@ -129,11 +142,14 @@
         _toolBarView = nil;
     }
     
+    float detalIOS = [Common isIOS7] ? 0 : 20;
+    float height   = [Common checkScreenIPhone5] ? 568 : 480;
+    
     _toolBarView                    = [[NSBundle mainBundle] loadNibNamed:[[FXThemeManager shared] getThemeValueWithKey:_fxThemeXibHomeToolBar]
                                                                     owner:self
                                                                   options:nil][0];
     _toolBarView.delegate           = self;
-    _toolBarView.frame              = CGRectMake(0, self.view.frame.size.height - 49, 320, 49);
+    _toolBarView.frame              = CGRectMake(0, height - detalIOS - 49, 320, 49);
     _toolBarView.backgroundColor    = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     
     [self.view addSubview:_toolBarView];
@@ -146,11 +162,14 @@
         _addShiftView = nil;
     }
     
+    float detalIOS = [Common isIOS7] ? 0 : 20;
+    float height   = [Common checkScreenIPhone5] ? 568 : 480;
+    
     _addShiftView                    = [[NSBundle mainBundle] loadNibNamed:[[FXThemeManager shared] getThemeValueWithKey:_fxThemeXibHomeAddShift]
                                                                     owner:self
                                                                   options:nil][0];
     _addShiftView.delegate           = self;
-    _addShiftView.frame = CGRectMake(0, self.view.frame.size.height, 320, 200);
+    _addShiftView.frame = CGRectMake(0, height - detalIOS, 320, 200);
     
     [self.view addSubview:_addShiftView];
 }
@@ -177,6 +196,7 @@
 - (void) homeNaviBarViewDidSelectToDay:(HomeNaviBarView*)homeNaviBarView
 {
     NSDate *date = [NSDate date];
+    _selectDate = date;
     [_naviView setTitleWithDay:[FXCalendarData getDayWithDate:date]
                          month:[FXCalendarData getMonthWithDate:date]
                           year:[FXCalendarData getYearWithDate:date]];
@@ -299,6 +319,8 @@
     [_naviView setTitleWithDay:[FXCalendarData getDayWithDate:date]
                          month:[FXCalendarData getMonthWithDate:date]
                           year:[FXCalendarData getYearWithDate:date]];
+    _selectDate = date;
+    [self resetLayoutTableWithAnimate:YES];
 }
 
 - (void) fXCalendarView:(FXCalendarView*)fXCalendarView didSelectDay:(NSDate*)date
@@ -306,12 +328,122 @@
     [_naviView setTitleWithDay:[FXCalendarData getDayWithDate:date]
                          month:[FXCalendarData getMonthWithDate:date]
                           year:[FXCalendarData getYearWithDate:date]];
+    _selectDate = date;
+    [_tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+    [_tableView reloadData];
+}
+
+#pragma mark - Table view
+- (void) resetLayoutTableWithAnimate:(BOOL)isAnimate
+{
+    float detalIOS      = [Common isIOS7] ? 0 : 20;
+    float height        = [Common checkScreenIPhone5] ? 568 : 480;
+    
+    CGRect rect = CGRectMake(0,
+                             [_calendarView heightCalendarWithCurrentMonth] + 64 - detalIOS ,
+                             320,
+                             height - 49 - [_calendarView heightCalendarWithCurrentMonth]);
+    
+    if (isAnimate) {
+        [UIView animateWithDuration:0.3 animations:^{
+            
+            _tableView.frame = rect;
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+    } else {
+        _tableView.frame = rect;
+    }
+    
+    [_tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+    [_tableView reloadData];
 }
 
 
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 3;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return 70;
+    } else if (indexPath.section == 1) {
+        return 44;
+    } else if (indexPath.section == 2) {
+        return 44;
+    }
+    
+    return 0;
+}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return 1;
+    } else if (section == 1) {
+        return 5;
+    } else if (section == 2) {
+        return 1;
+    }
+    
+    return 0;
+}
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        
+        HomeCellAddShift *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeCellAddShift"];
+        if (!cell) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"HomeCellAddShift" owner:self options:nil] lastObject];
+        }
+        
+        
+        [cell loadInfoWithNSDate:_selectDate isAddShift:(arc4random() % (1-0+1)) + 0];
+        
+        return cell;
+        
+    } else if (indexPath.section == 2) {
+        
+        HomeCellAddSchedule *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeCellAddSchedule"];
+        if (!cell) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"HomeCellAddSchedule" owner:self options:nil] lastObject];
+        }
+        
+        return cell;
+        
+    } else if (indexPath.section == 1) {
+        
+        HomeCellSchedule *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeCellSchedule"];
+        if (!cell) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"HomeCellSchedule" owner:self options:nil] lastObject];
+        }
+        
+        return cell;
+        
+    }
+    
+    return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Action
+- (IBAction)addShift:(id)sender
+{
+    NSLog(@"show view Add shift");
+}
+
+- (IBAction)editShif:(id)sender
+{
+    NSLog(@"show view Edit shift");
+}
 
 
 

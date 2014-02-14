@@ -254,7 +254,9 @@
     
     UIButton *button = (UIButton*)sender;
     
-    NSLog(@"old select %d",_indexSelect);
+    if (button.tag == _indexSelect) {
+        return;
+    }
     
     FXDay *day = _days[button.tag];
     
@@ -270,7 +272,6 @@
         [self reloadSelectViewWith:_indexSelect newSelect:button.tag];
         
         _indexSelect = button.tag;
-        NSLog(@"new select %d",_indexSelect);
         
         if (_daySelect) {
             _daySelect = nil;
@@ -495,6 +496,8 @@
                 _viewSelect.frame   = CGRectMake(_widthCell * (dayView.tag%7) - 1, _heightCell * (dayView.tag/7) - 1, _widthCell + 2, _heightCell + 2);
                 
                 day.isSelect = YES;
+                
+                _indexSelect = dayView.tag;
             }
             
             [dayView reloadInfo:day];

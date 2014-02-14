@@ -40,7 +40,7 @@
     
     _monthView2 = [[FXMonthView alloc] initWithFrame:CGRectMake(320, 0, 320, 0)];
     _monthView2.delegate = self;
-    [_monthView2 loadDataForDate:date isSetFirstDay:NO];
+    [_monthView2 loadDataForDate:date setSelectDay:date];
     [_scrollView addSubview:_monthView2];
     [_monthView2 reloadHeighForWeekWithAnimate:YES];
     
@@ -150,6 +150,16 @@
     if (_delegate && [_delegate respondsToSelector:@selector(fXCalendarView:didChangeMonthWithFirstDay:)]) {
         [_delegate fXCalendarView:self didChangeMonthWithFirstDay:[NSDate date]];
     }
+}
+
+- (int) numberWeekOfCurrentMonth
+{
+    return _monthView2.numberWeekOfMonth;
+}
+
+- (float) heightCalendarWithCurrentMonth
+{
+    return _headerView.frame.size.height + _monthView2.numberWeekOfMonth * _monthView2.heightCell + 1;
 }
 
 #pragma mark - FXMonthViewDelegate

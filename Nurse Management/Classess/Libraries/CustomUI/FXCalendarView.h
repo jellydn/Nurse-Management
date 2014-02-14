@@ -15,10 +15,14 @@
 @property(nonatomic, weak) IBOutlet UIScrollView *scrollView;
 
 @property (nonatomic, weak) id <FXCalendarViewDelegate> delegate;
+@property (nonatomic, weak) IBOutlet UIView *headerView;
+
 @property (nonatomic, strong) NSDate *selectDate;
 
 - (void) initCalendar;
 - (void) reloadToday;
+- (int) numberWeekOfCurrentMonth;
+- (float) heightCalendarWithCurrentMonth;
 
 @end
 
