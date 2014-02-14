@@ -40,6 +40,7 @@
     [super viewDidLoad];
     [self configView];
     
+    // temporarely initialize data
     Member *member1 = [[Member alloc] init];
     member1.memberID = @"1";
     member1.name = @"Phu NQ";
@@ -82,9 +83,10 @@
     Member *member = [arrMembers objectAtIndex:indexPath.row];
     
     aCell.textLabel.text = member.name;
-    if (member.isOfficial)
+    
+    if (member.isOfficial)  // can't not press for official items
         aCell.selectionStyle = UITableViewCellSelectionStyleNone;
-    else
+    else                    // be able to press for non-official items
         aCell.selectionStyle = UITableViewCellSelectionStyleBlue;
     
     UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
@@ -134,6 +136,18 @@
     }
     
     [_tbvMemberList reloadData];
+}
+
+- (void) deleteMember:(NSString *)memberID {
+
+    for (int index = [arrMembers count] - 1; index >= 0; index--) {
+        Member *member = [arrMembers objectAtIndex:index];
+        if([member.memberID isEqualToString:memberID] && !member.isOfficial) {
+            [arrMembers removeObject:member];
+            [_tbvMemberList reloadData];
+            break;
+        }
+    }
 }
 
 #pragma mark - Action

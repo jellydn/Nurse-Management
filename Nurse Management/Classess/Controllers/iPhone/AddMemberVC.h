@@ -12,7 +12,7 @@
 @protocol AddMemberDelegate;
 @interface AddMemberVC : FXViewController
 
-@property (nonatomic, assign) BOOL isAddMember;
+@property (nonatomic, assign) BOOL isAddMember;     // to distinguish add or edit member
 @property (nonatomic, weak) id<AddMemberDelegate> delegate;
 
 - (void) loadSelectedMember: (Member *) selectedMember;
