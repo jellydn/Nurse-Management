@@ -14,6 +14,7 @@
 - (IBAction)selectButton:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *reviewCategory;
 @property (weak, nonatomic) IBOutlet UIImageView *backgrounReview;
+@property (weak, nonatomic) IBOutlet UITextField *txtName;
 
 
 @end

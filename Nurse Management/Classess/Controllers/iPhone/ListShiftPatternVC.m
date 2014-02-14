@@ -107,12 +107,9 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     EditShiftVC *vc                  = [[EditShiftVC alloc] init];
-    
-    
     FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
     
     [self.navigationController presentViewController:navi animated:YES completion:^{

@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="backgrounReview" destination="OLh-hY-dzl" id="rKJ-z6-sYe"/>
                 <outlet property="reviewCategory" destination="gzy-CK-rJI" id="WT5-SQ-3sp"/>
+                <outlet property="txtName" destination="IcZ-sA-l6e" id="uAU-j3-Vec"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -92,9 +93,12 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="Muo-K3-cFv"/>
+                            </connections>
                         </textField>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日勤" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gzy-CK-rJI">
-                            <rect key="frame" x="263" y="17" width="34" height="21"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日勤" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gzy-CK-rJI">
+                            <rect key="frame" x="256" y="17" width="57" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.36470588235294116" green="0.31372549019607843" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>

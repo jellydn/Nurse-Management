@@ -8,7 +8,9 @@
 
 #import "EditShiftVC.h"
 
-@interface EditShiftVC ()
+@interface EditShiftVC ()<UITextFieldDelegate>{
+    
+}
 
 @end
 
@@ -90,5 +92,18 @@
             _backgrounReview.image = [UIImage imageNamed:@"icon_r3_c1.png"];
             break;
     }
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if ([newString length] > 2) {
+        return NO;
+    } 
+    _reviewCategory.text = newString;
+    return YES;
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+   // _reviewCategory.text = textField.text;
 }
 @end
