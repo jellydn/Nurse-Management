@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2A38763718ADCF280085DAA0 /* EditShiftVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A38763518ADCF280085DAA0 /* EditShiftVC.m */; };
 		2A38763818ADCF280085DAA0 /* EditShiftVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A38763618ADCF280085DAA0 /* EditShiftVC.xib */; };
+		2A38763C18ADFF1F0085DAA0 /* bg_edit_shift_time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A38763A18ADFF1F0085DAA0 /* bg_edit_shift_time@2x.png */; };
+		2A38763D18ADFF1F0085DAA0 /* bg_edit_shift_time.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A38763B18ADFF1F0085DAA0 /* bg_edit_shift_time.png */; };
 		2A394BCB18A9FD5300F30F2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A394BCA18A9FD5300F30F2D /* Foundation.framework */; };
 		2A394BCD18A9FD5300F30F2D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A394BCC18A9FD5300F30F2D /* CoreGraphics.framework */; };
 		2A394BCF18A9FD5300F30F2D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A394BCE18A9FD5300F30F2D /* UIKit.framework */; };
@@ -136,6 +138,8 @@
 		2A38763418ADCF280085DAA0 /* EditShiftVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditShiftVC.h; sourceTree = "<group>"; };
 		2A38763518ADCF280085DAA0 /* EditShiftVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditShiftVC.m; sourceTree = "<group>"; };
 		2A38763618ADCF280085DAA0 /* EditShiftVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditShiftVC.xib; sourceTree = "<group>"; };
+		2A38763A18ADFF1F0085DAA0 /* bg_edit_shift_time@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_edit_shift_time@2x.png"; sourceTree = "<group>"; };
+		2A38763B18ADFF1F0085DAA0 /* bg_edit_shift_time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_edit_shift_time.png; sourceTree = "<group>"; };
 		2A394BC718A9FD5300F30F2D /* Nurse Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nurse Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A394BCA18A9FD5300F30F2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2A394BCC18A9FD5300F30F2D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -324,6 +328,15 @@
 				2A38763618ADCF280085DAA0 /* EditShiftVC.xib */,
 			);
 			name = EditShift;
+			sourceTree = "<group>";
+		};
+		2A38763918ADFF160085DAA0 /* Shift */ = {
+			isa = PBXGroup;
+			children = (
+				2A38763A18ADFF1F0085DAA0 /* bg_edit_shift_time@2x.png */,
+				2A38763B18ADFF1F0085DAA0 /* bg_edit_shift_time.png */,
+			);
+			name = Shift;
 			sourceTree = "<group>";
 		};
 		2A394BBE18A9FD5300F30F2D = {
@@ -609,6 +622,7 @@
 		2A394C5218AA259B00F30F2D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2A38763918ADFF160085DAA0 /* Shift */,
 				2A3C24D218AB5BF700C20A04 /* Common */,
 				2A3C24BD18AB592000C20A04 /* ShiftBG */,
 				2A3C24AA18AB1E8600C20A04 /* Button */,
@@ -915,6 +929,7 @@
 				2A394C3818AA024A00F30F2D /* HomeVC.xib in Resources */,
 				2A394C2718A9FF7600F30F2D /* Default.png in Resources */,
 				2A3C24D518AB5CC100C20A04 /* img_add_shift_home_title.png in Resources */,
+				2A38763C18ADFF1F0085DAA0 /* bg_edit_shift_time@2x.png in Resources */,
 				2A3C24AE18AB1EF500C20A04 /* ic_bt_back@2x.png in Resources */,
 				2A394C1C18A9FF7600F30F2D /* Icon-Small-40@2x.png in Resources */,
 				2A3C248F18AB062F00C20A04 /* ic_toolbar_add_schedule.png in Resources */,
@@ -953,6 +968,7 @@
 				2A3C24C918AB593300C20A04 /* icon_r1_c3.png in Resources */,
 				2A3C24DC18AB6CC500C20A04 /* ListShiftPatternVC.xib in Resources */,
 				2A3C24CA18AB593300C20A04 /* icon_r1_c5.png in Resources */,
+				2A38763D18ADFF1F0085DAA0 /* bg_edit_shift_time.png in Resources */,
 				2A3C249118AB062F00C20A04 /* ic_toolbar_add_shift.png in Resources */,
 				2A3C24F418AB7FFA00C20A04 /* img_add_schedule_home_title@2x.png in Resources */,
 				2A3C24F818AB822D00C20A04 /* ic_bt_home_add_schedule_step1@2x.png in Resources */,

@@ -108,7 +108,15 @@
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EditShiftVC *editShift = [[EditShiftVC alloc] init];
-    [self.navigationController pushViewController:editShift animated:YES];
+    
+    EditShiftVC *vc                  = [[EditShiftVC alloc] init];
+    
+    
+    FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
+    
+    [self.navigationController presentViewController:navi animated:YES completion:^{
+        
+    }];
+
 }
 @end

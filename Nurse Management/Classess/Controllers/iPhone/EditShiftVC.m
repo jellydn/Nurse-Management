@@ -35,4 +35,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)cancel:(id)sender {
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+
+}
+
+- (IBAction)save:(id)sender {
+    NSLog(@"save ban");
+}
 @end

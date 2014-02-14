@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface EditShiftVC : UIViewController
+- (IBAction)cancel:(id)sender;
+- (IBAction)save:(id)sender;
+
 
 @end
