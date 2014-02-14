@@ -14,6 +14,7 @@
 
 @property (nonatomic, weak) IBOutlet UIView *viewMask;
 @property (nonatomic, weak) IBOutlet UIView *viewContainer;
+@property (nonatomic, weak) IBOutlet UIView *viewTime;
 
 @property (nonatomic, weak) id<AddScheduleViewDelegate> delegate;
 
@@ -26,6 +27,8 @@
 //Action
 - (IBAction)selectCategory:(id)sender;
 - (IBAction)choiceTime:(id)sender;
+- (IBAction)backChoiceCategory:(id)sender;
+- (IBAction)saveSchedule:(id)sender;
 
 @end
 
@@ -33,6 +36,7 @@
 
 @required
 - (void) didShowCategoryName:(AddScheduleView*)addScheduleView;
+- (void) didSaveSchedule:(AddScheduleView*)addScheduleView;
 
 @optional
 - (void) didShowView:(AddScheduleView*)addScheduleView;

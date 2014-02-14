@@ -302,6 +302,11 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void) didSaveSchedule:(AddScheduleView*)addScheduleView
+{
+    NSLog(@"save schedule");
+}
+
 - (void) didShowView:(AddScheduleView*)addScheduleView
 {
     _isShowAddScheduleView = YES;
