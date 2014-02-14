@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddMemberVC">
             <connections>
                 <outlet property="_btnDelete" destination="MPL-mn-8Z1" id="Ruc-bN-kYv"/>
+                <outlet property="_btnSave" destination="3oK-Xk-BVv" id="Wak-Yl-Wnx"/>
                 <outlet property="_lbTile" destination="g7C-1E-sFU" id="fuC-IA-irh"/>
                 <outlet property="_txfName" destination="DST-BE-Ztr" id="oE8-8k-hon"/>
                 <outlet property="_viewNavi" destination="Xvo-lh-dFw" id="WM8-oR-tp4"/>
@@ -79,6 +80,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Qxq-d7-014"/>
+                    </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MPL-mn-8Z1">
                     <rect key="frame" x="137" y="136" width="47" height="30"/>
