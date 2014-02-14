@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A38763718ADCF280085DAA0 /* EditShiftVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A38763518ADCF280085DAA0 /* EditShiftVC.m */; };
+		2A38763818ADCF280085DAA0 /* EditShiftVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A38763618ADCF280085DAA0 /* EditShiftVC.xib */; };
 		2A394BCB18A9FD5300F30F2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A394BCA18A9FD5300F30F2D /* Foundation.framework */; };
 		2A394BCD18A9FD5300F30F2D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A394BCC18A9FD5300F30F2D /* CoreGraphics.framework */; };
 		2A394BCF18A9FD5300F30F2D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A394BCE18A9FD5300F30F2D /* UIKit.framework */; };
@@ -131,6 +133,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A38763418ADCF280085DAA0 /* EditShiftVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditShiftVC.h; sourceTree = "<group>"; };
+		2A38763518ADCF280085DAA0 /* EditShiftVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditShiftVC.m; sourceTree = "<group>"; };
+		2A38763618ADCF280085DAA0 /* EditShiftVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditShiftVC.xib; sourceTree = "<group>"; };
 		2A394BC718A9FD5300F30F2D /* Nurse Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nurse Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A394BCA18A9FD5300F30F2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2A394BCC18A9FD5300F30F2D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -301,6 +306,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A38763218ADCEE90085DAA0 /* ShiftCell */ = {
+			isa = PBXGroup;
+			children = (
+				2A75E63A18ADA97700E74E4F /* ShiftCell.h */,
+				2A75E63B18ADA97700E74E4F /* ShiftCell.m */,
+				2A75E63C18ADA97700E74E4F /* ShiftCell.xib */,
+			);
+			name = ShiftCell;
+			sourceTree = "<group>";
+		};
+		2A38763318ADCF020085DAA0 /* EditShift */ = {
+			isa = PBXGroup;
+			children = (
+				2A38763418ADCF280085DAA0 /* EditShiftVC.h */,
+				2A38763518ADCF280085DAA0 /* EditShiftVC.m */,
+				2A38763618ADCF280085DAA0 /* EditShiftVC.xib */,
+			);
+			name = EditShift;
+			sourceTree = "<group>";
+		};
 		2A394BBE18A9FD5300F30F2D = {
 			isa = PBXGroup;
 			children = (
@@ -400,15 +425,13 @@
 				2A75E63718ADA97700E74E4F /* ListMembersVC.h */,
 				2A75E63818ADA97700E74E4F /* ListMembersVC.m */,
 				2A75E63918ADA97700E74E4F /* ListMembersVC.xib */,
-				2A75E63A18ADA97700E74E4F /* ShiftCell.h */,
-				2A75E63B18ADA97700E74E4F /* ShiftCell.m */,
-				2A75E63C18ADA97700E74E4F /* ShiftCell.xib */,
 				2A75E63218ADA96600E74E4F /* AddMemberVC.h */,
 				2A75E63318ADA96600E74E4F /* AddMemberVC.m */,
 				2A75E63418ADA96600E74E4F /* AddMemberVC.xib */,
 				2A516C9A18AC5DF700F82B5A /* AddScheduleCategoryNameVC */,
 				2A516C9418AC5BFD00F82B5A /* ScheduleCategoryVC */,
 				2A3C24E118AB6FFF00C20A04 /* AddShiftVC */,
+				2A38763318ADCF020085DAA0 /* EditShift */,
 				2A3C24D718AB6C8500C20A04 /* ListShiftPatternVC */,
 				2A3C24B118AB293E00C20A04 /* ChangeThemeVC */,
 				2A3C249F18AB1BE000C20A04 /* MoreVC */,
@@ -729,6 +752,7 @@
 		2A3C24D718AB6C8500C20A04 /* ListShiftPatternVC */ = {
 			isa = PBXGroup;
 			children = (
+				2A38763218ADCEE90085DAA0 /* ShiftCell */,
 				2A3C24D818AB6CC500C20A04 /* ListShiftPatternVC.h */,
 				2A3C24D918AB6CC500C20A04 /* ListShiftPatternVC.m */,
 				2A3C24DA18AB6CC500C20A04 /* ListShiftPatternVC.xib */,
@@ -937,6 +961,7 @@
 				2A394C5A18AA25AE00F30F2D /* ic_bt_bar_today.png in Resources */,
 				2A3C24EA18AB710700C20A04 /* ic_bg_bar_button@2x.png in Resources */,
 				2A3C24F718AB822D00C20A04 /* ic_bt_home_add_schedule_step1.png in Resources */,
+				2A38763818ADCF280085DAA0 /* EditShiftVC.xib in Resources */,
 				2A3C24C818AB593300C20A04 /* icon_r1_c1.png in Resources */,
 				2A3C24CE18AB593300C20A04 /* icon_r3_c3.png in Resources */,
 			);
@@ -978,6 +1003,7 @@
 				2A3C24EF18AB78C900C20A04 /* AddScheduleView.m in Sources */,
 				2A75E64318ADA98800E74E4F /* Member.m in Sources */,
 				2A394C3C18AA028100F30F2D /* FXNavigationController.m in Sources */,
+				2A38763718ADCF280085DAA0 /* EditShiftVC.m in Sources */,
 				2A394BD918A9FD5300F30F2D /* main.m in Sources */,
 				2A516C9E18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m in Sources */,
 				2A75E63F18ADA97700E74E4F /* ShiftCell.m in Sources */,
