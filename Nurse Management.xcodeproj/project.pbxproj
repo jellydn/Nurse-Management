@@ -118,6 +118,14 @@
 		2AF0758318ACB60A0008D875 /* FXDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF0758218ACB60A0008D875 /* FXDayView.xib */; };
 		2AF0758718ACC4B00008D875 /* FXCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0758518ACC4B00008D875 /* FXCalendarView.m */; };
 		2AF0758818ACC4B00008D875 /* FXCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF0758618ACC4B00008D875 /* FXCalendarView.xib */; };
+		B6F33F3918AE111A00112B82 /* CDShift.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F33F3818AE111A00112B82 /* CDShift.m */; };
+		B6F33F3C18AE111B00112B82 /* CDShiftAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F33F3B18AE111B00112B82 /* CDShiftAlert.m */; };
+		B6F33F3F18AE111B00112B82 /* CDShiftCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F33F3E18AE111B00112B82 /* CDShiftCategory.m */; };
+		B6F33F4218AE111B00112B82 /* CDShiftMember.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F33F4118AE111B00112B82 /* CDShiftMember.m */; };
+		B6F33F4518AE111B00112B82 /* CDMember.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F33F4418AE111B00112B82 /* CDMember.m */; };
+		B6F33F4818AE111B00112B82 /* CDSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F33F4718AE111B00112B82 /* CDSchedule.m */; };
+		B6F33F4B18AE111B00112B82 /* CDScheduleAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F33F4A18AE111B00112B82 /* CDScheduleAlert.m */; };
+		B6F33F4E18AE111B00112B82 /* CDScheduleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F33F4D18AE111B00112B82 /* CDScheduleCategory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -273,6 +281,22 @@
 		2AF0758418ACC4B00008D875 /* FXCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXCalendarView.h; sourceTree = "<group>"; };
 		2AF0758518ACC4B00008D875 /* FXCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXCalendarView.m; sourceTree = "<group>"; };
 		2AF0758618ACC4B00008D875 /* FXCalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FXCalendarView.xib; sourceTree = "<group>"; };
+		B6F33F3718AE111A00112B82 /* CDShift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDShift.h; path = "Nurse Management/Classess/Model/CDShift.h"; sourceTree = SOURCE_ROOT; };
+		B6F33F3818AE111A00112B82 /* CDShift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDShift.m; path = "Nurse Management/Classess/Model/CDShift.m"; sourceTree = SOURCE_ROOT; };
+		B6F33F3A18AE111B00112B82 /* CDShiftAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDShiftAlert.h; path = "Nurse Management/Classess/Model/CDShiftAlert.h"; sourceTree = SOURCE_ROOT; };
+		B6F33F3B18AE111B00112B82 /* CDShiftAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDShiftAlert.m; path = "Nurse Management/Classess/Model/CDShiftAlert.m"; sourceTree = SOURCE_ROOT; };
+		B6F33F3D18AE111B00112B82 /* CDShiftCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDShiftCategory.h; path = "Nurse Management/Classess/Model/CDShiftCategory.h"; sourceTree = SOURCE_ROOT; };
+		B6F33F3E18AE111B00112B82 /* CDShiftCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDShiftCategory.m; path = "Nurse Management/Classess/Model/CDShiftCategory.m"; sourceTree = SOURCE_ROOT; };
+		B6F33F4018AE111B00112B82 /* CDShiftMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDShiftMember.h; path = "Nurse Management/Classess/Model/CDShiftMember.h"; sourceTree = SOURCE_ROOT; };
+		B6F33F4118AE111B00112B82 /* CDShiftMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDShiftMember.m; path = "Nurse Management/Classess/Model/CDShiftMember.m"; sourceTree = SOURCE_ROOT; };
+		B6F33F4318AE111B00112B82 /* CDMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDMember.h; path = "Nurse Management/Classess/Model/CDMember.h"; sourceTree = SOURCE_ROOT; };
+		B6F33F4418AE111B00112B82 /* CDMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDMember.m; path = "Nurse Management/Classess/Model/CDMember.m"; sourceTree = SOURCE_ROOT; };
+		B6F33F4618AE111B00112B82 /* CDSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDSchedule.h; path = "Nurse Management/Classess/Model/CDSchedule.h"; sourceTree = SOURCE_ROOT; };
+		B6F33F4718AE111B00112B82 /* CDSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDSchedule.m; path = "Nurse Management/Classess/Model/CDSchedule.m"; sourceTree = SOURCE_ROOT; };
+		B6F33F4918AE111B00112B82 /* CDScheduleAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDScheduleAlert.h; path = "Nurse Management/Classess/Model/CDScheduleAlert.h"; sourceTree = SOURCE_ROOT; };
+		B6F33F4A18AE111B00112B82 /* CDScheduleAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDScheduleAlert.m; path = "Nurse Management/Classess/Model/CDScheduleAlert.m"; sourceTree = SOURCE_ROOT; };
+		B6F33F4C18AE111B00112B82 /* CDScheduleCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDScheduleCategory.h; path = "Nurse Management/Classess/Model/CDScheduleCategory.h"; sourceTree = SOURCE_ROOT; };
+		B6F33F4D18AE111B00112B82 /* CDScheduleCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDScheduleCategory.m; path = "Nurse Management/Classess/Model/CDScheduleCategory.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -421,6 +445,22 @@
 		2A394C0218A9FF7600F30F2D /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				B6F33F4C18AE111B00112B82 /* CDScheduleCategory.h */,
+				B6F33F4D18AE111B00112B82 /* CDScheduleCategory.m */,
+				B6F33F4918AE111B00112B82 /* CDScheduleAlert.h */,
+				B6F33F4A18AE111B00112B82 /* CDScheduleAlert.m */,
+				B6F33F4618AE111B00112B82 /* CDSchedule.h */,
+				B6F33F4718AE111B00112B82 /* CDSchedule.m */,
+				B6F33F4318AE111B00112B82 /* CDMember.h */,
+				B6F33F4418AE111B00112B82 /* CDMember.m */,
+				B6F33F4018AE111B00112B82 /* CDShiftMember.h */,
+				B6F33F4118AE111B00112B82 /* CDShiftMember.m */,
+				B6F33F3D18AE111B00112B82 /* CDShiftCategory.h */,
+				B6F33F3E18AE111B00112B82 /* CDShiftCategory.m */,
+				B6F33F3A18AE111B00112B82 /* CDShiftAlert.h */,
+				B6F33F3B18AE111B00112B82 /* CDShiftAlert.m */,
+				B6F33F3718AE111A00112B82 /* CDShift.h */,
+				B6F33F3818AE111A00112B82 /* CDShift.m */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -963,10 +1003,14 @@
 				2A3C24A318AB1BF100C20A04 /* RankingVC.m in Sources */,
 				2A394C2E18A9FFBC00F30F2D /* User.m in Sources */,
 				2A3C24A818AB1BFE00C20A04 /* MoreVC.m in Sources */,
+				B6F33F3C18AE111B00112B82 /* CDShiftAlert.m in Sources */,
+				B6F33F4E18AE111B00112B82 /* CDScheduleCategory.m in Sources */,
+				B6F33F4218AE111B00112B82 /* CDShiftMember.m in Sources */,
 				2A3C24DB18AB6CC500C20A04 /* ListShiftPatternVC.m in Sources */,
 				2A3C249C18AB084900C20A04 /* HomeToolBarView.m in Sources */,
 				2A394C2B18A9FFB000F30F2D /* Common.m in Sources */,
 				2A394C5018AA1EE300F30F2D /* HomeNaviBarView.m in Sources */,
+				B6F33F4B18AE111B00112B82 /* CDScheduleAlert.m in Sources */,
 				2A3C24E518AB701500C20A04 /* AddShiftVC.m in Sources */,
 				2AF0758718ACC4B00008D875 /* FXCalendarView.m in Sources */,
 				2A3C24BB18AB586B00C20A04 /* AddShiftView.m in Sources */,
@@ -974,8 +1018,11 @@
 				2A394C3718AA024A00F30F2D /* HomeVC.m in Sources */,
 				2A516CA818AC77E400F82B5A /* FXMonthView.m in Sources */,
 				2AF0757E18ACABFD0008D875 /* FXDayView.m in Sources */,
+				B6F33F4518AE111B00112B82 /* CDMember.m in Sources */,
 				2A394BDD18A9FD5300F30F2D /* AppDelegate.m in Sources */,
+				B6F33F3918AE111A00112B82 /* CDShift.m in Sources */,
 				2A3C24EF18AB78C900C20A04 /* AddScheduleView.m in Sources */,
+				B6F33F4818AE111B00112B82 /* CDSchedule.m in Sources */,
 				2A75E64318ADA98800E74E4F /* Member.m in Sources */,
 				2A394C3C18AA028100F30F2D /* FXNavigationController.m in Sources */,
 				2A394BD918A9FD5300F30F2D /* main.m in Sources */,
@@ -987,6 +1034,7 @@
 				2A394C4018AA02AA00F30F2D /* FXViewController.m in Sources */,
 				2A75E63D18ADA97700E74E4F /* ListMembersVC.m in Sources */,
 				2A516C9818AC5C1A00F82B5A /* ScheduleCategoryVC.m in Sources */,
+				B6F33F3F18AE111B00112B82 /* CDShiftCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
