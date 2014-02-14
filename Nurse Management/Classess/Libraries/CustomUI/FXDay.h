@@ -13,6 +13,7 @@
 
 @property (nonatomic) BOOL isCurrent;
 @property (nonatomic) BOOL isOutOfDay;
+@property (nonatomic) BOOL isSelect;
 
 @property (nonatomic) int dayIndex;
 @property (nonatomic) int monthIndex;

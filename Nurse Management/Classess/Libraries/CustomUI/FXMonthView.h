@@ -21,6 +21,7 @@
 @property (nonatomic) BOOL isHighlight;
 @property (nonatomic) BOOL isMouthCurrent;
 @property (nonatomic) BOOL is6Week;
+@property (nonatomic) BOOL isShowSelectDay;
 
 @property (nonatomic) int totalDay;
 @property (nonatomic) int monthIndex;
@@ -28,6 +29,7 @@
 @property (nonatomic) int firstdayIndex;
 @property (nonatomic) int enddayIndex;
 @property (nonatomic) int numberWeekOfMonth;
+@property (nonatomic) int indexSelect;
 
 @property (nonatomic) float widthCell;
 @property (nonatomic) float heightCell;
@@ -44,8 +46,11 @@
 @property (nonatomic, strong) UIColor *bgColor;
 @property (nonatomic, strong) UIColor *backgoundSaturdayColor;
 @property (nonatomic, strong) UIColor *backgoundSundayColor;
+@property (nonatomic, strong) UIColor *backgoundSelectDay;
 
 @property (nonatomic, strong) UIView  *viewLines;
+@property (nonatomic, strong) UIView  *viewContainerSelect;
+@property (nonatomic, strong) UIView  *viewSelect;
 @property (nonatomic, strong) UIView  *viewContainerDays;
 
 @property (nonatomic, strong) NSDate            *date;
@@ -53,18 +58,42 @@
 @property (nonatomic, strong) NSDate            *endDay;
 @property (nonatomic, strong) NSMutableArray    *days;
 
-//method
-- (void) loadDataForDate:(NSDate*)date;
+@property (nonatomic, strong) FXDay             *daySelect;
 
+
+//method
+- (void) loadDataForDate:(NSDate*)date isSetFirstDay:(BOOL)isSet;
+- (void) loadDataForDate:(NSDate *)date setSelectDay:(NSDate*)selectDate;
 - (void) reloadHeighForWeekWithAnimate:(BOOL)isAnimate;
 
 //instance method
 - (id)initWithWidth:(float)width;
 
+- (IBAction)selectDay:(id)sender;
+
 @end
 
 @protocol FXMonthViewDelegate <NSObject>
 
-
+- (void) fxMonthView:(FXMonthView*) fxMonthView didSelectDayWith:(FXDay*)day;
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
