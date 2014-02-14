@@ -4,6 +4,7 @@
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="isDisplay" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pk_member" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDShiftMember" inverseName="fk_member" inverseEntity="CDShiftMember" syncable="YES"/>
     </entity>
     <entity name="CDSchedule" representedClassName="CDSchedule" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -12,13 +13,14 @@
         <attribute name="scheduleCategoryId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="timeEnd" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="timeStart" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="fk_schedule_category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDScheduleCategory" syncable="YES"/>
+        <relationship name="fk_schedule_category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDScheduleCategory" inverseName="pk_schedulecategory" inverseEntity="CDScheduleCategory" syncable="YES"/>
+        <relationship name="pk_schedule" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDScheduleAlert" inverseName="fk_alert_schedule" inverseEntity="CDScheduleAlert" syncable="YES"/>
     </entity>
     <entity name="CDScheduleAlert" representedClassName="CDScheduleAlert" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="onTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="scheduleId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="fk_alert_schedule" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDSchedule" syncable="YES"/>
+        <relationship name="fk_alert_schedule" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDSchedule" inverseName="pk_schedule" inverseEntity="CDSchedule" syncable="YES"/>
     </entity>
     <entity name="CDScheduleCategory" representedClassName="CDScheduleCategory" syncable="YES">
         <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
@@ -26,6 +28,7 @@
         <attribute name="isDefault" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="isEnable" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pk_schedulecategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDSchedule" inverseName="fk_schedule_category" inverseEntity="CDSchedule" syncable="YES"/>
     </entity>
     <entity name="CDShift" representedClassName="CDShift" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -36,13 +39,15 @@
         <attribute name="shiftCategoryId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="timeEnd" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="timeStart" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="fk_shift_category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDShiftCategory" syncable="YES"/>
+        <relationship name="fk_shift_category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDShiftCategory" inverseName="pk_shiftcategory" inverseEntity="CDShiftCategory" syncable="YES"/>
+        <relationship name="pk_shift" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDShiftMember" inverseName="fk_shift" inverseEntity="CDShiftMember" syncable="YES"/>
+        <relationship name="pk_shiftalert" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDShiftAlert" inverseName="fk_alert_shift" inverseEntity="CDShiftAlert" syncable="YES"/>
     </entity>
     <entity name="CDShiftAlert" representedClassName="CDShiftAlert" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="onTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="shiftId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="fk_alert_shift" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDShift" syncable="YES"/>
+        <relationship name="fk_alert_shift" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDShift" inverseName="pk_shiftalert" inverseEntity="CDShift" syncable="YES"/>
     </entity>
     <entity name="CDShiftCategory" representedClassName="CDShiftCategory" syncable="YES">
         <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
@@ -51,22 +56,23 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeEnd" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="timeStart" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="pk_shiftcategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDShift" inverseName="fk_shift_category" inverseEntity="CDShift" syncable="YES"/>
     </entity>
     <entity name="CDShiftMember" representedClassName="CDShiftMember" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="memberId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="shiftId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="fk_member" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDMember" syncable="YES"/>
-        <relationship name="fk_shift" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDShift" syncable="YES"/>
+        <relationship name="fk_member" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDMember" inverseName="pk_member" inverseEntity="CDMember" syncable="YES"/>
+        <relationship name="fk_shift" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDShift" inverseName="pk_shift" inverseEntity="CDShift" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CDMember" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="CDSchedule" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="CDScheduleAlert" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="CDScheduleCategory" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="CDShift" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="CDShiftAlert" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="CDShiftCategory" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="CDShiftMember" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDMember" positionX="-567" positionY="-69" width="128" height="105"/>
+        <element name="CDSchedule" positionX="-101" positionY="138" width="128" height="163"/>
+        <element name="CDScheduleAlert" positionX="151" positionY="147" width="128" height="103"/>
+        <element name="CDScheduleCategory" positionX="-389" positionY="144" width="128" height="133"/>
+        <element name="CDShift" positionX="-126" positionY="-297" width="128" height="208"/>
+        <element name="CDShiftAlert" positionX="178" positionY="-78" width="128" height="103"/>
+        <element name="CDShiftCategory" positionX="-441" positionY="-270" width="128" height="148"/>
+        <element name="CDShiftMember" positionX="-405" positionY="-75" width="128" height="120"/>
     </elements>
 </model>
