@@ -23,6 +23,7 @@
 #import "ScheduleCategoryVC.h"
 
 #import "FXCalendarView.h"
+#import "ListMembersVC.h"
 
 @interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate, FXCalendarViewDelegate>
 {

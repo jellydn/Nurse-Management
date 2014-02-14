@@ -104,6 +104,15 @@
 		2A516C9E18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A516C9C18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m */; };
 		2A516C9F18AC5E1800F82B5A /* AddScheduleCategoryNameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A516C9D18AC5E1800F82B5A /* AddScheduleCategoryNameVC.xib */; };
 		2A516CA818AC77E400F82B5A /* FXMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A516CA718AC77E400F82B5A /* FXMonthView.m */; };
+		2A75E63518ADA96600E74E4F /* AddMemberVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A75E63318ADA96600E74E4F /* AddMemberVC.m */; };
+		2A75E63618ADA96600E74E4F /* AddMemberVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E63418ADA96600E74E4F /* AddMemberVC.xib */; };
+		2A75E63D18ADA97700E74E4F /* ListMembersVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A75E63818ADA97700E74E4F /* ListMembersVC.m */; };
+		2A75E63E18ADA97700E74E4F /* ListMembersVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E63918ADA97700E74E4F /* ListMembersVC.xib */; };
+		2A75E63F18ADA97700E74E4F /* ShiftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A75E63B18ADA97700E74E4F /* ShiftCell.m */; };
+		2A75E64018ADA97700E74E4F /* ShiftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E63C18ADA97700E74E4F /* ShiftCell.xib */; };
+		2A75E64318ADA98800E74E4F /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A75E64218ADA98800E74E4F /* Member.m */; };
+		2A75E64618ADA9AB00E74E4F /* ic_cell_shift.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E64418ADA9AB00E74E4F /* ic_cell_shift.png */; };
+		2A75E64718ADA9AB00E74E4F /* ic_cell_shift@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E64518ADA9AB00E74E4F /* ic_cell_shift@2x.png */; };
 		2AF0757E18ACABFD0008D875 /* FXDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0757D18ACABFD0008D875 /* FXDayView.m */; };
 		2AF0758118ACAC250008D875 /* FXDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0758018ACAC250008D875 /* FXDay.m */; };
 		2AF0758318ACB60A0008D875 /* FXDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF0758218ACB60A0008D875 /* FXDayView.xib */; };
@@ -243,6 +252,19 @@
 		2A516C9D18AC5E1800F82B5A /* AddScheduleCategoryNameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddScheduleCategoryNameVC.xib; sourceTree = "<group>"; };
 		2A516CA618AC77E400F82B5A /* FXMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXMonthView.h; sourceTree = "<group>"; };
 		2A516CA718AC77E400F82B5A /* FXMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXMonthView.m; sourceTree = "<group>"; };
+		2A75E63218ADA96600E74E4F /* AddMemberVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberVC.h; sourceTree = "<group>"; };
+		2A75E63318ADA96600E74E4F /* AddMemberVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberVC.m; sourceTree = "<group>"; };
+		2A75E63418ADA96600E74E4F /* AddMemberVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMemberVC.xib; sourceTree = "<group>"; };
+		2A75E63718ADA97700E74E4F /* ListMembersVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListMembersVC.h; sourceTree = "<group>"; };
+		2A75E63818ADA97700E74E4F /* ListMembersVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListMembersVC.m; sourceTree = "<group>"; };
+		2A75E63918ADA97700E74E4F /* ListMembersVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListMembersVC.xib; sourceTree = "<group>"; };
+		2A75E63A18ADA97700E74E4F /* ShiftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftCell.h; sourceTree = "<group>"; };
+		2A75E63B18ADA97700E74E4F /* ShiftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftCell.m; sourceTree = "<group>"; };
+		2A75E63C18ADA97700E74E4F /* ShiftCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShiftCell.xib; sourceTree = "<group>"; };
+		2A75E64118ADA98800E74E4F /* Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Member.h; sourceTree = "<group>"; };
+		2A75E64218ADA98800E74E4F /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Member.m; sourceTree = "<group>"; };
+		2A75E64418ADA9AB00E74E4F /* ic_cell_shift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_cell_shift.png; sourceTree = "<group>"; };
+		2A75E64518ADA9AB00E74E4F /* ic_cell_shift@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_cell_shift@2x.png"; sourceTree = "<group>"; };
 		2AF0757C18ACABFD0008D875 /* FXDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDayView.h; sourceTree = "<group>"; };
 		2AF0757D18ACABFD0008D875 /* FXDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXDayView.m; sourceTree = "<group>"; };
 		2AF0757F18ACAC250008D875 /* FXDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDay.h; sourceTree = "<group>"; };
@@ -375,6 +397,15 @@
 		2A394C0118A9FF7600F30F2D /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				2A75E63718ADA97700E74E4F /* ListMembersVC.h */,
+				2A75E63818ADA97700E74E4F /* ListMembersVC.m */,
+				2A75E63918ADA97700E74E4F /* ListMembersVC.xib */,
+				2A75E63A18ADA97700E74E4F /* ShiftCell.h */,
+				2A75E63B18ADA97700E74E4F /* ShiftCell.m */,
+				2A75E63C18ADA97700E74E4F /* ShiftCell.xib */,
+				2A75E63218ADA96600E74E4F /* AddMemberVC.h */,
+				2A75E63318ADA96600E74E4F /* AddMemberVC.m */,
+				2A75E63418ADA96600E74E4F /* AddMemberVC.xib */,
 				2A516C9A18AC5DF700F82B5A /* AddScheduleCategoryNameVC */,
 				2A516C9418AC5BFD00F82B5A /* ScheduleCategoryVC */,
 				2A3C24E118AB6FFF00C20A04 /* AddShiftVC */,
@@ -430,6 +461,8 @@
 		2A394C0718A9FF7600F30F2D /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				2A75E64118ADA98800E74E4F /* Member.h */,
+				2A75E64218ADA98800E74E4F /* Member.m */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -683,6 +716,8 @@
 		2A3C24D218AB5BF700C20A04 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2A75E64418ADA9AB00E74E4F /* ic_cell_shift.png */,
+				2A75E64518ADA9AB00E74E4F /* ic_cell_shift@2x.png */,
 				2A3C24F118AB7FFA00C20A04 /* img_add_schedule_home_title.png */,
 				2A3C24F218AB7FFA00C20A04 /* img_add_schedule_home_title@2x.png */,
 				2A3C24D318AB5CC100C20A04 /* img_add_shift_home_title.png */,
@@ -833,6 +868,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A75E64618ADA9AB00E74E4F /* ic_cell_shift.png in Resources */,
 				2A394C2818A9FF7600F30F2D /* Default@2x.png in Resources */,
 				2A3C249018AB062F00C20A04 /* ic_toolbar_add_schedule@2x.png in Resources */,
 				2A3C249518AB062F00C20A04 /* ic_toolbar_ranking.png in Resources */,
@@ -841,6 +877,7 @@
 				2A3C249618AB062F00C20A04 /* ic_toolbar_ranking@2x.png in Resources */,
 				2A394BD718A9FD5300F30F2D /* InfoPlist.strings in Resources */,
 				2A3C24CC18AB593300C20A04 /* icon_r1_c9.png in Resources */,
+				2A75E64018ADA97700E74E4F /* ShiftCell.xib in Resources */,
 				2A3C24E618AB701500C20A04 /* AddShiftVC.xib in Resources */,
 				2A3C24E018AB6DFF00C20A04 /* ic_bt_add@2x.png in Resources */,
 				2AF0758818ACC4B00008D875 /* FXCalendarView.xib in Resources */,
@@ -850,6 +887,7 @@
 				2A3C24BC18AB586B00C20A04 /* AddShiftView.xib in Resources */,
 				2A394C2318A9FF7600F30F2D /* iTunesArtwork@2x.png in Resources */,
 				2A3C24F018AB78C900C20A04 /* AddScheduleView.xib in Resources */,
+				2A75E64718ADA9AB00E74E4F /* ic_cell_shift@2x.png in Resources */,
 				2A394C3818AA024A00F30F2D /* HomeVC.xib in Resources */,
 				2A394C2718A9FF7600F30F2D /* Default.png in Resources */,
 				2A3C24D518AB5CC100C20A04 /* img_add_shift_home_title.png in Resources */,
@@ -862,6 +900,7 @@
 				2A394C1F18A9FF7600F30F2D /* Icon-Small@2x_ios7.png in Resources */,
 				2A3C24DF18AB6DFF00C20A04 /* ic_bt_add.png in Resources */,
 				2A3C24F318AB7FFA00C20A04 /* img_add_schedule_home_title.png in Resources */,
+				2A75E63618ADA96600E74E4F /* AddMemberVC.xib in Resources */,
 				2AF0758318ACB60A0008D875 /* FXDayView.xib in Resources */,
 				2A516C9F18AC5E1800F82B5A /* AddScheduleCategoryNameVC.xib in Resources */,
 				2A394C5118AA1EE300F30F2D /* HomeNaviBarView.xib in Resources */,
@@ -870,6 +909,7 @@
 				2A394C4718AA129600F30F2D /* theme_default.plist in Resources */,
 				2A394C2418A9FF7600F30F2D /* iTunesArtwork@2x_ios7.png in Resources */,
 				2A3C249418AB062F00C20A04 /* ic_toolbar_more@2x.png in Resources */,
+				2A75E63E18ADA97700E74E4F /* ListMembersVC.xib in Resources */,
 				2A394BE218A9FD5300F30F2D /* Images.xcassets in Resources */,
 				2A394C2018A9FF7600F30F2D /* Icon.png in Resources */,
 				2A394C5B18AA25AE00F30F2D /* ic_bt_bar_today@2x.png in Resources */,
@@ -917,6 +957,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A75E63518ADA96600E74E4F /* AddMemberVC.m in Sources */,
 				2AF0758118ACAC250008D875 /* FXDay.m in Sources */,
 				2A394C3118AA009100F30F2D /* Reachability.m in Sources */,
 				2A3C24A318AB1BF100C20A04 /* RankingVC.m in Sources */,
@@ -935,13 +976,16 @@
 				2AF0757E18ACABFD0008D875 /* FXDayView.m in Sources */,
 				2A394BDD18A9FD5300F30F2D /* AppDelegate.m in Sources */,
 				2A3C24EF18AB78C900C20A04 /* AddScheduleView.m in Sources */,
+				2A75E64318ADA98800E74E4F /* Member.m in Sources */,
 				2A394C3C18AA028100F30F2D /* FXNavigationController.m in Sources */,
 				2A394BD918A9FD5300F30F2D /* main.m in Sources */,
 				2A516C9E18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m in Sources */,
+				2A75E63F18ADA97700E74E4F /* ShiftCell.m in Sources */,
 				2A3C24B518AB295500C20A04 /* ChangeThemeVC.m in Sources */,
 				2A394C5E18AA2AA600F30F2D /* FXCalendarData.m in Sources */,
 				2A394BE018A9FD5300F30F2D /* Nurse_Management.xcdatamodeld in Sources */,
 				2A394C4018AA02AA00F30F2D /* FXViewController.m in Sources */,
+				2A75E63D18ADA97700E74E4F /* ListMembersVC.m in Sources */,
 				2A516C9818AC5C1A00F82B5A /* ScheduleCategoryVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
