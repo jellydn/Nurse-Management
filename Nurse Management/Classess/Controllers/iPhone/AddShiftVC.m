@@ -40,6 +40,7 @@
 {
     [super viewDidLoad];
     [self configView];
+    _bgSelectime.backgroundColor = [UIColor greenColor];
 }
 
 - (void)didReceiveMemoryWarning

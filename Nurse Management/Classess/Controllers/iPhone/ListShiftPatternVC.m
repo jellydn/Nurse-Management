@@ -13,6 +13,7 @@
 #import "ShiftCell.h"
 #import "EditShiftVC.h"
 #import "AddShiftVC.h"
+#import "AddShiftCategoryVC.h"
 #import "FXNavigationController.h"
 
 @interface ListShiftPatternVC ()<UITableViewDelegate, UITableViewDataSource>
@@ -55,7 +56,7 @@
 }
 
 - (IBAction)addShift:(id)sender {
-    AddShiftVC *vc                  = [[AddShiftVC alloc] init];
+    AddShiftCategoryVC *vc                  = [[AddShiftCategoryVC alloc] init];
     vc.date                         = [NSDate date];
     
     FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];

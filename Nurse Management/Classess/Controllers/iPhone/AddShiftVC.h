@@ -12,5 +12,6 @@
 @interface AddShiftVC : FXViewController
 
 @property(nonatomic,strong) NSDate *date;
+@property (weak, nonatomic) IBOutlet UILabel *bgSelectime;
 
 @end

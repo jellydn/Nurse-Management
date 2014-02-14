@@ -11,6 +11,9 @@
 @interface EditShiftVC : UIViewController
 - (IBAction)cancel:(id)sender;
 - (IBAction)save:(id)sender;
+- (IBAction)selectButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *reviewCategory;
+@property (weak, nonatomic) IBOutlet UIImageView *backgrounReview;
 
 
 @end
