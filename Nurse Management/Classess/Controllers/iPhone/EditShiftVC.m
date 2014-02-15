@@ -112,4 +112,8 @@
 {
     // _reviewCategory.text = textField.text;
 }
+- (IBAction)btAllTime:(id)sender {
+    _txtBeginTime.text = @"00:00";
+    _txtEndTime.text = @"00:00";
+}
 @end

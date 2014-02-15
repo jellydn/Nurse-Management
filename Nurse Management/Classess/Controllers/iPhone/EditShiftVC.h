@@ -19,6 +19,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backgrounReview;
 @property (weak, nonatomic) IBOutlet UITextField *txtName;
 @property (weak, nonatomic) IBOutlet UIButton *btDelete;
+- (IBAction)btAllTime:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *txtBeginTime;
+@property (weak, nonatomic) IBOutlet UILabel *txtEndTime;
 
 
 @end

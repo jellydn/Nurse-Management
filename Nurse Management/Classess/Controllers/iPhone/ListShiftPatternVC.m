@@ -15,7 +15,7 @@
 #import "AddShiftVC.h"
 //#import "AddShiftCategoryVC.h"
 #import "FXNavigationController.h"
-
+#import "AddScheduleVC.h"
 @interface ListShiftPatternVC ()<UITableViewDelegate, UITableViewDataSource>
 {
     
@@ -110,8 +110,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EditShiftVC *vc                 = [[EditShiftVC alloc] init];
-    vc.typeShift                    = NO;
+    AddScheduleVC *vc                 = [[AddScheduleVC alloc] init];
+  //  vc.typeShift                    = NO;
     FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
     
     [self.navigationController presentViewController:navi animated:YES completion:^{
