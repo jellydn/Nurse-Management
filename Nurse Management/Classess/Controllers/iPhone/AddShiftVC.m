@@ -15,13 +15,14 @@
 #import "Define.h"
 #import "ListMembersVC.h"
 #import "FXNavigationController.h"
+#import "ChooseTimeView.h"
 
 #define ALERT_BG_COLOR	 [UIColor colorWithRed:100.0/255.0 green:137.0/255.0 blue:199.0/255.0 alpha:1.0]
 #define BUTTON_BG_COLOR	 [UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]
 #define TITLE_COLOR	 [UIColor colorWithRed:126.0/255.0 green:96.0/255.0 blue:39.0/255.0 alpha:1.0]
 #define kOFFSET_FOR_KEYBOARD 160.0
 
-@interface AddShiftVC () <UITextViewDelegate, UIActionSheetDelegate, UIPickerActionSheetDelegate>
+@interface AddShiftVC () <UITextViewDelegate, UIActionSheetDelegate, UIPickerActionSheetDelegate, ChooseTimeViewDelegate>
 {
     __weak IBOutlet UIView *_viewNavi;
     __weak IBOutlet UILabel *_lbTile;
@@ -103,6 +104,12 @@
     
     _pickerActionSheet = [[UIPickerActionSheet alloc] initForView:self.view];
     _pickerActionSheet.delegate = self;
+    
+    ChooseTimeView *chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 362, 320 - 15*2, 44)];
+    chooseTimeView.delegate = self;
+    [chooseTimeView setStartDate:[NSDate date]];
+    
+    [self.view addSubview:chooseTimeView];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -155,6 +162,11 @@
 //    return @"test";
 //}
 
+#pragma mark - ChooseTimeViewDelegate
+
+- (void) didChooseTimeWithIndex:(NSInteger)index arrayChooseTime:(NSMutableArray *)arrayChooseTime {
+    
+}
 
 #pragma mark - Actions
 
