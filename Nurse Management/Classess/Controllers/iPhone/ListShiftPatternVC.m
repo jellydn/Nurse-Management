@@ -11,8 +11,9 @@
 #import "Common.h"
 #import "FXThemeManager.h"
 #import "ShiftCell.h"
-
+#import "EditShiftVC.h"
 #import "AddShiftVC.h"
+//#import "AddShiftCategoryVC.h"
 #import "FXNavigationController.h"
 
 @interface ListShiftPatternVC ()<UITableViewDelegate, UITableViewDataSource>
@@ -55,9 +56,9 @@
 }
 
 - (IBAction)addShift:(id)sender {
-    AddShiftVC *vc                  = [[AddShiftVC alloc] init];
+    EditShiftVC *vc                  = [[EditShiftVC alloc] init];
     vc.date                         = [NSDate date];
-    
+    vc.typeShift                    = YES;
     FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
     
     [self.navigationController presentViewController:navi animated:YES completion:^{
@@ -101,16 +102,21 @@
     }
     UISwitch* switcher = (UISwitch*)[cell.contentView viewWithTag:100];
     [switcher setOn:!switcher.on animated:YES];
-    [self switchChanged:switcher];
+
     cell.swichShift.transform = CGAffineTransformMakeScale(0.8, 0.65);
+    cell.swichShift.onTintColor = [UIColor colorWithRed:0.0/255.0 green:131.0/255.0 blue:234.0/255.0 alpha:1.0];
     return cell;
 }
--(void) switchChanged:(id)sender {
-    UISwitch* switcher = (UISwitch*)sender;
-    BOOL value = switcher.on;
-}
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"edit shift");
+    EditShiftVC *vc                 = [[EditShiftVC alloc] init];
+    vc.typeShift                    = NO;
+    FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
+    
+    [self.navigationController presentViewController:navi animated:YES completion:^{
+        
+    }];
+
 }
 @end

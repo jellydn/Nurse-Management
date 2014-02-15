@@ -64,17 +64,58 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
+                <view contentMode="scaleToFill" id="eNm-qO-4GR">
+                    <rect key="frame" x="320" y="368" width="320" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="3kb-Qn-oNR">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="i0C-3h-36D">
+                                    <rect key="frame" x="10" y="5" width="100" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="ic_bt_add_schedule_back.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="backChoiceCategory:" destination="CX0-xP-KJP" eventType="touchUpInside" id="qS9-k0-srs"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qh1-VG-CiQ">
+                                    <rect key="frame" x="264" y="5" width="46" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" image="ic_bt_save.png"/>
+                                    <connections>
+                                        <action selector="saveSchedule:" destination="CX0-xP-KJP" eventType="touchUpInside" id="BQv-DM-2fb"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="r5V-0H-Ak0">
+                            <rect key="frame" x="0.0" y="40" width="320" height="160"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="viewContainer" destination="7o1-5R-y1x" id="3bb-AW-AhJ"/>
                 <outlet property="viewMask" destination="iPc-Ux-pIK" id="QN8-Oj-vp6"/>
+                <outlet property="viewTime" destination="eNm-qO-4GR" id="H3r-gZ-7Qf"/>
             </connections>
         </view>
     </objects>
     <resources>
+        <image name="ic_bt_add_schedule_back.png" width="100" height="30"/>
         <image name="ic_bt_home_add_schedule_step1.png" width="90" height="30"/>
+        <image name="ic_bt_save.png" width="46" height="30"/>
         <image name="img_add_schedule_home_title.png" width="119" height="15"/>
     </resources>
 </document>

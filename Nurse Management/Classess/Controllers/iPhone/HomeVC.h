@@ -11,4 +11,7 @@
 
 @interface HomeVC : FXViewController
 
+- (IBAction)addShift:(id)sender;
+- (IBAction)editShif:(id)sender;
+
 @end
