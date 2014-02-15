@@ -106,7 +106,7 @@
 - (void) configView
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
-    _lbTile.text = @"メンバー名編集";
+    _lbTile.text = @"カテゴリー名編集";
 }
 
 #pragma mark - Notification
