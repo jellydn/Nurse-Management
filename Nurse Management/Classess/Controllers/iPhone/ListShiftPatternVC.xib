@@ -62,9 +62,10 @@
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="3eg-qL-L6o">
-                    <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.9882352941176471" green="0.95294117647058818" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="f1w-TN-yhd"/>
                         <outlet property="delegate" destination="-1" id="pED-Ek-CQL"/>
@@ -74,6 +75,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
         </view>
     </objects>
     <resources>
