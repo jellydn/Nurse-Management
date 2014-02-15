@@ -127,7 +127,10 @@
         
         _lbTile.text = @"メンバー名編集";
         _txfName.text = _member.name;
-        _btnDelete.hidden = NO;
+        if (_member.isOfficial)
+            _btnDelete.hidden = YES;
+        else
+            _btnDelete.hidden = NO;
         
     }
     
