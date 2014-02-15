@@ -144,10 +144,10 @@
     
     aCell.textLabel.text = member.name;
     
-    if (member.isOfficial)  // can't not press for official items
-        aCell.selectionStyle = UITableViewCellSelectionStyleNone;
-    else                    // be able to press for non-official items
-        aCell.selectionStyle = UITableViewCellSelectionStyleBlue;
+//    if (member.isOfficial)  // can't not press for official items
+//        aCell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    else                    // be able to press for non-official items
+//        aCell.selectionStyle = UITableViewCellSelectionStyleBlue;
     
     UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
     aCell.accessoryView = switchView;
@@ -168,7 +168,7 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     Member *member = [arrMembers objectAtIndex:indexPath.row];
-    if (!member.isOfficial) {
+//    if (!member.isOfficial) {
         AddMemberVC *vc   = [[AddMemberVC alloc] init];
         vc.isAddMember = NO;
         [vc loadSelectedMember:member];
@@ -177,7 +177,7 @@
         [self.navigationController presentViewController:navi animated:YES completion:^{
             
         }];
-    }
+//    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
