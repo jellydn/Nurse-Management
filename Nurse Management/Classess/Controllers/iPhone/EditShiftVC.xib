@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditShiftVC">
             <connections>
                 <outlet property="backgrounReview" destination="OLh-hY-dzl" id="rKJ-z6-sYe"/>
+                <outlet property="btDelete" destination="3je-Tu-Vet" id="zRO-Nc-ECo"/>
                 <outlet property="reviewCategory" destination="gzy-CK-rJI" id="WT5-SQ-3sp"/>
                 <outlet property="txtName" destination="IcZ-sA-l6e" id="uAU-j3-Vec"/>
                 <outlet property="view" destination="1" id="3"/>

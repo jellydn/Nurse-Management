@@ -56,9 +56,9 @@
 }
 
 - (IBAction)addShift:(id)sender {
-    AddShiftCategoryVC *vc                  = [[AddShiftCategoryVC alloc] init];
+    EditShiftVC *vc                  = [[EditShiftVC alloc] init];
     vc.date                         = [NSDate date];
-    
+    vc.typeShift                    = YES;
     FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
     
     [self.navigationController presentViewController:navi animated:YES completion:^{
@@ -104,12 +104,14 @@
     [switcher setOn:!switcher.on animated:YES];
 
     cell.swichShift.transform = CGAffineTransformMakeScale(0.8, 0.65);
+    cell.swichShift.onTintColor = [UIColor colorWithRed:0.0/255.0 green:131.0/255.0 blue:234.0/255.0 alpha:1.0];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EditShiftVC *vc                  = [[EditShiftVC alloc] init];
+    EditShiftVC *vc                 = [[EditShiftVC alloc] init];
+    vc.typeShift                    = NO;
     FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
     
     [self.navigationController presentViewController:navi animated:YES completion:^{

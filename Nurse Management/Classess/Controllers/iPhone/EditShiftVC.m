@@ -28,7 +28,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    if (_typeShift) {
+        _txtName.text = @"";
+        _btDelete.hidden = YES;
+    }else{
+        _txtName.text = @"日勤";
+    }
 }
 
 - (void)didReceiveMemoryWarning
