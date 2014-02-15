@@ -117,15 +117,15 @@
     
     if (isAddMember) {
         
-        _lbTile.text = @"Add Member";
+        _lbTile.text = @"メンバー名の追加";
         _txfName.text = @"";
-        _txfName.placeholder = @"Member Name";
+        _txfName.placeholder = @"A看護師長";
         _btnDelete.hidden = YES;
         _btnSave.enabled = NO;
         
     } else {
         
-        _lbTile.text = @"Edit Member";
+        _lbTile.text = @"メンバー名編集";
         _txfName.text = _member.name;
         _btnDelete.hidden = NO;
         

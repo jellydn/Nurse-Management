@@ -183,6 +183,7 @@
 		B6F33F4818AE111B00112B82 /* CDSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F33F4718AE111B00112B82 /* CDSchedule.m */; };
 		B6F33F4B18AE111B00112B82 /* CDScheduleAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F33F4A18AE111B00112B82 /* CDScheduleAlert.m */; };
 		B6F33F4E18AE111B00112B82 /* CDScheduleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F33F4D18AE111B00112B82 /* CDScheduleCategory.m */; };
+		C000F2E618AF68AD00280464 /* UIPickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C000F2E518AF68AD00280464 /* UIPickerActionSheet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -417,6 +418,8 @@
 		B6F33F4A18AE111B00112B82 /* CDScheduleAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDScheduleAlert.m; path = "Nurse Management/Classess/Model/CDScheduleAlert.m"; sourceTree = SOURCE_ROOT; };
 		B6F33F4C18AE111B00112B82 /* CDScheduleCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDScheduleCategory.h; path = "Nurse Management/Classess/Model/CDScheduleCategory.h"; sourceTree = SOURCE_ROOT; };
 		B6F33F4D18AE111B00112B82 /* CDScheduleCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDScheduleCategory.m; path = "Nurse Management/Classess/Model/CDScheduleCategory.m"; sourceTree = SOURCE_ROOT; };
+		C000F2E418AF68AD00280464 /* UIPickerActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPickerActionSheet.h; sourceTree = "<group>"; };
+		C000F2E518AF68AD00280464 /* UIPickerActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPickerActionSheet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -695,6 +698,7 @@
 		2A394C3318AA022600F30F2D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C000F2E318AF689600280464 /* UIPickerActionSheet */,
 				2A3C24EB18AB78B300C20A04 /* AddScheduleView */,
 				2A3C24B718AB56DB00C20A04 /* AddShiftView */,
 				2A3C249818AB07C900C20A04 /* ToolBar */,
@@ -1056,6 +1060,15 @@
 			name = MemberShiftVC;
 			sourceTree = "<group>";
 		};
+		C000F2E318AF689600280464 /* UIPickerActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				C000F2E418AF68AD00280464 /* UIPickerActionSheet.h */,
+				C000F2E518AF68AD00280464 /* UIPickerActionSheet.m */,
+			);
+			name = UIPickerActionSheet;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1279,6 +1292,7 @@
 				2A3C24A318AB1BF100C20A04 /* RankingVC.m in Sources */,
 				2A394C2E18A9FFBC00F30F2D /* User.m in Sources */,
 				2A3C24A818AB1BFE00C20A04 /* MoreVC.m in Sources */,
+				C000F2E618AF68AD00280464 /* UIPickerActionSheet.m in Sources */,
 				B6F33F3C18AE111B00112B82 /* CDShiftAlert.m in Sources */,
 				B6F33F4E18AE111B00112B82 /* CDScheduleCategory.m in Sources */,
 				B6F33F4218AE111B00112B82 /* CDShiftMember.m in Sources */,

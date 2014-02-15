@@ -11,5 +11,9 @@
 
 #define APP_NAME @"Nurse Management"
 
+#define START_TIME  10
+#define END_TIME    20
+#define HOUR_KEY    @"hour"
+#define MINUTE_KEY  @"minute"
 
 #endif

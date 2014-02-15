@@ -30,6 +30,8 @@
 #import "HomeCellSchedule.h"
 #import "AddScheduleVC.h"
 #import "FXNavigationController.h"
+#import "AddShiftVC.h"
+
 @interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate, FXCalendarViewDelegate>
 {
     HomeNaviBarView *_naviView ;
@@ -208,9 +210,7 @@
 - (void) homeNaviBarViewDidSelectMail:(HomeNaviBarView*)homeNaviBarView
 {
     NSLog(@"send mail");
-    
-    ListMembersVC *listMembers = [[ListMembersVC alloc] init];
-    [self.navigationController pushViewController:listMembers animated:YES];
+
 }
 
 #pragma mark - HomeToolBarViewDelegate 
@@ -444,12 +444,21 @@
 - (IBAction)addShift:(id)sender
 {
     NSLog(@"show view Add shift");
+    
+    AddShiftVC *addShiftVC = [[AddShiftVC alloc] init];
+    FXNavigationController *nc = [[FXNavigationController alloc] initWithRootViewController:addShiftVC];
+    [self.navigationController presentViewController:nc animated:YES completion:nil];
 }
 
 - (IBAction)editShif:(id)sender
 {
     NSLog(@"show view Edit shift");
+    
+    AddShiftVC *addShiftVC = [[AddShiftVC alloc] init];
+    FXNavigationController *nc = [[FXNavigationController alloc] initWithRootViewController:addShiftVC];
+    [self.navigationController presentViewController:nc animated:YES completion:nil];
 }
+
 - (IBAction)addSchedule:(id)sender {
     AddScheduleVC *vc                  = [[AddScheduleVC alloc] init];
     FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];

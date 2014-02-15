@@ -43,17 +43,77 @@
     // temporarely initialize data
     Member *member1 = [[Member alloc] init];
     member1.memberID = @"1";
-    member1.name = @"Phu NQ";
+    member1.name = @"A看護師長";
     member1.isOfficial = YES;
     member1.isEnable = YES;
     
     Member *member2 = [[Member alloc] init];
     member2.memberID = @"2";
-    member2.name = @"Dung HD";
-    member2.isOfficial = NO;
-    member2.isEnable = NO;
+    member2.name = @"B主任";
+    member2.isOfficial = YES;
+    member2.isEnable = YES;
     
-    arrMembers = [[NSMutableArray alloc] initWithObjects:member1, member2, nil];
+    Member *member3 = [[Member alloc] init];
+    member3.memberID = @"2";
+    member3.name = @"C主任";
+    member3.isOfficial = YES;
+    member3.isEnable = YES;
+    
+    Member *member4 = [[Member alloc] init];
+    member4.memberID = @"2";
+    member4.name = @"D主任";
+    member4.isOfficial = YES;
+    member4.isEnable = YES;
+    
+    Member *member5 = [[Member alloc] init];
+    member5.memberID = @"2";
+    member5.name = @"E先輩";
+    member5.isOfficial = YES;
+    member5.isEnable = YES;
+    
+    Member *member6 = [[Member alloc] init];
+    member6.memberID = @"2";
+    member6.name = @"F先輩";
+    member6.isOfficial = YES;
+    member6.isEnable = YES;
+    
+    Member *member7 = [[Member alloc] init];
+    member7.memberID = @"2";
+    member7.name = @"G先輩";
+    member7.isOfficial = YES;
+    member7.isEnable = YES;
+    
+    Member *member8 = [[Member alloc] init];
+    member8.memberID = @"2";
+    member8.name = @"Hさん";
+    member8.isOfficial = YES;
+    member8.isEnable = YES;
+    
+    Member *member9 = [[Member alloc] init];
+    member9.memberID = @"2";
+    member9.name = @"Iさん";
+    member9.isOfficial = YES;
+    member9.isEnable = YES;
+    
+    Member *member10 = [[Member alloc] init];
+    member10.memberID = @"2";
+    member10.name = @"Jさん";
+    member10.isOfficial = YES;
+    member10.isEnable = YES;
+    
+    Member *member11 = [[Member alloc] init];
+    member11.memberID = @"2";
+    member11.name = @"Kさん";
+    member11.isOfficial = YES;
+    member11.isEnable = YES;
+    
+    Member *member12 = [[Member alloc] init];
+    member12.memberID = @"2";
+    member12.name = @"Lさん";
+    member12.isOfficial = YES;
+    member12.isEnable = YES;
+    
+    arrMembers = [[NSMutableArray alloc] initWithObjects:member1, member2, member3, member4, member5, member6, member7, member8, member9, member10, member11, member12, nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -184,7 +244,7 @@
 - (void) configView
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
-    _lbTile.text = @"Member List";
+    _lbTile.text = @"メンバー編集";
 }
 
 #pragma mark - Notification
