@@ -162,11 +162,11 @@
 //    return @"test";
 //}
 
-#pragma mark - ChooseTimeViewDelegate
-
-- (void) didChooseTimeWithIndex:(NSInteger)index arrayChooseTime:(NSMutableArray *)arrayChooseTime {
-    
-}
+//#pragma mark - ChooseTimeViewDelegate
+//
+//- (void) didChooseTimeWithIndex:(NSInteger)index arrayChooseTime:(NSMutableArray *)arrayChooseTime {
+//    
+//}
 
 #pragma mark - Actions
 
