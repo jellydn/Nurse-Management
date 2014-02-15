@@ -132,6 +132,7 @@
 		C0416CAE18AE1FEB001EABD4 /* ic_clock.png in Resources */ = {isa = PBXBuildFile; fileRef = C0416CA718AE1FEB001EABD4 /* ic_clock.png */; };
 		C0416CAF18AE1FEB001EABD4 /* ic_memo.png in Resources */ = {isa = PBXBuildFile; fileRef = C0416CA818AE1FEB001EABD4 /* ic_memo.png */; };
 		C0416CB118AE1FFC001EABD4 /* ic_btn_member_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0416CB018AE1FFC001EABD4 /* ic_btn_member_list@2x.png */; };
+		C09178D718AF289F007E80F0 /* UIPickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C09178D618AF289F007E80F0 /* UIPickerActionSheet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -301,6 +302,8 @@
 		C0416CA718AE1FEB001EABD4 /* ic_clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_clock.png; sourceTree = "<group>"; };
 		C0416CA818AE1FEB001EABD4 /* ic_memo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_memo.png; sourceTree = "<group>"; };
 		C0416CB018AE1FFC001EABD4 /* ic_btn_member_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_btn_member_list@2x.png"; sourceTree = "<group>"; };
+		C09178D518AF289F007E80F0 /* UIPickerActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPickerActionSheet.h; sourceTree = "<group>"; };
+		C09178D618AF289F007E80F0 /* UIPickerActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPickerActionSheet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -560,6 +563,7 @@
 		2A394C3318AA022600F30F2D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C09178D418AF288C007E80F0 /* PickerActionSheet */,
 				2A3C24EB18AB78B300C20A04 /* AddScheduleView */,
 				2A3C24B718AB56DB00C20A04 /* AddShiftView */,
 				2A3C249818AB07C900C20A04 /* ToolBar */,
@@ -851,6 +855,15 @@
 			name = AddMemberVC;
 			sourceTree = "<group>";
 		};
+		C09178D418AF288C007E80F0 /* PickerActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				C09178D518AF289F007E80F0 /* UIPickerActionSheet.h */,
+				C09178D618AF289F007E80F0 /* UIPickerActionSheet.m */,
+			);
+			name = PickerActionSheet;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1048,6 +1061,7 @@
 				2AF0757E18ACABFD0008D875 /* FXDayView.m in Sources */,
 				2A394BDD18A9FD5300F30F2D /* AppDelegate.m in Sources */,
 				2A3C24EF18AB78C900C20A04 /* AddScheduleView.m in Sources */,
+				C09178D718AF289F007E80F0 /* UIPickerActionSheet.m in Sources */,
 				2A75E64318ADA98800E74E4F /* Member.m in Sources */,
 				2A394C3C18AA028100F30F2D /* FXNavigationController.m in Sources */,
 				2A394BD918A9FD5300F30F2D /* main.m in Sources */,

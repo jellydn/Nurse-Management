@@ -22,6 +22,9 @@
                 <outlet property="_lblAlert4" destination="SeM-9i-n6d" id="P6z-aW-PCn"/>
                 <outlet property="_lblAlert5" destination="Qxj-eF-3ax" id="IJs-TX-uyb"/>
                 <outlet property="_lblAlert6" destination="VYY-U8-AIi" id="fgZ-CB-MDd"/>
+                <outlet property="_lblEndTime" destination="NGE-Fs-StN" id="ttM-0O-Xcb"/>
+                <outlet property="_lblStartTime" destination="fc2-uL-Nvj" id="PyQ-tB-Dtm"/>
+                <outlet property="_txvMemo" destination="Beg-RO-ERx" id="RYf-mP-0me"/>
                 <outlet property="_viewNavi" destination="ncE-Sd-DaO" id="ngj-a2-gTX"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -110,10 +113,11 @@
                         <action selector="chooseTimeMode:" destination="-1" eventType="touchUpInside" id="Igh-Pc-TCM"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MBM-3i-3hZ">
-                    <rect key="frame" x="46" y="135" width="46" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MBM-3i-3hZ">
+                    <rect key="frame" x="15" y="130" width="106" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="00:00">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal">
                         <color key="titleColor" red="0.4941176471" green="0.37647058820000001" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -121,10 +125,18 @@
                         <action selector="chooseTime:" destination="-1" eventType="touchUpInside" id="M75-8M-wob"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FmI-pu-CJo">
-                    <rect key="frame" x="160" y="135" width="46" height="30"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fc2-uL-Nvj">
+                    <rect key="frame" x="46" y="139" width="44" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="00:00">
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.4941176471" green="0.37647058820000001" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FmI-pu-CJo">
+                    <rect key="frame" x="145" y="130" width="94" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal">
                         <color key="titleColor" red="0.4941176471" green="0.37647058820000001" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -132,6 +144,13 @@
                         <action selector="chooseTime:" destination="-1" eventType="touchUpInside" id="GRg-Sv-Vcs"/>
                     </connections>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NGE-Fs-StN">
+                    <rect key="frame" x="169" y="139" width="44" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.4941176471" green="0.37647058820000001" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_nurse.png" id="kUX-2C-Q7v">
                     <rect key="frame" x="14" y="185" width="16" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -171,6 +190,9 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="aHV-8n-wdS"/>
+                    </connections>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rrm-Dw-huo">
                     <rect key="frame" x="15" y="523" width="290" height="30"/>
@@ -180,6 +202,9 @@
                         <color key="titleColor" red="0.35294117650000001" green="0.32549019610000002" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="moveToNextDay:" destination="-1" eventType="touchUpInside" id="vT6-xe-sQS"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_r1_c7.png" id="EiO-0M-n1F">
                     <rect key="frame" x="252" y="75" width="50" height="43"/>
@@ -334,12 +359,24 @@
                     <state key="normal" backgroundImage="ic_btn_member_list.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="chooseMembers:" destination="-1" eventType="touchUpInside" id="7Os-6O-zQB"/>
+                    </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="0OE-nD-qCA" appends="YES" id="nUK-Mw-FVe"/>
+            </connections>
         </view>
+        <tapGestureRecognizer id="0OE-nD-qCA">
+            <connections>
+                <action selector="tapHideKeyboard:" destination="-1" id="7Pt-sW-YUD"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="bg_dashed_frame.png" width="56" height="49"/>
