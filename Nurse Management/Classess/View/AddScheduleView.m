@@ -32,6 +32,7 @@
 
 - (void) show
 {
+    NSLog(@"dfdsfdsf");
     self.hidden = NO;
     
     CGRect rect = _viewContainer.frame;

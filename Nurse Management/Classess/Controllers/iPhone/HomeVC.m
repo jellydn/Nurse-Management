@@ -28,7 +28,8 @@
 #import "HomeCellAddShift.h"
 #import "HomeCellAddSchedule.h"
 #import "HomeCellSchedule.h"
-
+#import "AddScheduleVC.h"
+#import "FXNavigationController.h"
 @interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate, FXCalendarViewDelegate>
 {
     HomeNaviBarView *_naviView ;
@@ -448,6 +449,15 @@
 - (IBAction)editShif:(id)sender
 {
     NSLog(@"show view Edit shift");
+}
+- (IBAction)addSchedule:(id)sender {
+    AddScheduleVC *vc                  = [[AddScheduleVC alloc] init];
+    FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
+    
+    [self.navigationController presentViewController:navi animated:YES completion:^{
+        
+    }];
+
 }
 
 
