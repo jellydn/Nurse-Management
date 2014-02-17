@@ -5,6 +5,7 @@
 //  Created by Le Phuong Tien on 2/11/14.
 //  Copyright (c) 2014 Le Phuong Tien. All rights reserved.
 //
+#import "AppDelegate.h"
 
 #import <MessageUI/MessageUI.h>
 
@@ -33,6 +34,8 @@
 #import "AddScheduleVC.h"
 #import "FXNavigationController.h"
 #import "AddShiftVC.h"
+
+#import "CDMember.h"
 
 @interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate, FXCalendarViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 {
@@ -79,15 +82,96 @@
     [self loadHomeAddShiftView];
     [self loadHomeAddScheduleView];
     
-    
+    // load core data
+    [self fetchedResultsControllerMember];
     
 }
+
+- (void)viewDidUnload {
+    self.fetchedResultsControllerMember = nil;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - load Coredata
+
+- (NSFetchedResultsController *)fetchedResultsControllerMember {
+    
+    if (_fetchedResultsControllerMember != nil) {
+        return _fetchedResultsControllerMember;
+    }
+    
+    NSString *entityName = @"CDMember";
+    AppDelegate *_appDelegate = [AppDelegate shared];
+    
+    NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
+    [NSFetchedResultsController deleteCacheWithName:cacheName];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:_appDelegate.managedObjectContext];
+    
+    
+    NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+    NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = entity;
+    fetchRequest.fetchBatchSize = 20;
+    fetchRequest.sortDescriptors = sortList;
+    fetchRequest.predicate = predicate;
+    _fetchedResultsControllerMember = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                        managedObjectContext:_appDelegate.managedObjectContext
+                                                          sectionNameKeyPath:nil
+                                                                   cacheName:cacheName];
+    _fetchedResultsControllerMember.delegate = self;
+    
+    NSError *error = nil;
+    [_fetchedResultsControllerMember performFetch:&error];
+    if (error) {
+        NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+    }
+    
+    if ([_fetchedResultsControllerMember.fetchedObjects count] == 0) {
+        NSLog(@"add data for member item");
+        
+        //read file
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"predefault" ofType:@"plist"];
+        
+        // Load the file content and read the data into arrays
+        if (path)
+        {
+            NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+            NSArray *totalMember = [dict objectForKey:@"Member"];
+            
+            //Creater coredata
+            for (int i = 0 ; i < [totalMember count]; i++) {
+                CDMember *cdMember = (CDMember *)[NSEntityDescription insertNewObjectForEntityForName:@"CDMember" inManagedObjectContext:_appDelegate.managedObjectContext];
+                
+                cdMember.id = i + 1;
+                cdMember.isDisplay = TRUE;
+                cdMember.name = [totalMember objectAtIndex:i];
+                
+                [_appDelegate saveContext];
+            }
+            
+        } else {
+            NSLog(@"path error");
+        }
+        
+    } else {
+        NSLog(@"total item : %d",[_fetchedResultsControllerMember.fetchedObjects count]);
+    }
+
+    
+    return _fetchedResultsControllerMember;
+    
+}
+
 
 #pragma mark - Notification
 - (void)eventListenerDidReceiveNotification:(NSNotification *)notif

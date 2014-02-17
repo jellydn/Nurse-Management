@@ -8,20 +8,19 @@
 
 #import "FXViewController.h"
 
-@class Member;
+@class CDMember;
 @protocol AddMemberDelegate;
 @interface AddMemberVC : FXViewController
 
 @property (nonatomic, assign) BOOL isAddMember;     // to distinguish add or edit member
 @property (nonatomic, weak) id<AddMemberDelegate> delegate;
 
-- (void) loadSelectedMember: (Member *) selectedMember;
+- (void) loadSelectedMember: (CDMember *) selectedMember;
 
 @end
 
 @protocol AddMemberDelegate <NSObject>
 
 - (void) saveMemberName: (NSString*)name andIsAddMember:(BOOL)isAddMember;
-- (void) deleteMember: (NSString *)memberID;
 
 @end

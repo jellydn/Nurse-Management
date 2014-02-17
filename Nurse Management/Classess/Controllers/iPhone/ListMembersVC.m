@@ -5,9 +5,9 @@
 //  Created by PhuNQ on 2/13/14.
 //  Copyright (c) 2014 Le Phuong Tien. All rights reserved.
 //
-
+#import "AppDelegate.h"
 #import "ListMembersVC.h"
-#import "Member.h"
+#import "CDMember.h"
 #import "AddMemberVC.h"
 #import "FXNavigationController.h"
 
@@ -15,7 +15,8 @@
     __weak IBOutlet UIView *_viewNavi;
     __weak IBOutlet UILabel *_lbTile;
     __weak IBOutlet UITableView *_tbvMemberList;
-    
+    BOOL _isLoadCoreData;
+
     NSMutableArray *arrMembers;
 }
 
@@ -40,87 +41,119 @@
     [super viewDidLoad];
     [self configView];
     
-    // temporarely initialize data
-    Member *member1 = [[Member alloc] init];
-    member1.memberID = @"1";
-    member1.name = @"A看護師長";
-    member1.isOfficial = YES;
-    member1.isEnable = YES;
+    _isLoadCoreData = YES;
+
+    [self fetchedResultsControllerMember];
     
-    Member *member2 = [[Member alloc] init];
-    member2.memberID = @"2";
-    member2.name = @"B主任";
-    member2.isOfficial = YES;
-    member2.isEnable = YES;
-    
-    Member *member3 = [[Member alloc] init];
-    member3.memberID = @"2";
-    member3.name = @"C主任";
-    member3.isOfficial = YES;
-    member3.isEnable = YES;
-    
-    Member *member4 = [[Member alloc] init];
-    member4.memberID = @"2";
-    member4.name = @"D主任";
-    member4.isOfficial = YES;
-    member4.isEnable = YES;
-    
-    Member *member5 = [[Member alloc] init];
-    member5.memberID = @"2";
-    member5.name = @"E先輩";
-    member5.isOfficial = YES;
-    member5.isEnable = YES;
-    
-    Member *member6 = [[Member alloc] init];
-    member6.memberID = @"2";
-    member6.name = @"F先輩";
-    member6.isOfficial = YES;
-    member6.isEnable = YES;
-    
-    Member *member7 = [[Member alloc] init];
-    member7.memberID = @"2";
-    member7.name = @"G先輩";
-    member7.isOfficial = YES;
-    member7.isEnable = YES;
-    
-    Member *member8 = [[Member alloc] init];
-    member8.memberID = @"2";
-    member8.name = @"Hさん";
-    member8.isOfficial = YES;
-    member8.isEnable = YES;
-    
-    Member *member9 = [[Member alloc] init];
-    member9.memberID = @"2";
-    member9.name = @"Iさん";
-    member9.isOfficial = YES;
-    member9.isEnable = YES;
-    
-    Member *member10 = [[Member alloc] init];
-    member10.memberID = @"2";
-    member10.name = @"Jさん";
-    member10.isOfficial = YES;
-    member10.isEnable = YES;
-    
-    Member *member11 = [[Member alloc] init];
-    member11.memberID = @"2";
-    member11.name = @"Kさん";
-    member11.isOfficial = YES;
-    member11.isEnable = YES;
-    
-    Member *member12 = [[Member alloc] init];
-    member12.memberID = @"2";
-    member12.name = @"Lさん";
-    member12.isOfficial = YES;
-    member12.isEnable = YES;
-    
-    arrMembers = [[NSMutableArray alloc] initWithObjects:member1, member2, member3, member4, member5, member6, member7, member8, member9, member10, member11, member12, nil];
 }
+
+- (void)viewDidUnload {
+    self.fetchedResultsControllerMember = nil;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - load Coredata
+
+- (NSFetchedResultsController *)fetchedResultsControllerMember {
+    
+    if (_fetchedResultsControllerMember != nil) {
+        return _fetchedResultsControllerMember;
+    }
+    
+    NSString *entityName = @"CDMember";
+    AppDelegate *_appDelegate = [AppDelegate shared];
+    
+    NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
+    [NSFetchedResultsController deleteCacheWithName:cacheName];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:_appDelegate.managedObjectContext];
+    
+    
+    NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+    NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = entity;
+    fetchRequest.fetchBatchSize = 20;
+    fetchRequest.sortDescriptors = sortList;
+    fetchRequest.predicate = predicate;
+    _fetchedResultsControllerMember = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                          managedObjectContext:_appDelegate.managedObjectContext
+                                                                            sectionNameKeyPath:nil
+                                                                                     cacheName:cacheName];
+    _fetchedResultsControllerMember.delegate = self;
+    
+    NSError *error = nil;
+    [_fetchedResultsControllerMember performFetch:&error];
+    if (error) {
+        NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+    }
+    
+    if ([_fetchedResultsControllerMember.fetchedObjects count] == 0) {
+        NSLog(@"add data for member item");
+        
+        //read file
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"predefault" ofType:@"plist"];
+        
+        // Load the file content and read the data into arrays
+        if (path)
+        {
+            NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+            NSArray *totalMember = [dict objectForKey:@"Member"];
+            
+            //Creater coredata
+            for (int i = 0 ; i < [totalMember count]; i++) {
+                CDMember *cdMember = (CDMember *)[NSEntityDescription insertNewObjectForEntityForName:@"CDMember" inManagedObjectContext:_appDelegate.managedObjectContext];
+                
+                cdMember.id = i + 1;
+                cdMember.isDisplay = TRUE;
+                cdMember.name = [totalMember objectAtIndex:i];
+                
+                [_appDelegate saveContext];
+            }
+            
+        } else {
+            NSLog(@"path error");
+        }
+        
+    } else {
+        NSLog(@"total item : %d",[_fetchedResultsControllerMember.fetchedObjects count]);
+    }
+    
+    [_tbvMemberList reloadData];
+    _isLoadCoreData = NO;
+    
+    return _fetchedResultsControllerMember;
+    
+}
+
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [_tbvMemberList reloadData];
+    if (!_isLoadCoreData) {
+//        [self creatAlert];
+    }
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+}
+
 
 #pragma mark - UITableViewDataSource
 
@@ -129,7 +162,7 @@
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [arrMembers count];
+    return [_fetchedResultsControllerMember.fetchedObjects  count];
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -140,20 +173,16 @@
                 aCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             }
     
-    Member *member = [arrMembers objectAtIndex:indexPath.row];
+
+    CDMember *member = [_fetchedResultsControllerMember.fetchedObjects objectAtIndex:indexPath.row];
     
     aCell.textLabel.text = member.name;
-    
-//    if (member.isOfficial)  // can't not press for official items
-//        aCell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    else                    // be able to press for non-official items
-//        aCell.selectionStyle = UITableViewCellSelectionStyleBlue;
     
     UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
     aCell.accessoryView = switchView;
     switchView.tag = indexPath.row;
     
-    if (member.isEnable)
+    if (member.isDisplay)
         [switchView setOn:YES animated:NO];
     else
         [switchView setOn:NO animated:NO];
@@ -167,8 +196,7 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    Member *member = [arrMembers objectAtIndex:indexPath.row];
-//    if (!member.isOfficial) {
+    CDMember *member = [_fetchedResultsControllerMember.fetchedObjects objectAtIndex:indexPath.row];
         AddMemberVC *vc   = [[AddMemberVC alloc] init];
         vc.isAddMember = NO;
         [vc loadSelectedMember:member];
@@ -177,7 +205,6 @@
         [self.navigationController presentViewController:navi animated:YES completion:^{
             
         }];
-//    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -185,29 +212,22 @@
 
 - (void) saveMemberName:(NSString *)name andIsAddMember:(BOOL)isAddMember {
     if (isAddMember) {
-        Member *lastMember = [arrMembers objectAtIndex:(arrMembers.count - 1)];
-        Member *member = [[Member alloc] init];
-        member.memberID = [NSString stringWithFormat:@"%d", lastMember.memberID.intValue + 1];
+        NSLog(@"isAddMember :%d",isAddMember);
+        CDMember *lastMember = [_fetchedResultsControllerMember.fetchedObjects objectAtIndex:(_fetchedResultsControllerMember.fetchedObjects.count - 1)];
+
+        CDMember *member = [NSEntityDescription
+                                          insertNewObjectForEntityForName:@"CDMember"
+                                          inManagedObjectContext: [AppDelegate shared].managedObjectContext];
+
+        member.id = lastMember.id + 1;
         member.name = name;
-        member.isEnable = YES;
-        member.isOfficial = NO;
+        member.isDisplay = YES;
         
-        [arrMembers addObject:member];
+        [[AppDelegate shared] saveContext];
+
     }
     
-    [_tbvMemberList reloadData];
-}
-
-- (void) deleteMember:(NSString *)memberID {
-
-    for (int index = [arrMembers count] - 1; index >= 0; index--) {
-        Member *member = [arrMembers objectAtIndex:index];
-        if([member.memberID isEqualToString:memberID] && !member.isOfficial) {
-            [arrMembers removeObject:member];
-            [_tbvMemberList reloadData];
-            break;
-        }
-    }
+//    [_tbvMemberList reloadData];
 }
 
 #pragma mark - Action
@@ -229,12 +249,15 @@
 - (void) switchChanged:(id)sender {
     UISwitch* switchControl = sender;
     
-    if ([arrMembers objectAtIndex:switchControl.tag]) {
-        Member *member = [arrMembers objectAtIndex:switchControl.tag];
+    if ([_fetchedResultsControllerMember.fetchedObjects objectAtIndex:switchControl.tag]) {
+        CDMember *member = [_fetchedResultsControllerMember.fetchedObjects objectAtIndex:switchControl.tag];
         if (switchControl.on)
-            member.isEnable = YES;
+            member.isDisplay = YES;
         else
-            member.isEnable = NO;
+            member.isDisplay = NO;
+        
+        [[AppDelegate shared] saveContext];
+
     }
     
     NSLog( @"The switch is %@", switchControl.on ? @"ON" : @"OFF" );
