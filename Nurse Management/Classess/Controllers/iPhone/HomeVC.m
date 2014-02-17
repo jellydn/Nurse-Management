@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Le Phuong Tien. All rights reserved.
 //
 
+#import <MessageUI/MessageUI.h>
+
 #import "HomeVC.h"
 #import "FXThemeManager.h"
 #import "Common.h"
@@ -32,7 +34,7 @@
 #import "FXNavigationController.h"
 #import "AddShiftVC.h"
 
-@interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate, FXCalendarViewDelegate>
+@interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate, FXCalendarViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 {
     HomeNaviBarView *_naviView ;
     HomeToolBarView *_toolBarView;
@@ -195,6 +197,22 @@
     
 }
 
+- (NSData *) captureScreenshot {
+    
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)])
+        UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, [UIScreen mainScreen].scale);
+    else
+        UIGraphicsBeginImageContext(self.view.bounds.size);
+    
+    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    NSData * data = UIImagePNGRepresentation(image);
+    
+    return data;
+    
+}
+
 #pragma mark - HomeNaviBarViewDelegate
 - (void) homeNaviBarViewDidSelectToDay:(HomeNaviBarView*)homeNaviBarView
 {
@@ -210,6 +228,9 @@
 - (void) homeNaviBarViewDidSelectMail:(HomeNaviBarView*)homeNaviBarView
 {
     NSLog(@"send mail");
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"シフトカレンダーをシェア" delegate:self cancelButtonTitle:@"キャンセル" destructiveButtonTitle:nil otherButtonTitles:@"シフトをメールで送信", @"シフトをLINEで送信", @"カレンダー画像を保存", @"カレンダー画像をLINEで送信", nil];
+    [actionSheet showInView:self.view];
 
 }
 
@@ -438,6 +459,91 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:     // send email
+        {
+            int month = [FXCalendarData getMonthWithDate:_selectDate];
+            
+            NSString *emailTitle = [NSString stringWithFormat:@"%d月の勤務", month];
+            NSString *messageBody = [NSString stringWithFormat:@"%d月の勤務表を送ります", month];
+//            NSArray *toRecipents = [NSArray arrayWithObject:@"support@appcoda.com"];
+            
+            MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+            mc.mailComposeDelegate = self;
+            [mc setSubject:emailTitle];
+            [mc setMessageBody:messageBody isHTML:NO];
+//            [mc setToRecipients:toRecipents];
+            
+            NSData *data = [self captureScreenshot];
+            [data writeToFile:@"screenshot.png" atomically:YES];
+            [mc addAttachmentData:data mimeType:@"image/png" fileName:@"screenshot.png"];
+            
+            [self presentViewController:mc animated:YES completion:NULL];
+            break;
+        }
+            
+        case 1:     // send LINE with a shift
+        {
+            
+            
+            break;
+        }
+            
+        case 2:     // save calendar image
+        {
+            NSData *data = [self captureScreenshot];
+            UIImage *image = [UIImage imageWithData:data];
+            UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+            
+            
+            break;
+        }
+            
+        case 3:     // send LINE with captured calendar
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved");
+            [Common showAlert:@"メールが保存された。" title:@""];
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail sent");
+            [Common showAlert:@"メールが送信された。" title:@""];
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            [Common showAlert:[NSString stringWithFormat:@"メールは失敗を送った %@", [error localizedDescription]] title:@""];
+            break;
+        default:
+            break;
+    }
+    
+    // Close the Mail Interface
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void) image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo {
+    if (error)
+        [Common showAlert:[NSString stringWithFormat:@"エラー： %@", [error localizedDescription]] title:@""];
+    else
+        [Common showAlert:@"写真が保存された。" title:@""];
 }
 
 #pragma mark - Action
