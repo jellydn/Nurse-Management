@@ -18,13 +18,14 @@
 #import "ChooseTimeView.h"
 #import "AddShiftView.h"
 #import "ListShiftPatternVC.h"
+#import "NMSelectionStringView.h"
 
 #define ALERT_BG_COLOR	 [UIColor colorWithRed:100.0/255.0 green:137.0/255.0 blue:199.0/255.0 alpha:1.0]
 #define BUTTON_BG_COLOR	 [UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]
 #define TITLE_COLOR	 [UIColor colorWithRed:126.0/255.0 green:96.0/255.0 blue:39.0/255.0 alpha:1.0]
 #define kOFFSET_FOR_KEYBOARD 160.0
 
-@interface AddShiftVC () <UITextViewDelegate, UIActionSheetDelegate, UIPickerActionSheetDelegate, ChooseTimeViewDelegate, AddShiftViewDelegate>
+@interface AddShiftVC () <UITextViewDelegate, UIActionSheetDelegate, UIPickerActionSheetDelegate, ChooseTimeViewDelegate, AddShiftViewDelegate, NMSelectionStringViewDelegate>
 {
     __weak IBOutlet UIView *_viewNavi;
     __weak IBOutlet UILabel *_lbTile;
@@ -43,6 +44,7 @@
     BOOL _isShowAddShiftView;
     
     AddShiftView    *_addShiftView;
+    NMSelectionStringView *_nMSelectionStringView;
 }
 
 - (IBAction)cancel:(id)sender;
@@ -102,8 +104,14 @@
     ChooseTimeView *chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 362, 320 - 15*2, 44)];
     chooseTimeView.delegate = self;
     [chooseTimeView setStartDate:[NSDate date]];
-    
     [self.view addSubview:chooseTimeView];
+    
+    // Choose Members view
+    _nMSelectionStringView = [[NMSelectionStringView alloc] initWithFrame:CGRectMake(15, 215, 320 - 15*2, 118)];
+    NSArray *arr = @[@"A看護師長",@"B主任",@"C主任",@"D主任",@"E先輩",@"F先輩",@"G先輩",@"Hさん",@"Iさん",@"Jさん",@"Kさん",@"Lさん"];
+    _nMSelectionStringView.delegate = self;
+    [_nMSelectionStringView setArrayString:arr];
+    [self.view addSubview:_nMSelectionStringView];
     
     // init Add Shift view
     [self loadHomeAddShiftView];
@@ -154,6 +162,12 @@
 - (void) addShiftViewDidSelectCloseView:(AddShiftView*)addShiftView
 {
     [self hideAddShift];
+}
+
+#pragma mark - NMSelectionStringViewDelegate
+
+- (void) didSelectionStringWithIndex:(NSInteger)index arraySelectionString:(NSMutableArray *)arraySelectionString {
+    NSLog(@"select");
 }
 
 #pragma mark - Actions

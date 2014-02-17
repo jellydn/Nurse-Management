@@ -197,6 +197,7 @@
 		C000F2FC18AF6C2000280464 /* ic_injection_needle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F018AF6C2000280464 /* ic_injection_needle@2x.png */; };
 		C000F2FD18AF6C2000280464 /* ic_memo.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F118AF6C2000280464 /* ic_memo.png */; };
 		C000F2FE18AF6C2000280464 /* ic_memo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F218AF6C2000280464 /* ic_memo@2x.png */; };
+		C0E70E4718B20F4B00CC9C43 /* NMSelectionStringView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E70E4618B20F4B00CC9C43 /* NMSelectionStringView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -446,6 +447,8 @@
 		C000F2F018AF6C2000280464 /* ic_injection_needle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_injection_needle@2x.png"; sourceTree = "<group>"; };
 		C000F2F118AF6C2000280464 /* ic_memo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_memo.png; sourceTree = "<group>"; };
 		C000F2F218AF6C2000280464 /* ic_memo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_memo@2x.png"; sourceTree = "<group>"; };
+		C0E70E4518B20F4B00CC9C43 /* NMSelectionStringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMSelectionStringView.h; sourceTree = "<group>"; };
+		C0E70E4618B20F4B00CC9C43 /* NMSelectionStringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMSelectionStringView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -725,6 +728,8 @@
 		2A394C3318AA022600F30F2D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C0E70E4518B20F4B00CC9C43 /* NMSelectionStringView.h */,
+				C0E70E4618B20F4B00CC9C43 /* NMSelectionStringView.m */,
 				C000F2E318AF689600280464 /* UIPickerActionSheet */,
 				2A3C24EB18AB78B300C20A04 /* AddScheduleView */,
 				2A3C24B718AB56DB00C20A04 /* AddShiftView */,
@@ -1379,6 +1384,7 @@
 				B6D7A3CA18B1B83F00E98936 /* CDSchedule.m in Sources */,
 				2A6FDB6A18AF117D00D33D21 /* AddScheduleVC.m in Sources */,
 				2A516C9E18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m in Sources */,
+				C0E70E4718B20F4B00CC9C43 /* NMSelectionStringView.m in Sources */,
 				2A75E63F18ADA97700E74E4F /* ShiftCell.m in Sources */,
 				2A3C24B518AB295500C20A04 /* ChangeThemeVC.m in Sources */,
 				B6D7A3B818B1B83E00E98936 /* CDShiftAlert.m in Sources */,
