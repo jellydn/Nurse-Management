@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ScheduleCategory</key>
+	<dict/>
+	<key>Member</key>
+	<array>
+		<string>A看護師長</string>
+        <string>B主任</string>
+        <string>C主任</string>
+        <string>D主任</string>
+        <string>E先輩</string>
+        <string>F先輩</string>
+        <string>G先輩</string>
+        <string>Hさん</string>
+        <string>Iさん</string>
+        <string>Jさん</string>
+        <string>Kさん</string>
+        <string>Lさん</string>
+	</array>
+	<key>ShiftCategory</key>
+	<dict/>
+</dict>
+</plist>
