@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "FXViewController.h"
 
-@interface HomeVC : FXViewController
+@interface HomeVC : FXViewController<NSFetchedResultsControllerDelegate>
+
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerMember;
+
 
 - (IBAction)addShift:(id)sender;
 - (IBAction)editShif:(id)sender;
-
 @end
