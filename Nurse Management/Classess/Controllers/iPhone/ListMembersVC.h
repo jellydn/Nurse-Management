@@ -8,6 +8,7 @@
 
 #import "FXViewController.h"
 
-@interface ListMembersVC : FXViewController
+@interface ListMembersVC : FXViewController<NSFetchedResultsControllerDelegate>
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerMember;
 
 @end
