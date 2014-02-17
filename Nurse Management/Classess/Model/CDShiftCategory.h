@@ -2,13 +2,14 @@
 //  CDShiftCategory.h
 //  Nurse Management
 //
-//  Created by Huynh Duc Dung on 2/14/14.
+//  Created by Huynh Duc Dung on 2/17/14.
 //  Copyright (c) 2014 Le Phuong Tien. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class CDShift;
 
 @interface CDShiftCategory : NSManagedObject
 
@@ -18,5 +19,14 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic) NSTimeInterval timeEnd;
 @property (nonatomic) NSTimeInterval timeStart;
+@property (nonatomic, retain) NSSet *pk_shiftcategory;
+@end
+
+@interface CDShiftCategory (CoreDataGeneratedAccessors)
+
+- (void)addPk_shiftcategoryObject:(CDShift *)value;
+- (void)removePk_shiftcategoryObject:(CDShift *)value;
+- (void)addPk_shiftcategory:(NSSet *)values;
+- (void)removePk_shiftcategory:(NSSet *)values;
 
 @end

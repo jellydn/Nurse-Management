@@ -2,11 +2,12 @@
 //  CDShiftCategory.m
 //  Nurse Management
 //
-//  Created by Huynh Duc Dung on 2/14/14.
+//  Created by Huynh Duc Dung on 2/17/14.
 //  Copyright (c) 2014 Le Phuong Tien. All rights reserved.
 //
 
 #import "CDShiftCategory.h"
+#import "CDShift.h"
 
 
 @implementation CDShiftCategory
@@ -17,5 +18,6 @@
 @dynamic name;
 @dynamic timeEnd;
 @dynamic timeStart;
+@dynamic pk_shiftcategory;
 
 @end
