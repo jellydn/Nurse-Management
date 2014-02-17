@@ -16,30 +16,18 @@
 #import "ListMembersVC.h"
 #import "FXNavigationController.h"
 #import "ChooseTimeView.h"
+#import "AddShiftView.h"
+#import "ListShiftPatternVC.h"
 
 #define ALERT_BG_COLOR	 [UIColor colorWithRed:100.0/255.0 green:137.0/255.0 blue:199.0/255.0 alpha:1.0]
 #define BUTTON_BG_COLOR	 [UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]
 #define TITLE_COLOR	 [UIColor colorWithRed:126.0/255.0 green:96.0/255.0 blue:39.0/255.0 alpha:1.0]
 #define kOFFSET_FOR_KEYBOARD 160.0
 
-@interface AddShiftVC () <UITextViewDelegate, UIActionSheetDelegate, UIPickerActionSheetDelegate, ChooseTimeViewDelegate>
+@interface AddShiftVC () <UITextViewDelegate, UIActionSheetDelegate, UIPickerActionSheetDelegate, ChooseTimeViewDelegate, AddShiftViewDelegate>
 {
     __weak IBOutlet UIView *_viewNavi;
     __weak IBOutlet UILabel *_lbTile;
-    
-    __weak IBOutlet UIImageView *_imvAlertBG1;
-    __weak IBOutlet UIImageView *_imvAlertBG2;
-    __weak IBOutlet UIImageView *_imvAlertBG3;
-    __weak IBOutlet UIImageView *_imvAlertBG4;
-    __weak IBOutlet UIImageView *_imvAlertBG5;
-    __weak IBOutlet UIImageView *_imvAlertBG6;
-    
-    __weak IBOutlet UILabel *_lblAlert1;
-    __weak IBOutlet UILabel *_lblAlert2;
-    __weak IBOutlet UILabel *_lblAlert3;
-    __weak IBOutlet UILabel *_lblAlert4;
-    __weak IBOutlet UILabel *_lblAlert5;
-    __weak IBOutlet UILabel *_lblAlert6;
     
     __weak IBOutlet UIButton *_btnStartTime;
     __weak IBOutlet UIButton *_btnEndTime;
@@ -51,11 +39,14 @@
     UIPickerActionSheet *_pickerActionSheet;
     NSMutableDictionary *_startTime;
     NSMutableDictionary *_endTime;
+    
+    BOOL _isShowAddShiftView;
+    
+    AddShiftView    *_addShiftView;
 }
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)save:(id)sender;
-- (IBAction)chooseAlert:(id)sender;
 - (IBAction)chooseShiftCategory:(id)sender;
 - (IBAction)chooseTimeMode:(id)sender;
 - (IBAction)chooseTime:(id)sender;
@@ -99,17 +90,23 @@
     [super viewDidLoad];
     [self configView];
     
+    // set tag for time buttons
     _btnStartTime.tag = START_TIME;
     _btnEndTime.tag = END_TIME;
     
+    // init time picker action sheet
     _pickerActionSheet = [[UIPickerActionSheet alloc] initForView:self.view];
     _pickerActionSheet.delegate = self;
     
+    // Choose Time view
     ChooseTimeView *chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 362, 320 - 15*2, 44)];
     chooseTimeView.delegate = self;
     [chooseTimeView setStartDate:[NSDate date]];
     
     [self.view addSubview:chooseTimeView];
+    
+    // init Add Shift view
+    [self loadHomeAddShiftView];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -142,31 +139,22 @@
     }
 }
 
-//#pragma mark - UIPickerViewDataSource
-//
-//- (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-//    return 2;
-//}
-//
-//- (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-//    
-//    if (component == 1)
-//        return 24;
-//    else if (component == 2)
-//        return 60;
-//    
-//    return 0;
-//}
-//
-//- (NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-//    return @"test";
-//}
+#pragma mark - AddShiftViewDelegate
+- (void) addShiftView:(AddShiftView*)addShiftView didSelectWithIndex:(int)index
+{
+    NSLog(@"Add Shift select item with index: %d", index);
+}
 
-//#pragma mark - ChooseTimeViewDelegate
-//
-//- (void) didChooseTimeWithIndex:(NSInteger)index arrayChooseTime:(NSMutableArray *)arrayChooseTime {
-//    
-//}
+- (void) addShiftViewDidSelectShowListShiftPattern:(AddShiftView*)addShiftView
+{
+    ListShiftPatternVC *vc = [[ListShiftPatternVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void) addShiftViewDidSelectCloseView:(AddShiftView*)addShiftView
+{
+    [self hideAddShift];
+}
 
 #pragma mark - Actions
 
@@ -182,22 +170,9 @@
     }];
 }
 
-- (IBAction)chooseAlert:(id)sender {
-    
-    switch ([sender tag]) {
-        case 1:
-            _imvAlertBG1.backgroundColor = ALERT_BG_COLOR;
-            _lblAlert1.textColor = [UIColor whiteColor];
-            break;
-            
-        default:
-            break;
-    }
-}
-
 - (IBAction)chooseShiftCategory:(id)sender {
     
-    
+    [self showAddShift];
     
 }
 
@@ -288,6 +263,38 @@
     
 }
 
+- (void) showAddShift
+{
+    if (_isShowAddShiftView) {
+        return;
+    }
+    
+    CGRect rect = _addShiftView.frame;
+    rect.origin.y -= _addShiftView.frame.size.height;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        _addShiftView.frame = rect;
+    } completion:^(BOOL finished) {
+        _isShowAddShiftView = YES;
+    }];
+}
+
+- (void) hideAddShift
+{
+    if (!_isShowAddShiftView) {
+        return;
+    }
+    
+    CGRect rect     = _addShiftView.frame;
+    rect.origin.y   += _addShiftView.frame.size.height;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        _addShiftView.frame = rect;
+    } completion:^(BOOL finished) {
+        _isShowAddShiftView = NO;
+    }];
+}
+
 #pragma mark - Keyboard Notifications
 
 - (void)keyboardWillShow:(NSNotification *)notification {
@@ -347,6 +354,25 @@
     self.view.frame = rect;
     
     [UIView commitAnimations];
+}
+
+- (void)loadHomeAddShiftView
+{
+    if (_addShiftView) {
+        [_addShiftView removeFromSuperview];
+        _addShiftView = nil;
+    }
+    
+    float detalIOS = [Common isIOS7] ? 0 : 20;
+    float height   = [Common checkScreenIPhone5] ? 568 : 480;
+    
+    _addShiftView                    = [[NSBundle mainBundle] loadNibNamed:[[FXThemeManager shared] getThemeValueWithKey:_fxThemeXibHomeAddShift]
+                                                                     owner:self
+                                                                   options:nil][0];
+    _addShiftView.delegate           = self;
+    _addShiftView.frame = CGRectMake(0, height - detalIOS, 320, 200);
+    
+    [self.view addSubview:_addShiftView];
 }
 
 #pragma mark - Notification
