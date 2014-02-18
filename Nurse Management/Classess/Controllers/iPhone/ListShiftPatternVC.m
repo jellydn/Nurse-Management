@@ -215,6 +215,50 @@
     {
         cell.lbShift.text = [NSString stringWithFormat:@"%@～%@",cdShiftCategory.timeStart, cdShiftCategory.timeEnd];
     }
+    
+    // set image
+    if ([cdShiftCategory.color isEqualToString:@"color0"]) {
+        cell.iconShift.image = [UIImage imageNamed:@"icon_r1_c1.png"];
+    }
+    else
+    if ([cdShiftCategory.color isEqualToString:@"color1"])
+    {
+        cell.iconShift.image = [UIImage imageNamed:@"icon_r1_c3.png"];
+    }
+    else
+    if ([cdShiftCategory.color isEqualToString:@"color2"]) {
+        cell.iconShift.image = [UIImage imageNamed:@"icon_r1_c5.png"];
+    }
+    else
+    if ([cdShiftCategory.color isEqualToString:@"color3"]) {
+        cell.iconShift.image = [UIImage imageNamed:@"icon_r1_c7.png"];
+    }
+    else
+    if ([cdShiftCategory.color isEqualToString:@"color4"]) {
+        cell.iconShift.image = [UIImage imageNamed:@"icon_r1_c9.png"];
+    }
+    else
+    if ([cdShiftCategory.color isEqualToString:@"color5"]) {
+       cell.iconShift.image = [UIImage imageNamed:@"icon_r3_c1.png"];
+    }
+    else
+    if ([cdShiftCategory.color isEqualToString:@"color6"])
+    {
+        cell.iconShift.image = [UIImage imageNamed:@"icon_r3_c3.png"];
+    }
+    else
+    if ([cdShiftCategory.color isEqualToString:@"color7"]) {
+        cell.iconShift.image = [UIImage imageNamed:@"icon_r3_c5.png"];
+    }
+    else
+    if ([cdShiftCategory.color isEqualToString:@"color8"]) {
+        cell.iconShift.image = [UIImage imageNamed:@"icon_r3_c7.png"];
+    }
+    else
+    if ([cdShiftCategory.color isEqualToString:@"color9"]) {
+        cell.iconShift.image = [UIImage imageNamed:@"icon_r3_c9.png"];
+    }
+        
 //    UISwitch* switcher = (UISwitch*)[cell.contentView viewWithTag:100];
 //    [switcher setOn:!switcher.on animated:YES];
 //
@@ -222,6 +266,7 @@
 //    cell.swichShift.onTintColor = [UIColor colorWithRed:0.0/255.0 green:131.0/255.0 blue:234.0/255.0 alpha:1.0];
     return cell;
 }
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
