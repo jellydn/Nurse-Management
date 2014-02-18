@@ -194,7 +194,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="moveToNextDay:" destination="-1" eventType="touchUpInside" id="vT6-xe-sQS"/>
+                        <action selector="saveAndMoveToNextDay:" destination="-1" eventType="touchUpInside" id="wOG-Tu-qQj"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_r1_c7.png" id="EiO-0M-n1F">

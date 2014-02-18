@@ -16,4 +16,7 @@
 #define HOUR_KEY    @"hour"
 #define MINUTE_KEY  @"minute"
 
+// entity names
+#define ENTITY_SHIFT    @"CDShift"
+
 #endif

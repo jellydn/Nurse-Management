@@ -12,20 +12,23 @@
 #import "FXThemeManager.h"
 #import "FXCalendarData.h"
 #import "UIPickerActionSheet.h"
-#import "Define.h"
 #import "ListMembersVC.h"
 #import "FXNavigationController.h"
 #import "ChooseTimeView.h"
 #import "AddShiftView.h"
 #import "ListShiftPatternVC.h"
 #import "NMSelectionStringView.h"
+#import "AppDelegate.h"
+#import "CDMember.h"
+#import "CDShift.h"
+#import "CDShiftMember.h"
 
 #define ALERT_BG_COLOR	 [UIColor colorWithRed:100.0/255.0 green:137.0/255.0 blue:199.0/255.0 alpha:1.0]
 #define BUTTON_BG_COLOR	 [UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]
 #define TITLE_COLOR	 [UIColor colorWithRed:126.0/255.0 green:96.0/255.0 blue:39.0/255.0 alpha:1.0]
 #define kOFFSET_FOR_KEYBOARD 160.0
 
-@interface AddShiftVC () <UITextViewDelegate, UIActionSheetDelegate, UIPickerActionSheetDelegate, ChooseTimeViewDelegate, AddShiftViewDelegate, NMSelectionStringViewDelegate>
+@interface AddShiftVC () <UITextViewDelegate, UIActionSheetDelegate, UIPickerActionSheetDelegate, ChooseTimeViewDelegate, AddShiftViewDelegate, NMSelectionStringViewDelegate, NSFetchedResultsControllerDelegate>
 {
     __weak IBOutlet UIView *_viewNavi;
     __weak IBOutlet UILabel *_lbTile;
@@ -54,7 +57,7 @@
 - (IBAction)chooseTime:(id)sender;
 - (IBAction)chooseMembers:(id)sender;
 - (IBAction)tapHideKeyboard:(UITapGestureRecognizer *)sender;
-- (IBAction)moveToNextDay:(id)sender;
+- (IBAction)saveAndMoveToNextDay:(id)sender;
 
 - (void)keyboardWillShow:(NSNotification *)notification;
 - (void)keyboardWillHide:(NSNotification *)notification;
@@ -84,7 +87,7 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    
+
 }
 
 - (void)viewDidLoad
@@ -106,15 +109,19 @@
     [chooseTimeView setStartDate:[NSDate date]];
     [self.view addSubview:chooseTimeView];
     
-    // Choose Members view
-    _nMSelectionStringView = [[NMSelectionStringView alloc] initWithFrame:CGRectMake(15, 215, 320 - 15*2, 118)];
-    NSArray *arr = @[@"A看護師長",@"B主任",@"C主任",@"D主任",@"E先輩",@"F先輩",@"G先輩",@"Hさん",@"Iさん",@"Jさん",@"Kさん",@"Lさん"];
-    _nMSelectionStringView.delegate = self;
-    [_nMSelectionStringView setArrayString:arr];
-    [self.view addSubview:_nMSelectionStringView];
-    
     // init Add Shift view
     [self loadHomeAddShiftView];
+    
+    // load core data
+    [self fetchedResultsControllerMember];
+    [self loadChooseMemberView];
+    
+    if (_isNewShift) {
+        
+    } else {
+        
+    }
+    
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -273,7 +280,10 @@
     [_txvMemo resignFirstResponder];
 }
 
-- (IBAction)moveToNextDay:(id)sender {
+- (IBAction)saveAndMoveToNextDay:(id)sender {
+    
+    CDShift *shift = [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
+    
     
 }
 
@@ -387,6 +397,116 @@
     _addShiftView.frame = CGRectMake(0, height - detalIOS, 320, 200);
     
     [self.view addSubview:_addShiftView];
+}
+
+- (void) loadChooseMemberView {
+    
+    // Choose Members view
+    // FIXME: 20 objects -> 3 pages
+    if (_nMSelectionStringView) {
+        [_nMSelectionStringView removeFromSuperview];
+        _nMSelectionStringView = nil;
+    }
+    
+    _nMSelectionStringView = [[NMSelectionStringView alloc] initWithFrame:CGRectMake(15, 215, 320 - 15*2, 118)];
+    _nMSelectionStringView.delegate = self;
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    for (CDMember *member in _fetchedResultsControllerMember.fetchedObjects) {
+        [arr addObject:member.name];
+    }
+    [_nMSelectionStringView setArrayString:arr];
+    [self.view addSubview:_nMSelectionStringView];
+    
+}
+
+#pragma mark - Load core data
+
+- (NSFetchedResultsController *)fetchedResultsControllerMember {
+    
+    if (_fetchedResultsControllerMember != nil) {
+        return _fetchedResultsControllerMember;
+    }
+    
+    NSString *entityName = @"CDMember";
+    AppDelegate *_appDelegate = [AppDelegate shared];
+    
+    NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
+    [NSFetchedResultsController deleteCacheWithName:cacheName];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:_appDelegate.managedObjectContext];
+    
+    
+    NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+    NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = entity;
+    fetchRequest.fetchBatchSize = 20;
+    fetchRequest.sortDescriptors = sortList;
+    fetchRequest.predicate = predicate;
+    _fetchedResultsControllerMember = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                          managedObjectContext:_appDelegate.managedObjectContext
+                                                                            sectionNameKeyPath:nil
+                                                                                     cacheName:cacheName];
+    _fetchedResultsControllerMember.delegate = self;
+    
+    NSError *error = nil;
+    [_fetchedResultsControllerMember performFetch:&error];
+    if (error) {
+        NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+    }
+    
+    if ([_fetchedResultsControllerMember.fetchedObjects count] == 0) {
+        NSLog(@"add data for member item");
+        
+        //read file
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"predefault" ofType:@"plist"];
+        
+        // Load the file content and read the data into arrays
+        if (path)
+        {
+            NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+            NSArray *totalMember = [dict objectForKey:@"Member"];
+            
+            //Creater coredata
+            for (int i = 0 ; i < [totalMember count]; i++) {
+                CDMember *cdMember = (CDMember *)[NSEntityDescription insertNewObjectForEntityForName:@"CDMember" inManagedObjectContext:_appDelegate.managedObjectContext];
+                
+                cdMember.id = i + 1;
+                cdMember.isDisplay = TRUE;
+                cdMember.name = [totalMember objectAtIndex:i];
+                
+                [_appDelegate saveContext];
+            }
+            
+        } else {
+            NSLog(@"path error");
+        }
+        
+    } else {
+        NSLog(@"total item : %lu",(unsigned long)[_fetchedResultsControllerMember.fetchedObjects count]);
+    }
+
+//    _isLoadCoreData = NO;
+    
+    return _fetchedResultsControllerMember;
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self loadChooseMemberView];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
 }
 
 #pragma mark - Notification
