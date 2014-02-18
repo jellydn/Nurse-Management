@@ -124,7 +124,7 @@
         }
         
     } else {
-        NSLog(@"total item : %d",[_fetchedResultsControllerMember.fetchedObjects count]);
+        NSLog(@"total item : %lu",(unsigned long)[_fetchedResultsControllerMember.fetchedObjects count]);
     }
     
     [_tbvMemberList reloadData];
@@ -142,9 +142,6 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [_tbvMemberList reloadData];
-    if (!_isLoadCoreData) {
-//        [self creatAlert];
-    }
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
@@ -198,7 +195,7 @@
     
     CDMember *member = [_fetchedResultsControllerMember.fetchedObjects objectAtIndex:indexPath.row];
         AddMemberVC *vc   = [[AddMemberVC alloc] init];
-        vc.isAddMember = NO;
+        vc.insertId = member.id;
         [vc loadSelectedMember:member];
         vc.delegate = self;
         FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
@@ -210,24 +207,27 @@
 
 #pragma mark - AddMemberDelegate
 
-- (void) saveMemberName:(NSString *)name andIsAddMember:(BOOL)isAddMember {
-    if (isAddMember) {
-        NSLog(@"isAddMember :%d",isAddMember);
+- (void) saveMemberName:(NSString *)name andInsertId:(int32_t)insertId{
+    CDMember *member;
+    
+    if (insertId) {
+        member= [_fetchedResultsControllerMember.fetchedObjects objectAtIndex: insertId - 1];
+    }
+    else
+    {
         CDMember *lastMember = [_fetchedResultsControllerMember.fetchedObjects objectAtIndex:(_fetchedResultsControllerMember.fetchedObjects.count - 1)];
 
-        CDMember *member = [NSEntityDescription
-                                          insertNewObjectForEntityForName:@"CDMember"
-                                          inManagedObjectContext: [AppDelegate shared].managedObjectContext];
-
+        member = [NSEntityDescription
+                  insertNewObjectForEntityForName:@"CDMember"
+                  inManagedObjectContext: [AppDelegate shared].managedObjectContext];
         member.id = lastMember.id + 1;
-        member.name = name;
         member.isDisplay = YES;
-        
-        [[AppDelegate shared] saveContext];
-
     }
     
-//    [_tbvMemberList reloadData];
+    member.name = name;
+    
+    [[AppDelegate shared] saveContext];
+    
 }
 
 #pragma mark - Action
@@ -238,7 +238,7 @@
 
 - (IBAction)addMember:(id)sender {
     AddMemberVC *vc   = [[AddMemberVC alloc] init];
-    vc.isAddMember = YES;
+    vc.insertId = 0;
     vc.delegate = self;
     FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
     [self.navigationController presentViewController:navi animated:YES completion:^{
