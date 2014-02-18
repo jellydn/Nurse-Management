@@ -54,8 +54,8 @@
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="isAllDay" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timeEnd" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="timeStart" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="timeEnd" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeStart" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="pk_shiftcategory" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDShift" inverseName="fk_shift_category" inverseEntity="CDShift" syncable="YES"/>
     </entity>
     <entity name="CDShiftMember" representedClassName="CDShiftMember" syncable="YES">
@@ -66,13 +66,13 @@
         <relationship name="fk_shift" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDShift" inverseName="pk_shift" inverseEntity="CDShift" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CDMember" positionX="-567" positionY="-69" width="128" height="103"/>
-        <element name="CDSchedule" positionX="-101" positionY="138" width="128" height="163"/>
-        <element name="CDScheduleAlert" positionX="151" positionY="147" width="128" height="103"/>
-        <element name="CDScheduleCategory" positionX="-389" positionY="144" width="128" height="133"/>
-        <element name="CDShift" positionX="-126" positionY="-297" width="128" height="208"/>
-        <element name="CDShiftAlert" positionX="178" positionY="-78" width="128" height="103"/>
-        <element name="CDShiftCategory" positionX="-441" positionY="-270" width="128" height="148"/>
-        <element name="CDShiftMember" positionX="-405" positionY="-75" width="128" height="118"/>
+        <element name="CDMember" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDSchedule" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDScheduleAlert" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDScheduleCategory" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDShift" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDShiftAlert" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDShiftCategory" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CDShiftMember" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
