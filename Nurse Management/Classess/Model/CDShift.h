@@ -2,7 +2,7 @@
 //  CDShift.h
 //  Nurse Management
 //
-//  Created by Huynh Duc Dung on 2/17/14.
+//  Created by Huynh Duc Dung on 2/18/14.
 //  Copyright (c) 2014 Le Phuong Tien. All rights reserved.
 //
 
@@ -22,11 +22,16 @@
 @property (nonatomic) NSTimeInterval timeEnd;
 @property (nonatomic) NSTimeInterval timeStart;
 @property (nonatomic, retain) CDShiftCategory *fk_shift_category;
-@property (nonatomic, retain) CDShiftMember *pk_shift;
+@property (nonatomic, retain) NSSet *pk_shift;
 @property (nonatomic, retain) NSSet *pk_shiftalert;
 @end
 
 @interface CDShift (CoreDataGeneratedAccessors)
+
+- (void)addPk_shiftObject:(CDShiftMember *)value;
+- (void)removePk_shiftObject:(CDShiftMember *)value;
+- (void)addPk_shift:(NSSet *)values;
+- (void)removePk_shift:(NSSet *)values;
 
 - (void)addPk_shiftalertObject:(CDShiftAlert *)value;
 - (void)removePk_shiftalertObject:(CDShiftAlert *)value;
