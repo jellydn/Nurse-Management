@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ShiftCategory</key>
+	<array>
+		<string>AA</string>
+		<string>BB</string>
+		<string>CC</string>
+		<string>DD</string>
+		<string>EE</string>
+		<string>FF</string>
+		<string>GG</string>
+		<string>II</string>
+		<string>KK</string>
+		<string>LL</string>
+		<string>MM</string>
+	</array>
+</dict>
+</plist>

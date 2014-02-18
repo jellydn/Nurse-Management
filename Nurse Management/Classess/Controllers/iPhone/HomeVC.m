@@ -36,6 +36,8 @@
 #import "AddShiftVC.h"
 
 #import "CDMember.h"
+#import "CDShiftCategory.h"
+#import "ShiftCategoryItem.h"
 
 @interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate, FXCalendarViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 {
@@ -84,6 +86,7 @@
     
     // load core data
     [self fetchedResultsControllerMember];
+    [self fetchedResultsControllerShiftCategory];
     
 }
 
@@ -171,6 +174,93 @@
     return _fetchedResultsControllerMember;
     
 }
+
+- (NSFetchedResultsController*) fetchedResultsControllerShiftCategory
+{
+    if (!_fetchedResultsControllerShiftCategory) {
+        NSString *entityName = @"CDShiftCategory";
+        AppDelegate *_appDelegate = [AppDelegate shared];
+        
+        NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
+        [NSFetchedResultsController deleteCacheWithName:cacheName];
+        
+        NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:_appDelegate.managedObjectContext];
+        
+        
+        NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+        NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        fetchRequest.entity = entity;
+        fetchRequest.fetchBatchSize = 20;
+        fetchRequest.sortDescriptors = sortList;
+        fetchRequest.predicate = predicate;
+        _fetchedResultsControllerShiftCategory = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                              managedObjectContext:_appDelegate.managedObjectContext
+                                                                                sectionNameKeyPath:nil
+                                                                                         cacheName:cacheName];
+        _fetchedResultsControllerShiftCategory.delegate = self;
+        
+        NSError *error = nil;
+        [_fetchedResultsControllerShiftCategory performFetch:&error];
+        if (error) {
+            NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+        }
+        
+        if ([_fetchedResultsControllerShiftCategory.fetchedObjects count] == 0) {
+            NSLog(@"add data for Shift Category item");
+            
+            //read file
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"tienlp_predefault" ofType:@"plist"];
+            
+            // Load the file content and read the data into arrays
+            if (path)
+            {
+                NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+                NSArray *totalShiftCategory = [dict objectForKey:@"ShiftCategory"];
+                
+                //Creater coredata
+                for (int i = 0 ; i < [totalShiftCategory count]; i++) {
+                    CDShiftCategory *cdShiftCategory = (CDShiftCategory *)[NSEntityDescription insertNewObjectForEntityForName:@"CDShiftCategory"
+                                                                                                        inManagedObjectContext:_appDelegate.managedObjectContext];
+                    
+                    cdShiftCategory.id      = i + 1;
+                    cdShiftCategory.name    = [totalShiftCategory objectAtIndex:i];
+                    cdShiftCategory.color   = [NSString stringWithFormat:@"%d",i%10];
+                }
+                
+                [_appDelegate saveContext];
+                
+            } else {
+                NSLog(@"path error");
+            }
+            
+        } else {
+            NSLog(@"total item : %d",[_fetchedResultsControllerShiftCategory.fetchedObjects count]);
+        }
+    }
+    
+    return _fetchedResultsControllerShiftCategory;
+}
+
+#pragma mark - Fetch CoreData
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+}
+
 
 
 #pragma mark - Notification
@@ -352,11 +442,32 @@
 }
 
 #pragma mark - Add Shift
+- (NSMutableArray*) converShiftObject
+{
+    NSMutableArray *shifts = [[NSMutableArray alloc] init];
+    
+    for (CDShiftCategory *cdShift in self.fetchedResultsControllerShiftCategory.fetchedObjects) {
+        
+        ShiftCategoryItem *item = [[ShiftCategoryItem alloc] init];
+        
+        item.shiftCategoryID = cdShift.id;
+        item.name            = cdShift.name;
+        item.color           = cdShift.color;
+        
+        [shifts addObject:item];
+        
+    }
+    
+    return shifts;
+}
+
 - (void) showAddShift
 {
     if (_isShowAddShiftView) {
         return;
     }
+    
+    [_addShiftView loadInfoWithShiftCategories:[self converShiftObject]];
     
     CGRect rect = _addShiftView.frame;
     rect.origin.y -= _addShiftView.frame.size.height;
@@ -365,6 +476,9 @@
         _addShiftView.frame = rect;
     } completion:^(BOOL finished) {
         _isShowAddShiftView = YES;
+        
+        
+        
     }];
 }
 

@@ -151,6 +151,8 @@
 		2A75E64318ADA98800E74E4F /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A75E64218ADA98800E74E4F /* Member.m */; };
 		2A75E64618ADA9AB00E74E4F /* ic_cell_shift.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E64418ADA9AB00E74E4F /* ic_cell_shift.png */; };
 		2A75E64718ADA9AB00E74E4F /* ic_cell_shift@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E64518ADA9AB00E74E4F /* ic_cell_shift@2x.png */; };
+		2A84030F18B30BB500E8958A /* tienlp_predefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A84030E18B30BB500E8958A /* tienlp_predefault.plist */; };
+		2A84031518B33EF200E8958A /* ShiftCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A84031418B33EF200E8958A /* ShiftCategoryItem.m */; };
 		2AF0757E18ACABFD0008D875 /* FXDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0757D18ACABFD0008D875 /* FXDayView.m */; };
 		2AF0758118ACAC250008D875 /* FXDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0758018ACAC250008D875 /* FXDay.m */; };
 		2AF0758318ACB60A0008D875 /* FXDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF0758218ACB60A0008D875 /* FXDayView.xib */; };
@@ -396,6 +398,9 @@
 		2A75E64218ADA98800E74E4F /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Member.m; sourceTree = "<group>"; };
 		2A75E64418ADA9AB00E74E4F /* ic_cell_shift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_cell_shift.png; sourceTree = "<group>"; };
 		2A75E64518ADA9AB00E74E4F /* ic_cell_shift@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_cell_shift@2x.png"; sourceTree = "<group>"; };
+		2A84030E18B30BB500E8958A /* tienlp_predefault.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tienlp_predefault.plist; sourceTree = "<group>"; };
+		2A84031318B33EF200E8958A /* ShiftCategoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftCategoryItem.h; sourceTree = "<group>"; };
+		2A84031418B33EF200E8958A /* ShiftCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftCategoryItem.m; sourceTree = "<group>"; };
 		2AF0757C18ACABFD0008D875 /* FXDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDayView.h; sourceTree = "<group>"; };
 		2AF0757D18ACABFD0008D875 /* FXDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXDayView.m; sourceTree = "<group>"; };
 		2AF0757F18ACAC250008D875 /* FXDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDay.h; sourceTree = "<group>"; };
@@ -670,6 +675,8 @@
 		2A394C0718A9FF7600F30F2D /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				2A84031318B33EF200E8958A /* ShiftCategoryItem.h */,
+				2A84031418B33EF200E8958A /* ShiftCategoryItem.m */,
 				2A75E64118ADA98800E74E4F /* Member.h */,
 				2A75E64218ADA98800E74E4F /* Member.m */,
 			);
@@ -1129,6 +1136,7 @@
 			isa = PBXGroup;
 			children = (
 				B6D7A3B418B1B21500E98936 /* predefault.plist */,
+				2A84030E18B30BB500E8958A /* tienlp_predefault.plist */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -1281,6 +1289,7 @@
 				2A3C24F318AB7FFA00C20A04 /* img_add_schedule_home_title.png in Resources */,
 				2A3F496218AE096A00D3137D /* img_bg_home_cell_schedule_1@2x.png in Resources */,
 				2A75E63618ADA96600E74E4F /* AddMemberVC.xib in Resources */,
+				2A84030F18B30BB500E8958A /* tienlp_predefault.plist in Resources */,
 				B6B10E0718AF0C9E004E3229 /* ic_edit_shift_color_7@2x.png in Resources */,
 				2AF0758318ACB60A0008D875 /* FXDayView.xib in Resources */,
 				2A516C9F18AC5E1800F82B5A /* AddScheduleCategoryNameVC.xib in Resources */,
@@ -1381,6 +1390,7 @@
 				2A394C2E18A9FFBC00F30F2D /* User.m in Sources */,
 				B6D7A3BE18B1B83F00E98936 /* CDScheduleAlert.m in Sources */,
 				2A3C24A818AB1BFE00C20A04 /* MoreVC.m in Sources */,
+				2A84031518B33EF200E8958A /* ShiftCategoryItem.m in Sources */,
 				C000F2E618AF68AD00280464 /* UIPickerActionSheet.m in Sources */,
 				2A3C24DB18AB6CC500C20A04 /* ListShiftPatternVC.m in Sources */,
 				B6D7A3C418B1B83F00E98936 /* CDShiftCategory.m in Sources */,

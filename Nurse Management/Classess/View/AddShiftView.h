@@ -10,13 +10,18 @@
 
 @protocol AddShiftViewDelegate;
 
-@interface AddShiftView : UIView
+@interface AddShiftView : UIView<UIScrollViewDelegate>
 
 @property(nonatomic, weak) id<AddShiftViewDelegate> delegate;
+
+@property(nonatomic, weak) IBOutlet UIScrollView *scrollView;
+@property(nonatomic, weak) IBOutlet UIPageControl *pageControl;
 
 - (IBAction)selectItem:(id)sender;
 - (IBAction)showListShiftPattern:(id)sender;
 - (IBAction)closeAddShiftView:(id)sender;
+
+- (void) loadInfoWithShiftCategories:(NSMutableArray*)shifts;
 
 @end
 
