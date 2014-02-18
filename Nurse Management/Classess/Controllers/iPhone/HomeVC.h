@@ -12,6 +12,7 @@
 @interface HomeVC : FXViewController<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerMember;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerShiftCategory;
 
 
 - (IBAction)addShift:(id)sender;

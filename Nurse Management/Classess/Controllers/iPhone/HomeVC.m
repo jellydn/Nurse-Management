@@ -36,7 +36,7 @@
 #import "AddShiftVC.h"
 
 #import "CDMember.h"
-
+#import "CDShiftCategory.h"
 @interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate, FXCalendarViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 {
     HomeNaviBarView *_naviView ;
@@ -84,11 +84,14 @@
     
     // load core data
     [self fetchedResultsControllerMember];
-    
+    [self fetchedResultsControllerShiftCategory];
+
 }
 
 - (void)viewDidUnload {
     self.fetchedResultsControllerMember = nil;
+    self.fetchedResultsControllerShiftCategory = nil;
+
 }
 
 
@@ -99,6 +102,94 @@
 }
 
 #pragma mark - load Coredata
+
+- (NSFetchedResultsController *)fetchedResultsControllerShiftCategory {
+    
+    if (_fetchedResultsControllerShiftCategory != nil) {
+        return _fetchedResultsControllerShiftCategory;
+    }
+    
+    NSString *entityName = @"CDShiftCategory";
+    AppDelegate *_appDelegate = [AppDelegate shared];
+    
+    NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
+    [NSFetchedResultsController deleteCacheWithName:cacheName];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:_appDelegate.managedObjectContext];
+    
+    
+    NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+    NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = entity;
+    fetchRequest.fetchBatchSize = 20;
+    fetchRequest.sortDescriptors = sortList;
+    fetchRequest.predicate = predicate;
+    _fetchedResultsControllerShiftCategory = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                                 managedObjectContext:_appDelegate.managedObjectContext
+                                                                                   sectionNameKeyPath:nil
+                                                                                            cacheName:cacheName];
+    _fetchedResultsControllerShiftCategory.delegate = self;
+    
+    NSError *error = nil;
+    [_fetchedResultsControllerShiftCategory performFetch:&error];
+    if (error) {
+        NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+    }
+    
+    if ([_fetchedResultsControllerShiftCategory.fetchedObjects count] == 0) {
+        NSLog(@"add data for shift category");
+        
+        //read file
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"predefault" ofType:@"plist"];
+        
+        // Load the file content and read the data into arrays
+        if (path)
+        {
+            NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+            NSArray *totalCategory = [dict objectForKey:@"ShiftCategory"];
+            NSLog(@" totalCategory %@",totalCategory);
+            //Creater coredata
+            for (int i = 0 ; i < [totalCategory count]; i++) {
+                NSLog(@" key %d object %@",i, totalCategory[i]);
+                CDShiftCategory *cdShiftCategory = (CDShiftCategory *)[NSEntityDescription insertNewObjectForEntityForName:@"CDShiftCategory" inManagedObjectContext:_appDelegate.managedObjectContext];
+                NSArray *tmpArr = totalCategory[i];
+                
+                cdShiftCategory.id = i + 1;
+                cdShiftCategory.name = tmpArr[0];
+                cdShiftCategory.timeStart = tmpArr[1];
+                cdShiftCategory.timeEnd = tmpArr[2];
+                
+                if ([tmpArr[3] integerValue]) {
+                    cdShiftCategory.isAllDay = YES;
+                }
+                else
+                {
+                    cdShiftCategory.isAllDay = NO ;
+                }
+                
+                cdShiftCategory.color = tmpArr[4];
+                
+                NSLog(@" name %@ is All Day %d", cdShiftCategory.name, cdShiftCategory.isAllDay);
+                
+            }
+            
+            [_appDelegate saveContext];
+            
+        } else {
+            NSLog(@"path error");
+        }
+        
+    } else {
+        NSLog(@"total item : %lu",(unsigned long)[_fetchedResultsControllerShiftCategory.fetchedObjects count]);
+    }
+    
+    return _fetchedResultsControllerShiftCategory;
+    
+}
+
 
 - (NSFetchedResultsController *)fetchedResultsControllerMember {
     
