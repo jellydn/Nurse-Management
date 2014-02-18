@@ -31,6 +31,7 @@
     [_scrollView setContentSize:CGSizeMake(320 * 3, 301)];
     
     NSDate *date = [NSDate date];
+    _selectDate = date;
     
     _monthView1 = [[FXMonthView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
     [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:date] isSetFirstDay:NO];
@@ -137,6 +138,7 @@
 - (void) reloadToday
 {
     NSDate *date = [FXCalendarData getFirstDayOfMonthWithDate:[NSDate date]];
+    _selectDate = date;
     
     [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:date] isSetFirstDay:NO];
     [_monthView1 reloadHeighForWeekWithAnimate:NO];
@@ -162,12 +164,31 @@
     return _headerView.frame.size.height + _monthView2.numberWeekOfMonth * _monthView2.heightCell + 1;
 }
 
+- (void) setNextSelectDate
+{
+    _selectDate = [FXCalendarData nextDateFrom:_selectDate];
+    
+    [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:_selectDate] isSetFirstDay:NO];
+    [_monthView1 reloadHeighForWeekWithAnimate:NO];
+    
+    [_monthView2 loadDataForDate:_selectDate setSelectDay:_selectDate];
+    [_monthView2 reloadHeighForWeekWithAnimate:YES];
+    
+    [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:_selectDate] isSetFirstDay:NO];
+    [_monthView3 reloadHeighForWeekWithAnimate:NO];
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(fXCalendarView:didSelectNextDay:)]) {
+        [_delegate fXCalendarView:self didSelectNextDay:_selectDate];
+    }
+}
+
 #pragma mark - FXMonthViewDelegate
 - (void) fxMonthView:(FXMonthView*) fxMonthView didSelectDayWith:(FXDay*)day
 {
     if (!day.isOutOfDay &&
         _delegate &&
         [_delegate respondsToSelector:@selector(fXCalendarView:didSelectDay:)]) {
+        _selectDate = day.date;
         [_delegate fXCalendarView:self didSelectDay:day.date];
     }
 }

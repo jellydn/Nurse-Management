@@ -282,6 +282,7 @@
 - (void) addShiftView:(AddShiftView*)addShiftView didSelectWithIndex:(int)index
 {
     NSLog(@"Add Shift select item with index: %d", index);
+    [_calendarView setNextSelectDate];
 }
 
 - (void) addShiftViewDidSelectShowListShiftPattern:(AddShiftView*)addShiftView
@@ -336,6 +337,15 @@
     _selectDate = date;
     [_tableView setContentOffset:CGPointMake(0, 0) animated:YES];
     [_tableView reloadData];
+}
+
+- (void) fXCalendarView:(FXCalendarView*)fXCalendarView didSelectNextDay:(NSDate*)date
+{
+    [_naviView setTitleWithDay:[FXCalendarData getDayWithDate:date]
+                         month:[FXCalendarData getMonthWithDate:date]
+                          year:[FXCalendarData getYearWithDate:date]];
+    _selectDate = date;
+    [self resetLayoutTableWithAnimate:YES];
 }
 
 #pragma mark - Table view
