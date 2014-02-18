@@ -10,11 +10,16 @@
 
 @protocol AddScheduleViewDelegate;
 
-@interface AddScheduleView : UIView
+@interface AddScheduleView : UIView<UIScrollViewDelegate>
 
-@property (nonatomic, weak) IBOutlet UIView *viewMask;
-@property (nonatomic, weak) IBOutlet UIView *viewContainer;
-@property (nonatomic, weak) IBOutlet UIView *viewTime;
+@property (nonatomic) int scheduleCategoryID;
+
+@property (nonatomic, weak) IBOutlet UIView         *viewMask;
+@property (nonatomic, weak) IBOutlet UIView         *viewContainer;
+@property (nonatomic, weak) IBOutlet UIView         *viewTime;
+@property (nonatomic, weak) IBOutlet UIScrollView   *scrollScheduleView;
+@property (nonatomic, weak) IBOutlet UIPageControl  *pageControl;
+@property (nonatomic, strong)        UIView         *viewSelect;
 
 @property (nonatomic, weak) id<AddScheduleViewDelegate> delegate;
 
@@ -24,11 +29,14 @@
 - (void) show;
 - (void) hide;
 
+- (void) loadScheduleCategoryInfo:(NSMutableArray*)schedules;
+
 //Action
 - (IBAction)selectCategory:(id)sender;
 - (IBAction)choiceTime:(id)sender;
 - (IBAction)backChoiceCategory:(id)sender;
 - (IBAction)saveSchedule:(id)sender;
+- (IBAction)selectItem:(id)sender;
 
 @end
 

@@ -12,6 +12,7 @@
 
 - (void)setColor:(NSString *)color
 {
+    _color     = color;
     _textColor = [UIColor colorWithRed:91/255.0 green:80/255.0 blue:77/255.0 alpha:1.0];
     
     if ([color isEqualToString:@"0"]) {

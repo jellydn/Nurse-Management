@@ -7,6 +7,8 @@
 //
 
 #import "AddScheduleView.h"
+#import "ScheduleCategoryItem.h"
+#import "FXThemeManager.h"
 
 @interface AddScheduleView ()
 
@@ -32,7 +34,6 @@
 
 - (void) show
 {
-    NSLog(@"dfdsfdsf");
     self.hidden = NO;
     
     CGRect rect = _viewContainer.frame;
@@ -87,6 +88,80 @@
     }];
 }
 
+- (void) loadScheduleCategoryInfo:(NSMutableArray*)schedules
+{
+    NSLog(@"total %d", [schedules count]);
+    
+    for (UIView *view in _scrollScheduleView.subviews) {
+        if (view.tag > 99) {
+            [view removeFromSuperview];
+        }
+    }
+    
+    if ([schedules count] <= 0) {
+        return;
+    }
+    
+    _pageControl.currentPageIndicatorTintColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain];
+    
+    int page                    = [schedules count] / 10 + 1;
+    _pageControl.numberOfPages  = page;
+    _pageControl.currentPage    = 0;
+    
+    [_scrollScheduleView setContentSize:CGSizeMake(320 * page, 140)];
+    [_scrollScheduleView setContentOffset:CGPointMake(0, 0)];
+    
+    CGRect rect = CGRectMake(15, 27, 50, 44);
+    int temp = 0;
+    
+    if (!_viewSelect) {
+        _viewSelect = [[UIView alloc] initWithFrame:CGRectMake(13, 25, 54, 48)];
+        _viewSelect.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain];
+        _viewSelect.tag = 0;
+        [_scrollScheduleView addSubview:_viewSelect];
+    }
+    
+    _viewSelect.frame = CGRectMake(13, 25, 54, 48);
+    
+    for (ScheduleCategoryItem *item in schedules) {
+        
+        if (temp == 0) {
+            _scheduleCategoryID = item.scheduleCategoryID;
+        }
+        
+        UIButton *button            = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.titleLabel.font      = [UIFont systemFontOfSize:15.0];
+        button.tag                  = item.scheduleCategoryID + 100;
+        [button setBackgroundImage:[UIImage imageNamed:item.image] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(selectItem:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [_scrollScheduleView addSubview:button];
+        
+        UILabel *lb         = [[UILabel alloc] initWithFrame:CGRectMake((temp / 10) * 320 + (temp % 5) * 60 + 15,
+                                                                        (temp % 10) >= 5 ? 95 : 30,
+                                                                        50,
+                                                                        44)];
+        lb.text             = item.name;
+        lb.backgroundColor  = [UIColor clearColor];
+        lb.textColor        = item.textColor;
+        lb.font             = [UIFont systemFontOfSize:14.0];
+        lb.textAlignment    = NSTextAlignmentCenter;
+        lb.numberOfLines    = 2;
+        lb.tag              = item.scheduleCategoryID + 100;
+        [_scrollScheduleView addSubview:lb];
+        
+        
+        rect.origin.x = (temp / 10) * 320 + (temp % 5) * 60 + 15;
+        rect.origin.y = (temp % 10) >= 5 ? 89 : 27;
+        
+        button.frame = rect;
+        
+        temp++;
+        
+        
+    }
+}
+
 #pragma mark - Touch
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -98,7 +173,35 @@
     }
 }
 
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if(!decelerate) {
+        _pageControl.currentPage = scrollView.contentOffset.x / 320;
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    _pageControl.currentPage = scrollView.contentOffset.x / 320;
+}
+
 #pragma mark - Action
+
+- (IBAction)selectItem:(id)sender
+{
+    UIButton *button = (UIButton*)sender;
+    CGRect rect = button.frame;
+    
+    rect.origin.x       -= 2;
+    rect.origin.y       -= 2;
+    rect.size.width     += 4;
+    rect.size.height    += 4;
+    
+    _viewSelect.frame   = rect;
+    
+    _scheduleCategoryID = button.tag;
+}
 
 - (IBAction)selectCategory:(id)sender
 {

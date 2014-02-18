@@ -38,6 +38,8 @@
 #import "CDMember.h"
 #import "CDShiftCategory.h"
 #import "ShiftCategoryItem.h"
+#import "CDScheduleCategory.h"
+#import "ScheduleCategoryItem.h"
 
 @interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate, FXCalendarViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 {
@@ -87,6 +89,7 @@
     // load core data
     [self fetchedResultsControllerMember];
     [self fetchedResultsControllerShiftCategory];
+    [self fetchedResultsControllerScheduleCategory];
     
 }
 
@@ -237,11 +240,85 @@
             }
             
         } else {
-            NSLog(@"total item : %d",[_fetchedResultsControllerShiftCategory.fetchedObjects count]);
+            NSLog(@"total shift item : %d",[_fetchedResultsControllerShiftCategory.fetchedObjects count]);
         }
     }
     
     return _fetchedResultsControllerShiftCategory;
+}
+
+- (NSFetchedResultsController*) fetchedResultsControllerScheduleCategory
+{
+    
+    if (!_fetchedResultsControllerScheduleCategory) {
+        
+        NSString *entityName = @"CDScheduleCategory";
+        AppDelegate *_appDelegate = [AppDelegate shared];
+        
+        NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
+        [NSFetchedResultsController deleteCacheWithName:cacheName];
+        
+        NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:_appDelegate.managedObjectContext];
+        
+        
+        NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+        NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        fetchRequest.entity = entity;
+        fetchRequest.fetchBatchSize = 20;
+        fetchRequest.sortDescriptors = sortList;
+        fetchRequest.predicate = predicate;
+        _fetchedResultsControllerScheduleCategory = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                                     managedObjectContext:_appDelegate.managedObjectContext
+                                                                                       sectionNameKeyPath:nil
+                                                                                                cacheName:cacheName];
+        _fetchedResultsControllerScheduleCategory.delegate = self;
+        
+        NSError *error = nil;
+        [_fetchedResultsControllerScheduleCategory performFetch:&error];
+        if (error) {
+            NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+        }
+        
+        if ([_fetchedResultsControllerScheduleCategory.fetchedObjects count] == 0) {
+            NSLog(@"add data for schedule Category item");
+            
+            //read file
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"tienlp_predefault" ofType:@"plist"];
+            
+            // Load the file content and read the data into arrays
+            if (path)
+            {
+                NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+                NSArray *totalScheduleCategory = [dict objectForKey:@"ScheduleCategory"];
+                
+                //Creater coredata
+                for (int i = 0 ; i < [totalScheduleCategory count]; i++) {
+                    CDScheduleCategory *cdScheduleCategory = (CDScheduleCategory *)[NSEntityDescription insertNewObjectForEntityForName:@"CDScheduleCategory"
+                                                                                                        inManagedObjectContext:_appDelegate.managedObjectContext];
+                    
+                    cdScheduleCategory.id          = i + 1;
+                    cdScheduleCategory.name        = [totalScheduleCategory objectAtIndex:i];
+                    cdScheduleCategory.color       = [NSString stringWithFormat:@"%d",i%10];
+                    cdScheduleCategory.isDefault   = YES;
+                    cdScheduleCategory.isEnable    = YES;
+                }
+                
+                [_appDelegate saveContext];
+                
+            } else {
+                NSLog(@"path error");
+            }
+            
+        } else {
+            NSLog(@"total schedule item : %d",[_fetchedResultsControllerScheduleCategory.fetchedObjects count]);
+        }
+        
+    }
+    
+    return _fetchedResultsControllerScheduleCategory;
 }
 
 #pragma mark - Fetch CoreData
@@ -419,6 +496,7 @@
         }
         case 1:
         {
+            [_addScheduleView loadScheduleCategoryInfo:[self convertScheduleCategory]];
             [_addScheduleView show];
             break;
         }
@@ -442,7 +520,7 @@
 }
 
 #pragma mark - Add Shift
-- (NSMutableArray*) converShiftObject
+- (NSMutableArray*) convertShiftObject
 {
     NSMutableArray *shifts = [[NSMutableArray alloc] init];
     
@@ -467,7 +545,7 @@
         return;
     }
     
-    [_addShiftView loadInfoWithShiftCategories:[self converShiftObject]];
+    [_addShiftView loadInfoWithShiftCategories:[self convertShiftObject]];
     
     CGRect rect = _addShiftView.frame;
     rect.origin.y -= _addShiftView.frame.size.height;
@@ -536,6 +614,27 @@
 - (void) didHideView:(AddScheduleView*)addScheduleView
 {
     _isShowAddScheduleView = NO;
+}
+
+- (NSMutableArray*) convertScheduleCategory
+{
+    NSMutableArray *schedules = [[NSMutableArray alloc] init];
+    
+    for (CDScheduleCategory *cdSchedule in self.fetchedResultsControllerScheduleCategory.fetchedObjects) {
+        
+        if (cdSchedule.isEnable) {
+            ScheduleCategoryItem *item  = [[ScheduleCategoryItem alloc] init];
+            
+            item.scheduleCategoryID     = cdSchedule.id;
+            item.name                   = cdSchedule.name;
+            item.color                  = cdSchedule.color;
+            
+            [schedules addObject:item];
+        }
+        
+    }
+    
+    return schedules;
 }
 
 

@@ -16,5 +16,20 @@
 		<string>LL</string>
 		<string>MM</string>
 	</array>
+	<key>ScheduleCategory</key>
+	<array>
+		<string>美容院</string>
+		<string>マツエク</string>
+		<string>飲み会</string>
+		<string>ランチ</string>
+		<string>女子会</string>
+		<string>デート</string>
+		<string>買い物</string>
+		<string>病院</string>
+		<string>誕生日</string>
+		<string>旅行</string>
+		<string>AAA</string>
+		<string>BBB</string>
+	</array>
 </dict>
 </plist>
