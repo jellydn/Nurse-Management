@@ -22,12 +22,15 @@
     
     CGRect rect             = _viewContainer.frame;
     CGRect rect2            = _viewTime.frame;
+    CGRect rect3            = _viewTimePicker.frame;
     
     rect.origin.y           += rect.size.height;
     rect2.origin.y          += rect.size.height;
+    rect3.origin.y          += rect.size.height;
     
     _viewContainer.frame    = rect;
     _viewTime.frame         = rect2;
+    _viewTimePicker.frame   = rect3;
     
     self.hidden = YES;
 }
@@ -49,6 +52,7 @@
         _viewTime.frame = rect2;
         
     } completion:^(BOOL finished) {
+        _isShowPicker = NO;
         if (_delegate && [_delegate respondsToSelector:@selector(didShowView:)]) {
             [_delegate didShowView:self];
         }
@@ -72,15 +76,19 @@
         
     } completion:^(BOOL finished) {
         self.hidden = YES;
+        _isShowPicker = NO;
         
-        CGRect rect     = _viewContainer.frame;
-        CGRect rect2    = _viewTime.frame;
+        CGRect rect             = _viewContainer.frame;
+        CGRect rect2            = _viewTime.frame;
+        CGRect rect3            = _viewTimePicker.frame;
         
-        rect.origin.x = 0;
-        rect2.origin.x = 320;
+        rect.origin.x           = 0;
+        rect2.origin.x          = 320;
+        rect3.origin.y          = self.frame.size.height;
         
-        _viewContainer.frame = rect;
-        _viewTime.frame = rect2;
+        _viewContainer.frame    = rect;
+        _viewTime.frame         = rect2;
+        _viewTimePicker.frame   = rect3;
         
         if (_delegate && [_delegate respondsToSelector:@selector(didHideView:)]) {
             [_delegate didHideView:self];
@@ -212,9 +220,15 @@
 
 - (IBAction)choiceTime:(id)sender
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(didChoiceTime:)]) {
-        [_delegate didChoiceTime:self];
+    
+    if (!_chooseTimeView) {
+        [_chooseTimeView removeFromSuperview];
     }
+    
+    _chooseTimeView             = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 140, 320 - 15*2, 44)];
+    _chooseTimeView.delegate    = self;
+    [_chooseTimeView setStartDate:[NSDate date]];
+    [_viewTime addSubview:_chooseTimeView];
     
     CGRect rect1 = _viewContainer.frame;
     CGRect rect2 = _viewTime.frame;
@@ -228,7 +242,9 @@
         _viewTime.frame = rect2;
         
     } completion:^(BOOL finished) {
-        
+        if (_delegate && [_delegate respondsToSelector:@selector(didChoiceTime:)]) {
+            [_delegate didChoiceTime:self];
+        }
     }];
     
 }
@@ -260,7 +276,56 @@
     [self hide];
 }
 
+- (IBAction)selectTimeForSchedule:(id)sender
+{
+    CGRect rect                 = _viewTimePicker.frame;
+    rect.origin.y               -= rect.size.height;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        _viewTimePicker.frame   = rect;
+    } completion:^(BOOL finished) {
+        _isShowPicker = YES;
+    }];
+}
 
+- (IBAction)cancelPickerTime:(id)sender
+{
+    if (!_isShowPicker) {
+        return;
+    }
+    
+    CGRect rect                 = _viewTimePicker.frame;
+    rect.origin.y               += rect.size.height;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        _viewTimePicker.frame   = rect;
+    } completion:^(BOOL finished) {
+        _isShowPicker = NO;
+    }];
+}
+
+- (IBAction)donePickerTime:(id)sender
+{
+    if (!_isShowPicker) {
+        return;
+    }
+    
+    CGRect rect                 = _viewTimePicker.frame;
+    rect.origin.y               += rect.size.height;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        _viewTimePicker.frame   = rect;
+    } completion:^(BOOL finished) {
+        _isShowPicker = NO;
+    }];
+}
+
+#pragma mark - ChooseTimeViewDelegate
+
+- (void)didChooseTimeWithIndex:(NSInteger)index arrayChooseTime:(NSMutableArray *)arrayChooseTime
+{
+    
+}
 
 
 

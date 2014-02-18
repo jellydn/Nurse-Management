@@ -174,6 +174,8 @@
 		2A84033C18B3443400E8958A /* schedule_bg_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A84032818B3443400E8958A /* schedule_bg_2@2x.png */; };
 		2A84033D18B3443400E8958A /* schedule_bg_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A84032918B3443400E8958A /* schedule_bg_1@2x.png */; };
 		2A84033E18B3443400E8958A /* schedule_bg_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A84032A18B3443400E8958A /* schedule_bg_0@2x.png */; };
+		2AEBE36318B35D2E00A0AFA9 /* home_add_quick_schedule_time_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AEBE36118B35D2E00A0AFA9 /* home_add_quick_schedule_time_bg.png */; };
+		2AEBE36418B35D2E00A0AFA9 /* home_add_quick_schedule_time_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AEBE36218B35D2E00A0AFA9 /* home_add_quick_schedule_time_bg@2x.png */; };
 		2AF0757E18ACABFD0008D875 /* FXDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0757D18ACABFD0008D875 /* FXDayView.m */; };
 		2AF0758118ACAC250008D875 /* FXDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0758018ACAC250008D875 /* FXDay.m */; };
 		2AF0758318ACB60A0008D875 /* FXDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF0758218ACB60A0008D875 /* FXDayView.xib */; };
@@ -444,6 +446,8 @@
 		2A84032818B3443400E8958A /* schedule_bg_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_bg_2@2x.png"; sourceTree = "<group>"; };
 		2A84032918B3443400E8958A /* schedule_bg_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_bg_1@2x.png"; sourceTree = "<group>"; };
 		2A84032A18B3443400E8958A /* schedule_bg_0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_bg_0@2x.png"; sourceTree = "<group>"; };
+		2AEBE36118B35D2E00A0AFA9 /* home_add_quick_schedule_time_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_add_quick_schedule_time_bg.png; sourceTree = "<group>"; };
+		2AEBE36218B35D2E00A0AFA9 /* home_add_quick_schedule_time_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_add_quick_schedule_time_bg@2x.png"; sourceTree = "<group>"; };
 		2AF0757C18ACABFD0008D875 /* FXDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDayView.h; sourceTree = "<group>"; };
 		2AF0757D18ACABFD0008D875 /* FXDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXDayView.m; sourceTree = "<group>"; };
 		2AF0757F18ACAC250008D875 /* FXDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDay.h; sourceTree = "<group>"; };
@@ -996,6 +1000,8 @@
 		2A3C24D218AB5BF700C20A04 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2AEBE36118B35D2E00A0AFA9 /* home_add_quick_schedule_time_bg.png */,
+				2AEBE36218B35D2E00A0AFA9 /* home_add_quick_schedule_time_bg@2x.png */,
 				B6B10DE218AF0C9E004E3229 /* bg_edit_shift_time.png */,
 				B6B10DE318AF0C9E004E3229 /* bg_edit_shift_time@2x.png */,
 				B6B10DE418AF0C9E004E3229 /* ic_edit_shift_color_1.png */,
@@ -1304,6 +1310,7 @@
 				2A84033618B3443400E8958A /* schedule_bg_8@2x.png in Resources */,
 				C000F2FA18AF6C2000280464 /* ic_clock@2x.png in Resources */,
 				C000F2F718AF6C2000280464 /* ic_btn_member_list.png in Resources */,
+				2AEBE36318B35D2E00A0AFA9 /* home_add_quick_schedule_time_bg.png in Resources */,
 				2A6FDB7818AF1ACA00D33D21 /* icon_category_add_sc@2x.png in Resources */,
 				2A75E64618ADA9AB00E74E4F /* ic_cell_shift.png in Resources */,
 				2A394C2818A9FF7600F30F2D /* Default@2x.png in Resources */,
@@ -1379,6 +1386,7 @@
 				C000F2FC18AF6C2000280464 /* ic_injection_needle@2x.png in Resources */,
 				2A394C5118AA1EE300F30F2D /* HomeNaviBarView.xib in Resources */,
 				2A516C9918AC5C1A00F82B5A /* ScheduleCategoryVC.xib in Resources */,
+				2AEBE36418B35D2E00A0AFA9 /* home_add_quick_schedule_time_bg@2x.png in Resources */,
 				C000F2F518AF6C2000280464 /* bg_duration.png in Resources */,
 				2A6FDB7918AF1ACA00D33D21 /* icon_reminder_add_sc.png in Resources */,
 				2A3C24AD18AB1EF500C20A04 /* ic_bt_back.png in Resources */,
