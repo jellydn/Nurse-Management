@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UISwitch *swichShift;
 @property (weak, nonatomic) IBOutlet UIImageView *iconShift;
 @property (weak, nonatomic) IBOutlet UILabel *lbShift;
+@property (weak, nonatomic) IBOutlet UILabel *lbName;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "AddMemberVC.h"
-#import "Member.h"
+#import "CDMember.h"
 
 @interface AddMemberVC () <UIActionSheetDelegate, UITextFieldDelegate> {
     
@@ -17,7 +17,7 @@
     __weak IBOutlet UIButton *_btnDelete;
     __weak IBOutlet UIButton *_btnSave;
     
-    Member *_member;
+    CDMember *_member;
     
     
 }
@@ -29,7 +29,6 @@
 @end
 
 @implementation AddMemberVC
-@synthesize isAddMember;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,7 +56,7 @@
 - (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch (buttonIndex) {
         case 0:     // delete
-            [_delegate deleteMember:_member.memberID];
+//            [_delegate deleteMember:_member.id];
             [self.navigationController dismissViewControllerAnimated:YES completion:^{
                 
             }];
@@ -96,9 +95,9 @@
 }
 
 - (IBAction)save:(id)sender {
-    if (!isAddMember)
+    if (!_insertId)
         _member.name = _txfName.text;
-    [_delegate saveMemberName:_txfName.text andIsAddMember:isAddMember];
+    [_delegate saveMemberName:_txfName.text andInsertId:_insertId];
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         
     }];
@@ -115,19 +114,22 @@
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     
-    if (isAddMember) {
+    if (!_insertId) {
         
-        _lbTile.text = @"Add Member";
+        _lbTile.text = @"メンバー名の追加";
         _txfName.text = @"";
-        _txfName.placeholder = @"Member Name";
+        _txfName.placeholder = @"A看護師長";
         _btnDelete.hidden = YES;
         _btnSave.enabled = NO;
         
     } else {
         
-        _lbTile.text = @"Edit Member";
+        _lbTile.text = @"メンバー名編集";
         _txfName.text = _member.name;
-        _btnDelete.hidden = NO;
+//        if (_member.isOfficial)
+            _btnDelete.hidden = YES;
+//        else
+//            _btnDelete.hidden = NO;
         
     }
     
@@ -135,7 +137,7 @@
     
 }
 
-- (void) loadSelectedMember: (Member *) selectedMember {
+- (void) loadSelectedMember: (CDMember *) selectedMember {
     _member = selectedMember;
 }
 
