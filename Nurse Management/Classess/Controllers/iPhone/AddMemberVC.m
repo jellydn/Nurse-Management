@@ -29,7 +29,6 @@
 @end
 
 @implementation AddMemberVC
-@synthesize isAddMember;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -96,9 +95,9 @@
 }
 
 - (IBAction)save:(id)sender {
-    if (!isAddMember)
+    if (!_insertId)
         _member.name = _txfName.text;
-    [_delegate saveMemberName:_txfName.text andIsAddMember:isAddMember];
+    [_delegate saveMemberName:_txfName.text andInsertId:_insertId];
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         
     }];
@@ -115,7 +114,7 @@
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     
-    if (isAddMember) {
+    if (!_insertId) {
         
         _lbTile.text = @"メンバー名の追加";
         _txfName.text = @"";
