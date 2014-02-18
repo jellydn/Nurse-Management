@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "FXViewController.h"
 
-@interface ListShiftPatternVC : FXViewController
+@interface ListShiftPatternVC : FXViewController<NSFetchedResultsControllerDelegate>
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerShiftCategory;
+
 
 @end
