@@ -216,14 +216,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2A13401318B2214A00B4CFB1 /* MoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreCell.h; path = "Nurse Management/Classess/Controllers/iPhone/MoreCell.h"; sourceTree = "<group>"; };
-		2A13401418B2214A00B4CFB1 /* MoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreCell.m; path = "Nurse Management/Classess/Controllers/iPhone/MoreCell.m"; sourceTree = "<group>"; };
-		2A13401518B2214A00B4CFB1 /* MoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoreCell.xib; path = "Nurse Management/Classess/Controllers/iPhone/MoreCell.xib"; sourceTree = "<group>"; };
-		2A13401618B2214A00B4CFB1 /* MoreCellTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreCellTitle.h; path = "Nurse Management/Classess/Controllers/iPhone/MoreCellTitle.h"; sourceTree = "<group>"; };
-		2A13401718B2214A00B4CFB1 /* MoreCellTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreCellTitle.m; path = "Nurse Management/Classess/Controllers/iPhone/MoreCellTitle.m"; sourceTree = "<group>"; };
-		2A13401818B2214A00B4CFB1 /* MoreCellTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoreCellTitle.xib; path = "Nurse Management/Classess/Controllers/iPhone/MoreCellTitle.xib"; sourceTree = "<group>"; };
-		2A13401D18B221A000B4CFB1 /* MoreCellItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreCellItem.h; path = "Nurse Management/Classess/Libraries/MoreCellItem.h"; sourceTree = "<group>"; };
-		2A13401E18B221A000B4CFB1 /* MoreCellItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreCellItem.m; path = "Nurse Management/Classess/Libraries/MoreCellItem.m"; sourceTree = "<group>"; };
+		2A13401318B2214A00B4CFB1 /* MoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCell.h; sourceTree = "<group>"; };
+		2A13401418B2214A00B4CFB1 /* MoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCell.m; sourceTree = "<group>"; };
+		2A13401518B2214A00B4CFB1 /* MoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreCell.xib; sourceTree = "<group>"; };
+		2A13401618B2214A00B4CFB1 /* MoreCellTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCellTitle.h; sourceTree = "<group>"; };
+		2A13401718B2214A00B4CFB1 /* MoreCellTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCellTitle.m; sourceTree = "<group>"; };
+		2A13401818B2214A00B4CFB1 /* MoreCellTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreCellTitle.xib; sourceTree = "<group>"; };
+		2A13401D18B221A000B4CFB1 /* MoreCellItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreCellItem.h; path = ../MoreCellItem.h; sourceTree = "<group>"; };
+		2A13401E18B221A000B4CFB1 /* MoreCellItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreCellItem.m; path = ../MoreCellItem.m; sourceTree = "<group>"; };
 		2A394BC718A9FD5300F30F2D /* Nurse Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nurse Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A394BCA18A9FD5300F30F2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2A394BCC18A9FD5300F30F2D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -493,14 +493,6 @@
 		2A394BBE18A9FD5300F30F2D = {
 			isa = PBXGroup;
 			children = (
-				2A13401D18B221A000B4CFB1 /* MoreCellItem.h */,
-				2A13401E18B221A000B4CFB1 /* MoreCellItem.m */,
-				2A13401318B2214A00B4CFB1 /* MoreCell.h */,
-				2A13401418B2214A00B4CFB1 /* MoreCell.m */,
-				2A13401518B2214A00B4CFB1 /* MoreCell.xib */,
-				2A13401618B2214A00B4CFB1 /* MoreCellTitle.h */,
-				2A13401718B2214A00B4CFB1 /* MoreCellTitle.m */,
-				2A13401818B2214A00B4CFB1 /* MoreCellTitle.xib */,
 				2A394BD218A9FD5300F30F2D /* Nurse Management */,
 				2A394BEF18A9FD5300F30F2D /* Nurse ManagementTests */,
 				2A394BC918A9FD5300F30F2D /* Frameworks */,
@@ -670,6 +662,8 @@
 		2A394C0718A9FF7600F30F2D /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				2A13401D18B221A000B4CFB1 /* MoreCellItem.h */,
+				2A13401E18B221A000B4CFB1 /* MoreCellItem.m */,
 				2A75E64118ADA98800E74E4F /* Member.h */,
 				2A75E64218ADA98800E74E4F /* Member.m */,
 			);
@@ -869,6 +863,7 @@
 		2A3C249F18AB1BE000C20A04 /* MoreVC */ = {
 			isa = PBXGroup;
 			children = (
+				C9DED5C318B300B1003F458C /* MoreCell */,
 				2A3C24A518AB1BFE00C20A04 /* MoreVC.h */,
 				2A3C24A618AB1BFE00C20A04 /* MoreVC.m */,
 				2A3C24A718AB1BFE00C20A04 /* MoreVC.xib */,
@@ -1140,6 +1135,19 @@
 				C000F2E518AF68AD00280464 /* UIPickerActionSheet.m */,
 			);
 			name = UIPickerActionSheet;
+			sourceTree = "<group>";
+		};
+		C9DED5C318B300B1003F458C /* MoreCell */ = {
+			isa = PBXGroup;
+			children = (
+				2A13401318B2214A00B4CFB1 /* MoreCell.h */,
+				2A13401418B2214A00B4CFB1 /* MoreCell.m */,
+				2A13401518B2214A00B4CFB1 /* MoreCell.xib */,
+				2A13401618B2214A00B4CFB1 /* MoreCellTitle.h */,
+				2A13401718B2214A00B4CFB1 /* MoreCellTitle.m */,
+				2A13401818B2214A00B4CFB1 /* MoreCellTitle.xib */,
+			);
+			name = MoreCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -13,8 +13,10 @@
 #import "Member.h"
 #import "FXNavigationController.h"
 #import "AddScheduleCategoryNameVC.h"
+#import "CDScheduleCategory.h"
+#import "AppDelegate.h"
 
-@interface ScheduleCategoryVC ()
+@interface ScheduleCategoryVC ()<AddScheduleCategoryDelegate>
 {
     __weak IBOutlet UIView *_viewNavi;
     __weak IBOutlet UILabel *_lbTile;
@@ -59,7 +61,11 @@
     member2.isEnable = NO;
     
     arrItems = [[NSMutableArray alloc] initWithObjects:member1, member2, nil];
+    [self fetchedResultsControllerScheduleCategory];
+}
 
+- (void)viewDidUnload {
+//    self.fetchedResultsControllerScheduleCategory = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,7 +80,7 @@
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [arrItems count];
+    return [_fetchedResultsControllerScheduleCategory.fetchedObjects count];
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -85,25 +91,25 @@
         aCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    Member *member = [arrItems objectAtIndex:indexPath.row];
+    CDScheduleCategory *scheduleCategory = [_fetchedResultsControllerScheduleCategory.fetchedObjects objectAtIndex:indexPath.row];
     
-    aCell.textLabel.text = member.name;
+    aCell.textLabel.text = scheduleCategory.name;
     
-    if (member.isOfficial)  // can't not press for official items
-        aCell.selectionStyle = UITableViewCellSelectionStyleNone;
-    else                    // be able to press for non-official items
-        aCell.selectionStyle = UITableViewCellSelectionStyleBlue;
-    
+//    if (member.isOfficial)  // can't not press for official items
+//        aCell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    else                    // be able to press for non-official items
+//        aCell.selectionStyle = UITableViewCellSelectionStyleBlue;
+//    
     UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
     aCell.accessoryView = switchView;
-    switchView.tag = indexPath.row;
-    
-    if (member.isEnable)
-        [switchView setOn:YES animated:NO];
-    else
-        [switchView setOn:NO animated:NO];
-    
-    [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+//    switchView.tag = indexPath.row;
+//    
+//    if (member.isEnable)
+//        [switchView setOn:YES animated:NO];
+//    else
+//        [switchView setOn:NO animated:NO];
+//    
+//    [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
     
     return aCell;
 }
@@ -112,13 +118,18 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    Member *member = [arrItems objectAtIndex:indexPath.row];
-    if (!member.isOfficial) {
+    CDScheduleCategory *schedule = [_fetchedResultsControllerScheduleCategory.fetchedObjects objectAtIndex:indexPath.row];
+    AddScheduleCategoryNameVC *vc   = [[AddScheduleCategoryNameVC alloc] init];
+    NSLog(@"ID nhan ve %d", schedule.id);
+    vc.insertId = schedule.id;
+    [vc loadSelecteScheduleCategory:schedule];
+    vc.delegate = self;
+    FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
+    [self.navigationController presentViewController:navi animated:YES completion:^{
         
-    }
+    }];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
 #pragma mark - AddMemberDelegate
 
 - (void) saveMemberName:(NSString *)name andIsAddMember:(BOOL)isAddMember {
@@ -158,6 +169,9 @@
 
 - (IBAction)addScheduleName:(id)sender {
     AddScheduleCategoryNameVC *vc   = [[AddScheduleCategoryNameVC alloc] init];
+    vc.delegate = self;
+    vc.insertId = 0;
+    
     
     FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
     
@@ -197,4 +211,118 @@
     }
 }
 
+#pragma mark - load Coredata
+
+- (NSFetchedResultsController *)fetchedResultsControllerScheduleCategory {
+    
+    if (_fetchedResultsControllerScheduleCategory != nil) {
+        return _fetchedResultsControllerScheduleCategory;
+    }
+    
+    NSString *entityName = @"CDScheduleCategory";
+    AppDelegate *_appDelegate = [AppDelegate shared];
+    
+    NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
+    [NSFetchedResultsController deleteCacheWithName:cacheName];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:_appDelegate.managedObjectContext];
+    
+    
+    NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+    NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = entity;
+    fetchRequest.fetchBatchSize = 20;
+    fetchRequest.sortDescriptors = sortList;
+    fetchRequest.predicate = predicate;
+    _fetchedResultsControllerScheduleCategory = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                          managedObjectContext:_appDelegate.managedObjectContext
+                                                                            sectionNameKeyPath:nil
+                                                                                     cacheName:cacheName];
+    _fetchedResultsControllerScheduleCategory.delegate = self;
+    
+    NSError *error = nil;
+    [_fetchedResultsControllerScheduleCategory performFetch:&error];
+    if (error) {
+        NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+    }
+    NSLog(@"chieu dai la %d", [_fetchedResultsControllerScheduleCategory.fetchedObjects count]);
+    if ([_fetchedResultsControllerScheduleCategory.fetchedObjects count] == 0) {
+        
+        //read file
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"predefault" ofType:@"plist"];
+        
+        // Load the file content and read the data into arrays
+        if (path)
+        {
+            NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+            NSArray *totalScheduleCategory = [dict objectForKey:@"ScheduleCategory"];
+            
+            //Creater coredata
+            for (int i = 0 ; i < [totalScheduleCategory count]; i++) {
+                CDScheduleCategory *cdScheduleCategory = (CDScheduleCategory *)[NSEntityDescription insertNewObjectForEntityForName:@"CDScheduleCategory" inManagedObjectContext:_appDelegate.managedObjectContext];
+                
+                cdScheduleCategory.id = i + 1;
+//                cdScheduleCategory.isDisplay = TRUE;
+                cdScheduleCategory.name = [totalScheduleCategory objectAtIndex:i];
+                
+                [_appDelegate saveContext];
+            }
+            
+        } else {
+            NSLog(@"path error");
+        }
+        
+    } else {
+        NSLog(@"total schedule items : %lu",(unsigned long)[_fetchedResultsControllerScheduleCategory.fetchedObjects count]);
+    }
+    
+//    [_tbvMemberList reloadData];
+//    _isLoadCoreData = NO;
+    
+    return _fetchedResultsControllerScheduleCategory;
+    
+}
+- (void) saveScheduleCategoryName:(NSString *)name andColor:(NSString *)color andInsertId:(int32_t)insertId{
+   
+    CDScheduleCategory *scheduleCategory;
+//    NSLog(@"name la %@", name);
+//    NSLog(@"id %d", insertId);
+    if (insertId) {
+        scheduleCategory= [_fetchedResultsControllerScheduleCategory.fetchedObjects objectAtIndex: insertId - 1];
+        
+    }
+    else
+    {
+        CDScheduleCategory *lastScheduleCategory = [_fetchedResultsControllerScheduleCategory.fetchedObjects objectAtIndex:(_fetchedResultsControllerScheduleCategory.fetchedObjects.count - 1)];
+        
+        scheduleCategory = [NSEntityDescription
+                  insertNewObjectForEntityForName:@"CDScheduleCategory"
+                  inManagedObjectContext: [AppDelegate shared].managedObjectContext];
+        scheduleCategory.id = lastScheduleCategory.id + 1;
+    }
+//    AppDelegate *_appDelegate = [AppDelegate shared];
+//    scheduleCategory = (CDScheduleCategory *)[NSEntityDescription insertNewObjectForEntityForName:@"CDScheduleCategory" inManagedObjectContext:_appDelegate.managedObjectContext];
+    NSLog(@"name .. %@",name);
+//    scheduleCategory.id = 1;
+    scheduleCategory.name = name;
+    scheduleCategory.color = color;
+    scheduleCategory.isDefault = NO;
+    scheduleCategory.isEnable = NO;
+    [[AppDelegate shared] saveContext];
+    
+}
+-(void)deleteScheduleCategoryName:(int)idCategory
+{
+    AppDelegate *appDelegate = [AppDelegate shared];
+    for (CDScheduleCategory *item in _fetchedResultsControllerScheduleCategory.fetchedObjects) {
+        if (item.id == idCategory) {
+            [appDelegate.managedObjectContext deleteObject:item];
+            [appDelegate saveContext];
+            break;
+        }
+    }
+}
 @end

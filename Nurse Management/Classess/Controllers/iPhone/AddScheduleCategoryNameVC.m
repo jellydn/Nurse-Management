@@ -10,11 +10,14 @@
 #import "Define.h"
 #import "Common.h"
 #import "FXThemeManager.h"
+#import "CDScheduleCategory.h"
 
-@interface AddScheduleCategoryNameVC ()
+@interface AddScheduleCategoryNameVC ()<UIActionSheetDelegate>
 {
     __weak IBOutlet UIView *_viewNavi;
     __weak IBOutlet UILabel *_lbTile;
+    CDScheduleCategory *_scheduleCategory;
+    NSString  *_typeColor;
 }
 
 - (IBAction)cancel:(id)sender;
@@ -36,6 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _typeColor = @"0";
     [self configView];
 }
 
@@ -48,6 +52,7 @@
 - (IBAction)selectButton:(id)sender {
     UIButton *button = (UIButton*)sender;
     _reviewCategory.textColor = [UIColor colorWithRed:93.0/255.0 green:80.0/255.0 blue:76.0/255.0 alpha:1.0];
+    _typeColor = [NSString stringWithFormat:@"%d", button.tag];
     switch (button.tag) {
         case 0:
             _backgrounReview.image = [UIImage imageNamed:@"icon_r1_c1.png"];
@@ -87,6 +92,13 @@
             break;
     }
 }
+
+- (IBAction)delete:(id)sender {
+    [_txtName resignFirstResponder];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Delete", nil];
+    [actionSheet showInView:self.view];
+
+}
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
@@ -101,12 +113,44 @@
     // _reviewCategory.text = textField.text;
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+#pragma mark - UIActionSheetDelegate
+
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:     // delete
+            NSLog(@"ID nhan duoc %d", _insertId);
+            [_delegate deleteScheduleCategoryName:_insertId];
+            [self.navigationController dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+            break;
+            
+        case 1:     // cancel
+            [_txtName becomeFirstResponder];
+            break;
+            
+        default:
+            break;
+    }
+}
 
 #pragma mark - Others
 - (void) configView
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     _lbTile.text = @"カテゴリー名編集";
+    if (!_insertId) {
+        _txtName.text = @"";
+        
+    } else {
+       _txtName.text = _scheduleCategory.name;
+    }
+    
+    [_txtName becomeFirstResponder];
 }
 
 #pragma mark - Notification
@@ -124,9 +168,15 @@
 }
 
 - (IBAction)save:(id)sender {
+    if (!_insertId)
+        _scheduleCategory.name = _txtName.text;
+    [_delegate saveScheduleCategoryName:_txtName.text andColor:_typeColor andInsertId:_insertId];
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         
     }];
 }
-
+-(void)loadSelecteScheduleCategory:(CDScheduleCategory *)selectedScheduleCategory
+{
+    _scheduleCategory = selectedScheduleCategory;
+}
 @end
