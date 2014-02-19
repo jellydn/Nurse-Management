@@ -81,11 +81,11 @@
         return 0;
     }
     
-    int monthFrom   = [self getMonthWithDate:fromDate];
-    int yearFrom    = [self getYearWithDate:fromDate];
+    int monthFrom   = (int)[self getMonthWithDate:fromDate];
+    int yearFrom    = (int)[self getYearWithDate:fromDate];
     
-    int monthTo     = [self getMonthWithDate:toDate];
-    int yearTo      = [self getYearWithDate:toDate];
+    int monthTo     = (int)[self getMonthWithDate:toDate];
+    int yearTo      = (int)[self getYearWithDate:toDate];
     
     if (yearFrom == yearTo) {
         return (monthTo - monthFrom) + 1;
@@ -171,9 +171,8 @@
 + (NSDate*) saturdayOfWeek:(NSDate*)date
 {
     NSDateComponents *comp = [[self getCalendarCurrent] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:date];
-    NSLog(@"week day: %d",[comp weekday]);
     
-    for (int i = [comp weekday]; i < 7; i++) {
+    for (int i = (int)[comp weekday]; i < 7; i++) {
         date = [self nextDateFrom:date];
     }
     

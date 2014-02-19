@@ -20,7 +20,7 @@
 {
     if (_delegate && [_delegate respondsToSelector:@selector(addShiftView:didSelectWithIndex:)]) {
         UIButton *button = (UIButton*)sender;
-        [_delegate addShiftView:self didSelectWithIndex:button.tag - 100];
+        [_delegate addShiftView:self didSelectWithIndex:(int)button.tag - 100];
     }
 }
 
@@ -41,7 +41,7 @@
 #pragma mark - Public method
 - (void) loadInfoWithShiftCategories:(NSMutableArray*)shifts
 {
-    NSLog(@"total %d", [shifts count]);
+    NSLog(@"total %d", (int)[shifts count]);
     
     for (UIView *view in _scrollView.subviews) {
         if (view.tag > 99) {
@@ -51,7 +51,7 @@
     
     _pageControl.currentPageIndicatorTintColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain];
     
-    int page                    = [shifts count] / 10 + 1;
+    int page                    = (int)[shifts count] / 10 + 1;
     _pageControl.numberOfPages  = page;
     _pageControl.currentPage    = 0;
     
