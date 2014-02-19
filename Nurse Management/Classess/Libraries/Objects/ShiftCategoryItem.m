@@ -61,4 +61,18 @@
     }
 }
 
++ (ShiftCategoryItem*) convertForCDObject:(CDShiftCategory*)cdShiftCategory
+{
+    ShiftCategoryItem *item = [[ShiftCategoryItem alloc] init];
+    
+    item.shiftCategoryID = cdShiftCategory.id;
+    item.name            = cdShiftCategory.name;
+    item.color           = cdShiftCategory.color;
+    item.strTimeEnd      = cdShiftCategory.timeEnd;
+    item.strTimeStart    = cdShiftCategory.timeStart;
+    item.isAllDay        = cdShiftCategory.isAllDay;
+    
+    return item;
+}
+
 @end
