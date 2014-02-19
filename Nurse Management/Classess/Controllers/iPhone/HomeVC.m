@@ -862,6 +862,8 @@
     NSLog(@"show view Add shift");
     
     AddShiftVC *addShiftVC = [[AddShiftVC alloc] init];
+    addShiftVC.isNewShift = YES;
+    addShiftVC.date = _selectDate;
     FXNavigationController *nc = [[FXNavigationController alloc] initWithRootViewController:addShiftVC];
     [self.navigationController presentViewController:nc animated:YES completion:nil];
 }
@@ -871,6 +873,8 @@
     NSLog(@"show view Edit shift");
     
     AddShiftVC *addShiftVC = [[AddShiftVC alloc] init];
+    addShiftVC.isNewShift = NO;
+    addShiftVC.date = _selectDate;
     FXNavigationController *nc = [[FXNavigationController alloc] initWithRootViewController:addShiftVC];
     [self.navigationController presentViewController:nc animated:YES completion:nil];
 }

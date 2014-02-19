@@ -127,7 +127,7 @@
     
     if (_isNewShift) {
         
-        _shift = [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
+        _shift = (CDShift *) [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
         
     } else {
         
@@ -309,11 +309,11 @@
 - (IBAction)saveAndMoveToNextDay:(id)sender {
     
     if (_shift.fk_shift_category) {     // shift category required
-        
-//    CDShift *shift = [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
     
-    _shift.id                  = [[AppDelegate shared] lastShiftID] + 1;
+    _shift.id = [[AppDelegate shared] lastShiftID] + 1;
+    NSLog(@"shift id: %d", _shift.id);
     _shift.isAllDay = _isAllDay;
+        
     if (!_isAllDay) {
         
         NSTimeInterval startTime = [[self dateAfterSetHour:[[_startTime objectForKey:HOUR_KEY] intValue] andMinute:[[_startTime objectForKey:MINUTE_KEY] intValue] fromDate:_date] timeIntervalSince1970];
@@ -323,6 +323,7 @@
         _shift.timeEnd = endTime;
     }
     
+    _shift.onDate = [_date timeIntervalSince1970];
     _shift.memo = _txvMemo.text;
         
     [[AppDelegate shared] saveContext];
