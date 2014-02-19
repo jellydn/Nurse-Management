@@ -7,9 +7,10 @@
 //
 
 #import "EditShiftVC.h"
-
+#import "CDShiftCategory.h"
 @interface EditShiftVC ()<UITextFieldDelegate>{
-    
+    CDShiftCategory *_shiftCategory;
+
 }
 
 @end
@@ -28,14 +29,78 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    if (_typeShift) {
-        _txtName.text = @"";
-        _btDelete.hidden = YES;
-    }else{
-        _txtName.text = @"日勤";
-    }
+   
+    [self configView];
 }
+
+- (void) configView
+{
+    if (!_insertId) {
+        _txtName.text = @"";
+        _txtBeginTime.text = @"00:00";
+        _txtEndTime.text = @"00:00";
+
+        _btDelete.hidden = YES;
+
+    } else {
+        _txtName.text = _shiftCategory.name;
+        
+        if (_shiftCategory.isAllDay) {
+            _txtBeginTime.text = @"00:00";
+            _txtEndTime.text = @"00:00";
+        }
+        else
+        {
+            _txtBeginTime.text = _shiftCategory.timeStart;
+            _txtEndTime.text = _shiftCategory.timeEnd;
+        }
+        
+        if ([_shiftCategory.color isEqualToString:@"color0"]) {
+            _backgrounReview.image = [UIImage imageNamed:@"icon_r1_c1.png"];
+        }
+        else
+            if ([_shiftCategory.color isEqualToString:@"color1"])
+            {
+                _backgrounReview.image = [UIImage imageNamed:@"icon_r1_c3.png"];
+            }
+            else
+                if ([_shiftCategory.color isEqualToString:@"color2"]) {
+                    _backgrounReview.image = [UIImage imageNamed:@"icon_r1_c5.png"];
+                }
+                else
+                    if ([_shiftCategory.color isEqualToString:@"color3"]) {
+                        _backgrounReview.image = [UIImage imageNamed:@"icon_r1_c7.png"];
+                    }
+                    else
+                        if ([_shiftCategory.color isEqualToString:@"color4"]) {
+                            _backgrounReview.image = [UIImage imageNamed:@"icon_r1_c9.png"];
+                        }
+                        else
+                            if ([_shiftCategory.color isEqualToString:@"color5"]) {
+                                _backgrounReview.image = [UIImage imageNamed:@"icon_r3_c1.png"];
+                            }
+                            else
+                                if ([_shiftCategory.color isEqualToString:@"color6"])
+                                {
+                                    _backgrounReview.image = [UIImage imageNamed:@"icon_r3_c3.png"];
+                                }
+                                else
+                                    if ([_shiftCategory.color isEqualToString:@"color7"]) {
+                                        _backgrounReview.image = [UIImage imageNamed:@"icon_r3_c5.png"];
+                                    }
+                                    else
+                                        if ([_shiftCategory.color isEqualToString:@"color8"]) {
+                                            _backgrounReview.image = [UIImage imageNamed:@"icon_r3_c7.png"];
+                                        }
+                                        else
+                                            if ([_shiftCategory.color isEqualToString:@"color9"]) {
+                                                _backgrounReview.image = [UIImage imageNamed:@"icon_r3_c9.png"];
+                                            }
+
+    }
+        
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -52,6 +117,11 @@
     }];
     
 }
+
+- (void) loadShiftCategory:(CDShiftCategory *)selectedCategory {
+    _shiftCategory = selectedCategory;
+}
+
 
 - (IBAction)save:(id)sender {
     NSLog(@"save ban");
