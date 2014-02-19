@@ -43,5 +43,6 @@
 + (NSDate*) nextDateFrom:(NSDate*)date;
 + (NSDate*) prevDateFrom:(NSDate*)date;
 + (NSDate*) saturdayOfWeek:(NSDate*)date;
++ (NSDate*) dateNexHourFormDate:(NSDate*)date;
 
 @end

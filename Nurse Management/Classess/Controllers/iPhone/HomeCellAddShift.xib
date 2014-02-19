@@ -74,7 +74,7 @@
                         <rect key="frame" x="70" y="0.0" width="250" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="img_temp1.png" id="OuH-1Z-81P">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="OuH-1Z-81P">
                                 <rect key="frame" x="0.0" y="3" width="45" height="20"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -112,10 +112,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15分前" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lxz-JB-i1S">
-                                <rect key="frame" x="26" y="50" width="42" height="17"/>
+                                <rect key="frame" x="26" y="50" width="178" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <color key="textColor" red="0.46274509800000002" green="0.36862745099999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nLq-Cl-p1g">
+                                <rect key="frame" x="0.0" y="3" width="45" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -132,8 +139,13 @@
             <connections>
                 <outlet property="btAdd" destination="J21-CG-uo7" id="Gum-on-Bhd"/>
                 <outlet property="btEdit" destination="ubm-wA-QNY" id="FD7-nw-aOY"/>
+                <outlet property="imgCategory" destination="OuH-1Z-81P" id="j1v-lz-nz6"/>
+                <outlet property="lbAlert" destination="Lxz-JB-i1S" id="KXJ-mv-uHQ"/>
+                <outlet property="lbCategoryName" destination="nLq-Cl-p1g" id="el5-Tu-LpC"/>
                 <outlet property="lbDay" destination="Kc4-MA-PPV" id="ej5-X8-mqo"/>
+                <outlet property="lbMember" destination="bVY-oi-iZN" id="jBY-Fs-Saf"/>
                 <outlet property="lbMonth" destination="KHL-2E-szv" id="RxE-oA-pWZ"/>
+                <outlet property="lbTime" destination="b65-zT-reY" id="RPu-pu-lTD"/>
                 <outlet property="lbWeekDay" destination="Zjc-q5-5V0" id="SkJ-Bo-Mn5"/>
                 <outlet property="viewAdd" destination="Q3h-OE-7nN" id="73E-Ou-bri"/>
                 <outlet property="viewInfo" destination="Q03-rA-Tz6" id="wlg-R1-eSO"/>
@@ -142,9 +154,8 @@
     </objects>
     <resources>
         <image name="ic_home_cell_edit_shitf.png" width="26" height="30"/>
-        <image name="ic_nurse.png" width="18" height="22"/>
+        <image name="ic_nurse.png" width="16" height="19"/>
         <image name="ic_time.png" width="17" height="17"/>
         <image name="img_bg_home_cell_shift.png" width="40" height="53"/>
-        <image name="img_temp1.png" width="45" height="20"/>
     </resources>
 </document>

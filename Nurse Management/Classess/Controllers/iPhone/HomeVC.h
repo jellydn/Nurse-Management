@@ -13,6 +13,7 @@
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerMember;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerShiftCategory;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerScheduleCategory;
 
 
 - (IBAction)addShift:(id)sender;

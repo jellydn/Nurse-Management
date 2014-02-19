@@ -2,7 +2,7 @@
 //  Define.h
 //  FXStencil
 //
-//  Created by Le Phuong Tien on 1/20/14.
+//  Created by Le Phuong Tien on 1/22/14.
 //  Copyright (c) 2014 Le Phuong Tien. All rights reserved.
 //
 
@@ -15,5 +15,8 @@
 #define END_TIME    20
 #define HOUR_KEY    @"hour"
 #define MINUTE_KEY  @"minute"
+
+// entity names
+#define ENTITY_SHIFT    @"CDShift"
 
 #endif

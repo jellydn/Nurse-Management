@@ -269,9 +269,9 @@
         
         day.isSelect = YES;
         
-        [self reloadSelectViewWith:_indexSelect newSelect:button.tag];
+        [self reloadSelectViewWith:_indexSelect newSelect:(int)button.tag];
         
-        _indexSelect = button.tag;
+        _indexSelect = (int)button.tag;
         
         if (_daySelect) {
             _daySelect = nil;
@@ -316,18 +316,21 @@
     self.date = date;
     
     _firstDay = [FXCalendarData getFirstDayOfMonthWithDate:date];
-    _firstdayIndex = [FXCalendarData getWeekDayWithDate:_firstDay];
+    _firstdayIndex = (int)[FXCalendarData getWeekDayWithDate:_firstDay];
     
     _endDay   = [FXCalendarData getEndDayOfMonthWithDate:date];
-    _enddayIndex = [FXCalendarData getWeekDayWithDate:_endDay];
+    _enddayIndex = (int)[FXCalendarData getWeekDayWithDate:_endDay];
     
-    _totalDay = [FXCalendarData numberDayOfMonthWithDate:date];
+    _totalDay = (int)[FXCalendarData numberDayOfMonthWithDate:date];
     
     if (isSet) {
         _daySelect = nil;
         _daySelect = [[FXDay alloc] init];
         _daySelect.date = _firstDay;
         
+        if (_delegate && [_delegate respondsToSelector:@selector(fxMonthView:didSelectDayWith:)]) {
+            [_delegate fxMonthView:self didSelectDayWith:_daySelect];
+        }
     }
     
     if (!_days) {
@@ -349,7 +352,7 @@
     
     // add day in out of days
     NSDate *tempDate = _firstDay;
-    for (int i = [_days count] - 1; i >= 0; i--) {
+    for (int i = (int)[_days count] - 1; i >= 0; i--) {
         
         tempDate = [FXCalendarData prevDateFrom:tempDate];
         FXDay *day = _days[i];
@@ -364,6 +367,17 @@
         FXDay *day      = [[FXDay alloc] init];
         day.isOutOfDay  = NO;
         day.date        = tempDate;
+        
+        if (_isLoadDataForCell) {
+            CDShift *shift  = [[AppDelegate shared] getShiftWithDate:tempDate];
+            if (shift) {
+                day.shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
+            } else {
+                day.shiftCategory = nil;
+            }
+        } else {
+            day.shiftCategory = nil;
+        }
         
         [_days addObject:day];
         
@@ -382,7 +396,7 @@
         _numberWeekOfMonth  = 6;
     }
     
-    for (int i = [_days count]; i < allDay ; i++) {
+    for (int i = (int)[_days count]; i < allDay ; i++) {
         FXDay *day = [[FXDay alloc] init];
         day.isOutOfDay = YES;
         day.date = tempDate;
@@ -400,16 +414,20 @@
     self.date = date;
     
     _firstDay = [FXCalendarData getFirstDayOfMonthWithDate:date];
-    _firstdayIndex = [FXCalendarData getWeekDayWithDate:_firstDay];
+    _firstdayIndex = (int)[FXCalendarData getWeekDayWithDate:_firstDay];
     
     _endDay   = [FXCalendarData getEndDayOfMonthWithDate:date];
-    _enddayIndex = [FXCalendarData getWeekDayWithDate:_endDay];
+    _enddayIndex = (int)[FXCalendarData getWeekDayWithDate:_endDay];
     
-    _totalDay = [FXCalendarData numberDayOfMonthWithDate:date];
+    _totalDay = (int)[FXCalendarData numberDayOfMonthWithDate:date];
     
     _daySelect = nil;
     _daySelect = [[FXDay alloc] init];
     _daySelect.date = selectDate;
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(fxMonthView:didSelectDayWith:)]) {
+        [_delegate fxMonthView:self didSelectDayWith:_daySelect];
+    }
     
     if (!_days) {
         _days = [[NSMutableArray alloc] init];
@@ -430,7 +448,7 @@
     
     // add day in out of days
     NSDate *tempDate = _firstDay;
-    for (int i = [_days count] - 1; i >= 0; i--) {
+    for (int i = (int)[_days count] - 1; i >= 0; i--) {
         
         tempDate = [FXCalendarData prevDateFrom:tempDate];
         FXDay *day = _days[i];
@@ -445,6 +463,17 @@
         FXDay *day      = [[FXDay alloc] init];
         day.isOutOfDay  = NO;
         day.date        = tempDate;
+        
+        if (_isLoadDataForCell) {
+            CDShift *shift  = [[AppDelegate shared] getShiftWithDate:tempDate];
+            if (shift) {
+                day.shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
+            } else {
+                day.shiftCategory = nil;
+            }
+        } else {
+            day.shiftCategory = nil;
+        }
         
         [_days addObject:day];
         
@@ -463,7 +492,7 @@
         _numberWeekOfMonth  = 6;
     }
     
-    for (int i = [_days count]; i < allDay ; i++) {
+    for (int i = (int)[_days count]; i < allDay ; i++) {
         FXDay *day = [[FXDay alloc] init];
         day.isOutOfDay = YES;
         day.date = tempDate;
@@ -497,7 +526,7 @@
                 
                 day.isSelect = YES;
                 
-                _indexSelect = dayView.tag;
+                _indexSelect = (int)dayView.tag;
             }
             
             [dayView reloadInfo:day];

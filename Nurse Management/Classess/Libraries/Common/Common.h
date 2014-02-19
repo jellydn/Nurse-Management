@@ -71,6 +71,8 @@
 
 + (NSString *)timeAgoFromUnixTime:(double)seconds;
 
++ (NSString*) convertTimeToStringWithFormat:(NSString*)strFormat date:(NSDate*)date;
+
 //Audio
 + (void) playPushSound;
 

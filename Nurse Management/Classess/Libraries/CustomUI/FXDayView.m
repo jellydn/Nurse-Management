@@ -8,6 +8,8 @@
 
 #import "FXDayView.h"
 
+
+
 @implementation FXDayView
 
 - (void)dealloc
@@ -88,6 +90,22 @@
     _day = day;
     
     _lbDay.text = [NSString stringWithFormat:@"%d",day.dayIndex];
+    
+    if (day.shiftCategory) {
+        _lbCategoryName.hidden  = NO;
+        _imgCategory.hidden     = NO;
+        
+        _imgCategory.image          = [UIImage imageNamed:day.shiftCategory.image];
+        _lbCategoryName.text        = day.shiftCategory.name;
+        _lbCategoryName.textColor   = day.shiftCategory.textColor;
+        
+    } else {
+        _lbCategoryName.hidden  = YES;
+        _imgCategory.hidden     = YES;
+        
+        
+        
+    }
     
     if (day.isOutOfDay) {
         _lbDay.textColor = self.outOfMonthDayColor;

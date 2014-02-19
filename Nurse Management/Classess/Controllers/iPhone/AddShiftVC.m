@@ -12,20 +12,24 @@
 #import "FXThemeManager.h"
 #import "FXCalendarData.h"
 #import "UIPickerActionSheet.h"
-#import "Define.h"
 #import "ListMembersVC.h"
 #import "FXNavigationController.h"
 #import "ChooseTimeView.h"
 #import "AddShiftView.h"
 #import "ListShiftPatternVC.h"
 #import "NMSelectionStringView.h"
+#import "AppDelegate.h"
+#import "CDMember.h"
+#import "CDShift.h"
+#import "CDShiftMember.h"
+#import "ShiftCategoryItem.h"
 
 #define ALERT_BG_COLOR	 [UIColor colorWithRed:100.0/255.0 green:137.0/255.0 blue:199.0/255.0 alpha:1.0]
 #define BUTTON_BG_COLOR	 [UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]
 #define TITLE_COLOR	 [UIColor colorWithRed:126.0/255.0 green:96.0/255.0 blue:39.0/255.0 alpha:1.0]
 #define kOFFSET_FOR_KEYBOARD 160.0
 
-@interface AddShiftVC () <UITextViewDelegate, UIActionSheetDelegate, UIPickerActionSheetDelegate, ChooseTimeViewDelegate, AddShiftViewDelegate, NMSelectionStringViewDelegate>
+@interface AddShiftVC () <UITextViewDelegate, UIActionSheetDelegate, UIPickerActionSheetDelegate, ChooseTimeViewDelegate, AddShiftViewDelegate, NMSelectionStringViewDelegate, NSFetchedResultsControllerDelegate>
 {
     __weak IBOutlet UIView *_viewNavi;
     __weak IBOutlet UILabel *_lbTile;
@@ -34,17 +38,22 @@
     __weak IBOutlet UIButton *_btnEndTime;
     __weak IBOutlet UILabel *_lblStartTime;
     __weak IBOutlet UILabel *_lblEndTime;
+    __weak IBOutlet UILabel *_lblShiftCategoryName;
     
     __weak IBOutlet UITextView *_txvMemo;
+    __weak IBOutlet UIImageView *_imvShiftCategoryBG;
     
     UIPickerActionSheet *_pickerActionSheet;
     NSMutableDictionary *_startTime;
     NSMutableDictionary *_endTime;
     
     BOOL _isShowAddShiftView;
+    BOOL _isAllDay;
     
     AddShiftView    *_addShiftView;
     NMSelectionStringView *_nMSelectionStringView;
+    
+    CDShift *_shift;
 }
 
 - (IBAction)cancel:(id)sender;
@@ -54,7 +63,7 @@
 - (IBAction)chooseTime:(id)sender;
 - (IBAction)chooseMembers:(id)sender;
 - (IBAction)tapHideKeyboard:(UITapGestureRecognizer *)sender;
-- (IBAction)moveToNextDay:(id)sender;
+- (IBAction)saveAndMoveToNextDay:(id)sender;
 
 - (void)keyboardWillShow:(NSNotification *)notification;
 - (void)keyboardWillHide:(NSNotification *)notification;
@@ -84,7 +93,7 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    
+
 }
 
 - (void)viewDidLoad
@@ -106,15 +115,24 @@
     [chooseTimeView setStartDate:[NSDate date]];
     [self.view addSubview:chooseTimeView];
     
-    // Choose Members view
-    _nMSelectionStringView = [[NMSelectionStringView alloc] initWithFrame:CGRectMake(15, 215, 320 - 15*2, 118)];
-    NSArray *arr = @[@"A看護師長",@"B主任",@"C主任",@"D主任",@"E先輩",@"F先輩",@"G先輩",@"Hさん",@"Iさん",@"Jさん",@"Kさん",@"Lさん"];
-    _nMSelectionStringView.delegate = self;
-    [_nMSelectionStringView setArrayString:arr];
-    [self.view addSubview:_nMSelectionStringView];
+    // load core data
+    [self fetchedResultsControllerMember];
+    [self fetchedResultsControllerShiftCategory];
     
     // init Add Shift view
     [self loadHomeAddShiftView];
+    
+    // init Choose Member view
+    [self loadChooseMemberView];
+    
+    if (_isNewShift) {
+        
+        _shift = [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
+        
+    } else {
+        
+    }
+    
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -151,6 +169,20 @@
 - (void) addShiftView:(AddShiftView*)addShiftView didSelectWithIndex:(int)index
 {
     NSLog(@"Add Shift select item with index: %d", index);
+    CDShiftCategory *shiftCategory = [[AppDelegate shared] getshiftCategoryWithID:index];
+    _shift.fk_shift_category = shiftCategory;
+    _shift.shiftCategoryId = shiftCategory.id;
+    
+    NSMutableArray *shiftItems = [self convertShiftObject];
+    for (ShiftCategoryItem *item in shiftItems)
+    {
+        if (item.shiftCategoryID == index) {
+            _imvShiftCategoryBG.image = [UIImage imageNamed:item.image];
+            _lblShiftCategoryName.text = item.name;
+            _lblShiftCategoryName.textColor = item.textColor;
+        }
+    }
+    
 }
 
 - (void) addShiftViewDidSelectShowListShiftPattern:(AddShiftView*)addShiftView
@@ -168,6 +200,32 @@
 
 - (void) didSelectionStringWithIndex:(NSInteger)index arraySelectionString:(NSMutableArray *)arraySelectionString {
     NSLog(@"select");
+}
+
+#pragma mark - PickerActionSheetDelegate
+
+- (void)pickerActionSheetDidCancel:(UIPickerActionSheet*)aPickerActionSheet
+{
+    
+}
+
+- (void)pickerActionSheet:(UIPickerActionSheet*)aPickerActionSheet didSelectItem:(id)aItem
+{
+    NSMutableDictionary *selectedValue = (NSMutableDictionary *)aItem;
+    int hour = [[selectedValue objectForKey:HOUR_KEY] intValue];
+    int minute = [[selectedValue objectForKey:MINUTE_KEY] intValue];
+    
+    if (aPickerActionSheet.type == START_TIME) {
+        
+        _lblStartTime.text = [NSString stringWithFormat:@"%02d:%02d", hour, minute];
+        _startTime = [selectedValue copy];
+        
+    } else if (aPickerActionSheet.type == END_TIME) {
+        
+        _lblEndTime.text = [NSString stringWithFormat:@"%02d:%02d", hour, minute];
+        _endTime = [selectedValue copy];
+        
+    }
 }
 
 #pragma mark - Actions
@@ -195,8 +253,10 @@
     
     if ([btnAllDay tag] == 1) {
         
+        _isAllDay = YES;
         btnAllDay.tag = 2;
         btnAllDay.backgroundColor = ALERT_BG_COLOR;
+        
         _lblStartTime.enabled = NO;
         _lblStartTime.textColor = [UIColor grayColor];
         _lblStartTime.text = @"00:00";
@@ -206,6 +266,7 @@
         
     } else if ([btnAllDay tag] == 2) {
         
+        _isAllDay = NO;
         btnAllDay.tag = 1;
         btnAllDay.backgroundColor = BUTTON_BG_COLOR;
         
@@ -245,43 +306,42 @@
     
 }
 
-- (void)pickerActionSheetDidCancel:(UIPickerActionSheet*)aPickerActionSheet
-{
+- (IBAction)saveAndMoveToNextDay:(id)sender {
     
-}
-
-- (void)pickerActionSheet:(UIPickerActionSheet*)aPickerActionSheet didSelectItem:(id)aItem
-{
-    NSMutableDictionary *selectedValue = (NSMutableDictionary *)aItem;
-    int hour = [[selectedValue objectForKey:HOUR_KEY] intValue];
-    int minute = [[selectedValue objectForKey:MINUTE_KEY] intValue];
+    if (_shift.fk_shift_category) {     // shift category required
+        
+//    CDShift *shift = [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
     
-    if (aPickerActionSheet.type == START_TIME) {
+    _shift.id                  = [[AppDelegate shared] lastShiftID] + 1;
+    _shift.isAllDay = _isAllDay;
+    if (!_isAllDay) {
         
-        _lblStartTime.text = [NSString stringWithFormat:@"%02d:%02d", hour, minute];
-        _startTime = [selectedValue copy];
+        NSTimeInterval startTime = [[self dateAfterSetHour:[[_startTime objectForKey:HOUR_KEY] intValue] andMinute:[[_startTime objectForKey:MINUTE_KEY] intValue] fromDate:_date] timeIntervalSince1970];
+        _shift.timeStart = startTime;
         
-    } else if (aPickerActionSheet.type == END_TIME) {
-        
-        _lblEndTime.text = [NSString stringWithFormat:@"%02d:%02d", hour, minute];;
-        _endTime = [selectedValue copy];
-        
+        NSTimeInterval endTime = [[self dateAfterSetHour:[[_endTime objectForKey:HOUR_KEY] intValue] andMinute:[[_endTime objectForKey:MINUTE_KEY] intValue] fromDate:_date] timeIntervalSince1970];
+        _shift.timeEnd = endTime;
     }
-}
-
-- (IBAction)tapHideKeyboard:(UITapGestureRecognizer *)sender {
-    [_txvMemo resignFirstResponder];
-}
-
-- (IBAction)moveToNextDay:(id)sender {
     
+    _shift.memo = _txvMemo.text;
+        
+    [[AppDelegate shared] saveContext];
+        
+    } else {
+        [Common showAlert:@"継続してシフトカテゴリを選択してください。" title:@""];
+    }
+
 }
+
+#pragma mark - Shift Category
 
 - (void) showAddShift
 {
     if (_isShowAddShiftView) {
         return;
     }
+    
+    [_addShiftView loadInfoWithShiftCategories:[self convertShiftObject]];
     
     CGRect rect = _addShiftView.frame;
     rect.origin.y -= _addShiftView.frame.size.height;
@@ -290,6 +350,9 @@
         _addShiftView.frame = rect;
     } completion:^(BOOL finished) {
         _isShowAddShiftView = YES;
+        
+        
+        
     }];
 }
 
@@ -309,7 +372,30 @@
     }];
 }
 
+- (NSMutableArray*) convertShiftObject
+{
+    NSMutableArray *shifts = [[NSMutableArray alloc] init];
+    
+    for (CDShiftCategory *cdShift in self.fetchedResultsControllerShiftCategory.fetchedObjects) {
+        
+        ShiftCategoryItem *item = [[ShiftCategoryItem alloc] init];
+        
+        item.shiftCategoryID = cdShift.id;
+        item.name            = cdShift.name;
+        item.color           = cdShift.color;
+        
+        [shifts addObject:item];
+        
+    }
+    
+    return shifts;
+}
+
 #pragma mark - Keyboard Notifications
+
+- (IBAction)tapHideKeyboard:(UITapGestureRecognizer *)sender {
+    [_txvMemo resignFirstResponder];
+}
 
 - (void)keyboardWillShow:(NSNotification *)notification {
     NSLog(@"keyboard show");
@@ -387,6 +473,200 @@
     _addShiftView.frame = CGRectMake(0, height - detalIOS, 320, 200);
     
     [self.view addSubview:_addShiftView];
+}
+
+- (void) loadChooseMemberView {
+    
+    if (_nMSelectionStringView) {
+        [_nMSelectionStringView removeFromSuperview];
+        _nMSelectionStringView = nil;
+    }
+    
+    _nMSelectionStringView = [[NMSelectionStringView alloc] initWithFrame:CGRectMake(15, 215, 320 - 15*2, 118)];
+    _nMSelectionStringView.delegate = self;
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    for (CDMember *member in _fetchedResultsControllerMember.fetchedObjects) {
+        [arr addObject:member.name];
+    }
+    [_nMSelectionStringView setArrayString:arr];
+    
+    
+    
+    [self.view addSubview:_nMSelectionStringView];
+    
+}
+
+- (NSDate *) dateAfterSetHour: (int)hour andMinute: (int)minute fromDate: (NSDate *)currentDate {
+    
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
+    NSDateComponents *components = [gregorian components: NSUIntegerMax fromDate: currentDate];
+    [components setHour: hour];
+    [components setMinute: minute];
+    [components setSecond: 0];
+    
+    NSDate *newDate = [gregorian dateFromComponents: components];
+    return newDate;
+}
+
+#pragma mark - Load core data
+
+- (NSFetchedResultsController *)fetchedResultsControllerMember {
+    
+    if (_fetchedResultsControllerMember != nil) {
+        return _fetchedResultsControllerMember;
+    }
+    
+    NSString *entityName = @"CDMember";
+    AppDelegate *_appDelegate = [AppDelegate shared];
+    
+    NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
+    [NSFetchedResultsController deleteCacheWithName:cacheName];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:_appDelegate.managedObjectContext];
+    
+    
+    NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+    NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = entity;
+    fetchRequest.fetchBatchSize = 20;
+    fetchRequest.sortDescriptors = sortList;
+    fetchRequest.predicate = predicate;
+    _fetchedResultsControllerMember = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                          managedObjectContext:_appDelegate.managedObjectContext
+                                                                            sectionNameKeyPath:nil
+                                                                                     cacheName:cacheName];
+    _fetchedResultsControllerMember.delegate = self;
+    
+    NSError *error = nil;
+    [_fetchedResultsControllerMember performFetch:&error];
+    if (error) {
+        NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+    }
+    
+    if ([_fetchedResultsControllerMember.fetchedObjects count] == 0) {
+        NSLog(@"add data for member item");
+        
+        //read file
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"predefault" ofType:@"plist"];
+        
+        // Load the file content and read the data into arrays
+        if (path)
+        {
+            NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+            NSArray *totalMember = [dict objectForKey:@"Member"];
+            
+            //Creater coredata
+            for (int i = 0 ; i < [totalMember count]; i++) {
+                CDMember *cdMember = (CDMember *)[NSEntityDescription insertNewObjectForEntityForName:@"CDMember" inManagedObjectContext:_appDelegate.managedObjectContext];
+                
+                cdMember.id = i + 1;
+                cdMember.isDisplay = TRUE;
+                cdMember.name = [totalMember objectAtIndex:i];
+                
+                [_appDelegate saveContext];
+            }
+            
+        } else {
+            NSLog(@"path error");
+        }
+        
+    } else {
+        NSLog(@"total item : %lu",(unsigned long)[_fetchedResultsControllerMember.fetchedObjects count]);
+    }
+
+//    _isLoadCoreData = NO;
+    
+    return _fetchedResultsControllerMember;
+}
+
+- (NSFetchedResultsController*) fetchedResultsControllerShiftCategory
+{
+    if (!_fetchedResultsControllerShiftCategory) {
+        NSString *entityName = @"CDShiftCategory";
+        AppDelegate *_appDelegate = [AppDelegate shared];
+        
+        NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
+        [NSFetchedResultsController deleteCacheWithName:cacheName];
+        
+        NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:_appDelegate.managedObjectContext];
+        
+        
+        NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+        NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        fetchRequest.entity = entity;
+        fetchRequest.fetchBatchSize = 20;
+        fetchRequest.sortDescriptors = sortList;
+        fetchRequest.predicate = predicate;
+        _fetchedResultsControllerShiftCategory = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                                     managedObjectContext:_appDelegate.managedObjectContext
+                                                                                       sectionNameKeyPath:nil
+                                                                                                cacheName:cacheName];
+        _fetchedResultsControllerShiftCategory.delegate = self;
+        
+        NSError *error = nil;
+        [_fetchedResultsControllerShiftCategory performFetch:&error];
+        if (error) {
+            NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+        }
+        
+        if ([_fetchedResultsControllerShiftCategory.fetchedObjects count] == 0) {
+            NSLog(@"add data for Shift Category item");
+            
+            //read file
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"tienlp_predefault" ofType:@"plist"];
+            
+            // Load the file content and read the data into arrays
+            if (path)
+            {
+                NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+                NSArray *totalShiftCategory = [dict objectForKey:@"ShiftCategory"];
+                
+                //Creater coredata
+                for (int i = 0 ; i < [totalShiftCategory count]; i++) {
+                    CDShiftCategory *cdShiftCategory = (CDShiftCategory *)[NSEntityDescription insertNewObjectForEntityForName:@"CDShiftCategory"
+                                                                                                        inManagedObjectContext:_appDelegate.managedObjectContext];
+                    
+                    cdShiftCategory.id      = i + 1;
+                    cdShiftCategory.name    = [totalShiftCategory objectAtIndex:i];
+                    cdShiftCategory.color   = [NSString stringWithFormat:@"%d",i%10];
+                }
+                
+                [_appDelegate saveContext];
+                
+            } else {
+                NSLog(@"path error");
+            }
+            
+        } else {
+            NSLog(@"total shift item : %d",[_fetchedResultsControllerShiftCategory.fetchedObjects count]);
+        }
+    }
+    
+    return _fetchedResultsControllerShiftCategory;
+}
+
+#pragma mark - NSFetchedResultsControllerDelegate
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self loadChooseMemberView];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
 }
 
 #pragma mark - Notification

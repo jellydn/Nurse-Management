@@ -21,7 +21,7 @@
 - (IBAction)toDay:(id)sender;
 - (IBAction)sendMail:(id)sender;
 
-- (void) setTitleWithDay:(int)day month:(int)month year:(int)year;
+- (void) setTitleWithDay:(NSInteger)day month:(NSInteger)month year:(NSInteger)year;
 
 @end
 

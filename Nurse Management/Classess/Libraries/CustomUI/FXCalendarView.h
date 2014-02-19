@@ -24,11 +24,14 @@
 - (int) numberWeekOfCurrentMonth;
 - (float) heightCalendarWithCurrentMonth;
 
+- (void) setNextSelectDate;
+
 @end
 
 @protocol FXCalendarViewDelegate <NSObject>
 
 - (void) fXCalendarView:(FXCalendarView*)fXCalendarView didChangeMonthWithFirstDay:(NSDate*)date;
 - (void) fXCalendarView:(FXCalendarView*)fXCalendarView didSelectDay:(NSDate*)date;
+- (void) fXCalendarView:(FXCalendarView*)fXCalendarView didSelectNextDay:(NSDate*)date;
 
 @end

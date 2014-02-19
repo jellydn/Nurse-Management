@@ -121,6 +121,38 @@
 		2A3F497818AE242E00D3137D /* ic_bt_add_schedule_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3F497418AE242E00D3137D /* ic_bt_add_schedule_back@2x.png */; };
 		2A3F497918AE242E00D3137D /* ic_bt_save.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3F497518AE242E00D3137D /* ic_bt_save.png */; };
 		2A3F497A18AE242E00D3137D /* ic_bt_save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3F497618AE242E00D3137D /* ic_bt_save@2x.png */; };
+		2A4F225B18B4567F00A5C97C /* ScheduleCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F225818B4567F00A5C97C /* ScheduleCategoryItem.m */; };
+		2A4F225C18B4567F00A5C97C /* ShiftCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F225A18B4567F00A5C97C /* ShiftCategoryItem.m */; };
+		2A4F226118B456A600A5C97C /* tienlp_predefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226018B456A600A5C97C /* tienlp_predefault.plist */; };
+		2A4F227818B456BE00A5C97C /* schedule_bg_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226218B456BE00A5C97C /* schedule_bg_6.png */; };
+		2A4F227918B456BE00A5C97C /* schedule_bg_6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226318B456BE00A5C97C /* schedule_bg_6@2x.png */; };
+		2A4F227A18B456BE00A5C97C /* schedule_bg_7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226418B456BE00A5C97C /* schedule_bg_7.png */; };
+		2A4F227B18B456BE00A5C97C /* schedule_bg_7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226518B456BE00A5C97C /* schedule_bg_7@2x.png */; };
+		2A4F227C18B456BE00A5C97C /* schedule_bg_8.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226618B456BE00A5C97C /* schedule_bg_8.png */; };
+		2A4F227D18B456BE00A5C97C /* schedule_bg_8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226718B456BE00A5C97C /* schedule_bg_8@2x.png */; };
+		2A4F227E18B456BE00A5C97C /* schedule_bg_9.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226818B456BE00A5C97C /* schedule_bg_9.png */; };
+		2A4F227F18B456BE00A5C97C /* schedule_bg_9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226918B456BE00A5C97C /* schedule_bg_9@2x.png */; };
+		2A4F228018B456BE00A5C97C /* home_add_quick_schedule_time_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226A18B456BE00A5C97C /* home_add_quick_schedule_time_bg.png */; };
+		2A4F228118B456BE00A5C97C /* home_add_quick_schedule_time_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226B18B456BE00A5C97C /* home_add_quick_schedule_time_bg@2x.png */; };
+		2A4F228218B456BE00A5C97C /* schedule_bg_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226C18B456BE00A5C97C /* schedule_bg_0.png */; };
+		2A4F228318B456BE00A5C97C /* schedule_bg_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226D18B456BE00A5C97C /* schedule_bg_0@2x.png */; };
+		2A4F228418B456BE00A5C97C /* schedule_bg_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226E18B456BE00A5C97C /* schedule_bg_1.png */; };
+		2A4F228518B456BE00A5C97C /* schedule_bg_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226F18B456BE00A5C97C /* schedule_bg_1@2x.png */; };
+		2A4F228618B456BE00A5C97C /* schedule_bg_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F227018B456BE00A5C97C /* schedule_bg_2.png */; };
+		2A4F228718B456BE00A5C97C /* schedule_bg_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F227118B456BE00A5C97C /* schedule_bg_2@2x.png */; };
+		2A4F228818B456BE00A5C97C /* schedule_bg_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F227218B456BE00A5C97C /* schedule_bg_3.png */; };
+		2A4F228918B456BE00A5C97C /* schedule_bg_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F227318B456BE00A5C97C /* schedule_bg_3@2x.png */; };
+		2A4F228A18B456BE00A5C97C /* schedule_bg_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F227418B456BE00A5C97C /* schedule_bg_4.png */; };
+		2A4F228B18B456BE00A5C97C /* schedule_bg_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F227518B456BE00A5C97C /* schedule_bg_4@2x.png */; };
+		2A4F228C18B456BE00A5C97C /* schedule_bg_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F227618B456BE00A5C97C /* schedule_bg_5.png */; };
+		2A4F228D18B456BE00A5C97C /* schedule_bg_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F227718B456BE00A5C97C /* schedule_bg_5@2x.png */; };
+		2A4F229518B4570700A5C97C /* icon_right_more_cell.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F229318B4570700A5C97C /* icon_right_more_cell.png */; };
+		2A4F229618B4570700A5C97C /* icon_right_more_cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F229418B4570700A5C97C /* icon_right_more_cell@2x.png */; };
+		2A4F229D18B4575000A5C97C /* MoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F229818B4575000A5C97C /* MoreCell.m */; };
+		2A4F229E18B4575000A5C97C /* MoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F229918B4575000A5C97C /* MoreCell.xib */; };
+		2A4F229F18B4575000A5C97C /* MoreCellTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F229B18B4575000A5C97C /* MoreCellTitle.m */; };
+		2A4F22A018B4575000A5C97C /* MoreCellTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F229C18B4575000A5C97C /* MoreCellTitle.xib */; };
+		2A4F22A318B4575A00A5C97C /* MoreCellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F22A218B4575A00A5C97C /* MoreCellItem.m */; };
 		2A516C9818AC5C1A00F82B5A /* ScheduleCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A516C9618AC5C1A00F82B5A /* ScheduleCategoryVC.m */; };
 		2A516C9918AC5C1A00F82B5A /* ScheduleCategoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A516C9718AC5C1A00F82B5A /* ScheduleCategoryVC.xib */; };
 		2A516C9E18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A516C9C18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m */; };
@@ -136,7 +168,6 @@
 		2A6FDB7918AF1ACA00D33D21 /* icon_reminder_add_sc.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A6FDB7318AF1ACA00D33D21 /* icon_reminder_add_sc.png */; };
 		2A6FDB7C18AF1F5300D33D21 /* bg_review_add_schedule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A6FDB7A18AF1F5300D33D21 /* bg_review_add_schedule@2x.png */; };
 		2A6FDB7D18AF1F5300D33D21 /* bg_review_add_schedule.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A6FDB7B18AF1F5300D33D21 /* bg_review_add_schedule.png */; };
-		2A6FDB8018AF4C4300D33D21 /* ChooseTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6FDB7F18AF4C4300D33D21 /* ChooseTimeView.m */; };
 		2A75E63518ADA96600E74E4F /* AddMemberVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A75E63318ADA96600E74E4F /* AddMemberVC.m */; };
 		2A75E63618ADA96600E74E4F /* AddMemberVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E63418ADA96600E74E4F /* AddMemberVC.xib */; };
 		2A75E63D18ADA97700E74E4F /* ListMembersVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A75E63818ADA97700E74E4F /* ListMembersVC.m */; };
@@ -189,6 +220,9 @@
 		C000F2FC18AF6C2000280464 /* ic_injection_needle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F018AF6C2000280464 /* ic_injection_needle@2x.png */; };
 		C000F2FD18AF6C2000280464 /* ic_memo.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F118AF6C2000280464 /* ic_memo.png */; };
 		C000F2FE18AF6C2000280464 /* ic_memo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F218AF6C2000280464 /* ic_memo@2x.png */; };
+		C0AD15E118B4A7A300709E81 /* ChooseTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AD15E018B4A7A300709E81 /* ChooseTimeView.m */; };
+		C0AD15E618B4A7C500709E81 /* NMTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AD15E318B4A7C500709E81 /* NMTimePickerView.m */; };
+		C0AD15E718B4A7C500709E81 /* NMSelectionStringView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AD15E518B4A7C500709E81 /* NMSelectionStringView.m */; };
 		C0B2B1D518B44F7000CF4B76 /* CDShiftMember.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1D418B44F7000CF4B76 /* CDShiftMember.m */; };
 		C0B2B1D818B44F7100CF4B76 /* CDScheduleAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1D718B44F7100CF4B76 /* CDScheduleAlert.m */; };
 		C0B2B1DB18B44F7100CF4B76 /* CDSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1DA18B44F7100CF4B76 /* CDSchedule.m */; };
@@ -348,6 +382,43 @@
 		2A3F497418AE242E00D3137D /* ic_bt_add_schedule_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bt_add_schedule_back@2x.png"; sourceTree = "<group>"; };
 		2A3F497518AE242E00D3137D /* ic_bt_save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bt_save.png; sourceTree = "<group>"; };
 		2A3F497618AE242E00D3137D /* ic_bt_save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bt_save@2x.png"; sourceTree = "<group>"; };
+		2A4F225718B4567F00A5C97C /* ScheduleCategoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCategoryItem.h; sourceTree = "<group>"; };
+		2A4F225818B4567F00A5C97C /* ScheduleCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCategoryItem.m; sourceTree = "<group>"; };
+		2A4F225918B4567F00A5C97C /* ShiftCategoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftCategoryItem.h; sourceTree = "<group>"; };
+		2A4F225A18B4567F00A5C97C /* ShiftCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftCategoryItem.m; sourceTree = "<group>"; };
+		2A4F226018B456A600A5C97C /* tienlp_predefault.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tienlp_predefault.plist; sourceTree = "<group>"; };
+		2A4F226218B456BE00A5C97C /* schedule_bg_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedule_bg_6.png; sourceTree = "<group>"; };
+		2A4F226318B456BE00A5C97C /* schedule_bg_6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_bg_6@2x.png"; sourceTree = "<group>"; };
+		2A4F226418B456BE00A5C97C /* schedule_bg_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedule_bg_7.png; sourceTree = "<group>"; };
+		2A4F226518B456BE00A5C97C /* schedule_bg_7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_bg_7@2x.png"; sourceTree = "<group>"; };
+		2A4F226618B456BE00A5C97C /* schedule_bg_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedule_bg_8.png; sourceTree = "<group>"; };
+		2A4F226718B456BE00A5C97C /* schedule_bg_8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_bg_8@2x.png"; sourceTree = "<group>"; };
+		2A4F226818B456BE00A5C97C /* schedule_bg_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedule_bg_9.png; sourceTree = "<group>"; };
+		2A4F226918B456BE00A5C97C /* schedule_bg_9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_bg_9@2x.png"; sourceTree = "<group>"; };
+		2A4F226A18B456BE00A5C97C /* home_add_quick_schedule_time_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_add_quick_schedule_time_bg.png; sourceTree = "<group>"; };
+		2A4F226B18B456BE00A5C97C /* home_add_quick_schedule_time_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_add_quick_schedule_time_bg@2x.png"; sourceTree = "<group>"; };
+		2A4F226C18B456BE00A5C97C /* schedule_bg_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedule_bg_0.png; sourceTree = "<group>"; };
+		2A4F226D18B456BE00A5C97C /* schedule_bg_0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_bg_0@2x.png"; sourceTree = "<group>"; };
+		2A4F226E18B456BE00A5C97C /* schedule_bg_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedule_bg_1.png; sourceTree = "<group>"; };
+		2A4F226F18B456BE00A5C97C /* schedule_bg_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_bg_1@2x.png"; sourceTree = "<group>"; };
+		2A4F227018B456BE00A5C97C /* schedule_bg_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedule_bg_2.png; sourceTree = "<group>"; };
+		2A4F227118B456BE00A5C97C /* schedule_bg_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_bg_2@2x.png"; sourceTree = "<group>"; };
+		2A4F227218B456BE00A5C97C /* schedule_bg_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedule_bg_3.png; sourceTree = "<group>"; };
+		2A4F227318B456BE00A5C97C /* schedule_bg_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_bg_3@2x.png"; sourceTree = "<group>"; };
+		2A4F227418B456BE00A5C97C /* schedule_bg_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedule_bg_4.png; sourceTree = "<group>"; };
+		2A4F227518B456BE00A5C97C /* schedule_bg_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_bg_4@2x.png"; sourceTree = "<group>"; };
+		2A4F227618B456BE00A5C97C /* schedule_bg_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedule_bg_5.png; sourceTree = "<group>"; };
+		2A4F227718B456BE00A5C97C /* schedule_bg_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_bg_5@2x.png"; sourceTree = "<group>"; };
+		2A4F229318B4570700A5C97C /* icon_right_more_cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_right_more_cell.png; sourceTree = "<group>"; };
+		2A4F229418B4570700A5C97C /* icon_right_more_cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_right_more_cell@2x.png"; sourceTree = "<group>"; };
+		2A4F229718B4575000A5C97C /* MoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCell.h; sourceTree = "<group>"; };
+		2A4F229818B4575000A5C97C /* MoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCell.m; sourceTree = "<group>"; };
+		2A4F229918B4575000A5C97C /* MoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreCell.xib; sourceTree = "<group>"; };
+		2A4F229A18B4575000A5C97C /* MoreCellTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCellTitle.h; sourceTree = "<group>"; };
+		2A4F229B18B4575000A5C97C /* MoreCellTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCellTitle.m; sourceTree = "<group>"; };
+		2A4F229C18B4575000A5C97C /* MoreCellTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreCellTitle.xib; sourceTree = "<group>"; };
+		2A4F22A118B4575A00A5C97C /* MoreCellItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCellItem.h; sourceTree = "<group>"; };
+		2A4F22A218B4575A00A5C97C /* MoreCellItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCellItem.m; sourceTree = "<group>"; };
 		2A516C9518AC5C1A00F82B5A /* ScheduleCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCategoryVC.h; sourceTree = "<group>"; };
 		2A516C9618AC5C1A00F82B5A /* ScheduleCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCategoryVC.m; sourceTree = "<group>"; };
 		2A516C9718AC5C1A00F82B5A /* ScheduleCategoryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCategoryVC.xib; sourceTree = "<group>"; };
@@ -367,8 +438,6 @@
 		2A6FDB7318AF1ACA00D33D21 /* icon_reminder_add_sc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_reminder_add_sc.png; sourceTree = "<group>"; };
 		2A6FDB7A18AF1F5300D33D21 /* bg_review_add_schedule@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_review_add_schedule@2x.png"; sourceTree = "<group>"; };
 		2A6FDB7B18AF1F5300D33D21 /* bg_review_add_schedule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_review_add_schedule.png; sourceTree = "<group>"; };
-		2A6FDB7E18AF4C4300D33D21 /* ChooseTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTimeView.h; sourceTree = "<group>"; };
-		2A6FDB7F18AF4C4300D33D21 /* ChooseTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTimeView.m; sourceTree = "<group>"; };
 		2A75E63218ADA96600E74E4F /* AddMemberVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberVC.h; sourceTree = "<group>"; };
 		2A75E63318ADA96600E74E4F /* AddMemberVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberVC.m; sourceTree = "<group>"; };
 		2A75E63418ADA96600E74E4F /* AddMemberVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMemberVC.xib; sourceTree = "<group>"; };
@@ -430,6 +499,12 @@
 		C000F2F018AF6C2000280464 /* ic_injection_needle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_injection_needle@2x.png"; sourceTree = "<group>"; };
 		C000F2F118AF6C2000280464 /* ic_memo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_memo.png; sourceTree = "<group>"; };
 		C000F2F218AF6C2000280464 /* ic_memo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_memo@2x.png"; sourceTree = "<group>"; };
+		C0AD15DF18B4A7A300709E81 /* ChooseTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTimeView.h; sourceTree = "<group>"; };
+		C0AD15E018B4A7A300709E81 /* ChooseTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTimeView.m; sourceTree = "<group>"; };
+		C0AD15E218B4A7C500709E81 /* NMTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMTimePickerView.h; sourceTree = "<group>"; };
+		C0AD15E318B4A7C500709E81 /* NMTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMTimePickerView.m; sourceTree = "<group>"; };
+		C0AD15E418B4A7C500709E81 /* NMSelectionStringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMSelectionStringView.h; sourceTree = "<group>"; };
+		C0AD15E518B4A7C500709E81 /* NMSelectionStringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMSelectionStringView.m; sourceTree = "<group>"; };
 		C0B2B1D318B44F7000CF4B76 /* CDShiftMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDShiftMember.h; path = "Nurse Management/Classess/Model/CDShiftMember.h"; sourceTree = SOURCE_ROOT; };
 		C0B2B1D418B44F7000CF4B76 /* CDShiftMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDShiftMember.m; path = "Nurse Management/Classess/Model/CDShiftMember.m"; sourceTree = SOURCE_ROOT; };
 		C0B2B1D618B44F7100CF4B76 /* CDScheduleAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDScheduleAlert.h; path = "Nurse Management/Classess/Model/CDScheduleAlert.h"; sourceTree = SOURCE_ROOT; };
@@ -622,8 +697,8 @@
 		2A394C0418A9FF7600F30F2D /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				2A6FDB7E18AF4C4300D33D21 /* ChooseTimeView.h */,
-				2A6FDB7F18AF4C4300D33D21 /* ChooseTimeView.m */,
+				C0AD15DF18B4A7A300709E81 /* ChooseTimeView.h */,
+				C0AD15E018B4A7A300709E81 /* ChooseTimeView.m */,
 				2A394C0518A9FF7600F30F2D /* Define.h */,
 				2A394C2918A9FFB000F30F2D /* Common.h */,
 				2A394C2A18A9FFB000F30F2D /* Common.m */,
@@ -646,6 +721,10 @@
 		2A394C0718A9FF7600F30F2D /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				2A4F225718B4567F00A5C97C /* ScheduleCategoryItem.h */,
+				2A4F225818B4567F00A5C97C /* ScheduleCategoryItem.m */,
+				2A4F225918B4567F00A5C97C /* ShiftCategoryItem.h */,
+				2A4F225A18B4567F00A5C97C /* ShiftCategoryItem.m */,
 				2A75E64118ADA98800E74E4F /* Member.h */,
 				2A75E64218ADA98800E74E4F /* Member.m */,
 			);
@@ -725,6 +804,10 @@
 		2A394C3318AA022600F30F2D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C0AD15E218B4A7C500709E81 /* NMTimePickerView.h */,
+				C0AD15E318B4A7C500709E81 /* NMTimePickerView.m */,
+				C0AD15E418B4A7C500709E81 /* NMSelectionStringView.h */,
+				C0AD15E518B4A7C500709E81 /* NMSelectionStringView.m */,
 				C000F2E318AF689600280464 /* UIPickerActionSheet */,
 				2A3C24EB18AB78B300C20A04 /* AddScheduleView */,
 				2A3C24B718AB56DB00C20A04 /* AddShiftView */,
@@ -775,6 +858,7 @@
 		2A394C5218AA259B00F30F2D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2A4F228E18B456C900A5C97C /* Schedule_bg */,
 				2A3C24D218AB5BF700C20A04 /* Common */,
 				2A3C24BD18AB592000C20A04 /* ShiftBG */,
 				2A3C24AA18AB1E8600C20A04 /* Button */,
@@ -843,6 +927,14 @@
 		2A3C249F18AB1BE000C20A04 /* MoreVC */ = {
 			isa = PBXGroup;
 			children = (
+				2A4F22A118B4575A00A5C97C /* MoreCellItem.h */,
+				2A4F22A218B4575A00A5C97C /* MoreCellItem.m */,
+				2A4F229718B4575000A5C97C /* MoreCell.h */,
+				2A4F229818B4575000A5C97C /* MoreCell.m */,
+				2A4F229918B4575000A5C97C /* MoreCell.xib */,
+				2A4F229A18B4575000A5C97C /* MoreCellTitle.h */,
+				2A4F229B18B4575000A5C97C /* MoreCellTitle.m */,
+				2A4F229C18B4575000A5C97C /* MoreCellTitle.xib */,
 				2A3C24A518AB1BFE00C20A04 /* MoreVC.h */,
 				2A3C24A618AB1BFE00C20A04 /* MoreVC.m */,
 				2A3C24A718AB1BFE00C20A04 /* MoreVC.xib */,
@@ -917,6 +1009,8 @@
 		2A3C24D218AB5BF700C20A04 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2A4F226A18B456BE00A5C97C /* home_add_quick_schedule_time_bg.png */,
+				2A4F226B18B456BE00A5C97C /* home_add_quick_schedule_time_bg@2x.png */,
 				B6B10DE218AF0C9E004E3229 /* bg_edit_shift_time.png */,
 				B6B10DE318AF0C9E004E3229 /* bg_edit_shift_time@2x.png */,
 				B6B10DE418AF0C9E004E3229 /* ic_edit_shift_color_1.png */,
@@ -1014,6 +1108,33 @@
 			name = HomeCell;
 			sourceTree = "<group>";
 		};
+		2A4F228E18B456C900A5C97C /* Schedule_bg */ = {
+			isa = PBXGroup;
+			children = (
+				2A4F226218B456BE00A5C97C /* schedule_bg_6.png */,
+				2A4F226318B456BE00A5C97C /* schedule_bg_6@2x.png */,
+				2A4F226418B456BE00A5C97C /* schedule_bg_7.png */,
+				2A4F226518B456BE00A5C97C /* schedule_bg_7@2x.png */,
+				2A4F226618B456BE00A5C97C /* schedule_bg_8.png */,
+				2A4F226718B456BE00A5C97C /* schedule_bg_8@2x.png */,
+				2A4F226818B456BE00A5C97C /* schedule_bg_9.png */,
+				2A4F226918B456BE00A5C97C /* schedule_bg_9@2x.png */,
+				2A4F226C18B456BE00A5C97C /* schedule_bg_0.png */,
+				2A4F226D18B456BE00A5C97C /* schedule_bg_0@2x.png */,
+				2A4F226E18B456BE00A5C97C /* schedule_bg_1.png */,
+				2A4F226F18B456BE00A5C97C /* schedule_bg_1@2x.png */,
+				2A4F227018B456BE00A5C97C /* schedule_bg_2.png */,
+				2A4F227118B456BE00A5C97C /* schedule_bg_2@2x.png */,
+				2A4F227218B456BE00A5C97C /* schedule_bg_3.png */,
+				2A4F227318B456BE00A5C97C /* schedule_bg_3@2x.png */,
+				2A4F227418B456BE00A5C97C /* schedule_bg_4.png */,
+				2A4F227518B456BE00A5C97C /* schedule_bg_4@2x.png */,
+				2A4F227618B456BE00A5C97C /* schedule_bg_5.png */,
+				2A4F227718B456BE00A5C97C /* schedule_bg_5@2x.png */,
+			);
+			name = Schedule_bg;
+			sourceTree = "<group>";
+		};
 		2A516C9418AC5BFD00F82B5A /* ScheduleCategoryVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1074,6 +1195,8 @@
 		2A6FDB6D18AF1AA400D33D21 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				2A4F229318B4570700A5C97C /* icon_right_more_cell.png */,
+				2A4F229418B4570700A5C97C /* icon_right_more_cell@2x.png */,
 				2A6FDB7A18AF1F5300D33D21 /* bg_review_add_schedule@2x.png */,
 				2A6FDB7B18AF1F5300D33D21 /* bg_review_add_schedule.png */,
 				2A6FDB6E18AF1ACA00D33D21 /* icon_writer_content_add_sc.png */,
@@ -1102,6 +1225,7 @@
 		B6D7A3B118B1A85F00E98936 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				2A4F226018B456A600A5C97C /* tienlp_predefault.plist */,
 				B6D7A3B418B1B21500E98936 /* predefault.plist */,
 			);
 			name = Data;
@@ -1193,6 +1317,7 @@
 			files = (
 				B6B10E0318AF0C9E004E3229 /* ic_edit_shift_color_5@2x.png in Resources */,
 				B6B10DFF18AF0C9E004E3229 /* ic_edit_shift_color_3@2x.png in Resources */,
+				2A4F228918B456BE00A5C97C /* schedule_bg_3@2x.png in Resources */,
 				2A3F496B18AE197C00D3137D /* ic_home_cell_edit_shitf.png in Resources */,
 				C000F2FA18AF6C2000280464 /* ic_clock@2x.png in Resources */,
 				C000F2F718AF6C2000280464 /* ic_btn_member_list.png in Resources */,
@@ -1204,6 +1329,7 @@
 				2A3C249518AB062F00C20A04 /* ic_toolbar_ranking.png in Resources */,
 				2A3C249318AB062F00C20A04 /* ic_toolbar_more.png in Resources */,
 				2A394C2518A9FF7600F30F2D /* iTunesArtwork_ios7.png in Resources */,
+				2A4F228D18B456BE00A5C97C /* schedule_bg_5@2x.png in Resources */,
 				2A3C249618AB062F00C20A04 /* ic_toolbar_ranking@2x.png in Resources */,
 				B6D7A3B518B1B21500E98936 /* predefault.plist in Resources */,
 				B6B10E0218AF0C9E004E3229 /* ic_edit_shift_color_5.png in Resources */,
@@ -1215,6 +1341,7 @@
 				2A3C24E618AB701500C20A04 /* AddShiftVC.xib in Resources */,
 				2A3C24E018AB6DFF00C20A04 /* ic_bt_add@2x.png in Resources */,
 				2A3F497018AE197C00D3137D /* ic_time@2x.png in Resources */,
+				2A4F228418B456BE00A5C97C /* schedule_bg_1.png in Resources */,
 				B6B10E0918AF0C9E004E3229 /* ic_edit_shift_color_8@2x.png in Resources */,
 				2AF0758818ACC4B00008D875 /* FXCalendarView.xib in Resources */,
 				B6B10E0618AF0C9E004E3229 /* ic_edit_shift_color_7.png in Resources */,
@@ -1230,35 +1357,49 @@
 				B6B10DE118AF0C3A004E3229 /* EditShiftVC.xib in Resources */,
 				B6B10E0818AF0C9E004E3229 /* ic_edit_shift_color_8.png in Resources */,
 				C000F2F918AF6C2000280464 /* ic_clock.png in Resources */,
+				2A4F228B18B456BE00A5C97C /* schedule_bg_4@2x.png in Resources */,
 				2A75E64718ADA9AB00E74E4F /* ic_cell_shift@2x.png in Resources */,
 				2A394C3818AA024A00F30F2D /* HomeVC.xib in Resources */,
 				B6B10E0B18AF0C9E004E3229 /* ic_edit_shift_color_9@2x.png in Resources */,
 				2A394C2718A9FF7600F30F2D /* Default.png in Resources */,
+				2A4F229618B4570700A5C97C /* icon_right_more_cell@2x.png in Resources */,
 				2A3C24D518AB5CC100C20A04 /* img_add_shift_home_title.png in Resources */,
 				B6B10DF918AF0C9E004E3229 /* bg_edit_shift_time@2x.png in Resources */,
 				2A3F495E18AE085D00D3137D /* HomeCellSchedule.xib in Resources */,
 				2A3C24AE18AB1EF500C20A04 /* ic_bt_back@2x.png in Resources */,
 				2A394C1C18A9FF7600F30F2D /* Icon-Small-40@2x.png in Resources */,
+				2A4F228818B456BE00A5C97C /* schedule_bg_3.png in Resources */,
 				2A3C248F18AB062F00C20A04 /* ic_toolbar_add_schedule.png in Resources */,
 				2A3C24B618AB295500C20A04 /* ChangeThemeVC.xib in Resources */,
+				2A4F229E18B4575000A5C97C /* MoreCell.xib in Resources */,
+				2A4F227E18B456BE00A5C97C /* schedule_bg_9.png in Resources */,
 				B6B10DFB18AF0C9E004E3229 /* ic_edit_shift_color_1@2x.png in Resources */,
+				2A4F228018B456BE00A5C97C /* home_add_quick_schedule_time_bg.png in Resources */,
 				2A3C24A918AB1BFE00C20A04 /* MoreVC.xib in Resources */,
 				2A394C2618A9FF7600F30F2D /* Default-568h@2x.png in Resources */,
 				2A394C1F18A9FF7600F30F2D /* Icon-Small@2x_ios7.png in Resources */,
 				C000F2FB18AF6C2000280464 /* ic_injection_needle.png in Resources */,
+				2A4F228318B456BE00A5C97C /* schedule_bg_0@2x.png in Resources */,
+				2A4F22A018B4575000A5C97C /* MoreCellTitle.xib in Resources */,
 				2A3F497218AE197C00D3137D /* img_temp1@2x.png in Resources */,
+				2A4F226118B456A600A5C97C /* tienlp_predefault.plist in Resources */,
 				B6B10E0D18AF0C9E004E3229 /* ic_edit_shift_color_10@2x.png in Resources */,
 				B6B10E0118AF0C9E004E3229 /* ic_edit_shift_color_4@2x.png in Resources */,
+				2A4F227818B456BE00A5C97C /* schedule_bg_6.png in Resources */,
 				2A3C24DF18AB6DFF00C20A04 /* ic_bt_add.png in Resources */,
+				2A4F228C18B456BE00A5C97C /* schedule_bg_5.png in Resources */,
 				2A3C24F318AB7FFA00C20A04 /* img_add_schedule_home_title.png in Resources */,
+				2A4F228118B456BE00A5C97C /* home_add_quick_schedule_time_bg@2x.png in Resources */,
 				2A3F496218AE096A00D3137D /* img_bg_home_cell_schedule_1@2x.png in Resources */,
 				2A75E63618ADA96600E74E4F /* AddMemberVC.xib in Resources */,
 				B6B10E0718AF0C9E004E3229 /* ic_edit_shift_color_7@2x.png in Resources */,
 				2AF0758318ACB60A0008D875 /* FXDayView.xib in Resources */,
 				2A516C9F18AC5E1800F82B5A /* AddScheduleCategoryNameVC.xib in Resources */,
 				2A6FDB7418AF1ACA00D33D21 /* icon_writer_content_add_sc.png in Resources */,
+				2A4F227B18B456BE00A5C97C /* schedule_bg_7@2x.png in Resources */,
 				C000F2FC18AF6C2000280464 /* ic_injection_needle@2x.png in Resources */,
 				2A394C5118AA1EE300F30F2D /* HomeNaviBarView.xib in Resources */,
+				2A4F227D18B456BE00A5C97C /* schedule_bg_8@2x.png in Resources */,
 				2A516C9918AC5C1A00F82B5A /* ScheduleCategoryVC.xib in Resources */,
 				C000F2F518AF6C2000280464 /* bg_duration.png in Resources */,
 				2A6FDB7918AF1ACA00D33D21 /* icon_reminder_add_sc.png in Resources */,
@@ -1274,10 +1415,12 @@
 				2A75E63E18ADA97700E74E4F /* ListMembersVC.xib in Resources */,
 				B6B10DFE18AF0C9E004E3229 /* ic_edit_shift_color_3.png in Resources */,
 				2A394BE218A9FD5300F30F2D /* Images.xcassets in Resources */,
+				2A4F227918B456BE00A5C97C /* schedule_bg_6@2x.png in Resources */,
 				2A394C2018A9FF7600F30F2D /* Icon.png in Resources */,
 				2A394C5B18AA25AE00F30F2D /* ic_bt_bar_today@2x.png in Resources */,
 				2A3F497818AE242E00D3137D /* ic_bt_add_schedule_back@2x.png in Resources */,
 				2A3C24E918AB710700C20A04 /* ic_bg_bar_button.png in Resources */,
+				2A4F227C18B456BE00A5C97C /* schedule_bg_8.png in Resources */,
 				B6B10E0C18AF0C9E004E3229 /* ic_edit_shift_color_10.png in Resources */,
 				2A394C1E18A9FF7600F30F2D /* Icon-Small@2x.png in Resources */,
 				2A3C24CB18AB593300C20A04 /* icon_r1_c7.png in Resources */,
@@ -1294,17 +1437,22 @@
 				2A3F495818AE047300D3137D /* img_bg_home_cell_shift.png in Resources */,
 				2A6FDB6B18AF117D00D33D21 /* AddScheduleVC.xib in Resources */,
 				2A3F495018AE032500D3137D /* HomeCellAddShift.xib in Resources */,
+				2A4F228518B456BE00A5C97C /* schedule_bg_1@2x.png in Resources */,
 				2A3C24A418AB1BF100C20A04 /* RankingVC.xib in Resources */,
 				2A3F497918AE242E00D3137D /* ic_bt_save.png in Resources */,
 				B6B10DFC18AF0C9E004E3229 /* ic_edit_shift_color_2.png in Resources */,
 				2A3C24D118AB593300C20A04 /* icon_r3_c9.png in Resources */,
 				2A6FDB7618AF1ACA00D33D21 /* icon_reminder_add_sc@2x.png in Resources */,
 				2A3C24B018AB271F00C20A04 /* theme_default_green.plist in Resources */,
+				2A4F229518B4570700A5C97C /* icon_right_more_cell.png in Resources */,
 				2A394C1B18A9FF7600F30F2D /* Icon-60@2x.png in Resources */,
 				C000F2F318AF6C2000280464 /* bg_dashed_frame.png in Resources */,
 				2A3C24D018AB593300C20A04 /* icon_r3_c7.png in Resources */,
+				2A4F228A18B456BE00A5C97C /* schedule_bg_4.png in Resources */,
 				B6B10E0418AF0C9E004E3229 /* ic_edit_shift_color_6.png in Resources */,
+				2A4F228618B456BE00A5C97C /* schedule_bg_2.png in Resources */,
 				2A3C24C918AB593300C20A04 /* icon_r1_c3.png in Resources */,
+				2A4F227A18B456BE00A5C97C /* schedule_bg_7.png in Resources */,
 				2A3C24DC18AB6CC500C20A04 /* ListShiftPatternVC.xib in Resources */,
 				2A3F496D18AE197C00D3137D /* ic_nurse.png in Resources */,
 				2A3C24CA18AB593300C20A04 /* icon_r1_c5.png in Resources */,
@@ -1320,11 +1468,14 @@
 				2A6FDB7C18AF1F5300D33D21 /* bg_review_add_schedule@2x.png in Resources */,
 				2A3C24CD18AB593300C20A04 /* icon_r3_c1.png in Resources */,
 				2A394C5A18AA25AE00F30F2D /* ic_bt_bar_today.png in Resources */,
+				2A4F228718B456BE00A5C97C /* schedule_bg_2@2x.png in Resources */,
+				2A4F228218B456BE00A5C97C /* schedule_bg_0.png in Resources */,
 				2A3C24EA18AB710700C20A04 /* ic_bg_bar_button@2x.png in Resources */,
 				2A3C24F718AB822D00C20A04 /* ic_bt_home_add_schedule_step1.png in Resources */,
 				2A3F497A18AE242E00D3137D /* ic_bt_save@2x.png in Resources */,
 				2A3C24C818AB593300C20A04 /* icon_r1_c1.png in Resources */,
 				B6B10DFA18AF0C9E004E3229 /* ic_edit_shift_color_1.png in Resources */,
+				2A4F227F18B456BE00A5C97C /* schedule_bg_9@2x.png in Resources */,
 				2A3C24CE18AB593300C20A04 /* icon_r3_c3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1346,7 +1497,6 @@
 			files = (
 				2A3F495D18AE085D00D3137D /* HomeCellSchedule.m in Sources */,
 				2A75E63518ADA96600E74E4F /* AddMemberVC.m in Sources */,
-				2A6FDB8018AF4C4300D33D21 /* ChooseTimeView.m in Sources */,
 				2AF0758118ACAC250008D875 /* FXDay.m in Sources */,
 				2A394C3118AA009100F30F2D /* Reachability.m in Sources */,
 				2A3C24A318AB1BF100C20A04 /* RankingVC.m in Sources */,
@@ -1354,20 +1504,24 @@
 				C0B2B1D818B44F7100CF4B76 /* CDScheduleAlert.m in Sources */,
 				2A3C24A818AB1BFE00C20A04 /* MoreVC.m in Sources */,
 				C000F2E618AF68AD00280464 /* UIPickerActionSheet.m in Sources */,
+				C0AD15E718B4A7C500709E81 /* NMSelectionStringView.m in Sources */,
 				2A3C24DB18AB6CC500C20A04 /* ListShiftPatternVC.m in Sources */,
 				C0B2B1E118B44F7100CF4B76 /* CDShiftCategory.m in Sources */,
 				2A3C249C18AB084900C20A04 /* HomeToolBarView.m in Sources */,
 				2A394C2B18A9FFB000F30F2D /* Common.m in Sources */,
 				C0B2B1E718B44F7100CF4B76 /* CDMember.m in Sources */,
+				2A4F225B18B4567F00A5C97C /* ScheduleCategoryItem.m in Sources */,
 				2A394C5018AA1EE300F30F2D /* HomeNaviBarView.m in Sources */,
 				2A3C24E518AB701500C20A04 /* AddShiftVC.m in Sources */,
 				2AF0758718ACC4B00008D875 /* FXCalendarView.m in Sources */,
 				2A3C24BB18AB586B00C20A04 /* AddShiftView.m in Sources */,
 				2A394C4518AA0C9D00F30F2D /* FXThemeManager.m in Sources */,
 				2A394C3718AA024A00F30F2D /* HomeVC.m in Sources */,
+				C0AD15E118B4A7A300709E81 /* ChooseTimeView.m in Sources */,
 				2A3F495418AE034A00D3137D /* HomeCellAddSchedule.m in Sources */,
 				C0B2B1D518B44F7000CF4B76 /* CDShiftMember.m in Sources */,
 				2A516CA818AC77E400F82B5A /* FXMonthView.m in Sources */,
+				2A4F22A318B4575A00A5C97C /* MoreCellItem.m in Sources */,
 				2AF0757E18ACABFD0008D875 /* FXDayView.m in Sources */,
 				2A394BDD18A9FD5300F30F2D /* AppDelegate.m in Sources */,
 				2A3C24EF18AB78C900C20A04 /* AddScheduleView.m in Sources */,
@@ -1375,6 +1529,7 @@
 				2A75E64318ADA98800E74E4F /* Member.m in Sources */,
 				2A394C3C18AA028100F30F2D /* FXNavigationController.m in Sources */,
 				C0B2B1E418B44F7100CF4B76 /* CDShift.m in Sources */,
+				2A4F229F18B4575000A5C97C /* MoreCellTitle.m in Sources */,
 				2A394BD918A9FD5300F30F2D /* main.m in Sources */,
 				C0B2B1DB18B44F7100CF4B76 /* CDSchedule.m in Sources */,
 				2A6FDB6A18AF117D00D33D21 /* AddScheduleVC.m in Sources */,
@@ -1385,10 +1540,13 @@
 				2A394C5E18AA2AA600F30F2D /* FXCalendarData.m in Sources */,
 				2A3F494F18AE032500D3137D /* HomeCellAddShift.m in Sources */,
 				2A394BE018A9FD5300F30F2D /* Nurse_Management.xcdatamodeld in Sources */,
+				2A4F225C18B4567F00A5C97C /* ShiftCategoryItem.m in Sources */,
 				C0B2B1DE18B44F7100CF4B76 /* CDScheduleCategory.m in Sources */,
+				2A4F229D18B4575000A5C97C /* MoreCell.m in Sources */,
 				2A394C4018AA02AA00F30F2D /* FXViewController.m in Sources */,
 				2A75E63D18ADA97700E74E4F /* ListMembersVC.m in Sources */,
 				2A516C9818AC5C1A00F82B5A /* ScheduleCategoryVC.m in Sources */,
+				C0AD15E618B4A7C500709E81 /* NMTimePickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

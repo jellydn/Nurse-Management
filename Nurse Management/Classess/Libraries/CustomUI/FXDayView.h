@@ -27,6 +27,9 @@
 @property (nonatomic, weak) IBOutlet UILabel   *lbDay;
 @property (nonatomic, weak) IBOutlet UIButton  *btButtonMaks;
 
+@property (nonatomic, weak) IBOutlet UILabel *lbCategoryName;
+@property (nonatomic, weak) IBOutlet UIImageView *imgCategory;
+
 - (void) reloadInfo:(FXDay*)day;
 - (IBAction)selectDay:(id)sender;
 
