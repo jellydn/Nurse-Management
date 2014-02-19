@@ -368,6 +368,17 @@
         day.isOutOfDay  = NO;
         day.date        = tempDate;
         
+        if (_isLoadDataForCell) {
+            CDShift *shift  = [[AppDelegate shared] getShiftWithDate:tempDate];
+            if (shift) {
+                day.shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
+            } else {
+                day.shiftCategory = nil;
+            }
+        } else {
+            day.shiftCategory = nil;
+        }
+        
         [_days addObject:day];
         
         tempDate = [FXCalendarData nextDateFrom:tempDate];
@@ -452,6 +463,17 @@
         FXDay *day      = [[FXDay alloc] init];
         day.isOutOfDay  = NO;
         day.date        = tempDate;
+        
+        if (_isLoadDataForCell) {
+            CDShift *shift  = [[AppDelegate shared] getShiftWithDate:tempDate];
+            if (shift) {
+                day.shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
+            } else {
+                day.shiftCategory = nil;
+            }
+        } else {
+            day.shiftCategory = nil;
+        }
         
         [_days addObject:day];
         

@@ -10,6 +10,10 @@
 #import "FXCalendarData.h"
 #import "FXDay.h"
 #import "FXDayView.h"
+#import "AppDelegate.h"
+#import "CDShift.h"
+#import "CDShiftCategory.h"
+#import "ShiftCategoryItem.h"
 
 @protocol FXMonthViewDelegate;
 
@@ -22,6 +26,7 @@
 @property (nonatomic) BOOL isMouthCurrent;
 @property (nonatomic) BOOL is6Week;
 @property (nonatomic) BOOL isShowSelectDay;
+@property (nonatomic) BOOL isLoadDataForCell;
 
 @property (nonatomic) int totalDay;
 @property (nonatomic) int monthIndex;

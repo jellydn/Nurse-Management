@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "FXCalendarData.h"
+#import "AppDelegate.h"
+#import "CDShiftCategory.h"
+#import "CDShift.h"
+#import "ShiftCategoryItem.h"
 
 @interface FXDay : NSObject
 
@@ -21,5 +25,7 @@
 @property (nonatomic) int weekDayIndex;
 
 @property (nonatomic) NSDate *date;
+
+@property (nonatomic, strong) ShiftCategoryItem *shiftCategory;
 
 @end
