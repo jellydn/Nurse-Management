@@ -14,5 +14,6 @@
 @property(nonatomic,strong) NSDate *date;
 @property(nonatomic,assign) BOOL isNewShift;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerMember;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerShiftCategory;
 
 @end

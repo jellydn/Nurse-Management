@@ -123,7 +123,6 @@
 		2A3F497A18AE242E00D3137D /* ic_bt_save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A3F497618AE242E00D3137D /* ic_bt_save@2x.png */; };
 		2A4F225B18B4567F00A5C97C /* ScheduleCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F225818B4567F00A5C97C /* ScheduleCategoryItem.m */; };
 		2A4F225C18B4567F00A5C97C /* ShiftCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F225A18B4567F00A5C97C /* ShiftCategoryItem.m */; };
-		2A4F225F18B4568E00A5C97C /* NMSelectionStringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F225E18B4568E00A5C97C /* NMSelectionStringView.m */; };
 		2A4F226118B456A600A5C97C /* tienlp_predefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226018B456A600A5C97C /* tienlp_predefault.plist */; };
 		2A4F227818B456BE00A5C97C /* schedule_bg_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226218B456BE00A5C97C /* schedule_bg_6.png */; };
 		2A4F227918B456BE00A5C97C /* schedule_bg_6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F226318B456BE00A5C97C /* schedule_bg_6@2x.png */; };
@@ -169,7 +168,6 @@
 		2A6FDB7918AF1ACA00D33D21 /* icon_reminder_add_sc.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A6FDB7318AF1ACA00D33D21 /* icon_reminder_add_sc.png */; };
 		2A6FDB7C18AF1F5300D33D21 /* bg_review_add_schedule@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A6FDB7A18AF1F5300D33D21 /* bg_review_add_schedule@2x.png */; };
 		2A6FDB7D18AF1F5300D33D21 /* bg_review_add_schedule.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A6FDB7B18AF1F5300D33D21 /* bg_review_add_schedule.png */; };
-		2A6FDB8018AF4C4300D33D21 /* ChooseTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6FDB7F18AF4C4300D33D21 /* ChooseTimeView.m */; };
 		2A75E63518ADA96600E74E4F /* AddMemberVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A75E63318ADA96600E74E4F /* AddMemberVC.m */; };
 		2A75E63618ADA96600E74E4F /* AddMemberVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E63418ADA96600E74E4F /* AddMemberVC.xib */; };
 		2A75E63D18ADA97700E74E4F /* ListMembersVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A75E63818ADA97700E74E4F /* ListMembersVC.m */; };
@@ -222,6 +220,9 @@
 		C000F2FC18AF6C2000280464 /* ic_injection_needle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F018AF6C2000280464 /* ic_injection_needle@2x.png */; };
 		C000F2FD18AF6C2000280464 /* ic_memo.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F118AF6C2000280464 /* ic_memo.png */; };
 		C000F2FE18AF6C2000280464 /* ic_memo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F218AF6C2000280464 /* ic_memo@2x.png */; };
+		C0AD15E118B4A7A300709E81 /* ChooseTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AD15E018B4A7A300709E81 /* ChooseTimeView.m */; };
+		C0AD15E618B4A7C500709E81 /* NMTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AD15E318B4A7C500709E81 /* NMTimePickerView.m */; };
+		C0AD15E718B4A7C500709E81 /* NMSelectionStringView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AD15E518B4A7C500709E81 /* NMSelectionStringView.m */; };
 		C0B2B1D518B44F7000CF4B76 /* CDShiftMember.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1D418B44F7000CF4B76 /* CDShiftMember.m */; };
 		C0B2B1D818B44F7100CF4B76 /* CDScheduleAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1D718B44F7100CF4B76 /* CDScheduleAlert.m */; };
 		C0B2B1DB18B44F7100CF4B76 /* CDSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1DA18B44F7100CF4B76 /* CDSchedule.m */; };
@@ -385,8 +386,6 @@
 		2A4F225818B4567F00A5C97C /* ScheduleCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCategoryItem.m; sourceTree = "<group>"; };
 		2A4F225918B4567F00A5C97C /* ShiftCategoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftCategoryItem.h; sourceTree = "<group>"; };
 		2A4F225A18B4567F00A5C97C /* ShiftCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftCategoryItem.m; sourceTree = "<group>"; };
-		2A4F225D18B4568E00A5C97C /* NMSelectionStringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMSelectionStringView.h; sourceTree = "<group>"; };
-		2A4F225E18B4568E00A5C97C /* NMSelectionStringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMSelectionStringView.m; sourceTree = "<group>"; };
 		2A4F226018B456A600A5C97C /* tienlp_predefault.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tienlp_predefault.plist; sourceTree = "<group>"; };
 		2A4F226218B456BE00A5C97C /* schedule_bg_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedule_bg_6.png; sourceTree = "<group>"; };
 		2A4F226318B456BE00A5C97C /* schedule_bg_6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedule_bg_6@2x.png"; sourceTree = "<group>"; };
@@ -439,8 +438,6 @@
 		2A6FDB7318AF1ACA00D33D21 /* icon_reminder_add_sc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_reminder_add_sc.png; sourceTree = "<group>"; };
 		2A6FDB7A18AF1F5300D33D21 /* bg_review_add_schedule@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_review_add_schedule@2x.png"; sourceTree = "<group>"; };
 		2A6FDB7B18AF1F5300D33D21 /* bg_review_add_schedule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_review_add_schedule.png; sourceTree = "<group>"; };
-		2A6FDB7E18AF4C4300D33D21 /* ChooseTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTimeView.h; sourceTree = "<group>"; };
-		2A6FDB7F18AF4C4300D33D21 /* ChooseTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTimeView.m; sourceTree = "<group>"; };
 		2A75E63218ADA96600E74E4F /* AddMemberVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMemberVC.h; sourceTree = "<group>"; };
 		2A75E63318ADA96600E74E4F /* AddMemberVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMemberVC.m; sourceTree = "<group>"; };
 		2A75E63418ADA96600E74E4F /* AddMemberVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMemberVC.xib; sourceTree = "<group>"; };
@@ -502,6 +499,12 @@
 		C000F2F018AF6C2000280464 /* ic_injection_needle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_injection_needle@2x.png"; sourceTree = "<group>"; };
 		C000F2F118AF6C2000280464 /* ic_memo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_memo.png; sourceTree = "<group>"; };
 		C000F2F218AF6C2000280464 /* ic_memo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_memo@2x.png"; sourceTree = "<group>"; };
+		C0AD15DF18B4A7A300709E81 /* ChooseTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTimeView.h; sourceTree = "<group>"; };
+		C0AD15E018B4A7A300709E81 /* ChooseTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTimeView.m; sourceTree = "<group>"; };
+		C0AD15E218B4A7C500709E81 /* NMTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMTimePickerView.h; sourceTree = "<group>"; };
+		C0AD15E318B4A7C500709E81 /* NMTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMTimePickerView.m; sourceTree = "<group>"; };
+		C0AD15E418B4A7C500709E81 /* NMSelectionStringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMSelectionStringView.h; sourceTree = "<group>"; };
+		C0AD15E518B4A7C500709E81 /* NMSelectionStringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMSelectionStringView.m; sourceTree = "<group>"; };
 		C0B2B1D318B44F7000CF4B76 /* CDShiftMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDShiftMember.h; path = "Nurse Management/Classess/Model/CDShiftMember.h"; sourceTree = SOURCE_ROOT; };
 		C0B2B1D418B44F7000CF4B76 /* CDShiftMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDShiftMember.m; path = "Nurse Management/Classess/Model/CDShiftMember.m"; sourceTree = SOURCE_ROOT; };
 		C0B2B1D618B44F7100CF4B76 /* CDScheduleAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDScheduleAlert.h; path = "Nurse Management/Classess/Model/CDScheduleAlert.h"; sourceTree = SOURCE_ROOT; };
@@ -694,8 +697,8 @@
 		2A394C0418A9FF7600F30F2D /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				2A6FDB7E18AF4C4300D33D21 /* ChooseTimeView.h */,
-				2A6FDB7F18AF4C4300D33D21 /* ChooseTimeView.m */,
+				C0AD15DF18B4A7A300709E81 /* ChooseTimeView.h */,
+				C0AD15E018B4A7A300709E81 /* ChooseTimeView.m */,
 				2A394C0518A9FF7600F30F2D /* Define.h */,
 				2A394C2918A9FFB000F30F2D /* Common.h */,
 				2A394C2A18A9FFB000F30F2D /* Common.m */,
@@ -801,8 +804,10 @@
 		2A394C3318AA022600F30F2D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2A4F225D18B4568E00A5C97C /* NMSelectionStringView.h */,
-				2A4F225E18B4568E00A5C97C /* NMSelectionStringView.m */,
+				C0AD15E218B4A7C500709E81 /* NMTimePickerView.h */,
+				C0AD15E318B4A7C500709E81 /* NMTimePickerView.m */,
+				C0AD15E418B4A7C500709E81 /* NMSelectionStringView.h */,
+				C0AD15E518B4A7C500709E81 /* NMSelectionStringView.m */,
 				C000F2E318AF689600280464 /* UIPickerActionSheet */,
 				2A3C24EB18AB78B300C20A04 /* AddScheduleView */,
 				2A3C24B718AB56DB00C20A04 /* AddShiftView */,
@@ -1492,15 +1497,14 @@
 			files = (
 				2A3F495D18AE085D00D3137D /* HomeCellSchedule.m in Sources */,
 				2A75E63518ADA96600E74E4F /* AddMemberVC.m in Sources */,
-				2A6FDB8018AF4C4300D33D21 /* ChooseTimeView.m in Sources */,
 				2AF0758118ACAC250008D875 /* FXDay.m in Sources */,
 				2A394C3118AA009100F30F2D /* Reachability.m in Sources */,
-				2A4F225F18B4568E00A5C97C /* NMSelectionStringView.m in Sources */,
 				2A3C24A318AB1BF100C20A04 /* RankingVC.m in Sources */,
 				2A394C2E18A9FFBC00F30F2D /* User.m in Sources */,
 				C0B2B1D818B44F7100CF4B76 /* CDScheduleAlert.m in Sources */,
 				2A3C24A818AB1BFE00C20A04 /* MoreVC.m in Sources */,
 				C000F2E618AF68AD00280464 /* UIPickerActionSheet.m in Sources */,
+				C0AD15E718B4A7C500709E81 /* NMSelectionStringView.m in Sources */,
 				2A3C24DB18AB6CC500C20A04 /* ListShiftPatternVC.m in Sources */,
 				C0B2B1E118B44F7100CF4B76 /* CDShiftCategory.m in Sources */,
 				2A3C249C18AB084900C20A04 /* HomeToolBarView.m in Sources */,
@@ -1513,6 +1517,7 @@
 				2A3C24BB18AB586B00C20A04 /* AddShiftView.m in Sources */,
 				2A394C4518AA0C9D00F30F2D /* FXThemeManager.m in Sources */,
 				2A394C3718AA024A00F30F2D /* HomeVC.m in Sources */,
+				C0AD15E118B4A7A300709E81 /* ChooseTimeView.m in Sources */,
 				2A3F495418AE034A00D3137D /* HomeCellAddSchedule.m in Sources */,
 				C0B2B1D518B44F7000CF4B76 /* CDShiftMember.m in Sources */,
 				2A516CA818AC77E400F82B5A /* FXMonthView.m in Sources */,
@@ -1541,6 +1546,7 @@
 				2A394C4018AA02AA00F30F2D /* FXViewController.m in Sources */,
 				2A75E63D18ADA97700E74E4F /* ListMembersVC.m in Sources */,
 				2A516C9818AC5C1A00F82B5A /* ScheduleCategoryVC.m in Sources */,
+				C0AD15E618B4A7C500709E81 /* NMTimePickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

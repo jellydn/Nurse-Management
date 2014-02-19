@@ -8,6 +8,8 @@
 
 #import "NMSelectionStringView.h"
 
+#import "CDMember.h"
+
 //---------define--------------
 
 #define WIDTH_ITEM       50.0f
@@ -32,8 +34,11 @@
     UIScrollView        *_scrollView;
     UIPageControl       *_pageControl;
     
-    NSMutableArray      *_arrayString;
+    NSMutableArray      *_arrayStringForText;
     UIColor             *_colorSelectBackground;
+    NSMutableArray      *_arrMember;
+    
+    BOOL                _isSetArrayString;
 }
 @end
 
@@ -63,12 +68,13 @@
     _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 90, rect.size.width, 37)];
     _pageControl.pageIndicatorTintColor = DEFAULT_BACKGROUND_COLOR;
     _pageControl.currentPageIndicatorTintColor = DEFAULT_PAGE_CONTROL_COLOR;
-    int numberOfPage = round(_arrayString.count/10) + 1;
+    int detalPage = _arrayStringForText.count%10==0?0:1;
+    int numberOfPage = round(_arrayStringForText.count/10) + detalPage;
     _pageControl.numberOfPages = numberOfPage;
     [_pageControl addTarget:self action:@selector(tapToScrollCollectionView) forControlEvents:UIControlEventValueChanged];
     [self addSubview:_pageControl];
     
-    for (int i = 0; i < _arrayString.count; i++) {
+    for (int i = 0; i < _arrayStringForText.count; i++) {
         CGPoint point = CGPointZero;
         if (i%2 == 0) {
             point.y = 0;
@@ -79,7 +85,7 @@
         
         [_scrollView addSubview:[self viewWithPoint:point andIndex:i]];
     }
-    [_scrollView setContentSize:CGSizeMake(((_arrayString.count/10)+1)*(self.frame.size.width+10), 98)];
+    [_scrollView setContentSize:CGSizeMake(((_arrayStringForText.count/10)+detalPage)*(self.frame.size.width+10), 98)];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -99,7 +105,7 @@
 
 - (UIView *)viewWithPoint:(CGPoint)point andIndex:(NSInteger)index
 {
-    NSMutableDictionary *dic = _arrayString[index];
+    NSMutableDictionary *dic = _arrayStringForText[index];
     //init view
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(point.x, point.y, WIDTH_ITEM, HEIGHT_ITEM)];
     view.tag = index+TAG_VIEW;
@@ -133,32 +139,59 @@
 
 - (void)callReturnDataWithIndex:(NSInteger)tapIndex
 {
-    if ([self.delegate respondsToSelector:@selector(didSelectionStringWithIndex:arraySelectionString:)]) {
+    if ([self.delegate respondsToSelector:@selector(didSelectionStringWithIndex:arraySelectionString:)] || [self.delegate respondsToSelector:@selector(didSelectionCDMemberWithIndex:arraySelectionCDMember:)]) {
         NSMutableArray *arrReturn = [NSMutableArray array];
-        for (int i = 0; i < _arrayString.count; i++) {
-            NSMutableDictionary *dic = _arrayString[i];
+        for (int i = 0; i < _arrayStringForText.count; i++) {
+            NSMutableDictionary *dic = _arrayStringForText[i];
             int statusButton = [[dic objectForKey:[NSString stringWithFormat:@"%d",i+KEY_STATUS]] intValue];
             if (statusButton == 1) {
-                [arrReturn addObject:[dic objectForKey:[NSString stringWithFormat:@"%d",i+KEY_VALUE]]];
+                [arrReturn addObject:_arrMember[i]];
             }
         }
-        [self.delegate didSelectionStringWithIndex:tapIndex arraySelectionString:arrReturn];
+        if (_isSetArrayString) {
+            [self.delegate didSelectionStringWithIndex:tapIndex arraySelectionString:arrReturn];
+        }else {
+            [self.delegate didSelectionCDMemberWithIndex:tapIndex arraySelectionCDMember:arrReturn];
+        }
+        
     }
 }
 
-- (void)setArrayString:(NSArray *)arrayStr
+- (void)setArrayCDMember:(NSMutableArray *)arrayCDMember
 {
-    if (_arrayString.count) {
-        _arrayString = nil;
+    _isSetArrayString = NO;
+    _arrMember = arrayCDMember;
+    
+    if (_arrayStringForText.count) {
+        _arrayStringForText = nil;
     }
-    _arrayString = [NSMutableArray array];
-    for (int i = 0; i < arrayStr.count; i++) {
-        
+    _arrayStringForText = [NSMutableArray array];
+    for (int i = 0; i < arrayCDMember.count; i++) {
+        CDMember *member = _arrMember[i];
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-        [dic setObject:arrayStr[i] forKey:[NSString stringWithFormat:@"%d",i+KEY_VALUE]];
+        [dic setObject:member.name forKey:[NSString stringWithFormat:@"%d",i+KEY_VALUE]];
         [dic setObject:@"0" forKey:[NSString stringWithFormat:@"%d",i+KEY_STATUS]];
         
-        [_arrayString addObject:dic];
+        [_arrayStringForText addObject:dic];
+    }
+}
+
+- (void)setArrayString:(NSArray *)arrString
+{
+    _isSetArrayString = YES;
+    _arrMember = [NSMutableArray arrayWithArray:arrString];
+    
+    if (_arrayStringForText.count) {
+        _arrayStringForText = nil;
+    }
+    _arrayStringForText = [NSMutableArray array];
+    for (int i = 0; i < arrString.count; i++) {
+        NSString *string = _arrMember[i];
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic setObject:string forKey:[NSString stringWithFormat:@"%d",i+KEY_VALUE]];
+        [dic setObject:@"0" forKey:[NSString stringWithFormat:@"%d",i+KEY_STATUS]];
+        
+        [_arrayStringForText addObject:dic];
     }
 }
 
@@ -171,10 +204,10 @@
         _colorSelectBackground = color;
     }
     
-    for (int i = 0; i < _arrayString.count; i++) {
+    for (int i = 0; i < _arrayStringForText.count; i++) {
         
         //check status
-        NSMutableDictionary *dic = _arrayString[i];
+        NSMutableDictionary *dic = _arrayStringForText[i];
         int statusButton = [dic[[NSString stringWithFormat:@"%d",i+KEY_STATUS]] intValue];
         if (statusButton == 1) {
             //change UI
@@ -189,11 +222,11 @@
     //index tap to choose item
     int tapIndex = button.tag - TAG_BUTTON;
     //check status
-    NSMutableDictionary *dic = _arrayString[tapIndex];
+    NSMutableDictionary *dic = _arrayStringForText[tapIndex];
     int statusButton = [dic[[NSString stringWithFormat:@"%d",tapIndex+KEY_STATUS]] intValue];
     if (statusButton == 1) {
         //set value
-        NSMutableDictionary *dic = _arrayString[tapIndex];
+        NSMutableDictionary *dic = _arrayStringForText[tapIndex];
         [dic setObject:@"0" forKey:[NSString stringWithFormat:@"%d",tapIndex+KEY_STATUS]];
         //change UI
         UIView *view   = [_scrollView viewWithTag:tapIndex+TAG_VIEW];
@@ -202,7 +235,7 @@
         label.textColor      = DEFAULT_TEXT_COLOR;
     }else {
         //set value
-        NSMutableDictionary *dic = _arrayString[tapIndex];
+        NSMutableDictionary *dic = _arrayStringForText[tapIndex];
         [dic setObject:@"1" forKey:[NSString stringWithFormat:@"%d",tapIndex+KEY_STATUS]];
         //change UI
         UIView *view = [_scrollView viewWithTag:tapIndex+TAG_VIEW];

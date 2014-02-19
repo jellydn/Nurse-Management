@@ -9,8 +9,10 @@
             <connections>
                 <outlet property="_btnEndTime" destination="FmI-pu-CJo" id="UD7-N2-Rra"/>
                 <outlet property="_btnStartTime" destination="MBM-3i-3hZ" id="jCA-Sr-JjD"/>
+                <outlet property="_imvShiftCategoryBG" destination="EiO-0M-n1F" id="FvQ-Jm-Caw"/>
                 <outlet property="_lbTile" destination="XdA-gB-cwt" id="qvQ-bG-FDB"/>
                 <outlet property="_lblEndTime" destination="NGE-Fs-StN" id="ttM-0O-Xcb"/>
+                <outlet property="_lblShiftCategoryName" destination="nX1-ia-IKo" id="Ysk-29-kOb"/>
                 <outlet property="_lblStartTime" destination="fc2-uL-Nvj" id="PyQ-tB-Dtm"/>
                 <outlet property="_txvMemo" destination="Beg-RO-ERx" id="RYf-mP-0me"/>
                 <outlet property="_viewNavi" destination="ncE-Sd-DaO" id="ngj-a2-gTX"/>
