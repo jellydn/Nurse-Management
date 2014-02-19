@@ -7,6 +7,7 @@
 //
 
 #import "ChooseTimeView.h"
+#import "NMTimePickerView.h"
 
 //---------define--------------
 #define NUMBER_OF_ITEM   6
@@ -24,13 +25,16 @@
 #define SELECTED_BACKGROUND_COLOR   [UIColor colorWithRed:101/255.0 green:135/255.0 blue:199/255.0 alpha:1.0]
 //---------end define-----------
 
-@interface ChooseTimeView()
+@interface ChooseTimeView()<NMTimePickerViewDelegate>
 {
     NSMutableDictionary *_dicValueSelect;
     NSInteger           _numberOfItemSelected;
     NSDate              *_startDate;
-    NSDate              *_chooseTimeDate;
+   
     UIColor             *_colorSelectBackground;
+    
+    NSDate              *_dateChooseTime;
+    NMTimePickerView    *_nMTimePicker;
 }
 
 @end
@@ -91,6 +95,11 @@
 {
     //index tap to choose item
     int tapIndex = button.tag - TAG_BUTTON;
+    [self processChooseWithIndex:tapIndex];
+}
+
+- (void)processChooseWithIndex:(NSInteger)tapIndex
+{
     //check status
     int statusButton = [[_dicValueSelect objectForKey:[NSString stringWithFormat:@"%d",tapIndex+KEY_DEFAULT]] intValue];
     if (statusButton == 1) {
@@ -102,6 +111,9 @@
         view.backgroundColor = DEFAULT_BACKGROUND_COLOR;
         UILabel *label = (UILabel *)[view viewWithTag:tapIndex+TAG_LABEL];
         label.textColor      = DEFAULT_TEXT_COLOR;
+        
+        //set delegate
+        [self callReturnDataWithIndex:tapIndex];
     }else {
         //check number of item selected
         if (_numberOfItemSelected >= 3) {
@@ -115,10 +127,15 @@
         view.backgroundColor = _colorSelectBackground;
         UILabel *label = (UILabel *)[view viewWithTag:tapIndex+TAG_LABEL];
         label.textColor      = [UIColor whiteColor];
+        
+        if (tapIndex == 5) {
+            [self tapChooseTime];
+        }else {
+            //set delegate
+            [self callReturnDataWithIndex:tapIndex];
+        }
     }
-    
-    //set delegate
-    [self callReturnDataWithIndex:tapIndex];
+
 }
 
 - (void)callReturnDataWithIndex:(NSInteger)tapIndex
@@ -129,11 +146,11 @@
             NSString *key = _dicValueSelect.allKeys[i];
             int statusButton = [[_dicValueSelect objectForKey:key] intValue];
             if (statusButton == 1) {
-                NSDate *date = nil;
                 switch (key.integerValue - KEY_DEFAULT) {
                     case 0:
                     {
-                        date = _startDate;
+                         NSDate *date = _startDate;
+                        [arrayNumberOfTimeSelected addObject:date];
                     }
                         break;
                         
@@ -141,7 +158,8 @@
                     {
                         NSTimeInterval time = [_startDate timeIntervalSince1970];
                         time -= 15*60;
-                        date = [NSDate dateWithTimeIntervalSince1970:time];
+                         NSDate *date = [NSDate dateWithTimeIntervalSince1970:time];
+                        [arrayNumberOfTimeSelected addObject:date];
                     }
                         break;
                         
@@ -149,7 +167,8 @@
                     {
                         NSTimeInterval time = [_startDate timeIntervalSince1970];
                         time -= 30*60;
-                        date = [NSDate dateWithTimeIntervalSince1970:time];
+                         NSDate *date = [NSDate dateWithTimeIntervalSince1970:time];
+                        [arrayNumberOfTimeSelected addObject:date];
                     }
                         break;
                         
@@ -157,7 +176,8 @@
                     {
                         NSTimeInterval time = [_startDate timeIntervalSince1970];
                         time -= 60*60;
-                        date = [NSDate dateWithTimeIntervalSince1970:time];
+                         NSDate *date = [NSDate dateWithTimeIntervalSince1970:time];
+                        [arrayNumberOfTimeSelected addObject:date];
                     }
                         break;
                         
@@ -165,23 +185,24 @@
                     {
                         NSTimeInterval time = [_startDate timeIntervalSince1970];
                         time -= 120*60;
-                        date = [NSDate dateWithTimeIntervalSince1970:time];
+                         NSDate *date = [NSDate dateWithTimeIntervalSince1970:time];
+                        [arrayNumberOfTimeSelected addObject:date];
                     }
                         break;
                         
                     case 5:
                     {
                         
-                        date = _chooseTimeDate;
+                        NSDate *date = _dateChooseTime?_dateChooseTime:[NSDate date];
+                        [arrayNumberOfTimeSelected addObject:date];
                     }
                         break;
                         
                     default:
                         break;
                 }
-                
-                [arrayNumberOfTimeSelected addObject:date];
             }
+            
         }
         [self.delegate didChooseTimeWithIndex:tapIndex arrayChooseTime:arrayNumberOfTimeSelected];
     }
@@ -190,13 +211,6 @@
 - (void)setStartDate:(NSDate *)date
 {
     _startDate = date;
-}
-
-- (void)setChooseTimeWithDate:(NSDate *)date
-{
-    _chooseTimeDate = date;
-    //set delegate
-    [self callReturnDataWithIndex:5];
 }
 
 - (void)setColorForActiontionChoose:(UIColor *)color
@@ -218,5 +232,34 @@
         }
     }
 }
+
+- (void)tapChooseTime
+{
+    _nMTimePicker = [[NMTimePickerView alloc] init];
+    _nMTimePicker.delegate = self;
+    _nMTimePicker.datePicker.datePickerMode = UIDatePickerModeTime;
+    //datePicker.picker.minuteInterval = 5;
+    _nMTimePicker.datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
+//    nMTimePicker.navigationBar.topItem.title = @"";
+    _nMTimePicker.datePicker.maximumDate = _startDate;
+    
+    [_nMTimePicker.datePicker setDate:_dateChooseTime?_dateChooseTime:[NSDate date] animated:NO];
+    [_nMTimePicker showActionSheetInView:self];
+}
+
+#pragma mark - DatePickerDelegate
+
+- (void)datePicker:(NMTimePickerView *)picker dismissWithButtonDone:(BOOL)done
+{
+    if (done) {
+        NSDate *date = picker.datePicker.date;
+        _dateChooseTime = date;
+        
+        [self callReturnDataWithIndex:5];
+    }else {
+        [self processChooseWithIndex:5];
+    }
+}
+
 
 @end

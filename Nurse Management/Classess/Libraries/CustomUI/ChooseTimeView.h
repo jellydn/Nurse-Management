@@ -15,8 +15,9 @@
 @property (nonatomic, strong) id <ChooseTimeViewDelegate> delegate;
 
 - (void)setStartDate:(NSDate *)date;
+
 - (void)setColorForActiontionChoose:(UIColor *)color;
-- (void)setChooseTimeWithDate:(NSDate *)date;
+
 
 @end
 
