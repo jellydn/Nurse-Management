@@ -15,6 +15,12 @@
 
 @property (nonatomic) int scheduleCategoryID;
 @property (nonatomic) BOOL isShowPicker;
+@property (nonatomic) BOOL isSetTimeStart;
+@property (nonatomic) BOOL isAllDay;
+@property (nonatomic, strong) NSDate *dateTimeStart;
+@property (nonatomic, strong) NSDate *dateTimeEnd;
+@property (nonatomic, strong) NSMutableArray *arrayTimeAlerts;
+
 
 @property (nonatomic, weak) IBOutlet UIView         *viewMask;
 @property (nonatomic, weak) IBOutlet UIView         *viewContainer;
@@ -22,8 +28,12 @@
 @property (nonatomic, weak) IBOutlet UIView         *viewTimePicker;
 @property (nonatomic, weak) IBOutlet UIScrollView   *scrollScheduleView;
 @property (nonatomic, weak) IBOutlet UIPageControl  *pageControl;
+@property (nonatomic, weak) IBOutlet UILabel        *lbTimeStart;
+@property (nonatomic, weak) IBOutlet UILabel        *lbTimeEnd;
+@property (nonatomic, weak) IBOutlet UIButton       *btAllDay;
 @property (nonatomic, strong)        UIView         *viewSelect;
 @property (nonatomic, strong)        ChooseTimeView *chooseTimeView;
+@property (nonatomic, weak) IBOutlet UIDatePicker   *datePicker;
 
 @property (nonatomic, weak) id<AddScheduleViewDelegate> delegate;
 
@@ -52,7 +62,7 @@
 
 @required
 - (void) didShowCategoryName:(AddScheduleView*)addScheduleView;
-- (void) didSaveSchedule:(AddScheduleView*)addScheduleView;
+- (void) didSaveSchedule:(AddScheduleView*)addScheduleView info:(NSDictionary*)info;
 
 @optional
 - (void) didShowView:(AddScheduleView*)addScheduleView;

@@ -9,6 +9,7 @@
 #import "AddScheduleView.h"
 #import "ScheduleCategoryItem.h"
 #import "FXThemeManager.h"
+#import "Common.h"
 
 @interface AddScheduleView ()
 
@@ -33,6 +34,8 @@
     _viewTimePicker.frame   = rect3;
     
     self.hidden = YES;
+    
+    _datePicker.calendar = [NSCalendar autoupdatingCurrentCalendar];
 }
 
 - (void) show
@@ -52,7 +55,19 @@
         _viewTime.frame = rect2;
         
     } completion:^(BOOL finished) {
-        _isShowPicker = NO;
+        
+        _isShowPicker       = NO;
+        _isAllDay           = NO;
+        _isSetTimeStart     = NO;
+        
+        [_btAllDay setBackgroundColor:[UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]];
+        _lbTimeStart.text   = @"00:00";
+        _lbTimeEnd.text     = @"00:00";
+        
+        _dateTimeStart      = nil;
+        _dateTimeEnd        = nil;
+        _arrayTimeAlerts    = nil;
+        
         if (_delegate && [_delegate respondsToSelector:@selector(didShowView:)]) {
             [_delegate didShowView:self];
         }
@@ -177,7 +192,20 @@
     UITouch *touch= [touches anyObject];
     if ([touch view] == _viewMask)
     {
-        [self hide];
+        if (_isShowPicker) {
+            
+            CGRect rect                 = _viewTimePicker.frame;
+            rect.origin.y               += rect.size.height;
+            
+            [UIView animateWithDuration:0.3 animations:^{
+                _viewTimePicker.frame   = rect;
+            } completion:^(BOOL finished) {
+                _isShowPicker = NO;
+            }];
+            
+        } else {
+            [self hide];
+        }
     }
 }
 
@@ -208,7 +236,7 @@
     
     _viewSelect.frame   = rect;
     
-    _scheduleCategoryID = button.tag;
+    _scheduleCategoryID = button.tag - 100;
 }
 
 - (IBAction)selectCategory:(id)sender
@@ -269,8 +297,23 @@
 
 - (IBAction)saveSchedule:(id)sender
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(didSaveSchedule:)]) {
-        [_delegate didSaveSchedule:self];
+    if (_delegate && [_delegate respondsToSelector:@selector(didSaveSchedule:info:)]) {
+        
+        NSArray *keys = @[@"schedule_category_id",
+                         @"start_time",
+                         @"end_time",
+                         @"is_all_day",
+                         @"array_alert"];
+        
+        NSArray *values = @[[NSString stringWithFormat:@"%d",_scheduleCategoryID],
+                           (_dateTimeStart != nil) ? _dateTimeStart : @"",
+                           (_dateTimeEnd != nil) ? _dateTimeEnd : @"",
+                           [NSString stringWithFormat:@"%d",_isAllDay],
+                           (_arrayTimeAlerts == nil) ? @"" : _arrayTimeAlerts];
+        
+        NSDictionary *info = [NSDictionary dictionaryWithObjects:values forKeys:keys];
+        
+        [_delegate didSaveSchedule:self info:info];
     }
     
     [self hide];
@@ -278,6 +321,43 @@
 
 - (IBAction)selectTimeForSchedule:(id)sender
 {
+    UIButton *button = (UIButton*)sender;
+    if (button.tag == 3) {
+        
+        if (_isAllDay) {
+            _isAllDay = NO;
+            [_btAllDay setBackgroundColor:[UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]];
+            _lbTimeStart.text   = (_dateTimeStart == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_dateTimeStart];
+            _lbTimeEnd.text     = (_dateTimeEnd == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_dateTimeEnd];
+            
+        } else {
+            _isAllDay = YES;
+            [_btAllDay setBackgroundColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorMain]];
+            _lbTimeStart.text   = @"00:00";
+            _lbTimeEnd.text     = @"00:00";
+        }
+        
+        return;
+        
+    } else if (button.tag == 1) {
+        _isSetTimeStart = YES;
+        
+        if (_dateTimeEnd) {
+            _datePicker.minimumDate = nil;
+            _datePicker.maximumDate = _dateTimeEnd;
+        }
+        
+    } else if (button.tag == 2) {
+        _isSetTimeStart = NO;
+        
+        if (_dateTimeStart) {
+            _datePicker.minimumDate = _dateTimeStart;
+            _datePicker.maximumDate = nil;
+        }
+    } else {
+        return;
+    }
+    
     CGRect rect                 = _viewTimePicker.frame;
     rect.origin.y               -= rect.size.height;
     
@@ -317,14 +397,26 @@
         _viewTimePicker.frame   = rect;
     } completion:^(BOOL finished) {
         _isShowPicker = NO;
+        
+        if (_isSetTimeStart) {
+            _lbTimeStart.text   = [Common convertTimeToStringWithFormat:@"HH:mm" date:_datePicker.date];
+            _dateTimeStart      = _datePicker.date;
+        } else {
+            _lbTimeEnd.text     = [Common convertTimeToStringWithFormat:@"HH:mm" date:_datePicker.date];
+            _dateTimeEnd        = _datePicker.date;
+        }
+        
     }];
 }
+
+#pragma mark - Time
+
 
 #pragma mark - ChooseTimeViewDelegate
 
 - (void)didChooseTimeWithIndex:(NSInteger)index arrayChooseTime:(NSMutableArray *)arrayChooseTime
 {
-    
+    _arrayTimeAlerts = arrayChooseTime;
 }
 
 

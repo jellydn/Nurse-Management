@@ -125,7 +125,7 @@
                                     <color key="textColor" red="0.4941176471" green="0.37647058820000001" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8y7-Zx-HiO">
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8y7-Zx-HiO">
                                     <rect key="frame" x="255" y="20" width="45" height="37"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.84705882349999995" green="0.87843137250000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -138,7 +138,7 @@
                                         <action selector="selectTimeForSchedule:" destination="CX0-xP-KJP" eventType="touchUpInside" id="AuX-PP-cNf"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IJz-U4-O1c">
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IJz-U4-O1c">
                                     <rect key="frame" x="36" y="23" width="91" height="34"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -150,7 +150,7 @@
                                         <action selector="selectTimeForSchedule:" destination="CX0-xP-KJP" eventType="touchUpInside" id="Gnl-Ma-tFq"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YyB-zu-ybG">
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YyB-zu-ybG">
                                     <rect key="frame" x="162" y="20" width="72" height="37"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -194,7 +194,7 @@
                                         <!--2014-02-18 09:53:47 +0000-->
                                     </date>
                                     <timeZone key="timeZone" name="America/Los_Angeles">
-                                        <mutableData key="data">
+                                        <data key="data">
 VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
 y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
 5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
@@ -212,7 +212,7 @@ f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</mutableData>
+</data>
                                     </timeZone>
                                 </datePicker>
                             </subviews>
@@ -249,6 +249,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="btAllDay" destination="8y7-Zx-HiO" id="7zR-Nx-sgv"/>
+                <outlet property="datePicker" destination="2xr-IT-NrG" id="6ah-GA-qmf"/>
+                <outlet property="lbTimeEnd" destination="kpt-th-c1m" id="9LB-UP-F5C"/>
+                <outlet property="lbTimeStart" destination="uO7-Jh-Efg" id="Fs3-gM-8U5"/>
                 <outlet property="pageControl" destination="pRB-Qu-06z" id="nXB-D6-AcM"/>
                 <outlet property="scrollScheduleView" destination="MyD-Nb-VqG" id="woE-wR-B9t"/>
                 <outlet property="viewContainer" destination="7o1-5R-y1x" id="3bb-AW-AhJ"/>

@@ -601,9 +601,9 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void) didSaveSchedule:(AddScheduleView*)addScheduleView
+- (void) didSaveSchedule:(AddScheduleView*)addScheduleView info:(NSDictionary*)info
 {
-    NSLog(@"save schedule");
+    NSLog(@"save schedule info: %@",info);
 }
 
 - (void) didShowView:(AddScheduleView*)addScheduleView
