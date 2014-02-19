@@ -7,6 +7,9 @@
 //
 
 #import "FXDay.h"
+#import "Common.h"
+#import "Define.h"
+#import "AppDelegate.h"
 
 @implementation FXDay
 
@@ -36,6 +39,8 @@
     _isCurrent  = (([FXCalendarData getDayWithDate:[NSDate date]] == _dayIndex) &&
                    ([FXCalendarData getMonthWithDate:[NSDate date]] == _monthIndex) &&
                    ([FXCalendarData getYearWithDate:[NSDate date]] == _yearIndex)) ? YES : NO;
+    
+    [[AppDelegate shared] getInfoDayWithDate:date];
 }
 
 @end
