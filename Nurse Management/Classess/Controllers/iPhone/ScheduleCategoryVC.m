@@ -266,7 +266,7 @@
     }
     scheduleCategory.name = name;
     scheduleCategory.color = color;
-    scheduleCategory.isDefault = NO;
+    scheduleCategory.isDefault = YES;
     scheduleCategory.isEnable = YES;
     [[AppDelegate shared] saveContext];
     
