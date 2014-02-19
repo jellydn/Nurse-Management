@@ -579,7 +579,12 @@
 #pragma mark - AddShiftViewDelegate
 - (void) addShiftView:(AddShiftView*)addShiftView didSelectWithIndex:(int)index
 {
+    NSLog(@"date: %@", _selectDate);
     NSLog(@"Add Shift select item with index: %d", index);
+
+    CDShiftCategory *shiftCategory = [[AppDelegate shared] getshiftCategoryWithID:index];
+    NSLog(@"name: %@ - id: %d", shiftCategory.name, shiftCategory.id);
+    
     [_calendarView setNextSelectDate];
 }
 

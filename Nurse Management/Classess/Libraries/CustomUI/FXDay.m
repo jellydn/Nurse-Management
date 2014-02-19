@@ -28,10 +28,10 @@
 {
     _date           = date;
     
-    _dayIndex       = [FXCalendarData getDayWithDate:date];
-    _monthIndex     = [FXCalendarData getMonthWithDate:date];
-    _yearIndex      = [FXCalendarData getYearWithDate:date];
-    _weekDayIndex   = [FXCalendarData getWeekDayWithDate:date];
+    _dayIndex       = (int)[FXCalendarData getDayWithDate:date];
+    _monthIndex     = (int)[FXCalendarData getMonthWithDate:date];
+    _yearIndex      = (int)[FXCalendarData getYearWithDate:date];
+    _weekDayIndex   = (int)[FXCalendarData getWeekDayWithDate:date];
     
     _isCurrent  = (([FXCalendarData getDayWithDate:[NSDate date]] == _dayIndex) &&
                    ([FXCalendarData getMonthWithDate:[NSDate date]] == _monthIndex) &&

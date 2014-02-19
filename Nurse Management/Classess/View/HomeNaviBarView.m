@@ -33,10 +33,10 @@
 
 #pragma mark - Public method
 
-- (void) setTitleWithDay:(int)day month:(int)month year:(int)year
+- (void) setTitleWithDay:(NSInteger)day month:(NSInteger)month year:(NSInteger)year
 {
-    _lbDay.text = [NSString stringWithFormat:@"%d",day];
-    _lbYear.text = [NSString stringWithFormat:@"%d",year];
+    _lbDay.text = [NSString stringWithFormat:@"%ld",(long)day];
+    _lbYear.text = [NSString stringWithFormat:@"%ld",(long)year];
     
     NSArray *months = @[@"January",
                         @"February",
