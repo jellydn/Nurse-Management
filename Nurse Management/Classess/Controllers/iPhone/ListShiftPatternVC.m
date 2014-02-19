@@ -16,7 +16,7 @@
 #import "CDShiftCategory.h"
 #import "FXNavigationController.h"
 
-@interface ListShiftPatternVC ()<UITableViewDelegate, UITableViewDataSource>
+@interface ListShiftPatternVC ()<UITableViewDelegate, UITableViewDataSource, AddShiftCategoryDelegate>
 {
     
     __weak IBOutlet UIView *_viewNavi;
@@ -59,6 +59,11 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void) saveShiftCategory: (CDShiftCategory*)category andInsertId:(int32_t)insertId
+{
+    
 }
 
 #pragma mark - load Coredata
@@ -162,6 +167,8 @@
 
 - (IBAction)addShift:(id)sender {
     EditShiftVC *vc                  = [[EditShiftVC alloc] init];
+    vc.insertId = 0;
+    vc.delegate = self;
     vc.date                         = [NSDate date];
     vc.typeShift                    = YES;
     FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
@@ -270,8 +277,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    CDShiftCategory *shiftCategory = [_fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:indexPath.row];
+    
     EditShiftVC *vc                 = [[EditShiftVC alloc] init];
     vc.typeShift                    = NO;
+    vc.insertId = shiftCategory.id;
+    vc.delegate = self;
+    [vc loadShiftCategory:shiftCategory];
+    
     FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
     
     [self.navigationController presentViewController:navi animated:YES completion:^{
