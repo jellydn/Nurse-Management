@@ -122,7 +122,6 @@
 - (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch (buttonIndex) {
         case 0:     // delete
-            NSLog(@"ID nhan duoc %d", _insertId);
             [_delegate deleteScheduleCategoryName:_insertId];
             [self.navigationController dismissViewControllerAnimated:YES completion:^{
                 
@@ -143,6 +142,12 @@
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     _lbTile.text = @"カテゴリー名編集";
+    if (!_scheduleCategory.isDefault && _insertId != 0) {
+        _btDelete.hidden = NO;
+    }else{
+        _btDelete.hidden = YES;
+    }
+    
     if (!_insertId) {
         _txtName.text = @"";
         

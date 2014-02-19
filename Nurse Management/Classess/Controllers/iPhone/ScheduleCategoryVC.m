@@ -94,22 +94,16 @@
     CDScheduleCategory *scheduleCategory = [_fetchedResultsControllerScheduleCategory.fetchedObjects objectAtIndex:indexPath.row];
     
     aCell.textLabel.text = scheduleCategory.name;
-    
-//    if (member.isOfficial)  // can't not press for official items
-//        aCell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    else                    // be able to press for non-official items
-//        aCell.selectionStyle = UITableViewCellSelectionStyleBlue;
-//    
     UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
     aCell.accessoryView = switchView;
-//    switchView.tag = indexPath.row;
-//    
-//    if (member.isEnable)
-//        [switchView setOn:YES animated:NO];
-//    else
-//        [switchView setOn:NO animated:NO];
-//    
-//    [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+    switchView.tag = indexPath.row;
+    
+    if (scheduleCategory.isEnable)
+        [switchView setOn:YES animated:NO];
+    else
+        [switchView setOn:NO animated:NO];
+    
+    [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
     
     return aCell;
 }
@@ -130,37 +124,6 @@
     }];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-#pragma mark - AddMemberDelegate
-
-- (void) saveMemberName:(NSString *)name andIsAddMember:(BOOL)isAddMember {
-    if (isAddMember) {
-        Member *lastMember = [arrItems objectAtIndex:(arrItems.count - 1)];
-        Member *member = [[Member alloc] init];
-        member.memberID = [NSString stringWithFormat:@"%d", lastMember.memberID.intValue + 1];
-        member.name = name;
-        member.isEnable = YES;
-        member.isOfficial = NO;
-        
-        [arrItems addObject:member];
-    }
-    
-//    [_tbvMemberList reloadData];
-}
-
-- (void) deleteMember:(NSString *)memberID {
-    
-    for (int index = [arrItems count] - 1; index >= 0; index--) {
-        Member *member = [arrItems objectAtIndex:index];
-        if([member.memberID isEqualToString:memberID] && !member.isOfficial) {
-            [arrItems removeObject:member];
-//            [_tbvMemberList reloadData];
-            break;
-        }
-    }
-}
-
-
-
 #pragma mark - Action
 
 - (IBAction)backVC:(id)sender {
@@ -183,17 +146,17 @@
 - (void) switchChanged:(id)sender {
     UISwitch* switchControl = sender;
     
-    if ([arrItems objectAtIndex:switchControl.tag]) {
-        Member *member = [arrItems objectAtIndex:switchControl.tag];
+    if ([_fetchedResultsControllerScheduleCategory.fetchedObjects objectAtIndex:switchControl.tag]) {
+        CDScheduleCategory *schedule = [_fetchedResultsControllerScheduleCategory.fetchedObjects objectAtIndex:switchControl.tag];
         if (switchControl.on)
-            member.isEnable = YES;
+            schedule.isEnable = YES;
         else
-            member.isEnable = NO;
+            schedule.isEnable = NO;
+        
+        [[AppDelegate shared] saveContext];
+        
     }
-    
-    NSLog( @"The switch is %@", switchControl.on ? @"ON" : @"OFF" );
 }
-
 
 #pragma mark - Others
 - (void) configView
@@ -288,8 +251,6 @@
 - (void) saveScheduleCategoryName:(NSString *)name andColor:(NSString *)color andInsertId:(int32_t)insertId{
    
     CDScheduleCategory *scheduleCategory;
-//    NSLog(@"name la %@", name);
-//    NSLog(@"id %d", insertId);
     if (insertId) {
         scheduleCategory= [_fetchedResultsControllerScheduleCategory.fetchedObjects objectAtIndex: insertId - 1];
         
@@ -303,14 +264,10 @@
                   inManagedObjectContext: [AppDelegate shared].managedObjectContext];
         scheduleCategory.id = lastScheduleCategory.id + 1;
     }
-//    AppDelegate *_appDelegate = [AppDelegate shared];
-//    scheduleCategory = (CDScheduleCategory *)[NSEntityDescription insertNewObjectForEntityForName:@"CDScheduleCategory" inManagedObjectContext:_appDelegate.managedObjectContext];
-    NSLog(@"name .. %@",name);
-//    scheduleCategory.id = 1;
     scheduleCategory.name = name;
     scheduleCategory.color = color;
     scheduleCategory.isDefault = NO;
-    scheduleCategory.isEnable = NO;
+    scheduleCategory.isEnable = YES;
     [[AppDelegate shared] saveContext];
     
 }
@@ -324,5 +281,22 @@
             break;
         }
     }
+}
+#pragma mark - Fetch CoreData
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [_tableView reloadData];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
 }
 @end
