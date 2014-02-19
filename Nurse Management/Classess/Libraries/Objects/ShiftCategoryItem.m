@@ -15,46 +15,46 @@
     _color     = color;
     _textColor = [UIColor colorWithRed:91/255.0 green:80/255.0 blue:77/255.0 alpha:1.0];
     
-    if ([color isEqualToString:@"0"]) {
+    if ([color isEqualToString:@"color0"]) {
         
         _image = @"icon_r1_c1.png";
         
-    } else if ([color isEqualToString:@"1"]) {
+    } else if ([color isEqualToString:@"color1"]) {
         
         _image = @"icon_r1_c3.png";
         
-    } else if ([color isEqualToString:@"2"]) {
+    } else if ([color isEqualToString:@"color2"]) {
         
         _image = @"icon_r1_c5.png";
         
-    } else if ([color isEqualToString:@"3"]) {
+    } else if ([color isEqualToString:@"color3"]) {
         
         _image = @"icon_r1_c7.png";
         
-    } else if ([color isEqualToString:@"4"]) {
+    } else if ([color isEqualToString:@"color4"]) {
         
         _image = @"icon_r1_c9.png";
         
-    } else if ([color isEqualToString:@"5"]) {
+    } else if ([color isEqualToString:@"color5"]) {
         
         _image = @"icon_r3_c1.png";
         _textColor = [UIColor whiteColor];
         
-    } else if ([color isEqualToString:@"6"]) {
+    } else if ([color isEqualToString:@"color6"]) {
         
         _image = @"icon_r3_c3.png";
         _textColor = [UIColor whiteColor];
         
-    } else if ([color isEqualToString:@"7"]) {
+    } else if ([color isEqualToString:@"color7"]) {
         
         _image = @"icon_r3_c5.png";
         _textColor = [UIColor whiteColor];
         
-    } else if ([color isEqualToString:@"8"]) {
+    } else if ([color isEqualToString:@"color8"]) {
         
         _image = @"icon_r3_c7.png";
         
-    } else if ([color isEqualToString:@"9"]) {
+    } else if ([color isEqualToString:@"color9"]) {
         
         _image = @"icon_r3_c9.png";
         
