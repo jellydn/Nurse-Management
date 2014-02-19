@@ -447,6 +447,17 @@ static User *user = nil;
     }
 }
 
++ (NSString*) convertTimeToStringWithFormat:(NSString*)strFormat date:(NSDate*)date
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *locale = [NSLocale currentLocale];
+    
+    [formatter setLocale:locale];
+    [formatter setDateFormat:strFormat];
+    
+    return [formatter stringFromDate:date];
+}
+
 
 #pragma mark - Sound
 + (void) playPushSound

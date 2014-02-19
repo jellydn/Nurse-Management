@@ -37,6 +37,10 @@
 
 #import "CDMember.h"
 #import "CDShiftCategory.h"
+#import "ShiftCategoryItem.h"
+#import "CDScheduleCategory.h"
+#import "ScheduleCategoryItem.h"
+
 @interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate, FXCalendarViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 {
     HomeNaviBarView *_naviView ;
@@ -85,13 +89,12 @@
     // load core data
     [self fetchedResultsControllerMember];
     [self fetchedResultsControllerShiftCategory];
-
+    [self fetchedResultsControllerScheduleCategory];
+    
 }
 
 - (void)viewDidUnload {
     self.fetchedResultsControllerMember = nil;
-    self.fetchedResultsControllerShiftCategory = nil;
-
 }
 
 
@@ -102,94 +105,6 @@
 }
 
 #pragma mark - load Coredata
-
-- (NSFetchedResultsController *)fetchedResultsControllerShiftCategory {
-    
-    if (_fetchedResultsControllerShiftCategory != nil) {
-        return _fetchedResultsControllerShiftCategory;
-    }
-    
-    NSString *entityName = @"CDShiftCategory";
-    AppDelegate *_appDelegate = [AppDelegate shared];
-    
-    NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
-    [NSFetchedResultsController deleteCacheWithName:cacheName];
-    
-    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:_appDelegate.managedObjectContext];
-    
-    
-    NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
-    NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    fetchRequest.entity = entity;
-    fetchRequest.fetchBatchSize = 20;
-    fetchRequest.sortDescriptors = sortList;
-    fetchRequest.predicate = predicate;
-    _fetchedResultsControllerShiftCategory = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                                                                 managedObjectContext:_appDelegate.managedObjectContext
-                                                                                   sectionNameKeyPath:nil
-                                                                                            cacheName:cacheName];
-    _fetchedResultsControllerShiftCategory.delegate = self;
-    
-    NSError *error = nil;
-    [_fetchedResultsControllerShiftCategory performFetch:&error];
-    if (error) {
-        NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
-    }
-    
-    if ([_fetchedResultsControllerShiftCategory.fetchedObjects count] == 0) {
-        NSLog(@"add data for shift category");
-        
-        //read file
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"predefault" ofType:@"plist"];
-        
-        // Load the file content and read the data into arrays
-        if (path)
-        {
-            NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
-            NSArray *totalCategory = [dict objectForKey:@"ShiftCategory"];
-            NSLog(@" totalCategory %@",totalCategory);
-            //Creater coredata
-            for (int i = 0 ; i < [totalCategory count]; i++) {
-                NSLog(@" key %d object %@",i, totalCategory[i]);
-                CDShiftCategory *cdShiftCategory = (CDShiftCategory *)[NSEntityDescription insertNewObjectForEntityForName:@"CDShiftCategory" inManagedObjectContext:_appDelegate.managedObjectContext];
-                NSArray *tmpArr = totalCategory[i];
-                
-                cdShiftCategory.id = i + 1;
-                cdShiftCategory.name = tmpArr[0];
-                cdShiftCategory.timeStart = tmpArr[1];
-                cdShiftCategory.timeEnd = tmpArr[2];
-                
-                if ([tmpArr[3] integerValue]) {
-                    cdShiftCategory.isAllDay = YES;
-                }
-                else
-                {
-                    cdShiftCategory.isAllDay = NO ;
-                }
-                
-                cdShiftCategory.color = tmpArr[4];
-                
-                NSLog(@" name %@ is All Day %d", cdShiftCategory.name, cdShiftCategory.isAllDay);
-                
-            }
-            
-            [_appDelegate saveContext];
-            
-        } else {
-            NSLog(@"path error");
-        }
-        
-    } else {
-        NSLog(@"total item : %lu",(unsigned long)[_fetchedResultsControllerShiftCategory.fetchedObjects count]);
-    }
-    
-    return _fetchedResultsControllerShiftCategory;
-    
-}
-
 
 - (NSFetchedResultsController *)fetchedResultsControllerMember {
     
@@ -262,6 +177,167 @@
     return _fetchedResultsControllerMember;
     
 }
+
+- (NSFetchedResultsController*) fetchedResultsControllerShiftCategory
+{
+    if (!_fetchedResultsControllerShiftCategory) {
+        NSString *entityName = @"CDShiftCategory";
+        AppDelegate *_appDelegate = [AppDelegate shared];
+        
+        NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
+        [NSFetchedResultsController deleteCacheWithName:cacheName];
+        
+        NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:_appDelegate.managedObjectContext];
+        
+        
+        NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+        NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        fetchRequest.entity = entity;
+        fetchRequest.fetchBatchSize = 20;
+        fetchRequest.sortDescriptors = sortList;
+        fetchRequest.predicate = predicate;
+        _fetchedResultsControllerShiftCategory = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                              managedObjectContext:_appDelegate.managedObjectContext
+                                                                                sectionNameKeyPath:nil
+                                                                                         cacheName:cacheName];
+        _fetchedResultsControllerShiftCategory.delegate = self;
+        
+        NSError *error = nil;
+        [_fetchedResultsControllerShiftCategory performFetch:&error];
+        if (error) {
+            NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+        }
+        
+        if ([_fetchedResultsControllerShiftCategory.fetchedObjects count] == 0) {
+            NSLog(@"add data for Shift Category item");
+            
+            //read file
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"tienlp_predefault" ofType:@"plist"];
+            
+            // Load the file content and read the data into arrays
+            if (path)
+            {
+                NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+                NSArray *totalShiftCategory = [dict objectForKey:@"ShiftCategory"];
+                
+                //Creater coredata
+                for (int i = 0 ; i < [totalShiftCategory count]; i++) {
+                    CDShiftCategory *cdShiftCategory = (CDShiftCategory *)[NSEntityDescription insertNewObjectForEntityForName:@"CDShiftCategory"
+                                                                                                        inManagedObjectContext:_appDelegate.managedObjectContext];
+                    
+                    cdShiftCategory.id      = i + 1;
+                    cdShiftCategory.name    = [totalShiftCategory objectAtIndex:i];
+                    cdShiftCategory.color   = [NSString stringWithFormat:@"%d",i%10];
+                }
+                
+                [_appDelegate saveContext];
+                
+            } else {
+                NSLog(@"path error");
+            }
+            
+        } else {
+            NSLog(@"total shift item : %d",[_fetchedResultsControllerShiftCategory.fetchedObjects count]);
+        }
+    }
+    
+    return _fetchedResultsControllerShiftCategory;
+}
+
+- (NSFetchedResultsController*) fetchedResultsControllerScheduleCategory
+{
+    
+    if (!_fetchedResultsControllerScheduleCategory) {
+        
+        NSString *entityName = @"CDScheduleCategory";
+        AppDelegate *_appDelegate = [AppDelegate shared];
+        
+        NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
+        [NSFetchedResultsController deleteCacheWithName:cacheName];
+        
+        NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:_appDelegate.managedObjectContext];
+        
+        
+        NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+        NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        fetchRequest.entity = entity;
+        fetchRequest.fetchBatchSize = 20;
+        fetchRequest.sortDescriptors = sortList;
+        fetchRequest.predicate = predicate;
+        _fetchedResultsControllerScheduleCategory = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                                     managedObjectContext:_appDelegate.managedObjectContext
+                                                                                       sectionNameKeyPath:nil
+                                                                                                cacheName:cacheName];
+        _fetchedResultsControllerScheduleCategory.delegate = self;
+        
+        NSError *error = nil;
+        [_fetchedResultsControllerScheduleCategory performFetch:&error];
+        if (error) {
+            NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+        }
+        
+        if ([_fetchedResultsControllerScheduleCategory.fetchedObjects count] == 0) {
+            NSLog(@"add data for schedule Category item");
+            
+            //read file
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"tienlp_predefault" ofType:@"plist"];
+            
+            // Load the file content and read the data into arrays
+            if (path)
+            {
+                NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
+                NSArray *totalScheduleCategory = [dict objectForKey:@"ScheduleCategory"];
+                
+                //Creater coredata
+                for (int i = 0 ; i < [totalScheduleCategory count]; i++) {
+                    CDScheduleCategory *cdScheduleCategory = (CDScheduleCategory *)[NSEntityDescription insertNewObjectForEntityForName:@"CDScheduleCategory"
+                                                                                                        inManagedObjectContext:_appDelegate.managedObjectContext];
+                    
+                    cdScheduleCategory.id          = i + 1;
+                    cdScheduleCategory.name        = [totalScheduleCategory objectAtIndex:i];
+                    cdScheduleCategory.color       = [NSString stringWithFormat:@"%d",i%10];
+                    cdScheduleCategory.isDefault   = YES;
+                    cdScheduleCategory.isEnable    = YES;
+                }
+                
+                [_appDelegate saveContext];
+                
+            } else {
+                NSLog(@"path error");
+            }
+            
+        } else {
+            NSLog(@"total schedule item : %d",[_fetchedResultsControllerScheduleCategory.fetchedObjects count]);
+        }
+        
+    }
+    
+    return _fetchedResultsControllerScheduleCategory;
+}
+
+#pragma mark - Fetch CoreData
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+}
+
 
 
 #pragma mark - Notification
@@ -420,6 +496,7 @@
         }
         case 1:
         {
+            [_addScheduleView loadScheduleCategoryInfo:[self convertScheduleCategory]];
             [_addScheduleView show];
             break;
         }
@@ -443,11 +520,32 @@
 }
 
 #pragma mark - Add Shift
+- (NSMutableArray*) convertShiftObject
+{
+    NSMutableArray *shifts = [[NSMutableArray alloc] init];
+    
+    for (CDShiftCategory *cdShift in self.fetchedResultsControllerShiftCategory.fetchedObjects) {
+        
+        ShiftCategoryItem *item = [[ShiftCategoryItem alloc] init];
+        
+        item.shiftCategoryID = cdShift.id;
+        item.name            = cdShift.name;
+        item.color           = cdShift.color;
+        
+        [shifts addObject:item];
+        
+    }
+    
+    return shifts;
+}
+
 - (void) showAddShift
 {
     if (_isShowAddShiftView) {
         return;
     }
+    
+    [_addShiftView loadInfoWithShiftCategories:[self convertShiftObject]];
     
     CGRect rect = _addShiftView.frame;
     rect.origin.y -= _addShiftView.frame.size.height;
@@ -456,6 +554,9 @@
         _addShiftView.frame = rect;
     } completion:^(BOOL finished) {
         _isShowAddShiftView = YES;
+        
+        
+        
     }];
 }
 
@@ -479,6 +580,7 @@
 - (void) addShiftView:(AddShiftView*)addShiftView didSelectWithIndex:(int)index
 {
     NSLog(@"Add Shift select item with index: %d", index);
+    [_calendarView setNextSelectDate];
 }
 
 - (void) addShiftViewDidSelectShowListShiftPattern:(AddShiftView*)addShiftView
@@ -499,9 +601,9 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void) didSaveSchedule:(AddScheduleView*)addScheduleView
+- (void) didSaveSchedule:(AddScheduleView*)addScheduleView info:(NSDictionary*)info
 {
-    NSLog(@"save schedule");
+    NSLog(@"save schedule info: %@",info);
 }
 
 - (void) didShowView:(AddScheduleView*)addScheduleView
@@ -512,6 +614,27 @@
 - (void) didHideView:(AddScheduleView*)addScheduleView
 {
     _isShowAddScheduleView = NO;
+}
+
+- (NSMutableArray*) convertScheduleCategory
+{
+    NSMutableArray *schedules = [[NSMutableArray alloc] init];
+    
+    for (CDScheduleCategory *cdSchedule in self.fetchedResultsControllerScheduleCategory.fetchedObjects) {
+        
+        if (cdSchedule.isEnable) {
+            ScheduleCategoryItem *item  = [[ScheduleCategoryItem alloc] init];
+            
+            item.scheduleCategoryID     = cdSchedule.id;
+            item.name                   = cdSchedule.name;
+            item.color                  = cdSchedule.color;
+            
+            [schedules addObject:item];
+        }
+        
+    }
+    
+    return schedules;
 }
 
 
@@ -533,6 +656,15 @@
     _selectDate = date;
     [_tableView setContentOffset:CGPointMake(0, 0) animated:YES];
     [_tableView reloadData];
+}
+
+- (void) fXCalendarView:(FXCalendarView*)fXCalendarView didSelectNextDay:(NSDate*)date
+{
+    [_naviView setTitleWithDay:[FXCalendarData getDayWithDate:date]
+                         month:[FXCalendarData getMonthWithDate:date]
+                          year:[FXCalendarData getYearWithDate:date]];
+    _selectDate = date;
+    [self resetLayoutTableWithAnimate:YES];
 }
 
 #pragma mark - Table view
