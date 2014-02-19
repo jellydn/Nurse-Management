@@ -2,14 +2,14 @@
 //  CDShift.h
 //  Nurse Management
 //
-//  Created by Huynh Duc Dung on 2/18/14.
+//  Created by PhuNQ on 2/19/14.
 //  Copyright (c) 2014 Le Phuong Tien. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class CDShiftAlert, CDShiftCategory, CDShiftMember;
+@class CDMember, CDShiftAlert, CDShiftCategory;
 
 @interface CDShift : NSManagedObject
 
@@ -28,8 +28,8 @@
 
 @interface CDShift (CoreDataGeneratedAccessors)
 
-- (void)addPk_shiftObject:(CDShiftMember *)value;
-- (void)removePk_shiftObject:(CDShiftMember *)value;
+- (void)addPk_shiftObject:(CDMember *)value;
+- (void)removePk_shiftObject:(CDMember *)value;
 - (void)addPk_shift:(NSSet *)values;
 - (void)removePk_shift:(NSSet *)values;
 
