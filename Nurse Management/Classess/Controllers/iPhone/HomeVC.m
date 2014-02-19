@@ -228,9 +228,12 @@
                     CDShiftCategory *cdShiftCategory = (CDShiftCategory *)[NSEntityDescription insertNewObjectForEntityForName:@"CDShiftCategory"
                                                                                                         inManagedObjectContext:_appDelegate.managedObjectContext];
                     
-                    cdShiftCategory.id      = i + 1;
-                    cdShiftCategory.name    = [totalShiftCategory objectAtIndex:i];
-                    cdShiftCategory.color   = [NSString stringWithFormat:@"%d",i%10];
+                    cdShiftCategory.id          = i + 1;
+                    cdShiftCategory.name        = [totalShiftCategory objectAtIndex:i];
+                    cdShiftCategory.color       = [NSString stringWithFormat:@"%d",i%10];
+                    cdShiftCategory.isAllDay    = YES;
+                    cdShiftCategory.timeStart   = @"00:00";
+                    cdShiftCategory.timeEnd     = @"00:00";
                 }
                 
                 [_appDelegate saveContext];
@@ -240,7 +243,7 @@
             }
             
         } else {
-            NSLog(@"total shift item : %d",[_fetchedResultsControllerShiftCategory.fetchedObjects count]);
+            NSLog(@"total shift item : %d",(int)[_fetchedResultsControllerShiftCategory.fetchedObjects count]);
         }
     }
     
@@ -735,8 +738,8 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:@"HomeCellAddShift" owner:self options:nil] lastObject];
         }
         
-        
-        [cell loadInfoWithNSDate:_selectDate isAddShift:(arc4random() % (1-0+1)) + 0];
+        CDShift *shift = [[AppDelegate shared] getShiftWithDate:_selectDate];
+        [cell loadInfoWithNSDate:_selectDate shift:shift];
         
         return cell;
         

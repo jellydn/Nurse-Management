@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CDShiftCategory.h"
 
 @interface ShiftCategoryItem : NSObject
 
@@ -16,8 +17,12 @@
 @property (nonatomic, strong)   NSString * name;
 @property (nonatomic)           NSTimeInterval timeEnd;
 @property (nonatomic)           NSTimeInterval timeStart;
+@property (nonatomic, strong)   NSString *strTimeEnd;
+@property (nonatomic, strong)   NSString *strTimeStart;
 
 @property (nonatomic, strong)   NSString *image;
 @property (nonatomic, strong)   UIColor *textColor;
+
++ (ShiftCategoryItem*) convertForCDObject:(CDShiftCategory*)cdShiftCategory;
 
 @end
