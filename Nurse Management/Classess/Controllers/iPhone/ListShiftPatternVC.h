@@ -11,4 +11,6 @@
 
 @interface ListShiftPatternVC : FXViewController
 
+@property(nonatomic,retain) NSFetchedResultsController *fetchedResultsControllerShiftCategory;
+
 @end
