@@ -70,6 +70,19 @@
         _lbCategoryName.text        = shiftCategory.name;
         _lbCategoryName.textColor   = shiftCategory.textColor;
         
+        //load member
+        if ([shift.pk_shift count] == 0) {
+            _lbMember.text = @"0 members";
+        } else {
+            _lbMember.text = @"";
+            for (CDMember *item in shift.pk_shift) {
+                _lbMember.text = [_lbMember.text stringByAppendingFormat:@"%@,",item.name];
+            }
+        }
+        
+        //load alert
+        _lbAlert.text = [NSString stringWithFormat:@"%d alerts",(int)[shift.pk_shiftalert count]];
+        
     } else {
         
         _viewAdd.hidden     = NO;

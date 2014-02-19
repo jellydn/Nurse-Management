@@ -322,6 +322,14 @@ static __weak AppDelegate *shared = nil;
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+#pragma mark - Others
+- (void) getInfoDayWithDate:(NSDate*)date
+{
+    // query coredata : Shift --> get info shift for date;
+    
+    // query coredata : schedule --> get list schedule for date;
+}
+
 
 
 @end
