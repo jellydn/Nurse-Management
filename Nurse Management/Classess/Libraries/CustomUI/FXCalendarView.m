@@ -34,7 +34,7 @@
     _selectDate = date;
     
     _monthView1 = [[FXMonthView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
-    _monthView1.isLoadDataForCell   = YES;
+    _monthView1.isLoadDataForCell   = NO;
     [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:date] isSetFirstDay:NO];
     [_scrollView addSubview:_monthView1];
     [_monthView1 reloadHeighForWeekWithAnimate:NO];
@@ -48,7 +48,7 @@
     [_monthView2 reloadHeighForWeekWithAnimate:YES];
     
     _monthView3 = [[FXMonthView alloc] initWithFrame:CGRectMake(640, 0, 320, 0)];
-    _monthView3.isLoadDataForCell   = YES;
+    _monthView3.isLoadDataForCell   = NO;
     [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:date] isSetFirstDay:NO];
     [_scrollView addSubview:_monthView3];
     [_monthView3 reloadHeighForWeekWithAnimate:NO];
