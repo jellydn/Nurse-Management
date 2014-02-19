@@ -328,6 +328,9 @@
         _daySelect = [[FXDay alloc] init];
         _daySelect.date = _firstDay;
         
+        if (_delegate && [_delegate respondsToSelector:@selector(fxMonthView:didSelectDayWith:)]) {
+            [_delegate fxMonthView:self didSelectDayWith:_daySelect];
+        }
     }
     
     if (!_days) {
@@ -410,6 +413,10 @@
     _daySelect = nil;
     _daySelect = [[FXDay alloc] init];
     _daySelect.date = selectDate;
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(fxMonthView:didSelectDayWith:)]) {
+        [_delegate fxMonthView:self didSelectDayWith:_daySelect];
+    }
     
     if (!_days) {
         _days = [[NSMutableArray alloc] init];

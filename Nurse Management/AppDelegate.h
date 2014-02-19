@@ -27,6 +27,7 @@
 
 //common method
 - (CDShiftCategory*) getshiftCategoryWithID:(int)categoryID;
+- (CDShift*) getShiftWithDate:(NSDate*)date;
 - (void) addQuickShiftWithShiftCategoryID:(int)categoryID date:(NSDate*)date;
 - (int) lastShiftID;
 

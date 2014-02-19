@@ -15,6 +15,8 @@
 #import "CDShift.h"
 #import "CDShiftCategory.h"
 
+#import "Common.h"
+
 static __weak AppDelegate *shared = nil;
 
 @implementation AppDelegate
@@ -225,6 +227,12 @@ static __weak AppDelegate *shared = nil;
             NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
         } else {
             NSLog(@"total shift : %lu", (unsigned long)[_fetchedResultsControllerShift.fetchedObjects count]);
+            for (CDShift *item in _fetchedResultsControllerShift.fetchedObjects) {
+                NSLog(@"Shift id: %d  -- name: %@ -- onDate: %@",
+                      item.id,
+                      item.name,
+                      [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:[NSDate dateWithTimeIntervalSince1970:item.onDate]]);
+            }
         }
         
     }
@@ -238,6 +246,21 @@ static __weak AppDelegate *shared = nil;
     for (CDShiftCategory *item in self.fetchedResultsControllerShiftCategory.fetchedObjects)
     {
         if (item.id == categoryID) {
+            return item;
+        }
+    }
+    
+    return nil;
+}
+
+- (CDShift*) getShiftWithDate:(NSDate*)date
+{
+    NSString *strDay = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
+    
+    for (CDShift *item in self.fetchedResultsControllerShift.fetchedObjects) {
+        
+        NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:item.onDate];
+        if ([[Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate] isEqualToString:strDay]) {
             return item;
         }
     }
@@ -263,15 +286,29 @@ static __weak AppDelegate *shared = nil;
         return;
     }
     
-    CDShift *cdShift = (CDShift *)[NSEntityDescription insertNewObjectForEntityForName:@"CDShift"
-                                                                                        inManagedObjectContext:self.managedObjectContext];
+    CDShift *cdShift = [self getShiftWithDate:date];
     
-    cdShift.id                  = [self lastShiftID] + 1;
-    cdShift.name                = shiftCategory.name;
-    cdShift.shiftCategoryId     = shiftCategory.id;
-    cdShift.isAllDay            = YES;
-    cdShift.onDate              = [date timeIntervalSince1970];
-    cdShift.fk_shift_category   = shiftCategory;
+    if (cdShift) {
+        NSLog(@"Update Shift");
+        
+        cdShift.name                = shiftCategory.name;
+        cdShift.shiftCategoryId     = shiftCategory.id;
+        cdShift.isAllDay            = YES;
+        cdShift.fk_shift_category   = shiftCategory;
+        
+    } else {
+        NSLog(@"Add new Shift");
+        
+        CDShift *cdShift2 = (CDShift *)[NSEntityDescription insertNewObjectForEntityForName:@"CDShift"
+                                                                    inManagedObjectContext:self.managedObjectContext];
+        
+        cdShift2.id                  = [self lastShiftID] + 1;
+        cdShift2.name                = shiftCategory.name;
+        cdShift2.shiftCategoryId     = shiftCategory.id;
+        cdShift2.isAllDay            = YES;
+        cdShift2.onDate              = [date timeIntervalSince1970];
+        cdShift2.fk_shift_category   = shiftCategory;
+    }
     
     [self saveContext];
     
