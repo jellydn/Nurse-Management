@@ -43,13 +43,15 @@
     __weak IBOutlet UITextView *_txvMemo;
     __weak IBOutlet UIImageView *_imvShiftCategoryBG;
     
-    UIPickerActionSheet *_pickerActionSheet;
+    
     NSMutableDictionary *_startTime;
     NSMutableDictionary *_endTime;
+    NSArray *_arrMember;
     
     BOOL _isShowAddShiftView;
     BOOL _isAllDay;
     
+    UIPickerActionSheet *_pickerActionSheet;
     AddShiftView    *_addShiftView;
     NMSelectionStringView *_nMSelectionStringView;
     
@@ -198,8 +200,19 @@
 
 #pragma mark - NMSelectionStringViewDelegate
 
-- (void) didSelectionStringWithIndex:(NSInteger)index arraySelectionString:(NSMutableArray *)arraySelectionString {
-    NSLog(@"select");
+//- (void) didSelectionStringWithIndex:(NSInteger)index arraySelectionString:(NSMutableArray *)arraySelectionString {
+//    NSLog(@"select");
+//}
+
+- (void)didSelectionCDMemberWithIndex:(NSInteger)index arraySelectionCDMember:(NSMutableArray *)arraySelectionCDMember
+{
+//    for (int i = 0; i < arraySelectionCDMember.count; i++) {
+//        CDMember *member = arraySelectionCDMember[i];
+//        NSLog(@"index %d: %@",i,member.name);
+//    }
+    
+    _arrMember = arraySelectionCDMember;
+    
 }
 
 #pragma mark - PickerActionSheetDelegate
@@ -311,7 +324,6 @@
     if (_shift.fk_shift_category) {     // shift category required
     
     _shift.id = [[AppDelegate shared] lastShiftID] + 1;
-    NSLog(@"shift id: %d", _shift.id);
     _shift.isAllDay = _isAllDay;
         
     if (!_isAllDay) {
@@ -325,6 +337,14 @@
     
     _shift.onDate = [_date timeIntervalSince1970];
     _shift.memo = _txvMemo.text;
+        
+        if (_arrMember) {
+            
+            for (CDMember *member in _arrMember)
+                 [_shift addPk_shiftObject:member];
+            
+        }
+            
         
     [[AppDelegate shared] saveContext];
         
@@ -485,13 +505,12 @@
     
     _nMSelectionStringView = [[NMSelectionStringView alloc] initWithFrame:CGRectMake(15, 215, 320 - 15*2, 118)];
     _nMSelectionStringView.delegate = self;
-    NSMutableArray *arr = [[NSMutableArray alloc] init];
-    for (CDMember *member in _fetchedResultsControllerMember.fetchedObjects) {
-        [arr addObject:member.name];
-    }
-    [_nMSelectionStringView setArrayString:arr];
-    
-    
+//    NSMutableArray *arr = [[NSMutableArray alloc] init];
+//    for (CDMember *member in _fetchedResultsControllerMember.fetchedObjects) {
+//        [arr addObject:member.name];
+//    }
+//    [_nMSelectionStringView setArrayString:arr];
+    [_nMSelectionStringView setArrayCDMember:(NSMutableArray *)_fetchedResultsControllerMember.fetchedObjects];
     
     [self.view addSubview:_nMSelectionStringView];
     
