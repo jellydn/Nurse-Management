@@ -179,4 +179,15 @@
     return  date;
 }
 
++ (NSDate*) dateNexHourFormDate:(NSDate*)date
+{
+    NSDateComponents *comp = [[self getCalendarCurrent] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:date];
+    
+    [comp setSecond:0];
+    [comp setMinute:0];
+    [comp setHour:[comp hour]+1];
+    
+    return  [[self getCalendarCurrent] dateFromComponents:comp];
+}
+
 @end
