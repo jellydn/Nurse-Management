@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CDShift.h"
 #import "CDShiftAlert.h"
-#import "CDShiftMember.h"
+#import "CDMember.h"
 #import "CDShiftCategory.h"
 
 @interface HomeCellAddShift : UITableViewCell
