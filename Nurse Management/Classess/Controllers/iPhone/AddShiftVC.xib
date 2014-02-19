@@ -199,11 +199,11 @@
                         <action selector="saveAndMoveToNextDay:" destination="-1" eventType="touchUpInside" id="wOG-Tu-qQj"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_r1_c7.png" id="EiO-0M-n1F">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="EiO-0M-n1F">
                     <rect key="frame" x="252" y="75" width="50" height="43"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日勤" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nX1-ia-IKo">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nX1-ia-IKo">
                     <rect key="frame" x="256" y="77" width="43" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -363,6 +363,5 @@
         <image name="ic_injection_needle.png" width="20" height="27"/>
         <image name="ic_memo.png" width="14" height="15"/>
         <image name="ic_nurse.png" width="16" height="19"/>
-        <image name="icon_r1_c7.png" width="100" height="88"/>
     </resources>
 </document>
