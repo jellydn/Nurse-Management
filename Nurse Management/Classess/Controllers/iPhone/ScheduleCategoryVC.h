@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "FXViewController.h"
 
-@interface ScheduleCategoryVC : FXViewController
-
+@interface ScheduleCategoryVC : FXViewController<NSFetchedResultsControllerDelegate>
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerScheduleCategory;
 @end
