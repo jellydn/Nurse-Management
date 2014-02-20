@@ -31,6 +31,7 @@
 #define BUTTON_BG_COLOR	 [UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]
 #define TITLE_COLOR	 [UIColor colorWithRed:126.0/255.0 green:96.0/255.0 blue:39.0/255.0 alpha:1.0]
 #define kOFFSET_FOR_KEYBOARD 160.0
+#define MEMO_PLACEHOLDER_TEXT    @"メモがあったら入力しよう"
 
 @interface AddShiftVC () <UITextViewDelegate, UIActionSheetDelegate, ChooseTimeViewDelegate, AddShiftViewDelegate, NMSelectionStringViewDelegate, NSFetchedResultsControllerDelegate, NMTimePickerViewDelegate>
 {
@@ -140,13 +141,15 @@
         
         _shift = (CDShift *) [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
         [self setDefaultTime];
-        
+        _txvMemo.text = MEMO_PLACEHOLDER_TEXT;
+        _txvMemo.textColor = [UIColor lightGrayColor];
         
     } else {
         
         _shift = [[AppDelegate shared] getShiftWithShiftID:_shiftID];
         [self loadShiftFromCoreData];
-        
+        _btnSave.enabled = YES;
+        _btnSaveAndNext.enabled = YES;
     }
     
 }
@@ -169,16 +172,30 @@
 
 #pragma mark - UITextFieldDelegate
 
--(void)textFieldDidBeginEditing:(UITextField *)sender
-{
-    if ([sender isEqual:_txvMemo])
+- (void) textViewDidBeginEditing:(UITextView *)textView {
+    
+    if ([textView isEqual:_txvMemo])
     {
         //move the main view, so that the keyboard does not hide it.
         if  (self.view.frame.origin.y >= 0)
         {
             [self setViewMovedUp:YES];
         }
+        
+        if ([textView.text isEqualToString:MEMO_PLACEHOLDER_TEXT]) {
+            textView.text = @"";
+            textView.textColor = [UIColor blackColor]; //optional
+        }
     }
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = MEMO_PLACEHOLDER_TEXT;
+        textView.textColor = [UIColor lightGrayColor]; //optional
+    }
+//    [textView resignFirstResponder];
 }
 
 #pragma mark - AddShiftViewDelegate
@@ -233,16 +250,18 @@
 
 - (void) datePicker:(NMTimePickerView *)picker dismissWithButtonDone:(BOOL)done {
     
-    if (picker.datePicker.tag == START_TIME) {
-        
-        _startTime = picker.datePicker.date;
-        _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
-        
-    } else if (picker.datePicker.tag == END_TIME) {
-        
-        _endTime = picker.datePicker.date;
-        _lblEndTime.text     = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
-        
+    if (done) {
+        if (picker.datePicker.tag == START_TIME) {
+            
+            _startTime = picker.datePicker.date;
+            _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+            
+        } else if (picker.datePicker.tag == END_TIME) {
+            
+            _endTime = picker.datePicker.date;
+            _lblEndTime.text     = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+            
+        }
     }
     
 }
@@ -686,7 +705,9 @@
 
 - (void) saveShiftToCoreData {
     
-    _shift.id = [[AppDelegate shared] lastShiftID] + 1;
+    if (_isNewShift)
+        _shift.id = [[AppDelegate shared] lastShiftID] + 1;
+    
     _shift.isAllDay = _isAllDay;
     
     if (!_isAllDay) {
@@ -734,8 +755,16 @@
     }
     
     // shift duration
+    if (_shift.isAllDay) {
+        _startTime = [NSDate dateWithTimeIntervalSince1970:_shift.timeStart];
+        _endTime = [NSDate dateWithTimeIntervalSince1970:_shift.timeEnd];
+    }
+    _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+    _lblEndTime.text   = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
     
-    
+    // shift members
+//    _arrMember = [_shift.pk_shift allObjects];
+
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
