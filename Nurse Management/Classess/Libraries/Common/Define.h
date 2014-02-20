@@ -19,4 +19,7 @@
 // entity names
 #define ENTITY_SHIFT    @"CDShift"
 
+//NotifiCation
+#define DID_ADD_SCHEDULE    @"DID_ADD_SCHEDULE"
+
 #endif

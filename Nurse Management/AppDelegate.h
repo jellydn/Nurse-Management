@@ -13,6 +13,7 @@
 #import "CDSchedule.h"
 #import "CDScheduleCategory.h"
 #import "CDScheduleAlert.h"
+#import "ScheduleItem.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, NSFetchedResultsControllerDelegate>
 
@@ -38,9 +39,11 @@
 - (int) lastShiftID;
 
 - (CDScheduleCategory*) getScheduleCategoryWithID:(int)categoryID;
+- (CDSchedule*) getScheduleByID:(int)scheduleID;
 - (void) addQuickScheduleWithInfo:(NSDictionary*)info;
 - (int) lastScheduleID;
 - (int) lastScheduleAlertID;
+- (NSMutableArray*) getSchedulesOnDate:(NSDate*)date;
 
 // share
 + (AppDelegate *)shared;

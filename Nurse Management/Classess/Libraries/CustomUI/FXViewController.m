@@ -47,6 +47,11 @@
                                                  name:_fxThemeNotificationChangeTheme
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(eventListenerDidReceiveNotification:)
+                                                 name:DID_ADD_SCHEDULE
+                                               object:nil];
+    
     //set background
     self.view.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorBackground];
     
@@ -65,6 +70,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:_fxThemeNotificationChangeTheme object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DID_ADD_SCHEDULE object:nil];
 }
 
 - (void) viewDidDisappear:(BOOL)animated

@@ -17,4 +17,16 @@
     _image      = [NSString stringWithFormat:@"schedule_bg_%@.png",color];
 }
 
+
++ (ScheduleCategoryItem*) convertForCDObject:(CDScheduleCategory*)cdCategory
+{
+    ScheduleCategoryItem *item = [[ScheduleCategoryItem alloc] init];
+    
+    item.scheduleCategoryID     = cdCategory.id;
+    item.name                   = cdCategory.name;
+    item.color                  = cdCategory.color;
+    
+    return item;
+}
+
 @end

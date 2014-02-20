@@ -16,6 +16,7 @@
 #import "CDShiftCategory.h"
 
 #import "Common.h"
+#import "Define.h"
 
 static __weak AppDelegate *shared = nil;
 
@@ -276,12 +277,6 @@ static __weak AppDelegate *shared = nil;
             NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
         } else {
             NSLog(@"appdelegate total schedule : %lu", (unsigned long)[_fetchedResultsControllerSchedule.fetchedObjects count]);
-            for (CDSchedule *item in _fetchedResultsControllerSchedule.fetchedObjects) {
-                NSLog(@"schedule id: %d  -- onDate: %@ -- alerts: %d",
-                      item.id,
-                      [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:[NSDate dateWithTimeIntervalSince1970:item.onDate]],
-                      [item.pk_schedule count]);
-            }
         }
         
     }
@@ -322,6 +317,7 @@ static __weak AppDelegate *shared = nil;
             NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
         } else {
             NSLog(@"appdelegate total schedule category : %lu", (unsigned long)[_fetchedResultsControllerScheduleCategory.fetchedObjects count]);
+            
         }
         
     }
@@ -455,6 +451,17 @@ static __weak AppDelegate *shared = nil;
     return nil;
 }
 
+- (CDSchedule*) getScheduleByID:(int)scheduleID
+{
+    for (CDSchedule *item in self.fetchedResultsControllerSchedule.fetchedObjects) {
+        if (item.id == scheduleID) {
+            return item;
+        }
+    }
+    
+    return nil;
+}
+
 - (void) addQuickScheduleWithInfo:(NSDictionary*)info
 {
     CDSchedule *schedule = (CDSchedule*) [NSEntityDescription insertNewObjectForEntityForName:@"CDSchedule"
@@ -474,7 +481,7 @@ static __weak AppDelegate *shared = nil;
     NSDate *timeStartDate           = [info objectForKey:@"start_time"];
     schedule.timeStart              = [timeStartDate timeIntervalSince1970];
     
-    schedule.fk_schedule_category   = [self getScheduleCategoryWithID:schedule.scheduleCategoryId];
+    schedule.fk_schedule_category   = [self getScheduleCategoryWithID:[[info objectForKey:@"schedule_category_id"] integerValue]];
     
     
     if ([[info objectForKey:@"array_alert"] isKindOfClass:[NSArray class]]) {
@@ -494,6 +501,9 @@ static __weak AppDelegate *shared = nil;
     }
     
     [self saveContext];
+    
+    //post notification
+    [[NSNotificationCenter defaultCenter] postNotificationName:DID_ADD_SCHEDULE object:nil userInfo:nil];
     
 }
 
@@ -515,6 +525,24 @@ static __weak AppDelegate *shared = nil;
         CDScheduleAlert *cdScheduleAlert = [self.fetchedResultsControllerScheduleAlert.fetchedObjects lastObject];
         return cdScheduleAlert.id;
     }
+}
+
+- (NSMutableArray*) getSchedulesOnDate:(NSDate*)date
+{
+    NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
+    NSMutableArray *schedules = [[NSMutableArray alloc] init];
+    
+    for (CDSchedule *itemCD in self.fetchedResultsControllerSchedule.fetchedObjects) {
+        
+        NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:itemCD.onDate];
+        NSString *strTemp = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate];
+     
+        if ([strTemp isEqualToString:strDate]) {
+            [schedules addObject:[ScheduleItem convertForCDObjet:itemCD]];
+        }
+    }
+    
+    return schedules;
 }
 
 

@@ -10,4 +10,11 @@
 
 @interface HomeCellSchedule : UITableViewCell
 
+@property (nonatomic, weak) IBOutlet UILabel        *lbTimeStart;
+@property (nonatomic, weak) IBOutlet UILabel        *lbTimeEnd;
+@property (nonatomic, weak) IBOutlet UILabel        *lbCategoryName;
+@property (nonatomic, weak) IBOutlet UILabel        *lbMemo;
+
+@property (nonatomic, weak) IBOutlet UIImageView    *imgCategory;
+
 @end
