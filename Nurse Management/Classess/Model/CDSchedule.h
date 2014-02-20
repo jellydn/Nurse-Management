@@ -14,6 +14,7 @@
 @interface CDSchedule : NSManagedObject
 
 @property (nonatomic) int32_t id;
+@property (nonatomic) BOOL isAllDay;
 @property (nonatomic, retain) NSString * memo;
 @property (nonatomic) NSTimeInterval onDate;
 @property (nonatomic) int32_t scheduleCategoryId;

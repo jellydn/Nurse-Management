@@ -511,7 +511,7 @@
         }
         case 1:
         {
-            [_addScheduleView loadScheduleCategoryInfo:[self convertScheduleCategory]];
+            [_addScheduleView loadScheduleCategoryInfo:[self convertScheduleCategory] selectDate:_selectDate];
             [_addScheduleView show];
             break;
         }
@@ -619,6 +619,7 @@
 - (void) didSaveSchedule:(AddScheduleView*)addScheduleView info:(NSDictionary*)info
 {
     NSLog(@"save schedule info: %@",info);
+    [[AppDelegate shared] addQuickScheduleWithInfo:info];
 }
 
 - (void) didShowView:(AddScheduleView*)addScheduleView

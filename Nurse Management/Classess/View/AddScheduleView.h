@@ -44,7 +44,7 @@
 - (void) show;
 - (void) hide;
 
-- (void) loadScheduleCategoryInfo:(NSMutableArray*)schedules;
+- (void) loadScheduleCategoryInfo:(NSMutableArray*)schedules selectDate:(NSDate*)selectDate;
 
 //Action
 - (IBAction)selectCategory:(id)sender;

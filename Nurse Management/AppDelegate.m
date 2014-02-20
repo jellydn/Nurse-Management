@@ -54,6 +54,7 @@ static __weak AppDelegate *shared = nil;
     [self fetchedResultsControllerShift];
     [self fetchedResultsControllerSchedule];
     [self fetchedResultsControllerScheduleCategory];
+    [self fetchedResultsControllerScheduleAlert];
     
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
@@ -327,6 +328,47 @@ static __weak AppDelegate *shared = nil;
     return _fetchedResultsControllerScheduleCategory;
 }
 
+- (NSFetchedResultsController*) fetchedResultsControllerScheduleAlert
+{
+    if (!_fetchedResultsControllerScheduleAlert)
+    {
+        
+        NSString *entityName = @"CDScheduleAlert";
+        
+        NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
+        [NSFetchedResultsController deleteCacheWithName:cacheName];
+        
+        NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self.managedObjectContext];
+        
+        
+        NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+        NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        fetchRequest.entity = entity;
+        fetchRequest.fetchBatchSize = 20;
+        fetchRequest.sortDescriptors = sortList;
+        fetchRequest.predicate = predicate;
+        _fetchedResultsControllerScheduleAlert = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                                        managedObjectContext:self.managedObjectContext
+                                                                                          sectionNameKeyPath:nil
+                                                                                                   cacheName:cacheName];
+        _fetchedResultsControllerScheduleAlert.delegate = self;
+        
+        NSError *error = nil;
+        [_fetchedResultsControllerScheduleAlert performFetch:&error];
+        if (error) {
+            NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+        } else {
+            NSLog(@"appdelegate total schedule alert : %lu", (unsigned long)[_fetchedResultsControllerScheduleAlert.fetchedObjects count]);
+        }
+        
+    }
+    
+    return _fetchedResultsControllerScheduleAlert;
+}
+
 #pragma mark - CoreDate Common method
 - (CDShiftCategory*) getshiftCategoryWithID:(int)categoryID
 {
@@ -365,27 +407,6 @@ static __weak AppDelegate *shared = nil;
     }
 }
 
-- (CDScheduleCategory*) getScheduleCategoryWithID:(int)categoryID
-{
-    for (CDScheduleCategory *item in self.fetchedResultsControllerScheduleCategory.fetchedObjects) {
-        if (item.id == categoryID) {
-            return item;
-        }
-    }
-    
-    return nil;
-}
-
-- (int) lastSchedule
-{
-    if ([self.fetchedResultsControllerSchedule.fetchedObjects count] == 0) {
-        return 0;
-    } else {
-        CDSchedule *cdSchedule = [self.fetchedResultsControllerSchedule.fetchedObjects lastObject];
-        return cdSchedule.id;
-    }
-}
-
 - (void) addQuickShiftWithShiftCategoryID:(int)categoryID date:(NSDate*)date
 {
     CDShiftCategory *shiftCategory = [self getshiftCategoryWithID:categoryID];
@@ -408,7 +429,7 @@ static __weak AppDelegate *shared = nil;
         NSLog(@"Add new Shift");
         
         CDShift *cdShift2 = (CDShift *)[NSEntityDescription insertNewObjectForEntityForName:@"CDShift"
-                                                                    inManagedObjectContext:self.managedObjectContext];
+                                                                     inManagedObjectContext:self.managedObjectContext];
         
         cdShift2.id                  = [self lastShiftID] + 1;
         cdShift2.name                = shiftCategory.name;
@@ -421,6 +442,80 @@ static __weak AppDelegate *shared = nil;
     [self saveContext];
     
 }
+
+- (CDScheduleCategory*) getScheduleCategoryWithID:(int)categoryID
+{
+    for (CDScheduleCategory *item in self.fetchedResultsControllerScheduleCategory.fetchedObjects) {
+        if (item.id == categoryID) {
+            return item;
+        }
+    }
+    
+    return nil;
+}
+
+- (void) addQuickScheduleWithInfo:(NSDictionary*)info
+{
+    CDSchedule *schedule = (CDSchedule*) [NSEntityDescription insertNewObjectForEntityForName:@"CDSchedule"
+                                                                       inManagedObjectContext:self.managedObjectContext];
+    
+    schedule.id                     = [self lastScheduleID] + 1;
+    schedule.scheduleCategoryId     = [[info objectForKey:@"schedule_category_id"] integerValue];
+    schedule.isAllDay               = [[info objectForKey:@"is_all_day"] isEqualToString:@"1"] ? YES : NO;
+    schedule.memo                   = @"";
+    
+    NSDate *onDate                  = [info objectForKey:@"select_date"];
+    schedule.onDate                 = [onDate timeIntervalSince1970];
+    
+    NSDate *timeEndDate             = [info objectForKey:@"end_time"];
+    schedule.timeEnd                = [timeEndDate timeIntervalSince1970];
+    
+    NSDate *timeStartDate           = [info objectForKey:@"start_time"];
+    schedule.timeStart              = [timeStartDate timeIntervalSince1970];
+    
+    schedule.fk_schedule_category   = [self getScheduleCategoryWithID:schedule.scheduleCategoryId];
+    
+    [self saveContext];
+    
+    int alertID = [self lastScheduleAlertID];
+    alertID++;
+    for (NSDate *date in [info objectForKey:@"array_alert"]) {
+        
+        CDScheduleAlert *alert  = (CDScheduleAlert*) [NSEntityDescription insertNewObjectForEntityForName:@"CDScheduleAlert"
+                                                                                  inManagedObjectContext:self.managedObjectContext];
+        alert.id                = alertID;
+        alert.onTime            = [date timeIntervalSince1970];
+        alert.scheduleId        = schedule.id;
+        
+        alert.fk_alert_schedule = schedule;
+        
+    }
+    
+    [self saveContext];
+    
+}
+
+- (int) lastScheduleID
+{
+    if ([self.fetchedResultsControllerSchedule.fetchedObjects count] == 0) {
+        return 0;
+    } else {
+        CDSchedule *cdSchedule = [self.fetchedResultsControllerSchedule.fetchedObjects lastObject];
+        return cdSchedule.id;
+    }
+}
+
+- (int) lastScheduleAlertID
+{
+    if ([self.fetchedResultsControllerScheduleAlert.fetchedObjects count] == 0) {
+        return 0;
+    } else {
+        CDScheduleAlert *cdScheduleAlert = [self.fetchedResultsControllerScheduleAlert.fetchedObjects lastObject];
+        return cdScheduleAlert.id;
+    }
+}
+
+
 
 #pragma mark - Application's Documents directory
 

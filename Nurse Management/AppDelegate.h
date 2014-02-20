@@ -12,6 +12,7 @@
 #import "CDShift.h"
 #import "CDSchedule.h"
 #import "CDScheduleCategory.h"
+#import "CDScheduleAlert.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, NSFetchedResultsControllerDelegate>
 
@@ -25,6 +26,7 @@
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerShiftCategory;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerSchedule;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerScheduleCategory;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerScheduleAlert;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
@@ -37,9 +39,8 @@
 
 - (CDScheduleCategory*) getScheduleCategoryWithID:(int)categoryID;
 - (void) addQuickScheduleWithInfo:(NSDictionary*)info;
-
-
-- (int) lastSchedule;
+- (int) lastScheduleID;
+- (int) lastScheduleAlertID;
 
 // share
 + (AppDelegate *)shared;
