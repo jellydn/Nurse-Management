@@ -177,6 +177,9 @@
 		2A75E64318ADA98800E74E4F /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A75E64218ADA98800E74E4F /* Member.m */; };
 		2A75E64618ADA9AB00E74E4F /* ic_cell_shift.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E64418ADA9AB00E74E4F /* ic_cell_shift.png */; };
 		2A75E64718ADA9AB00E74E4F /* ic_cell_shift@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E64518ADA9AB00E74E4F /* ic_cell_shift@2x.png */; };
+		2A97525518B5B01D00C0946E /* CDSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97525418B5B01D00C0946E /* CDSchedule.m */; };
+		2A97525818B5B6F800C0946E /* ScheduleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97525718B5B6F800C0946E /* ScheduleItem.m */; };
+		2A97525B18B5EF8B00C0946E /* CDScheduleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97525A18B5EF8B00C0946E /* CDScheduleCategory.m */; };
 		2AF0757E18ACABFD0008D875 /* FXDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0757D18ACABFD0008D875 /* FXDayView.m */; };
 		2AF0758118ACAC250008D875 /* FXDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0758018ACAC250008D875 /* FXDay.m */; };
 		2AF0758318ACB60A0008D875 /* FXDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF0758218ACB60A0008D875 /* FXDayView.xib */; };
@@ -227,8 +230,6 @@
 		C0AD15E618B4A7C500709E81 /* NMTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AD15E318B4A7C500709E81 /* NMTimePickerView.m */; };
 		C0B2B1D518B44F7000CF4B76 /* CDShiftMember.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1D418B44F7000CF4B76 /* CDShiftMember.m */; };
 		C0B2B1D818B44F7100CF4B76 /* CDScheduleAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1D718B44F7100CF4B76 /* CDScheduleAlert.m */; };
-		C0B2B1DB18B44F7100CF4B76 /* CDSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1DA18B44F7100CF4B76 /* CDSchedule.m */; };
-		C0B2B1DE18B44F7100CF4B76 /* CDScheduleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1DD18B44F7100CF4B76 /* CDScheduleCategory.m */; };
 		C0B2B1E118B44F7100CF4B76 /* CDShiftCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1E018B44F7100CF4B76 /* CDShiftCategory.m */; };
 		C0B2B1E418B44F7100CF4B76 /* CDShift.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1E318B44F7100CF4B76 /* CDShift.m */; };
 		C0B2B1E718B44F7100CF4B76 /* CDMember.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1E618B44F7100CF4B76 /* CDMember.m */; };
@@ -453,6 +454,12 @@
 		2A75E64218ADA98800E74E4F /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Member.m; sourceTree = "<group>"; };
 		2A75E64418ADA9AB00E74E4F /* ic_cell_shift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_cell_shift.png; sourceTree = "<group>"; };
 		2A75E64518ADA9AB00E74E4F /* ic_cell_shift@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_cell_shift@2x.png"; sourceTree = "<group>"; };
+		2A97525318B5B01D00C0946E /* CDSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDSchedule.h; path = "Nurse Management/Classess/Model/CDSchedule.h"; sourceTree = SOURCE_ROOT; };
+		2A97525418B5B01D00C0946E /* CDSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDSchedule.m; path = "Nurse Management/Classess/Model/CDSchedule.m"; sourceTree = SOURCE_ROOT; };
+		2A97525618B5B6F800C0946E /* ScheduleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleItem.h; sourceTree = "<group>"; };
+		2A97525718B5B6F800C0946E /* ScheduleItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleItem.m; sourceTree = "<group>"; };
+		2A97525918B5EF8B00C0946E /* CDScheduleCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDScheduleCategory.h; path = "Nurse Management/Classess/Model/CDScheduleCategory.h"; sourceTree = SOURCE_ROOT; };
+		2A97525A18B5EF8B00C0946E /* CDScheduleCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDScheduleCategory.m; path = "Nurse Management/Classess/Model/CDScheduleCategory.m"; sourceTree = SOURCE_ROOT; };
 		2AF0757C18ACABFD0008D875 /* FXDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDayView.h; sourceTree = "<group>"; };
 		2AF0757D18ACABFD0008D875 /* FXDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXDayView.m; sourceTree = "<group>"; };
 		2AF0757F18ACAC250008D875 /* FXDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDay.h; sourceTree = "<group>"; };
@@ -513,10 +520,6 @@
 		C0B2B1D418B44F7000CF4B76 /* CDShiftMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDShiftMember.m; path = "Nurse Management/Classess/Model/CDShiftMember.m"; sourceTree = SOURCE_ROOT; };
 		C0B2B1D618B44F7100CF4B76 /* CDScheduleAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDScheduleAlert.h; path = "Nurse Management/Classess/Model/CDScheduleAlert.h"; sourceTree = SOURCE_ROOT; };
 		C0B2B1D718B44F7100CF4B76 /* CDScheduleAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDScheduleAlert.m; path = "Nurse Management/Classess/Model/CDScheduleAlert.m"; sourceTree = SOURCE_ROOT; };
-		C0B2B1D918B44F7100CF4B76 /* CDSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDSchedule.h; path = "Nurse Management/Classess/Model/CDSchedule.h"; sourceTree = SOURCE_ROOT; };
-		C0B2B1DA18B44F7100CF4B76 /* CDSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDSchedule.m; path = "Nurse Management/Classess/Model/CDSchedule.m"; sourceTree = SOURCE_ROOT; };
-		C0B2B1DC18B44F7100CF4B76 /* CDScheduleCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDScheduleCategory.h; path = "Nurse Management/Classess/Model/CDScheduleCategory.h"; sourceTree = SOURCE_ROOT; };
-		C0B2B1DD18B44F7100CF4B76 /* CDScheduleCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDScheduleCategory.m; path = "Nurse Management/Classess/Model/CDScheduleCategory.m"; sourceTree = SOURCE_ROOT; };
 		C0B2B1DF18B44F7100CF4B76 /* CDShiftCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDShiftCategory.h; path = "Nurse Management/Classess/Model/CDShiftCategory.h"; sourceTree = SOURCE_ROOT; };
 		C0B2B1E018B44F7100CF4B76 /* CDShiftCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDShiftCategory.m; path = "Nurse Management/Classess/Model/CDShiftCategory.m"; sourceTree = SOURCE_ROOT; };
 		C0B2B1E218B44F7100CF4B76 /* CDShift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDShift.h; path = "Nurse Management/Classess/Model/CDShift.h"; sourceTree = SOURCE_ROOT; };
@@ -671,10 +674,6 @@
 				C0B2B1D418B44F7000CF4B76 /* CDShiftMember.m */,
 				C0B2B1D618B44F7100CF4B76 /* CDScheduleAlert.h */,
 				C0B2B1D718B44F7100CF4B76 /* CDScheduleAlert.m */,
-				C0B2B1D918B44F7100CF4B76 /* CDSchedule.h */,
-				C0B2B1DA18B44F7100CF4B76 /* CDSchedule.m */,
-				C0B2B1DC18B44F7100CF4B76 /* CDScheduleCategory.h */,
-				C0B2B1DD18B44F7100CF4B76 /* CDScheduleCategory.m */,
 				C0B2B1DF18B44F7100CF4B76 /* CDShiftCategory.h */,
 				C0B2B1E018B44F7100CF4B76 /* CDShiftCategory.m */,
 				C0B2B1E218B44F7100CF4B76 /* CDShift.h */,
@@ -683,6 +682,10 @@
 				C0B2B1E618B44F7100CF4B76 /* CDMember.m */,
 				C0B2B1E818B44F7100CF4B76 /* CDShiftAlert.h */,
 				C0B2B1E918B44F7100CF4B76 /* CDShiftAlert.m */,
+				2A97525318B5B01D00C0946E /* CDSchedule.h */,
+				2A97525418B5B01D00C0946E /* CDSchedule.m */,
+				2A97525918B5EF8B00C0946E /* CDScheduleCategory.h */,
+				2A97525A18B5EF8B00C0946E /* CDScheduleCategory.m */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -731,6 +734,8 @@
 				2A4F225A18B4567F00A5C97C /* ShiftCategoryItem.m */,
 				2A75E64118ADA98800E74E4F /* Member.h */,
 				2A75E64218ADA98800E74E4F /* Member.m */,
+				2A97525618B5B6F800C0946E /* ScheduleItem.h */,
+				2A97525718B5B6F800C0946E /* ScheduleItem.m */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -1521,6 +1526,7 @@
 				2A4F225B18B4567F00A5C97C /* ScheduleCategoryItem.m in Sources */,
 				2A394C5018AA1EE300F30F2D /* HomeNaviBarView.m in Sources */,
 				2A3C24E518AB701500C20A04 /* AddShiftVC.m in Sources */,
+				2A97525B18B5EF8B00C0946E /* CDScheduleCategory.m in Sources */,
 				2AF0758718ACC4B00008D875 /* FXCalendarView.m in Sources */,
 				2A3C24BB18AB586B00C20A04 /* AddShiftView.m in Sources */,
 				2A394C4518AA0C9D00F30F2D /* FXThemeManager.m in Sources */,
@@ -1538,18 +1544,18 @@
 				C0B2B1E418B44F7100CF4B76 /* CDShift.m in Sources */,
 				2A4F229F18B4575000A5C97C /* MoreCellTitle.m in Sources */,
 				2A394BD918A9FD5300F30F2D /* main.m in Sources */,
-				C0B2B1DB18B44F7100CF4B76 /* CDSchedule.m in Sources */,
 				2A6FDB6A18AF117D00D33D21 /* AddScheduleVC.m in Sources */,
 				2A516C9E18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m in Sources */,
 				2A75E63F18ADA97700E74E4F /* ShiftCell.m in Sources */,
 				2A3C24B518AB295500C20A04 /* ChangeThemeVC.m in Sources */,
+				2A97525518B5B01D00C0946E /* CDSchedule.m in Sources */,
 				C0B2B1EA18B44F7100CF4B76 /* CDShiftAlert.m in Sources */,
 				B651F2BC18B4BE7600E8577B /* ChooseTimeView.m in Sources */,
 				2A394C5E18AA2AA600F30F2D /* FXCalendarData.m in Sources */,
 				2A3F494F18AE032500D3137D /* HomeCellAddShift.m in Sources */,
+				2A97525818B5B6F800C0946E /* ScheduleItem.m in Sources */,
 				2A394BE018A9FD5300F30F2D /* Nurse_Management.xcdatamodeld in Sources */,
 				2A4F225C18B4567F00A5C97C /* ShiftCategoryItem.m in Sources */,
-				C0B2B1DE18B44F7100CF4B76 /* CDScheduleCategory.m in Sources */,
 				2A4F229D18B4575000A5C97C /* MoreCell.m in Sources */,
 				2A394C4018AA02AA00F30F2D /* FXViewController.m in Sources */,
 				2A75E63D18ADA97700E74E4F /* ListMembersVC.m in Sources */,

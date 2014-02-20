@@ -190,4 +190,29 @@
     return  [[self getCalendarCurrent] dateFromComponents:comp];
 }
 
++ (NSDate*) dateWithSetHourWithHour:(NSInteger)hour date:(NSDate*)date
+{
+    NSDateComponents *comp = [[self getCalendarCurrent] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:date];
+    
+    [comp setSecond:0];
+    [comp setMinute:0];
+    [comp setHour:hour];
+    
+    return  [[self getCalendarCurrent] dateFromComponents:comp];
+}
+
+
+#pragma mark - HOUR
++ (NSInteger) getHourWithDate:(NSDate*)date
+{
+    NSDateComponents *components = [[self getCalendarCurrent] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit) fromDate:date];
+    return [components hour];
+}
+
+
+
+
+
+
+
 @end

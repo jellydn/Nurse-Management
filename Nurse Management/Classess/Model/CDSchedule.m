@@ -2,7 +2,7 @@
 //  CDSchedule.m
 //  Nurse Management
 //
-//  Created by PhuNQ on 2/19/14.
+//  Created by Le Phuong Tien on 2/20/14.
 //  Copyright (c) 2014 Le Phuong Tien. All rights reserved.
 //
 
@@ -19,6 +19,7 @@
 @dynamic scheduleCategoryId;
 @dynamic timeEnd;
 @dynamic timeStart;
+@dynamic isAllDay;
 @dynamic fk_schedule_category;
 @dynamic pk_schedule;
 

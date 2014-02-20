@@ -43,4 +43,48 @@
     [[AppDelegate shared] getInfoDayWithDate:date];
 }
 
+#pragma mark - Setter
+- (void) setColor1:(NSString *)color1
+{
+    if ([color1 isEqualToString:@""]) {
+        _color1 = @"";
+    } else {
+        _color1 = [NSString stringWithFormat:@"schedule_bg_%@.png",color1];
+    }
+}
+
+- (void) setColor2:(NSString *)color2
+{
+    if ([color2 isEqualToString:@""]) {
+        _color2 = @"";
+    } else {
+        _color2 = [NSString stringWithFormat:@"schedule_bg_%@.png",color2];
+    }
+}
+
+- (void) setColor3:(NSString *)color3
+{
+    if ([color3 isEqualToString:@""]) {
+        _color3 = @"";
+    } else {
+        _color3 = [NSString stringWithFormat:@"schedule_bg_%@.png",color3];
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end

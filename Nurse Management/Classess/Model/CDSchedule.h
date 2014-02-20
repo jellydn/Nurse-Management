@@ -2,7 +2,7 @@
 //  CDSchedule.h
 //  Nurse Management
 //
-//  Created by PhuNQ on 2/19/14.
+//  Created by Le Phuong Tien on 2/20/14.
 //  Copyright (c) 2014 Le Phuong Tien. All rights reserved.
 //
 
@@ -19,7 +19,16 @@
 @property (nonatomic) int32_t scheduleCategoryId;
 @property (nonatomic) NSTimeInterval timeEnd;
 @property (nonatomic) NSTimeInterval timeStart;
+@property (nonatomic) BOOL isAllDay;
 @property (nonatomic, retain) CDScheduleCategory *fk_schedule_category;
-@property (nonatomic, retain) CDScheduleAlert *pk_schedule;
+@property (nonatomic, retain) NSSet *pk_schedule;
+@end
+
+@interface CDSchedule (CoreDataGeneratedAccessors)
+
+- (void)addPk_scheduleObject:(CDScheduleAlert *)value;
+- (void)removePk_scheduleObject:(CDScheduleAlert *)value;
+- (void)addPk_schedule:(NSSet *)values;
+- (void)removePk_schedule:(NSSet *)values;
 
 @end

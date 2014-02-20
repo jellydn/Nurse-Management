@@ -40,6 +40,7 @@
 #import "ShiftCategoryItem.h"
 #import "CDScheduleCategory.h"
 #import "ScheduleCategoryItem.h"
+#import "ScheduleItem.h"
 
 @interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate, FXCalendarViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 {
@@ -57,6 +58,7 @@
 }
 
 @property (nonatomic, strong) NSDate *selectDate;
+@property (nonatomic, strong) NSMutableArray *scheduleOnDate;
 
 @end
 
@@ -75,7 +77,7 @@
 {
     [super viewDidLoad];
     
-    _selectDate = [NSDate date];
+    self.selectDate = [NSDate date];
     
     [self loadCalendar];
     [self resetLayoutTableWithAnimate:NO];
@@ -358,12 +360,16 @@
 #pragma mark - Notification
 - (void)eventListenerDidReceiveNotification:(NSNotification *)notif
 {
-    if ([[notif name] isEqualToString:_fxThemeNotificationChangeTheme])
-    {
+    if ([[notif name] isEqualToString:_fxThemeNotificationChangeTheme]) {
         [self loadHomeNaivBar];
         [self loadHomeToolBar];
         [self loadHomeAddShiftView];
         [self loadHomeAddScheduleView];
+    } else if ([[notif name] isEqualToString:DID_ADD_SCHEDULE]) {
+        [_calendarView reloadData];
+        self.scheduleOnDate = [[AppDelegate shared] getSchedulesOnDate:_selectDate];
+        [_tableView reloadData];
+        [_tableView setContentOffset:CGPointMake(0, 0) animated:YES];
     }
 }
 
@@ -483,7 +489,7 @@
 - (void) homeNaviBarViewDidSelectToDay:(HomeNaviBarView*)homeNaviBarView
 {
     NSDate *date = [NSDate date];
-    _selectDate = date;
+    self.selectDate = date;
     [_naviView setTitleWithDay:[FXCalendarData getDayWithDate:date]
                          month:[FXCalendarData getMonthWithDate:date]
                           year:[FXCalendarData getYearWithDate:date]];
@@ -511,7 +517,7 @@
         }
         case 1:
         {
-            [_addScheduleView loadScheduleCategoryInfo:[self convertScheduleCategory]];
+            [_addScheduleView loadScheduleCategoryInfo:[self convertScheduleCategory] selectDate:_selectDate];
             [_addScheduleView show];
             break;
         }
@@ -619,6 +625,7 @@
 - (void) didSaveSchedule:(AddScheduleView*)addScheduleView info:(NSDictionary*)info
 {
     NSLog(@"save schedule info: %@",info);
+    [[AppDelegate shared] addQuickScheduleWithInfo:info];
 }
 
 - (void) didShowView:(AddScheduleView*)addScheduleView
@@ -659,7 +666,7 @@
     [_naviView setTitleWithDay:[FXCalendarData getDayWithDate:date]
                          month:[FXCalendarData getMonthWithDate:date]
                           year:[FXCalendarData getYearWithDate:date]];
-    _selectDate = date;
+    self.selectDate = date;
     [self resetLayoutTableWithAnimate:YES];
 }
 
@@ -668,7 +675,7 @@
     [_naviView setTitleWithDay:[FXCalendarData getDayWithDate:date]
                          month:[FXCalendarData getMonthWithDate:date]
                           year:[FXCalendarData getYearWithDate:date]];
-    _selectDate = date;
+    self.selectDate = date;
     [_tableView setContentOffset:CGPointMake(0, 0) animated:YES];
     [_tableView reloadData];
 }
@@ -678,7 +685,7 @@
     [_naviView setTitleWithDay:[FXCalendarData getDayWithDate:date]
                          month:[FXCalendarData getMonthWithDate:date]
                           year:[FXCalendarData getYearWithDate:date]];
-    _selectDate = date;
+    self.selectDate = date;
     [self resetLayoutTableWithAnimate:YES];
 }
 
@@ -733,7 +740,7 @@
     if (section == 0) {
         return 1;
     } else if (section == 1) {
-        return 5;
+        return [_scheduleOnDate count];
     } else if (section == 2) {
         return 1;
     }
@@ -771,6 +778,14 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:@"HomeCellSchedule" owner:self options:nil] lastObject];
         }
         
+        ScheduleItem *item = [_scheduleOnDate objectAtIndex:indexPath.row];
+        
+        cell.lbTimeStart.text       = [item getStringTimeStart:YES];
+        cell.lbTimeEnd.text         = [item getStringTimeStart:NO];
+        cell.lbMemo.text            = item.memo;
+        cell.lbCategoryName.text    = item.category.name;
+        cell.imgCategory.image      = [UIImage imageNamed:item.category.image];
+        
         return cell;
         
     }
@@ -781,6 +796,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 1) {
+        ScheduleItem *item = [_scheduleOnDate objectAtIndex:indexPath.row];
+        NSLog(@"schedule ID: %d",item.scheduleID);
+    }
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -901,7 +921,14 @@
 
 }
 
-
+#pragma mark - Setter
+- (void) setSelectDate:(NSDate *)selectDate
+{
+    _selectDate = selectDate;
+    self.scheduleOnDate = [[AppDelegate shared] getSchedulesOnDate:selectDate];
+    [_tableView reloadData];
+    [_tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+}
 
 
 

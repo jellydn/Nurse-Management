@@ -28,4 +28,8 @@
 
 @property (nonatomic, strong) ShiftCategoryItem *shiftCategory;
 
+@property (nonatomic, strong) NSString *color1;
+@property (nonatomic, strong) NSString *color2;
+@property (nonatomic, strong) NSString *color3;
+
 @end

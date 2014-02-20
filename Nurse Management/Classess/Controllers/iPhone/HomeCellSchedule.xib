@@ -18,14 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="img_bg_home_cell_schedule_1.png" id="MZb-Hs-WRI">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="schedule_bg_0.png" id="MZb-Hs-WRI">
                                 <rect key="frame" x="5" y="4" width="40" height="35"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="美容" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3pD-6b-lol">
-                                <rect key="frame" x="5" y="13" width="40" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="美容" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3pD-6b-lol">
+                                <rect key="frame" x="5" y="4" width="40" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                 <color key="textColor" red="0.46274509800000002" green="0.36862745099999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -67,9 +67,16 @@
                     </view>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imgCategory" destination="MZb-Hs-WRI" id="MYK-LA-103"/>
+                <outlet property="lbCategoryName" destination="3pD-6b-lol" id="3eA-5B-oxF"/>
+                <outlet property="lbMemo" destination="UUo-AN-edU" id="6PX-wJ-l2e"/>
+                <outlet property="lbTimeEnd" destination="nmY-pT-4kQ" id="q1P-3R-Mj3"/>
+                <outlet property="lbTimeStart" destination="Nim-Zs-CY5" id="TSl-Cx-TBv"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="img_bg_home_cell_schedule_1.png" width="40" height="35"/>
+        <image name="schedule_bg_0.png" width="50" height="44"/>
     </resources>
 </document>

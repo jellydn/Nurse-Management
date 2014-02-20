@@ -26,6 +26,8 @@
 
 - (void) setNextSelectDate;
 
+- (void) reloadData;
+
 @end
 
 @protocol FXCalendarViewDelegate <NSObject>
