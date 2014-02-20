@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>ScheduleCategory</key>
-	<array>
+    <array>
 		<string>美容院</string>
         <string>マツエク</string>
         <string>飲み会</string>
@@ -25,20 +25,21 @@
         <string>ママ友</string>
         <string>給料日</string>
 	</array>
+
 	<key>Member</key>
 	<array>
 		<string>A看護師長</string>
-		<string>B主任</string>
-		<string>C主任</string>
-		<string>D主任</string>
-		<string>E先輩</string>
-		<string>F先輩</string>
-		<string>G先輩</string>
-		<string>Hさん</string>
-		<string>Iさん</string>
-		<string>Jさん</string>
-		<string>Kさん</string>
-		<string>Lさん</string>
+        <string>B主任</string>
+        <string>C主任</string>
+        <string>D主任</string>
+        <string>E先輩</string>
+        <string>F先輩</string>
+        <string>G先輩</string>
+        <string>Hさん</string>
+        <string>Iさん</string>
+        <string>Jさん</string>
+        <string>Kさん</string>
+        <string>Lさん</string>
 	</array>
 	<key>ShiftCategory</key>
     <array>
