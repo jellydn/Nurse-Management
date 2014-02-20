@@ -12,6 +12,7 @@
 @interface AddShiftVC : FXViewController
 
 @property(nonatomic,strong) NSDate *date;
+@property(nonatomic,assign) int32_t *shiftID;
 @property(nonatomic,assign) BOOL isNewShift;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerMember;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerShiftCategory;
