@@ -22,6 +22,21 @@
                     <rect key="frame" x="0.0" y="29" width="44" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="schedule_bg_0.png" id="Vy7-jS-xx9">
+                    <rect key="frame" x="6" y="18" width="8" height="8"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="schedule_bg_0.png" id="o1K-3g-SDj">
+                    <rect key="frame" x="18" y="18" width="8" height="8"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="schedule_bg_0.png" id="3kg-g4-Us2">
+                    <rect key="frame" x="30" y="18" width="8" height="8"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UsT-uk-WG6">
                     <rect key="frame" x="0.0" y="29" width="44" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -47,9 +62,15 @@
             <connections>
                 <outlet property="btButtonMaks" destination="m80-ga-0LO" id="9yi-Li-dFV"/>
                 <outlet property="imgCategory" destination="jw4-rZ-MZg" id="bIO-8W-x1g"/>
+                <outlet property="imgSchedule1" destination="Vy7-jS-xx9" id="BD5-cf-LNS"/>
+                <outlet property="imgSchedule2" destination="o1K-3g-SDj" id="lwH-JK-tga"/>
+                <outlet property="imgSchedule3" destination="3kg-g4-Us2" id="oxf-K9-x8S"/>
                 <outlet property="lbCategoryName" destination="UsT-uk-WG6" id="oe8-BF-ATI"/>
                 <outlet property="lbDay" destination="gKs-Ib-d7w" id="0Ta-1T-p40"/>
             </connections>
         </view>
     </objects>
+    <resources>
+        <image name="schedule_bg_0.png" width="50" height="44"/>
+    </resources>
 </document>

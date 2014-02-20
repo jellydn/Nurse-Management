@@ -44,6 +44,7 @@
 - (int) lastScheduleID;
 - (int) lastScheduleAlertID;
 - (NSMutableArray*) getSchedulesOnDate:(NSDate*)date;
+- (NSMutableArray*) getColorsSchedulesOnDate:(NSDate*)date;
 
 // share
 + (AppDelegate *)shared;

@@ -7,7 +7,7 @@
 //
 
 #import "FXDayView.h"
-
+#import <QuartzCore/QuartzCore.h>
 
 
 @implementation FXDayView
@@ -30,7 +30,14 @@
 - (void) initLayout
 {
  
+    [_imgSchedule1.layer setCornerRadius:4.0];
+    _imgSchedule1.layer.masksToBounds = YES;
     
+    [_imgSchedule2.layer setCornerRadius:4.0];
+    _imgSchedule2.layer.masksToBounds = YES;
+    
+    [_imgSchedule3.layer setCornerRadius:4.0];
+    _imgSchedule3.layer.masksToBounds = YES;
 }
 
 
@@ -109,7 +116,21 @@
     
     if (day.isOutOfDay) {
         _lbDay.textColor = self.outOfMonthDayColor;
+        
+        _imgSchedule1.hidden = YES;
+        _imgSchedule2.hidden = YES;
+        _imgSchedule3.hidden = YES;
+        
     } else {
+        
+        _imgSchedule1.hidden = NO;
+        _imgSchedule2.hidden = NO;
+        _imgSchedule3.hidden = NO;
+        
+        _imgSchedule1.image = [UIImage imageNamed:day.color1];
+        _imgSchedule2.image = [UIImage imageNamed:day.color2];
+        _imgSchedule3.image = [UIImage imageNamed:day.color3];
+        
         switch (day.weekDayIndex) {
             case 1:
                 _lbDay.textColor = self.sundayColor;
@@ -142,6 +163,7 @@
 {
     
 }
+
 
 
 

@@ -545,6 +545,30 @@ static __weak AppDelegate *shared = nil;
     return schedules;
 }
 
+- (NSMutableArray*) getColorsSchedulesOnDate:(NSDate*)date
+{
+    NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
+    NSMutableArray *schedules = [[NSMutableArray alloc] init];
+    
+    int count = 0;
+    for (CDSchedule *itemCD in self.fetchedResultsControllerSchedule.fetchedObjects) {
+        
+        NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:itemCD.onDate];
+        NSString *strTemp = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate];
+        
+        if ([strTemp isEqualToString:strDate]) {
+            [schedules addObject:itemCD.fk_schedule_category.color];
+            count++;
+        }
+        
+        if (count == 3) {
+            break;
+        }
+    }
+    
+    return schedules;
+}
+
 
 
 #pragma mark - Application's Documents directory

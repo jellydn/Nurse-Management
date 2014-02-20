@@ -366,6 +366,7 @@
         [self loadHomeAddShiftView];
         [self loadHomeAddScheduleView];
     } else if ([[notif name] isEqualToString:DID_ADD_SCHEDULE]) {
+        [_calendarView reloadData];
         self.scheduleOnDate = [[AppDelegate shared] getSchedulesOnDate:_selectDate];
         [_tableView reloadData];
         [_tableView setContentOffset:CGPointMake(0, 0) animated:YES];
