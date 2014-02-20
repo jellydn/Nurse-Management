@@ -277,9 +277,10 @@ static __weak AppDelegate *shared = nil;
         } else {
             NSLog(@"appdelegate total schedule : %lu", (unsigned long)[_fetchedResultsControllerSchedule.fetchedObjects count]);
             for (CDSchedule *item in _fetchedResultsControllerSchedule.fetchedObjects) {
-                NSLog(@"schedule id: %d  -- onDate: %@",
+                NSLog(@"schedule id: %d  -- onDate: %@ -- alerts: %d",
                       item.id,
-                      [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:[NSDate dateWithTimeIntervalSince1970:item.onDate]]);
+                      [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:[NSDate dateWithTimeIntervalSince1970:item.onDate]],
+                      [item.pk_schedule count]);
             }
         }
         
@@ -475,20 +476,21 @@ static __weak AppDelegate *shared = nil;
     
     schedule.fk_schedule_category   = [self getScheduleCategoryWithID:schedule.scheduleCategoryId];
     
-    [self saveContext];
     
-    int alertID = [self lastScheduleAlertID];
-    alertID++;
-    for (NSDate *date in [info objectForKey:@"array_alert"]) {
-        
-        CDScheduleAlert *alert  = (CDScheduleAlert*) [NSEntityDescription insertNewObjectForEntityForName:@"CDScheduleAlert"
-                                                                                  inManagedObjectContext:self.managedObjectContext];
-        alert.id                = alertID;
-        alert.onTime            = [date timeIntervalSince1970];
-        alert.scheduleId        = schedule.id;
-        
-        alert.fk_alert_schedule = schedule;
-        
+    if ([[info objectForKey:@"array_alert"] isKindOfClass:[NSArray class]]) {
+        int alertID = [self lastScheduleAlertID];
+        alertID++;
+        for (NSDate *date in [info objectForKey:@"array_alert"]) {
+            
+            CDScheduleAlert *alert  = (CDScheduleAlert*) [NSEntityDescription insertNewObjectForEntityForName:@"CDScheduleAlert"
+                                                                                       inManagedObjectContext:self.managedObjectContext];
+            alert.id                = alertID;
+            alert.onTime            = [date timeIntervalSince1970];
+            alert.scheduleId        = schedule.id;
+            
+            alert.fk_alert_schedule = schedule;
+            
+        }
     }
     
     [self saveContext];

@@ -36,7 +36,8 @@
     
     self.hidden = YES;
     
-    _datePicker.calendar = [NSCalendar autoupdatingCurrentCalendar];
+    _datePicker.calendar        = [NSCalendar autoupdatingCurrentCalendar];
+    _datePicker.datePickerMode  = UIDatePickerModeTime;
 }
 
 - (void) show

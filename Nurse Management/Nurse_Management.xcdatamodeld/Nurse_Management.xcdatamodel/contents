@@ -15,7 +15,7 @@
         <attribute name="timeEnd" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="timeStart" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="fk_schedule_category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDScheduleCategory" inverseName="pk_schedulecategory" inverseEntity="CDScheduleCategory" syncable="YES"/>
-        <relationship name="pk_schedule" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDScheduleAlert" inverseName="fk_alert_schedule" inverseEntity="CDScheduleAlert" syncable="YES"/>
+        <relationship name="pk_schedule" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDScheduleAlert" inverseName="fk_alert_schedule" inverseEntity="CDScheduleAlert" syncable="YES"/>
     </entity>
     <entity name="CDScheduleAlert" representedClassName="CDScheduleAlert" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
