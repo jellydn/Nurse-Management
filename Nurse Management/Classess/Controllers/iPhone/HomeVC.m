@@ -301,7 +301,7 @@
             NSLog(@"add data for schedule Category item");
             
             //read file
-            NSString *path = [[NSBundle mainBundle] pathForResource:@"tienlp_predefault" ofType:@"plist"];
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"predefault" ofType:@"plist"];
             
             // Load the file content and read the data into arrays
             if (path)
