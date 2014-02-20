@@ -470,7 +470,7 @@ static __weak AppDelegate *shared = nil;
     schedule.id                     = [self lastScheduleID] + 1;
     schedule.scheduleCategoryId     = [[info objectForKey:@"schedule_category_id"] integerValue];
     schedule.isAllDay               = [[info objectForKey:@"is_all_day"] isEqualToString:@"1"] ? YES : NO;
-    schedule.memo                   = @"";
+    schedule.memo                   = [info objectForKey:@"memo"];
     
     NSDate *onDate                  = [info objectForKey:@"select_date"];
     schedule.onDate                 = [onDate timeIntervalSince1970];

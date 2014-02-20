@@ -310,14 +310,16 @@
                          @"end_time",
                          @"is_all_day",
                          @"array_alert",
-                         @"select_date"];
+                         @"select_date",
+                         @"memo"];
         
         NSArray *values = @[[NSString stringWithFormat:@"%d",_scheduleCategoryID],
                            (_dateTimeStart != nil) ? _dateTimeStart : @"",
                            (_dateTimeEnd != nil) ? _dateTimeEnd : @"",
                            [NSString stringWithFormat:@"%d",_isAllDay],
                            (_arrayTimeAlerts == nil) ? @"" : _arrayTimeAlerts,
-                            _selectDate];
+                            _selectDate,
+                            @""];
         
         NSDictionary *info = [NSDictionary dictionaryWithObjects:values forKeys:keys];
         
