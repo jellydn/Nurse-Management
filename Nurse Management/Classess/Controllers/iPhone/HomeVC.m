@@ -887,6 +887,7 @@
     AddShiftVC *addShiftVC = [[AddShiftVC alloc] init];
     addShiftVC.isNewShift = NO;
     addShiftVC.date = _selectDate;
+    addShiftVC.shiftID = (int32_t)[sender tag];
     FXNavigationController *nc = [[FXNavigationController alloc] initWithRootViewController:addShiftVC];
     [self.navigationController presentViewController:nc animated:YES completion:nil];
 }

@@ -268,6 +268,19 @@ static __weak AppDelegate *shared = nil;
     return nil;
 }
 
+- (CDShift*) getShiftWithShiftID:(int32_t)shiftID
+{
+    
+    for (CDShift *item in self.fetchedResultsControllerShift.fetchedObjects) {
+        
+        if (item.id == shiftID) {
+            return item;
+        }
+    }
+    
+    return nil;
+}
+
 - (int) lastShiftID
 {
     if ([self.fetchedResultsControllerShift.fetchedObjects count] == 0) {

@@ -88,7 +88,7 @@
         //add value disselect item into dictionary
         [_dicValueSelect setObject:[NSString stringWithFormat:@"%d",0] forKey:[NSString stringWithFormat:@"%d",i+KEY_DEFAULT]];
     }
-    
+    _nMTimePicker = [[NMTimePickerView alloc] init];
 }
 
 - (void)tapToChooseItem:(UIButton *)button
@@ -235,13 +235,12 @@
 
 - (void)tapChooseTime
 {
-    _nMTimePicker = [[NMTimePickerView alloc] init];
     _nMTimePicker.delegate = self;
     _nMTimePicker.datePicker.datePickerMode = UIDatePickerModeTime;
     //datePicker.picker.minuteInterval = 5;
     _nMTimePicker.datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
 //    nMTimePicker.navigationBar.topItem.title = @"";
-    _nMTimePicker.datePicker.maximumDate = _startDate;
+//    _nMTimePicker.datePicker.maximumDate = _startDate;
     
     [_nMTimePicker.datePicker setDate:_dateChooseTime?_dateChooseTime:[NSDate date] animated:NO];
     [_nMTimePicker showActionSheetInView:self];
@@ -259,6 +258,21 @@
     }else {
         [self processChooseWithIndex:5];
     }
+}
+
+- (void)resetChooseTimeView
+{
+    for (int i = 0; i < NUMBER_OF_ITEM; i++) {
+        //change UI
+        UIView *view   = [self viewWithTag:i+TAG_VIEW];
+        view.backgroundColor = DEFAULT_BACKGROUND_COLOR;
+        UILabel *label = (UILabel *)[view viewWithTag:i+TAG_LABEL];
+        label.textColor      = DEFAULT_TEXT_COLOR;
+        
+        [_dicValueSelect setObject:[NSString stringWithFormat:@"%d",0] forKey:[NSString stringWithFormat:@"%d",i+KEY_DEFAULT]];
+        _numberOfItemSelected = 0;
+        _dateChooseTime = nil;
+    }    
 }
 
 

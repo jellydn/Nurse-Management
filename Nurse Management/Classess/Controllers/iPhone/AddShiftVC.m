@@ -18,24 +18,29 @@
 #import "AddShiftView.h"
 #import "ListShiftPatternVC.h"
 #import "NMSelectionStringView.h"
+#import "NMTimePickerView.h"
 #import "AppDelegate.h"
+#import "ShiftCategoryItem.h"
+
 #import "CDMember.h"
 #import "CDShift.h"
 #import "CDShiftMember.h"
-#import "ShiftCategoryItem.h"
+#import "CDShiftAlert.h"
 
 #define ALERT_BG_COLOR	 [UIColor colorWithRed:100.0/255.0 green:137.0/255.0 blue:199.0/255.0 alpha:1.0]
 #define BUTTON_BG_COLOR	 [UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]
 #define TITLE_COLOR	 [UIColor colorWithRed:126.0/255.0 green:96.0/255.0 blue:39.0/255.0 alpha:1.0]
 #define kOFFSET_FOR_KEYBOARD 160.0
 
-@interface AddShiftVC () <UITextViewDelegate, UIActionSheetDelegate, UIPickerActionSheetDelegate, ChooseTimeViewDelegate, AddShiftViewDelegate, NMSelectionStringViewDelegate, NSFetchedResultsControllerDelegate>
+@interface AddShiftVC () <UITextViewDelegate, UIActionSheetDelegate, ChooseTimeViewDelegate, AddShiftViewDelegate, NMSelectionStringViewDelegate, NSFetchedResultsControllerDelegate, NMTimePickerViewDelegate>
 {
     __weak IBOutlet UIView *_viewNavi;
     __weak IBOutlet UILabel *_lbTile;
     
     __weak IBOutlet UIButton *_btnStartTime;
     __weak IBOutlet UIButton *_btnEndTime;
+    __weak IBOutlet UIButton *_btnSave;
+    __weak IBOutlet UIButton *_btnSaveAndNext;
     __weak IBOutlet UILabel *_lblStartTime;
     __weak IBOutlet UILabel *_lblEndTime;
     __weak IBOutlet UILabel *_lblShiftCategoryName;
@@ -43,17 +48,19 @@
     __weak IBOutlet UITextView *_txvMemo;
     __weak IBOutlet UIImageView *_imvShiftCategoryBG;
     
-    
-    NSMutableDictionary *_startTime;
-    NSMutableDictionary *_endTime;
+    NSDate *_startTime;
+    NSDate *_endTime;
     NSArray *_arrMember;
+    NSArray *_arrAlerts;
     
     BOOL _isShowAddShiftView;
     BOOL _isAllDay;
     
     UIPickerActionSheet *_pickerActionSheet;
+    NMTimePickerView *_timePickerView;
     AddShiftView    *_addShiftView;
     NMSelectionStringView *_nMSelectionStringView;
+    ChooseTimeView *_chooseTimeView;
     
     CDShift *_shift;
 }
@@ -107,15 +114,17 @@
     _btnStartTime.tag = START_TIME;
     _btnEndTime.tag = END_TIME;
     
-    // init time picker action sheet
-    _pickerActionSheet = [[UIPickerActionSheet alloc] initForView:self.view];
-    _pickerActionSheet.delegate = self;
+    // init time picker view
+    _timePickerView = [[NMTimePickerView alloc] init];
+    _timePickerView.delegate = self;
+    _timePickerView.datePicker.datePickerMode = UIDatePickerModeTime;
+    _timePickerView.datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
     
     // Choose Time view
-    ChooseTimeView *chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 362, 320 - 15*2, 44)];
-    chooseTimeView.delegate = self;
-    [chooseTimeView setStartDate:[NSDate date]];
-    [self.view addSubview:chooseTimeView];
+    _chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 362, 320 - 15*2, 44)];
+    _chooseTimeView.delegate = self;
+    [_chooseTimeView setStartDate:[NSDate date]];
+    [self.view addSubview:_chooseTimeView];
     
     // load core data
     [self fetchedResultsControllerMember];
@@ -130,8 +139,13 @@
     if (_isNewShift) {
         
         _shift = (CDShift *) [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
+        [self setDefaultTime];
+        
         
     } else {
+        
+        _shift = [[AppDelegate shared] getShiftWithShiftID:_shiftID];
+        [self loadShiftFromCoreData];
         
     }
     
@@ -174,6 +188,8 @@
     CDShiftCategory *shiftCategory = [[AppDelegate shared] getshiftCategoryWithID:index];
     _shift.fk_shift_category = shiftCategory;
     _shift.shiftCategoryId = shiftCategory.id;
+    _btnSave.enabled = YES;
+    _btnSaveAndNext.enabled = YES;
     
     NSMutableArray *shiftItems = [self convertShiftObject];
     for (ShiftCategoryItem *item in shiftItems)
@@ -200,45 +216,35 @@
 
 #pragma mark - NMSelectionStringViewDelegate
 
-//- (void) didSelectionStringWithIndex:(NSInteger)index arraySelectionString:(NSMutableArray *)arraySelectionString {
-//    NSLog(@"select");
-//}
-
 - (void)didSelectionCDMemberWithIndex:(NSInteger)index arraySelectionCDMember:(NSMutableArray *)arraySelectionCDMember
 {
-//    for (int i = 0; i < arraySelectionCDMember.count; i++) {
-//        CDMember *member = arraySelectionCDMember[i];
-//        NSLog(@"index %d: %@",i,member.name);
-//    }
-    
     _arrMember = arraySelectionCDMember;
     
 }
 
-#pragma mark - PickerActionSheetDelegate
+#pragma mark - ChooseTimeViewDelegate
 
-- (void)pickerActionSheetDidCancel:(UIPickerActionSheet*)aPickerActionSheet
-{
-    
+- (void) didChooseTimeWithIndex:(NSInteger)index arrayChooseTime:(NSMutableArray *)arrayChooseTime {
+    NSLog(@"choose time: %@", arrayChooseTime);
+    _arrAlerts = arrayChooseTime;
 }
 
-- (void)pickerActionSheet:(UIPickerActionSheet*)aPickerActionSheet didSelectItem:(id)aItem
-{
-    NSMutableDictionary *selectedValue = (NSMutableDictionary *)aItem;
-    int hour = [[selectedValue objectForKey:HOUR_KEY] intValue];
-    int minute = [[selectedValue objectForKey:MINUTE_KEY] intValue];
+#pragma mark - NMTimePickerViewDelegate
+
+- (void) datePicker:(NMTimePickerView *)picker dismissWithButtonDone:(BOOL)done {
     
-    if (aPickerActionSheet.type == START_TIME) {
+    if (picker.datePicker.tag == START_TIME) {
         
-        _lblStartTime.text = [NSString stringWithFormat:@"%02d:%02d", hour, minute];
-        _startTime = [selectedValue copy];
+        _startTime = picker.datePicker.date;
+        _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
         
-    } else if (aPickerActionSheet.type == END_TIME) {
+    } else if (picker.datePicker.tag == END_TIME) {
         
-        _lblEndTime.text = [NSString stringWithFormat:@"%02d:%02d", hour, minute];
-        _endTime = [selectedValue copy];
+        _endTime = picker.datePicker.date;
+        _lblEndTime.text     = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
         
     }
+    
 }
 
 #pragma mark - Actions
@@ -250,6 +256,7 @@
 }
 
 - (IBAction)save:(id)sender {
+    [self saveShiftToCoreData];
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         
     }];
@@ -285,15 +292,17 @@
         
         _lblStartTime.enabled = YES;
         _lblStartTime.textColor = TITLE_COLOR;
+
         if (_startTime)
-            _lblStartTime.text = [NSString stringWithFormat:@"%02d:%02d", [[_startTime objectForKey:HOUR_KEY] intValue], [[_startTime objectForKey:MINUTE_KEY] intValue]];
+            _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
         else
             _lblStartTime.text = @"00:00";
         
         _lblEndTime.enabled = YES;
         _lblEndTime.textColor = TITLE_COLOR;
+        
         if (_endTime)
-            _lblEndTime.text = [NSString stringWithFormat:@"%02d:%02d", [[_endTime objectForKey:HOUR_KEY] intValue], [[_endTime objectForKey:MINUTE_KEY] intValue]];
+            _lblEndTime.text   = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
         else
             _lblEndTime.text = @"00:00";
         
@@ -302,13 +311,13 @@
 
 - (IBAction)chooseTime:(id)sender {
     
-    if ([sender tag] == START_TIME) {
-        [_pickerActionSheet show:_startTime];
-    } else if ([sender tag] == END_TIME) {
-        [_pickerActionSheet show:_endTime];
-    }
+    if ([sender tag] == START_TIME)
+        [_timePickerView.datePicker setDate:_startTime?_startTime:[NSDate date] animated:NO];
+    else if ([sender tag] == END_TIME)
+        [_timePickerView.datePicker setDate:_endTime?_endTime:[NSDate date] animated:NO];
     
-    _pickerActionSheet.type = [sender tag];
+    _timePickerView.datePicker.tag = [sender tag];
+    [_timePickerView showActionSheetInView:self.view];
     
 }
 
@@ -323,33 +332,18 @@
     
     if (_shift.fk_shift_category) {     // shift category required
     
-    _shift.id = [[AppDelegate shared] lastShiftID] + 1;
-    _shift.isAllDay = _isAllDay;
-        
-    if (!_isAllDay) {
-        
-        NSTimeInterval startTime = [[self dateAfterSetHour:[[_startTime objectForKey:HOUR_KEY] intValue] andMinute:[[_startTime objectForKey:MINUTE_KEY] intValue] fromDate:_date] timeIntervalSince1970];
-        _shift.timeStart = startTime;
-        
-        NSTimeInterval endTime = [[self dateAfterSetHour:[[_endTime objectForKey:HOUR_KEY] intValue] andMinute:[[_endTime objectForKey:MINUTE_KEY] intValue] fromDate:_date] timeIntervalSince1970];
-        _shift.timeEnd = endTime;
-    }
-    
-    _shift.onDate = [_date timeIntervalSince1970];
-    _shift.memo = _txvMemo.text;
-        
-        if (_arrMember) {
-            
-            for (CDMember *member in _arrMember)
-                 [_shift addPk_shiftObject:member];
-            
-        }
-            
-        
-    [[AppDelegate shared] saveContext];
+        [self saveShiftToCoreData];
+        if (_shift)
+            _shift = nil;
+        _shift = [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
+        _date = [FXCalendarData nextDateFrom:_date];
+        _lbTile.text = [NSString stringWithFormat:@"%d月%d日",[FXCalendarData getDayWithDate:_date], [FXCalendarData getMonthWithDate:_date]];
+        [self clearDataFromUI];
         
     } else {
+        
         [Common showAlert:@"継続してシフトカテゴリを選択してください。" title:@""];
+        
     }
 
 }
@@ -502,14 +496,8 @@
         [_nMSelectionStringView removeFromSuperview];
         _nMSelectionStringView = nil;
     }
-    
     _nMSelectionStringView = [[NMSelectionStringView alloc] initWithFrame:CGRectMake(15, 215, 320 - 15*2, 118)];
     _nMSelectionStringView.delegate = self;
-//    NSMutableArray *arr = [[NSMutableArray alloc] init];
-//    for (CDMember *member in _fetchedResultsControllerMember.fetchedObjects) {
-//        [arr addObject:member.name];
-//    }
-//    [_nMSelectionStringView setArrayString:arr];
     [_nMSelectionStringView setArrayCDMember:(NSMutableArray *)_fetchedResultsControllerMember.fetchedObjects];
     
     [self.view addSubview:_nMSelectionStringView];
@@ -528,7 +516,32 @@
     return newDate;
 }
 
-#pragma mark - Load core data
+- (void) clearDataFromUI {
+    
+    _btnSave.enabled = NO;
+    _imvShiftCategoryBG.image = [UIImage imageNamed:@""];
+    _lblShiftCategoryName.text = @"";
+    [self setDefaultTime];
+    [_chooseTimeView resetChooseTimeView];
+    _arrMember = nil;
+    _arrAlerts = nil;
+    _txvMemo.text = @"";
+    _btnSaveAndNext.enabled = NO;
+    
+}
+
+- (void) setDefaultTime {
+    
+    // set nearest time in roof
+    _startTime = [FXCalendarData dateNexHourFormDate:[NSDate date]];
+    _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+    
+    _endTime = [FXCalendarData dateNexHourFormDate:_startTime];
+    _lblEndTime.text   = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+    
+}
+
+#pragma mark - Core Data
 
 - (NSFetchedResultsController *)fetchedResultsControllerMember {
     
@@ -664,11 +677,65 @@
             }
             
         } else {
-            NSLog(@"total shift item : %d",[_fetchedResultsControllerShiftCategory.fetchedObjects count]);
+            NSLog(@"total shift item : %lu",(unsigned long)[_fetchedResultsControllerShiftCategory.fetchedObjects count]);
         }
     }
     
     return _fetchedResultsControllerShiftCategory;
+}
+
+- (void) saveShiftToCoreData {
+    
+    _shift.id = [[AppDelegate shared] lastShiftID] + 1;
+    _shift.isAllDay = _isAllDay;
+    
+    if (!_isAllDay) {
+        _shift.timeStart = [_startTime timeIntervalSince1970];
+        _shift.timeEnd = [_endTime timeIntervalSince1970];
+    }
+    
+    _shift.onDate = [_date timeIntervalSince1970];
+    _shift.memo = _txvMemo.text;
+    
+    if (_arrMember) {
+        
+        for (CDMember *member in _arrMember)
+            [_shift addPk_shiftObject:member];
+        
+    }
+    
+    if (_arrAlerts) {
+        
+        for (NSDate *alertDate in _arrAlerts) {
+            CDShiftAlert *shiftAlert = [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT_ALERT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
+            shiftAlert.shiftId = _shift.id;
+            shiftAlert.onTime = [alertDate timeIntervalSince1970];
+            
+            [_shift addPk_shiftalertObject:shiftAlert];
+        }
+        
+    }
+    
+    [[AppDelegate shared] saveContext];
+    
+}
+
+- (void) loadShiftFromCoreData {
+    
+    // shift category
+    NSMutableArray *shiftItems = [self convertShiftObject];
+    for (ShiftCategoryItem *item in shiftItems)
+    {
+        if (item.shiftCategoryID == _shift.shiftCategoryId) {
+            _imvShiftCategoryBG.image = [UIImage imageNamed:item.image];
+            _lblShiftCategoryName.text = item.name;
+            _lblShiftCategoryName.textColor = item.textColor;
+        }
+    }
+    
+    // shift duration
+    
+    
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
