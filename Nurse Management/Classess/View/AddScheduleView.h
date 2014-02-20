@@ -17,6 +17,7 @@
 @property (nonatomic) BOOL isShowPicker;
 @property (nonatomic) BOOL isSetTimeStart;
 @property (nonatomic) BOOL isAllDay;
+@property (nonatomic, strong) NSDate *selectDate;
 @property (nonatomic, strong) NSDate *dateTimeStart;
 @property (nonatomic, strong) NSDate *dateTimeEnd;
 @property (nonatomic, strong) NSMutableArray *arrayTimeAlerts;

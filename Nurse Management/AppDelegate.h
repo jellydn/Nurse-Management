@@ -10,6 +10,8 @@
 #import "FXNavigationController.h"
 #import "CDShiftCategory.h"
 #import "CDShift.h"
+#import "CDSchedule.h"
+#import "CDScheduleCategory.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, NSFetchedResultsControllerDelegate>
 
@@ -21,6 +23,8 @@
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerShift;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerShiftCategory;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerSchedule;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerScheduleCategory;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
@@ -30,6 +34,12 @@
 - (CDShift*) getShiftWithDate:(NSDate*)date;
 - (void) addQuickShiftWithShiftCategoryID:(int)categoryID date:(NSDate*)date;
 - (int) lastShiftID;
+
+- (CDScheduleCategory*) getScheduleCategoryWithID:(int)categoryID;
+- (void) addQuickScheduleWithInfo:(NSDictionary*)info;
+
+
+- (int) lastSchedule;
 
 // share
 + (AppDelegate *)shared;

@@ -52,6 +52,8 @@ static __weak AppDelegate *shared = nil;
     //load core data
     [self fetchedResultsControllerShiftCategory];
     [self fetchedResultsControllerShift];
+    [self fetchedResultsControllerSchedule];
+    [self fetchedResultsControllerScheduleCategory];
     
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
@@ -186,7 +188,7 @@ static __weak AppDelegate *shared = nil;
         if (error) {
             NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
         }else {
-            NSLog(@"total shift category : %lu", (unsigned long)[_fetchedResultsControllerShiftCategory.fetchedObjects count]);
+            NSLog(@"appdelegate total shift category : %lu", (unsigned long)[_fetchedResultsControllerShiftCategory.fetchedObjects count]);
         }
         
     }
@@ -226,7 +228,7 @@ static __weak AppDelegate *shared = nil;
         if (error) {
             NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
         } else {
-            NSLog(@"total shift : %lu", (unsigned long)[_fetchedResultsControllerShift.fetchedObjects count]);
+            NSLog(@"appdelegate total shift : %lu", (unsigned long)[_fetchedResultsControllerShift.fetchedObjects count]);
             for (CDShift *item in _fetchedResultsControllerShift.fetchedObjects) {
                 NSLog(@"Shift id: %d  -- name: %@ -- onDate: %@",
                       item.id,
@@ -238,6 +240,91 @@ static __weak AppDelegate *shared = nil;
     }
     
     return _fetchedResultsControllerShift;
+}
+
+- (NSFetchedResultsController*) fetchedResultsControllerSchedule
+{
+    if (!_fetchedResultsControllerSchedule) {
+        
+        NSString *entityName = @"CDSchedule";
+        
+        NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
+        [NSFetchedResultsController deleteCacheWithName:cacheName];
+        
+        NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self.managedObjectContext];
+        
+        
+        NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+        NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        fetchRequest.entity = entity;
+        fetchRequest.fetchBatchSize = 20;
+        fetchRequest.sortDescriptors = sortList;
+        fetchRequest.predicate = predicate;
+        _fetchedResultsControllerSchedule = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                             managedObjectContext:self.managedObjectContext
+                                                                               sectionNameKeyPath:nil
+                                                                                        cacheName:cacheName];
+        _fetchedResultsControllerSchedule.delegate = self;
+        
+        NSError *error = nil;
+        [_fetchedResultsControllerSchedule performFetch:&error];
+        if (error) {
+            NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+        } else {
+            NSLog(@"appdelegate total schedule : %lu", (unsigned long)[_fetchedResultsControllerSchedule.fetchedObjects count]);
+            for (CDSchedule *item in _fetchedResultsControllerSchedule.fetchedObjects) {
+                NSLog(@"schedule id: %d  -- onDate: %@",
+                      item.id,
+                      [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:[NSDate dateWithTimeIntervalSince1970:item.onDate]]);
+            }
+        }
+        
+    }
+    
+    return _fetchedResultsControllerSchedule;
+}
+
+- (NSFetchedResultsController*) fetchedResultsControllerScheduleCategory
+{
+    if (!_fetchedResultsControllerScheduleCategory) {
+        
+        NSString *entityName = @"CDScheduleCategory";
+        
+        NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
+        [NSFetchedResultsController deleteCacheWithName:cacheName];
+        
+        NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self.managedObjectContext];
+        
+        
+        NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+        NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        fetchRequest.entity = entity;
+        fetchRequest.fetchBatchSize = 20;
+        fetchRequest.sortDescriptors = sortList;
+        fetchRequest.predicate = predicate;
+        _fetchedResultsControllerScheduleCategory = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                                managedObjectContext:self.managedObjectContext
+                                                                                  sectionNameKeyPath:nil
+                                                                                           cacheName:cacheName];
+        _fetchedResultsControllerScheduleCategory.delegate = self;
+        
+        NSError *error = nil;
+        [_fetchedResultsControllerScheduleCategory performFetch:&error];
+        if (error) {
+            NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+        } else {
+            NSLog(@"appdelegate total schedule category : %lu", (unsigned long)[_fetchedResultsControllerScheduleCategory.fetchedObjects count]);
+        }
+        
+    }
+    
+    return _fetchedResultsControllerScheduleCategory;
 }
 
 #pragma mark - CoreDate Common method
@@ -275,6 +362,27 @@ static __weak AppDelegate *shared = nil;
     } else {
         CDShift *cdShift = [self.fetchedResultsControllerShift.fetchedObjects lastObject];
         return cdShift.id;
+    }
+}
+
+- (CDScheduleCategory*) getScheduleCategoryWithID:(int)categoryID
+{
+    for (CDScheduleCategory *item in self.fetchedResultsControllerScheduleCategory.fetchedObjects) {
+        if (item.id == categoryID) {
+            return item;
+        }
+    }
+    
+    return nil;
+}
+
+- (int) lastSchedule
+{
+    if ([self.fetchedResultsControllerSchedule.fetchedObjects count] == 0) {
+        return 0;
+    } else {
+        CDSchedule *cdSchedule = [self.fetchedResultsControllerSchedule.fetchedObjects lastObject];
+        return cdSchedule.id;
     }
 }
 
