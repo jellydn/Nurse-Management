@@ -10,6 +10,7 @@
 #import "ScheduleCategoryItem.h"
 #import "FXThemeManager.h"
 #import "Common.h"
+#import "FXCalendarData.h"
 
 @interface AddScheduleView ()
 
@@ -61,12 +62,13 @@
         _isSetTimeStart     = NO;
         
         [_btAllDay setBackgroundColor:[UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]];
-        _lbTimeStart.text   = @"00:00";
-        _lbTimeEnd.text     = @"00:00";
         
-        _dateTimeStart      = nil;
-        _dateTimeEnd        = nil;
+        _dateTimeStart      = [FXCalendarData dateNexHourFormDate:[NSDate date]];
+        _dateTimeEnd        = [FXCalendarData dateNexHourFormDate:_dateTimeStart];
         _arrayTimeAlerts    = nil;
+        
+        _lbTimeStart.text   = [Common convertTimeToStringWithFormat:@"HH:mm" date:_dateTimeStart];
+        _lbTimeEnd.text     = [Common convertTimeToStringWithFormat:@"HH:mm" date:_dateTimeEnd];
         
         if (_delegate && [_delegate respondsToSelector:@selector(didShowView:)]) {
             [_delegate didShowView:self];
@@ -251,11 +253,12 @@
     
     if (!_chooseTimeView) {
         [_chooseTimeView removeFromSuperview];
+        _chooseTimeView = nil;
     }
     
     _chooseTimeView             = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 140, 320 - 15*2, 44)];
     _chooseTimeView.delegate    = self;
-    [_chooseTimeView setStartDate:[NSDate date]];
+    [_chooseTimeView setStartDate:_dateTimeStart];
     [_viewTime addSubview:_chooseTimeView];
     
     CGRect rect1 = _viewContainer.frame;
@@ -401,6 +404,7 @@
         if (_isSetTimeStart) {
             _lbTimeStart.text   = [Common convertTimeToStringWithFormat:@"HH:mm" date:_datePicker.date];
             _dateTimeStart      = _datePicker.date;
+            [_chooseTimeView setStartDate:_datePicker.date];
         } else {
             _lbTimeEnd.text     = [Common convertTimeToStringWithFormat:@"HH:mm" date:_datePicker.date];
             _dateTimeEnd        = _datePicker.date;

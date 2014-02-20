@@ -215,25 +215,37 @@
             NSLog(@"add data for Shift Category item");
             
             //read file
-            NSString *path = [[NSBundle mainBundle] pathForResource:@"tienlp_predefault" ofType:@"plist"];
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"predefault" ofType:@"plist"];
             
             // Load the file content and read the data into arrays
             if (path)
             {
                 NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
-                NSArray *totalShiftCategory = [dict objectForKey:@"ShiftCategory"];
-                
+                NSArray *totalCategory = [dict objectForKey:@"ShiftCategory"];
+                NSLog(@" totalCategory %@",totalCategory);
                 //Creater coredata
-                for (int i = 0 ; i < [totalShiftCategory count]; i++) {
-                    CDShiftCategory *cdShiftCategory = (CDShiftCategory *)[NSEntityDescription insertNewObjectForEntityForName:@"CDShiftCategory"
-                                                                                                        inManagedObjectContext:_appDelegate.managedObjectContext];
+                for (int i = 0 ; i < [totalCategory count]; i++) {
+                    NSLog(@" key %d object %@",i, totalCategory[i]);
+                    CDShiftCategory *cdShiftCategory = (CDShiftCategory *)[NSEntityDescription insertNewObjectForEntityForName:@"CDShiftCategory" inManagedObjectContext:_appDelegate.managedObjectContext];
+                    NSArray *tmpArr = totalCategory[i];
                     
-                    cdShiftCategory.id          = i + 1;
-                    cdShiftCategory.name        = [totalShiftCategory objectAtIndex:i];
-                    cdShiftCategory.color       = [NSString stringWithFormat:@"%d",i%10];
-                    cdShiftCategory.isAllDay    = YES;
-                    cdShiftCategory.timeStart   = @"00:00";
-                    cdShiftCategory.timeEnd     = @"00:00";
+                    cdShiftCategory.id = i + 1;
+                    cdShiftCategory.name = tmpArr[0];
+                    cdShiftCategory.timeStart = tmpArr[1];
+                    cdShiftCategory.timeEnd = tmpArr[2];
+                    
+                    if ([tmpArr[3] integerValue]) {
+                        cdShiftCategory.isAllDay = YES;
+                    }
+                    else
+                    {
+                        cdShiftCategory.isAllDay = NO ;
+                    }
+                    
+                    cdShiftCategory.color = tmpArr[4];
+                    
+                    NSLog(@" name %@ is All Day %d", cdShiftCategory.name, cdShiftCategory.isAllDay);
+                    
                 }
                 
                 [_appDelegate saveContext];
