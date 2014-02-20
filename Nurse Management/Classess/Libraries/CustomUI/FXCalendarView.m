@@ -185,6 +185,12 @@
     }
 }
 
+- (void) reloadData
+{
+    [_monthView2 loadDataForDate:_selectDate setSelectDay:_selectDate];
+    [_monthView2 reloadHeighForWeekWithAnimate:YES];
+}
+
 #pragma mark - FXMonthViewDelegate
 - (void) fxMonthView:(FXMonthView*) fxMonthView didSelectDayWith:(FXDay*)day
 {

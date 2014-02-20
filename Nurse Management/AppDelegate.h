@@ -10,6 +10,10 @@
 #import "FXNavigationController.h"
 #import "CDShiftCategory.h"
 #import "CDShift.h"
+#import "CDSchedule.h"
+#import "CDScheduleCategory.h"
+#import "CDScheduleAlert.h"
+#import "ScheduleItem.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, NSFetchedResultsControllerDelegate>
 
@@ -21,6 +25,9 @@
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerShift;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerShiftCategory;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerSchedule;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerScheduleCategory;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerScheduleAlert;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
@@ -31,6 +38,14 @@
 - (CDShift*) getShiftWithShiftID:(int32_t)shiftID;
 - (void) addQuickShiftWithShiftCategoryID:(int)categoryID date:(NSDate*)date;
 - (int) lastShiftID;
+
+- (CDScheduleCategory*) getScheduleCategoryWithID:(int)categoryID;
+- (CDSchedule*) getScheduleByID:(int)scheduleID;
+- (void) addQuickScheduleWithInfo:(NSDictionary*)info;
+- (int) lastScheduleID;
+- (int) lastScheduleAlertID;
+- (NSMutableArray*) getSchedulesOnDate:(NSDate*)date;
+- (NSMutableArray*) getColorsSchedulesOnDate:(NSDate*)date;
 
 // share
 + (AppDelegate *)shared;

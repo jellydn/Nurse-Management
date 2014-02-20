@@ -177,6 +177,24 @@
 		2A75E64318ADA98800E74E4F /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A75E64218ADA98800E74E4F /* Member.m */; };
 		2A75E64618ADA9AB00E74E4F /* ic_cell_shift.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E64418ADA9AB00E74E4F /* ic_cell_shift.png */; };
 		2A75E64718ADA9AB00E74E4F /* ic_cell_shift@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E64518ADA9AB00E74E4F /* ic_cell_shift@2x.png */; };
+		2A97525518B5B01D00C0946E /* CDSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97525418B5B01D00C0946E /* CDSchedule.m */; };
+		2A97525818B5B6F800C0946E /* ScheduleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97525718B5B6F800C0946E /* ScheduleItem.m */; };
+		2A97525B18B5EF8B00C0946E /* CDScheduleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97525A18B5EF8B00C0946E /* CDScheduleCategory.m */; };
+		2A97525F18B600F500C0946E /* OtherAppCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97525D18B600F500C0946E /* OtherAppCell.m */; };
+		2A97526018B600F500C0946E /* OtherAppCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A97525E18B600F500C0946E /* OtherAppCell.xib */; };
+		2A97526318B6016000C0946E /* OtherAppWS.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97526218B6016000C0946E /* OtherAppWS.m */; };
+		2A97526618B601D400C0946E /* Error.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97526518B601D400C0946E /* Error.m */; };
+		2A97526918B6021100C0946E /* AppItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97526818B6021100C0946E /* AppItem.m */; };
+		2A97527818B6024000C0946E /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97526D18B6024000C0946E /* NSObject+SBJSON.m */; };
+		2A97527918B6024100C0946E /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97526F18B6024000C0946E /* NSString+SBJSON.m */; };
+		2A97527A18B6024100C0946E /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97527118B6024000C0946E /* SBJSON.m */; };
+		2A97527B18B6024100C0946E /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97527318B6024000C0946E /* SBJsonBase.m */; };
+		2A97527C18B6024100C0946E /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97527518B6024000C0946E /* SBJsonParser.m */; };
+		2A97527D18B6024100C0946E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97527718B6024000C0946E /* SBJsonWriter.m */; };
+		2AAE596B18B6038F003FA40E /* Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAE596A18B6038F003FA40E /* Downloader.m */; };
+		2AAE596D18B604FA003FA40E /* no_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AAE596C18B604FA003FA40E /* no_icon.png */; };
+		2AAE597018B60636003FA40E /* white_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AAE596E18B60636003FA40E /* white_arrow.png */; };
+		2AAE597118B60636003FA40E /* white_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AAE596F18B60636003FA40E /* white_arrow@2x.png */; };
 		2AF0757E18ACABFD0008D875 /* FXDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0757D18ACABFD0008D875 /* FXDayView.m */; };
 		2AF0758118ACAC250008D875 /* FXDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0758018ACAC250008D875 /* FXDay.m */; };
 		2AF0758318ACB60A0008D875 /* FXDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF0758218ACB60A0008D875 /* FXDayView.xib */; };
@@ -227,8 +245,6 @@
 		C0AD15E618B4A7C500709E81 /* NMTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AD15E318B4A7C500709E81 /* NMTimePickerView.m */; };
 		C0B2B1D518B44F7000CF4B76 /* CDShiftMember.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1D418B44F7000CF4B76 /* CDShiftMember.m */; };
 		C0B2B1D818B44F7100CF4B76 /* CDScheduleAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1D718B44F7100CF4B76 /* CDScheduleAlert.m */; };
-		C0B2B1DB18B44F7100CF4B76 /* CDSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1DA18B44F7100CF4B76 /* CDSchedule.m */; };
-		C0B2B1DE18B44F7100CF4B76 /* CDScheduleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1DD18B44F7100CF4B76 /* CDScheduleCategory.m */; };
 		C0B2B1E118B44F7100CF4B76 /* CDShiftCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1E018B44F7100CF4B76 /* CDShiftCategory.m */; };
 		C0B2B1E418B44F7100CF4B76 /* CDShift.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1E318B44F7100CF4B76 /* CDShift.m */; };
 		C0B2B1E718B44F7100CF4B76 /* CDMember.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1E618B44F7100CF4B76 /* CDMember.m */; };
@@ -453,6 +469,39 @@
 		2A75E64218ADA98800E74E4F /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Member.m; sourceTree = "<group>"; };
 		2A75E64418ADA9AB00E74E4F /* ic_cell_shift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_cell_shift.png; sourceTree = "<group>"; };
 		2A75E64518ADA9AB00E74E4F /* ic_cell_shift@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_cell_shift@2x.png"; sourceTree = "<group>"; };
+		2A97525318B5B01D00C0946E /* CDSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDSchedule.h; path = "Nurse Management/Classess/Model/CDSchedule.h"; sourceTree = SOURCE_ROOT; };
+		2A97525418B5B01D00C0946E /* CDSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDSchedule.m; path = "Nurse Management/Classess/Model/CDSchedule.m"; sourceTree = SOURCE_ROOT; };
+		2A97525618B5B6F800C0946E /* ScheduleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleItem.h; sourceTree = "<group>"; };
+		2A97525718B5B6F800C0946E /* ScheduleItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleItem.m; sourceTree = "<group>"; };
+		2A97525918B5EF8B00C0946E /* CDScheduleCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDScheduleCategory.h; path = "Nurse Management/Classess/Model/CDScheduleCategory.h"; sourceTree = SOURCE_ROOT; };
+		2A97525A18B5EF8B00C0946E /* CDScheduleCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDScheduleCategory.m; path = "Nurse Management/Classess/Model/CDScheduleCategory.m"; sourceTree = SOURCE_ROOT; };
+		2A97525C18B600F500C0946E /* OtherAppCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherAppCell.h; sourceTree = "<group>"; };
+		2A97525D18B600F500C0946E /* OtherAppCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherAppCell.m; sourceTree = "<group>"; };
+		2A97525E18B600F500C0946E /* OtherAppCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherAppCell.xib; sourceTree = "<group>"; };
+		2A97526118B6016000C0946E /* OtherAppWS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherAppWS.h; sourceTree = "<group>"; };
+		2A97526218B6016000C0946E /* OtherAppWS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherAppWS.m; sourceTree = "<group>"; };
+		2A97526418B601D400C0946E /* Error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Error.h; sourceTree = "<group>"; };
+		2A97526518B601D400C0946E /* Error.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Error.m; sourceTree = "<group>"; };
+		2A97526718B6021100C0946E /* AppItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppItem.h; sourceTree = "<group>"; };
+		2A97526818B6021100C0946E /* AppItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppItem.m; sourceTree = "<group>"; };
+		2A97526B18B6024000C0946E /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		2A97526C18B6024000C0946E /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		2A97526D18B6024000C0946E /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		2A97526E18B6024000C0946E /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		2A97526F18B6024000C0946E /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		2A97527018B6024000C0946E /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		2A97527118B6024000C0946E /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		2A97527218B6024000C0946E /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		2A97527318B6024000C0946E /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		2A97527418B6024000C0946E /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		2A97527518B6024000C0946E /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		2A97527618B6024000C0946E /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		2A97527718B6024000C0946E /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		2AAE596918B6038F003FA40E /* Downloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Downloader.h; sourceTree = "<group>"; };
+		2AAE596A18B6038F003FA40E /* Downloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Downloader.m; sourceTree = "<group>"; };
+		2AAE596C18B604FA003FA40E /* no_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_icon.png; sourceTree = "<group>"; };
+		2AAE596E18B60636003FA40E /* white_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_arrow.png; sourceTree = "<group>"; };
+		2AAE596F18B60636003FA40E /* white_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_arrow@2x.png"; sourceTree = "<group>"; };
 		2AF0757C18ACABFD0008D875 /* FXDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDayView.h; sourceTree = "<group>"; };
 		2AF0757D18ACABFD0008D875 /* FXDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXDayView.m; sourceTree = "<group>"; };
 		2AF0757F18ACAC250008D875 /* FXDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDay.h; sourceTree = "<group>"; };
@@ -513,10 +562,6 @@
 		C0B2B1D418B44F7000CF4B76 /* CDShiftMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDShiftMember.m; path = "Nurse Management/Classess/Model/CDShiftMember.m"; sourceTree = SOURCE_ROOT; };
 		C0B2B1D618B44F7100CF4B76 /* CDScheduleAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDScheduleAlert.h; path = "Nurse Management/Classess/Model/CDScheduleAlert.h"; sourceTree = SOURCE_ROOT; };
 		C0B2B1D718B44F7100CF4B76 /* CDScheduleAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDScheduleAlert.m; path = "Nurse Management/Classess/Model/CDScheduleAlert.m"; sourceTree = SOURCE_ROOT; };
-		C0B2B1D918B44F7100CF4B76 /* CDSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDSchedule.h; path = "Nurse Management/Classess/Model/CDSchedule.h"; sourceTree = SOURCE_ROOT; };
-		C0B2B1DA18B44F7100CF4B76 /* CDSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDSchedule.m; path = "Nurse Management/Classess/Model/CDSchedule.m"; sourceTree = SOURCE_ROOT; };
-		C0B2B1DC18B44F7100CF4B76 /* CDScheduleCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDScheduleCategory.h; path = "Nurse Management/Classess/Model/CDScheduleCategory.h"; sourceTree = SOURCE_ROOT; };
-		C0B2B1DD18B44F7100CF4B76 /* CDScheduleCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDScheduleCategory.m; path = "Nurse Management/Classess/Model/CDScheduleCategory.m"; sourceTree = SOURCE_ROOT; };
 		C0B2B1DF18B44F7100CF4B76 /* CDShiftCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDShiftCategory.h; path = "Nurse Management/Classess/Model/CDShiftCategory.h"; sourceTree = SOURCE_ROOT; };
 		C0B2B1E018B44F7100CF4B76 /* CDShiftCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDShiftCategory.m; path = "Nurse Management/Classess/Model/CDShiftCategory.m"; sourceTree = SOURCE_ROOT; };
 		C0B2B1E218B44F7100CF4B76 /* CDShift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDShift.h; path = "Nurse Management/Classess/Model/CDShift.h"; sourceTree = SOURCE_ROOT; };
@@ -671,10 +716,6 @@
 				C0B2B1D418B44F7000CF4B76 /* CDShiftMember.m */,
 				C0B2B1D618B44F7100CF4B76 /* CDScheduleAlert.h */,
 				C0B2B1D718B44F7100CF4B76 /* CDScheduleAlert.m */,
-				C0B2B1D918B44F7100CF4B76 /* CDSchedule.h */,
-				C0B2B1DA18B44F7100CF4B76 /* CDSchedule.m */,
-				C0B2B1DC18B44F7100CF4B76 /* CDScheduleCategory.h */,
-				C0B2B1DD18B44F7100CF4B76 /* CDScheduleCategory.m */,
 				C0B2B1DF18B44F7100CF4B76 /* CDShiftCategory.h */,
 				C0B2B1E018B44F7100CF4B76 /* CDShiftCategory.m */,
 				C0B2B1E218B44F7100CF4B76 /* CDShift.h */,
@@ -683,6 +724,10 @@
 				C0B2B1E618B44F7100CF4B76 /* CDMember.m */,
 				C0B2B1E818B44F7100CF4B76 /* CDShiftAlert.h */,
 				C0B2B1E918B44F7100CF4B76 /* CDShiftAlert.m */,
+				2A97525318B5B01D00C0946E /* CDSchedule.h */,
+				2A97525418B5B01D00C0946E /* CDSchedule.m */,
+				2A97525918B5EF8B00C0946E /* CDScheduleCategory.h */,
+				2A97525A18B5EF8B00C0946E /* CDScheduleCategory.m */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -690,6 +735,7 @@
 		2A394C0318A9FF7600F30F2D /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				2A97526A18B6024000C0946E /* JSON */,
 				2A394C4218AA0C7B00F30F2D /* FXThemeManager */,
 				2A394C0418A9FF7600F30F2D /* Common */,
 				2A394C0618A9FF7600F30F2D /* CustomUI */,
@@ -708,6 +754,8 @@
 				2A394C2A18A9FFB000F30F2D /* Common.m */,
 				2A394C2C18A9FFBC00F30F2D /* User.h */,
 				2A394C2D18A9FFBC00F30F2D /* User.m */,
+				2A97526418B601D400C0946E /* Error.h */,
+				2A97526518B601D400C0946E /* Error.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -731,6 +779,10 @@
 				2A4F225A18B4567F00A5C97C /* ShiftCategoryItem.m */,
 				2A75E64118ADA98800E74E4F /* Member.h */,
 				2A75E64218ADA98800E74E4F /* Member.m */,
+				2A97525618B5B6F800C0946E /* ScheduleItem.h */,
+				2A97525718B5B6F800C0946E /* ScheduleItem.m */,
+				2A97526718B6021100C0946E /* AppItem.h */,
+				2A97526818B6021100C0946E /* AppItem.m */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -738,6 +790,10 @@
 		2A394C0818A9FF7600F30F2D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2AAE596918B6038F003FA40E /* Downloader.h */,
+				2AAE596A18B6038F003FA40E /* Downloader.m */,
+				2A97526118B6016000C0946E /* OtherAppWS.h */,
+				2A97526218B6016000C0946E /* OtherAppWS.m */,
 				2A394C5C18AA2AA600F30F2D /* FXCalendarData.h */,
 				2A394C5D18AA2AA600F30F2D /* FXCalendarData.m */,
 				2A394C2F18AA009100F30F2D /* Reachability.h */,
@@ -933,6 +989,9 @@
 		2A3C249F18AB1BE000C20A04 /* MoreVC */ = {
 			isa = PBXGroup;
 			children = (
+				2A97525C18B600F500C0946E /* OtherAppCell.h */,
+				2A97525D18B600F500C0946E /* OtherAppCell.m */,
+				2A97525E18B600F500C0946E /* OtherAppCell.xib */,
 				2A4F22A118B4575A00A5C97C /* MoreCellItem.h */,
 				2A4F22A218B4575A00A5C97C /* MoreCellItem.m */,
 				2A4F229718B4575000A5C97C /* MoreCell.h */,
@@ -1015,6 +1074,9 @@
 		2A3C24D218AB5BF700C20A04 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2AAE596E18B60636003FA40E /* white_arrow.png */,
+				2AAE596F18B60636003FA40E /* white_arrow@2x.png */,
+				2AAE596C18B604FA003FA40E /* no_icon.png */,
 				2A4F226A18B456BE00A5C97C /* home_add_quick_schedule_time_bg.png */,
 				2A4F226B18B456BE00A5C97C /* home_add_quick_schedule_time_bg@2x.png */,
 				B6B10DE218AF0C9E004E3229 /* bg_edit_shift_time.png */,
@@ -1215,6 +1277,26 @@
 			name = Schedule;
 			sourceTree = "<group>";
 		};
+		2A97526A18B6024000C0946E /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				2A97526B18B6024000C0946E /* JSON.h */,
+				2A97526C18B6024000C0946E /* NSObject+SBJSON.h */,
+				2A97526D18B6024000C0946E /* NSObject+SBJSON.m */,
+				2A97526E18B6024000C0946E /* NSString+SBJSON.h */,
+				2A97526F18B6024000C0946E /* NSString+SBJSON.m */,
+				2A97527018B6024000C0946E /* SBJSON.h */,
+				2A97527118B6024000C0946E /* SBJSON.m */,
+				2A97527218B6024000C0946E /* SBJsonBase.h */,
+				2A97527318B6024000C0946E /* SBJsonBase.m */,
+				2A97527418B6024000C0946E /* SBJsonParser.h */,
+				2A97527518B6024000C0946E /* SBJsonParser.m */,
+				2A97527618B6024000C0946E /* SBJsonWriter.h */,
+				2A97527718B6024000C0946E /* SBJsonWriter.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
 		B6B10DDC18AF0B2A004E3229 /* MemberShiftVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1330,6 +1412,8 @@
 				2A6FDB7818AF1ACA00D33D21 /* icon_category_add_sc@2x.png in Resources */,
 				2A75E64618ADA9AB00E74E4F /* ic_cell_shift.png in Resources */,
 				2A394C2818A9FF7600F30F2D /* Default@2x.png in Resources */,
+				2AAE596D18B604FA003FA40E /* no_icon.png in Resources */,
+				2AAE597018B60636003FA40E /* white_arrow.png in Resources */,
 				2A3F497718AE242E00D3137D /* ic_bt_add_schedule_back.png in Resources */,
 				2A3C249018AB062F00C20A04 /* ic_toolbar_add_schedule@2x.png in Resources */,
 				2A3C249518AB062F00C20A04 /* ic_toolbar_ranking.png in Resources */,
@@ -1394,6 +1478,7 @@
 				B6B10E0118AF0C9E004E3229 /* ic_edit_shift_color_4@2x.png in Resources */,
 				2A4F227818B456BE00A5C97C /* schedule_bg_6.png in Resources */,
 				2A3C24DF18AB6DFF00C20A04 /* ic_bt_add.png in Resources */,
+				2A97526018B600F500C0946E /* OtherAppCell.xib in Resources */,
 				2A4F228C18B456BE00A5C97C /* schedule_bg_5.png in Resources */,
 				2A3C24F318AB7FFA00C20A04 /* img_add_schedule_home_title.png in Resources */,
 				B651F30718B4BF6000E8577B /* icon_right_more_cell@2x.png in Resources */,
@@ -1456,6 +1541,7 @@
 				2A394C1B18A9FF7600F30F2D /* Icon-60@2x.png in Resources */,
 				C000F2F318AF6C2000280464 /* bg_dashed_frame.png in Resources */,
 				2A3C24D018AB593300C20A04 /* icon_r3_c7.png in Resources */,
+				2AAE597118B60636003FA40E /* white_arrow@2x.png in Resources */,
 				2A4F228A18B456BE00A5C97C /* schedule_bg_4.png in Resources */,
 				B6B10E0418AF0C9E004E3229 /* ic_edit_shift_color_6.png in Resources */,
 				2A4F228618B456BE00A5C97C /* schedule_bg_2.png in Resources */,
@@ -1506,21 +1592,25 @@
 				2A3F495D18AE085D00D3137D /* HomeCellSchedule.m in Sources */,
 				2A75E63518ADA96600E74E4F /* AddMemberVC.m in Sources */,
 				2AF0758118ACAC250008D875 /* FXDay.m in Sources */,
+				2A97526918B6021100C0946E /* AppItem.m in Sources */,
 				2A394C3118AA009100F30F2D /* Reachability.m in Sources */,
 				2A3C24A318AB1BF100C20A04 /* RankingVC.m in Sources */,
 				2A394C2E18A9FFBC00F30F2D /* User.m in Sources */,
 				C0B2B1D818B44F7100CF4B76 /* CDScheduleAlert.m in Sources */,
+				2A97527918B6024100C0946E /* NSString+SBJSON.m in Sources */,
 				2A3C24A818AB1BFE00C20A04 /* MoreVC.m in Sources */,
 				C000F2E618AF68AD00280464 /* UIPickerActionSheet.m in Sources */,
 				B651F30218B4BED600E8577B /* NMSelectionStringView.m in Sources */,
 				2A3C24DB18AB6CC500C20A04 /* ListShiftPatternVC.m in Sources */,
 				C0B2B1E118B44F7100CF4B76 /* CDShiftCategory.m in Sources */,
 				2A3C249C18AB084900C20A04 /* HomeToolBarView.m in Sources */,
+				2A97527818B6024000C0946E /* NSObject+SBJSON.m in Sources */,
 				2A394C2B18A9FFB000F30F2D /* Common.m in Sources */,
 				C0B2B1E718B44F7100CF4B76 /* CDMember.m in Sources */,
 				2A4F225B18B4567F00A5C97C /* ScheduleCategoryItem.m in Sources */,
 				2A394C5018AA1EE300F30F2D /* HomeNaviBarView.m in Sources */,
 				2A3C24E518AB701500C20A04 /* AddShiftVC.m in Sources */,
+				2A97525B18B5EF8B00C0946E /* CDScheduleCategory.m in Sources */,
 				2AF0758718ACC4B00008D875 /* FXCalendarView.m in Sources */,
 				2A3C24BB18AB586B00C20A04 /* AddShiftView.m in Sources */,
 				2A394C4518AA0C9D00F30F2D /* FXThemeManager.m in Sources */,
@@ -1531,25 +1621,33 @@
 				2A516CA818AC77E400F82B5A /* FXMonthView.m in Sources */,
 				2A4F22A318B4575A00A5C97C /* MoreCellItem.m in Sources */,
 				2AF0757E18ACABFD0008D875 /* FXDayView.m in Sources */,
+				2A97526618B601D400C0946E /* Error.m in Sources */,
 				2A394BDD18A9FD5300F30F2D /* AppDelegate.m in Sources */,
 				2A3C24EF18AB78C900C20A04 /* AddScheduleView.m in Sources */,
 				B6B10DE018AF0C3A004E3229 /* EditShiftVC.m in Sources */,
+				2A97527C18B6024100C0946E /* SBJsonParser.m in Sources */,
 				2A75E64318ADA98800E74E4F /* Member.m in Sources */,
 				2A394C3C18AA028100F30F2D /* FXNavigationController.m in Sources */,
 				C0B2B1E418B44F7100CF4B76 /* CDShift.m in Sources */,
 				2A4F229F18B4575000A5C97C /* MoreCellTitle.m in Sources */,
 				2A394BD918A9FD5300F30F2D /* main.m in Sources */,
-				C0B2B1DB18B44F7100CF4B76 /* CDSchedule.m in Sources */,
 				2A6FDB6A18AF117D00D33D21 /* AddScheduleVC.m in Sources */,
 				2A516C9E18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m in Sources */,
 				2A75E63F18ADA97700E74E4F /* ShiftCell.m in Sources */,
 				2A3C24B518AB295500C20A04 /* ChangeThemeVC.m in Sources */,
+				2A97525518B5B01D00C0946E /* CDSchedule.m in Sources */,
 				C0B2B1EA18B44F7100CF4B76 /* CDShiftAlert.m in Sources */,
 				2A394C5E18AA2AA600F30F2D /* FXCalendarData.m in Sources */,
+				2A97527D18B6024100C0946E /* SBJsonWriter.m in Sources */,
+				2A97525F18B600F500C0946E /* OtherAppCell.m in Sources */,
+				2A97526318B6016000C0946E /* OtherAppWS.m in Sources */,
+				2A97527B18B6024100C0946E /* SBJsonBase.m in Sources */,
 				2A3F494F18AE032500D3137D /* HomeCellAddShift.m in Sources */,
+				2AAE596B18B6038F003FA40E /* Downloader.m in Sources */,
+				2A97525818B5B6F800C0946E /* ScheduleItem.m in Sources */,
 				2A394BE018A9FD5300F30F2D /* Nurse_Management.xcdatamodeld in Sources */,
 				2A4F225C18B4567F00A5C97C /* ShiftCategoryItem.m in Sources */,
-				C0B2B1DE18B44F7100CF4B76 /* CDScheduleCategory.m in Sources */,
+				2A97527A18B6024100C0946E /* SBJSON.m in Sources */,
 				2A4F229D18B4575000A5C97C /* MoreCell.m in Sources */,
 				2A394C4018AA02AA00F30F2D /* FXViewController.m in Sources */,
 				2A75E63D18ADA97700E74E4F /* ListMembersVC.m in Sources */,

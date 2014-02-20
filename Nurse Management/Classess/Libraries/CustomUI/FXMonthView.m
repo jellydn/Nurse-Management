@@ -228,6 +228,7 @@
         
         
         FXDayView *dayView              = [[NSBundle mainBundle] loadNibNamed:@"FXDayView" owner:self options:nil][0];
+        [dayView initLayout];
         dayView.clipsToBounds           = YES;
         dayView.frame                   = rect;
         dayView.tag                     = i;
@@ -367,14 +368,32 @@
         FXDay *day      = [[FXDay alloc] init];
         day.isOutOfDay  = NO;
         day.date        = tempDate;
+        day.color1      = @"";
+        day.color2      = @"";
+        day.color3      = @"";
         
         if (_isLoadDataForCell) {
+            
             CDShift *shift  = [[AppDelegate shared] getShiftWithDate:tempDate];
             if (shift) {
                 day.shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
             } else {
                 day.shiftCategory = nil;
             }
+            
+            NSArray *arrayColor = [[AppDelegate shared] getColorsSchedulesOnDate:tempDate];
+            if ([arrayColor count] >= 1) {
+                day.color1      = arrayColor[0];
+            }
+            
+            if ([arrayColor count] >= 2) {
+                day.color2      = arrayColor[1];
+            }
+            
+            if ([arrayColor count] >= 3) {
+                day.color3      = arrayColor[2];
+            }
+            
         } else {
             day.shiftCategory = nil;
         }
@@ -463,14 +482,32 @@
         FXDay *day      = [[FXDay alloc] init];
         day.isOutOfDay  = NO;
         day.date        = tempDate;
+        day.color1      = @"";
+        day.color2      = @"";
+        day.color3      = @"";
         
         if (_isLoadDataForCell) {
+            
             CDShift *shift  = [[AppDelegate shared] getShiftWithDate:tempDate];
             if (shift) {
                 day.shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
             } else {
                 day.shiftCategory = nil;
             }
+            
+            NSArray *arrayColor = [[AppDelegate shared] getColorsSchedulesOnDate:tempDate];
+            if ([arrayColor count] >= 1) {
+                day.color1      = arrayColor[0];
+            }
+            
+            if ([arrayColor count] >= 2) {
+                day.color2      = arrayColor[1];
+            }
+            
+            if ([arrayColor count] >= 3) {
+                day.color3      = arrayColor[2];
+            }
+            
         } else {
             day.shiftCategory = nil;
         }

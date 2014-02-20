@@ -30,6 +30,11 @@
 @property (nonatomic, weak) IBOutlet UILabel *lbCategoryName;
 @property (nonatomic, weak) IBOutlet UIImageView *imgCategory;
 
+@property (nonatomic, weak) IBOutlet UIImageView *imgSchedule1;
+@property (nonatomic, weak) IBOutlet UIImageView *imgSchedule2;
+@property (nonatomic, weak) IBOutlet UIImageView *imgSchedule3;
+
+- (void) initLayout;
 - (void) reloadInfo:(FXDay*)day;
 - (IBAction)selectDay:(id)sender;
 

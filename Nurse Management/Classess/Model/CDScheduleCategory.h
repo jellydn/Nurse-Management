@@ -2,7 +2,7 @@
 //  CDScheduleCategory.h
 //  Nurse Management
 //
-//  Created by PhuNQ on 2/19/14.
+//  Created by Le Phuong Tien on 2/20/14.
 //  Copyright (c) 2014 Le Phuong Tien. All rights reserved.
 //
 
@@ -18,6 +18,14 @@
 @property (nonatomic) BOOL isDefault;
 @property (nonatomic) BOOL isEnable;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) CDSchedule *pk_schedulecategory;
+@property (nonatomic, retain) NSSet *pk_schedulecategory;
+@end
+
+@interface CDScheduleCategory (CoreDataGeneratedAccessors)
+
+- (void)addPk_schedulecategoryObject:(CDSchedule *)value;
+- (void)removePk_schedulecategoryObject:(CDSchedule *)value;
+- (void)addPk_schedulecategory:(NSSet *)values;
+- (void)removePk_schedulecategory:(NSSet *)values;
 
 @end

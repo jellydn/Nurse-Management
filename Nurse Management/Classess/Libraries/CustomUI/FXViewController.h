@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FXThemeManager.h"
+#import "Define.h"
 
 typedef void (^FXReloadThemeOfView)(NSString *themeName);
 

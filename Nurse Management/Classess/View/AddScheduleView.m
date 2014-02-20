@@ -36,7 +36,8 @@
     
     self.hidden = YES;
     
-    _datePicker.calendar = [NSCalendar autoupdatingCurrentCalendar];
+    _datePicker.calendar        = [NSCalendar autoupdatingCurrentCalendar];
+    _datePicker.datePickerMode  = UIDatePickerModeTime;
 }
 
 - (void) show
@@ -63,7 +64,7 @@
         
         [_btAllDay setBackgroundColor:[UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]];
         
-        _dateTimeStart      = [FXCalendarData dateNexHourFormDate:[NSDate date]];
+        _dateTimeStart      = [FXCalendarData dateNexHourFormDate:_selectDate];
         _dateTimeEnd        = [FXCalendarData dateNexHourFormDate:_dateTimeStart];
         _arrayTimeAlerts    = nil;
         
@@ -113,7 +114,7 @@
     }];
 }
 
-- (void) loadScheduleCategoryInfo:(NSMutableArray*)schedules
+- (void) loadScheduleCategoryInfo:(NSMutableArray*)schedules selectDate:(NSDate*)selectDate
 {
     NSLog(@"total %d", [schedules count]);
     
@@ -127,9 +128,11 @@
         return;
     }
     
+    _selectDate = [FXCalendarData dateWithSetHourWithHour:[FXCalendarData getHourWithDate:[NSDate date]] date:selectDate];
+    
     _pageControl.currentPageIndicatorTintColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain];
     
-    int page                    = [schedules count] / 10 + 1;
+    int page                    = ([schedules count] % 10 == 0) ? [schedules count] / 10 : [schedules count] / 10 + 1;
     _pageControl.numberOfPages  = page;
     _pageControl.currentPage    = 0;
     
@@ -306,13 +309,17 @@
                          @"start_time",
                          @"end_time",
                          @"is_all_day",
-                         @"array_alert"];
+                         @"array_alert",
+                         @"select_date",
+                         @"memo"];
         
         NSArray *values = @[[NSString stringWithFormat:@"%d",_scheduleCategoryID],
                            (_dateTimeStart != nil) ? _dateTimeStart : @"",
                            (_dateTimeEnd != nil) ? _dateTimeEnd : @"",
                            [NSString stringWithFormat:@"%d",_isAllDay],
-                           (_arrayTimeAlerts == nil) ? @"" : _arrayTimeAlerts];
+                           (_arrayTimeAlerts == nil) ? @"" : _arrayTimeAlerts,
+                            _selectDate,
+                            @""];
         
         NSDictionary *info = [NSDictionary dictionaryWithObjects:values forKeys:keys];
         

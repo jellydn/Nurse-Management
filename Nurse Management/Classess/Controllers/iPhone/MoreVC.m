@@ -14,13 +14,27 @@
 #import "ChangeThemeVC.h"
 #import "MoreCellItem.h"
 #import "MoreCellTitle.h"
+#import "OtherAppCell.h"
 
-@interface MoreVC ()
+#import "OtherAppWS.h"
+#import "AppItem.h"
+
+#import "Downloader.h"
+
+@interface MoreVC ()<UIScrollViewDelegate, OtherAppWSDelegate, DownloaderDelegate>
 {
     
     __weak IBOutlet UIView *_viewNavi;
     __weak IBOutlet UILabel *_lbTile;
     NSMutableArray *_items;
+    
+    __weak IBOutlet UITableView *_tableView;
+    __weak IBOutlet UIActivityIndicatorView *_indicator;
+    IBOutlet OtherAppCell *_otherAppCell;
+    NSMutableArray *_otherApps;
+    int _offset,_limit;
+    
+    
 }
 - (IBAction)backVC:(id)sender;
 - (IBAction)goChangeThemeVC:(id)sender;
@@ -108,6 +122,13 @@
     item12.typeCell = 0;
     item12.title = @"おすすめ無料アプリ";
     [_items addObject:item12];
+    
+    
+    //Others app
+    _otherApps = [[NSMutableArray alloc] init];
+    _offset = 0;
+    _limit = 50;
+    [self getOtherAppWS];
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,6 +152,8 @@
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     _lbTile.text = @"More";
+    
+    
 }
 
 #pragma mark - Notification
@@ -145,48 +168,231 @@
 #pragma mark tableView
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_items count];
+    if (section == 0) {
+        return [_items count];
+    } else if (section == 1) {
+        return [_otherApps count];
+    }
+    
+    return 0;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    if (indexPath.section == 0) {
+        return 44;
+    } else if (indexPath.section == 1) {
+        return 70;
+    }
+    
+    return 0;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MoreCellItem *item = [_items objectAtIndex:indexPath.row];
-    
-    if (item.typeCell == 1) {
-        MoreCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreCell"];
-        if (!cell) {
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"MoreCell" owner:self options:nil] lastObject];
-        }
-        if (indexPath.row == 6) {
-            cell.btStatus.hidden = NO;
-            cell.iconRight.hidden = YES;
-        }
-        cell.lbName.text = item.title;
-        return cell;
+    if (indexPath.section == 0) {
         
-    } else if (item.typeCell == 0) {
-        MoreCellTitle *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreCellTitle"];
-        if (!cell) {
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"MoreCellTitle" owner:self options:nil] lastObject];
+        MoreCellItem *item = [_items objectAtIndex:indexPath.row];
+        
+        if (item.typeCell == 1) {
+            MoreCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreCell"];
+            if (!cell) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:@"MoreCell" owner:self options:nil] lastObject];
+            }
+            if (indexPath.row == 6) {
+                cell.btStatus.hidden = NO;
+                cell.iconRight.hidden = YES;
+            }
+            cell.lbName.text = item.title;
+            return cell;
+            
+        } else if (item.typeCell == 0) {
+            MoreCellTitle *cell = [tableView dequeueReusableCellWithIdentifier:@"MoreCellTitle"];
+            if (!cell) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:@"MoreCellTitle" owner:self options:nil] lastObject];
+            }
+            cell.lbName.text = item.title;
+            return cell;
         }
-        cell.lbName.text = item.title;
-        return cell;
+        
+        return nil;
+        
+    } else if (indexPath.section == 1) {
+        
+        OtherAppCell *cellR = [tableView dequeueReusableCellWithIdentifier:@"OtherAppCell"];
+        if (cellR == nil) {
+           cellR = [[NSBundle mainBundle] loadNibNamed:@"OtherAppCell" owner:self options:nil][0];
+            
+        }
+        
+        AppItem *item = [_otherApps objectAtIndex:indexPath.row];
+        NSString *getPrice;
+        if([item.yen isEqualToString:@"0"]){
+            getPrice = @"無 料";
+        }else{
+            getPrice = item.yen;
+        }
+        cellR.lbAppName.text = item.appliName;
+        cellR.lbAppBy.text   = item.publisher;
+        cellR.lbAppTest.text = getPrice;
+        
+        if (item.imgIcon) {
+            cellR.imgApp.image = item.imgIcon;
+        } else {
+            cellR.imgApp.image = [UIImage imageNamed:@"no_icon.png"];
+        }
+        
+        [cellR setBorderImage];
+        
+        return cellR;
+        
     }
+    
+    
+    
     return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 1) {
-        ChangeThemeVC *vc = [[ChangeThemeVC alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
+    if (indexPath.section == 0) {
+        if (indexPath.row == 1) {
+            ChangeThemeVC *vc = [[ChangeThemeVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    } else if (indexPath.section == 1) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        AppItem *item = [_otherApps objectAtIndex:indexPath.row];
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:item.url]]) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:item.url]];
+        }
+    }
+    
+    
+}
+
+#pragma mark - OtherAppWSDelegate
+
+- (void)getOtherAppWS
+{
+    NSLog(@"get ws with offset = %d -- limit = %d",_offset,_limit);
+    OtherAppWS *otherAppWS = [[OtherAppWS alloc] init];
+    otherAppWS.delegate = self;
+    [otherAppWS getAppsWithOffset:_offset limit:_limit];
+}
+
+- (void)didFailWithError:(Error*)error
+{
+    [Common showAlert:error.error_msg title:APP_NAME];
+    _indicator.hidden = YES;
+}
+
+- (void)didSuccessWithApps:(NSMutableArray*)apps hasnext:(BOOL)hasnext
+{
+    _indicator.hidden = YES;
+    
+    for (AppItem *item in apps) {
+        [_otherApps addObject:item];
+    }
+    
+    if (hasnext) {
+        _offset += _limit;
+        
+        // load ws
+        [self getOtherAppWS];
+    } else {
+        
+        
+    }
+    
+    // table reload
+    [_tableView reloadData];
+    
+    
+    [self downloadImageIcon];
+}
+
+#pragma mark - Downloader
+
+- (void) downloadImageIcon
+{
+    for (UITableViewCell *cellR in [_tableView visibleCells]) {
+        
+        NSIndexPath *indexPath = [_tableView indexPathForCell:cellR];
+        
+        if (indexPath.section == 0) {
+            return;
+        }
+        
+        AppItem *item = [_otherApps objectAtIndex:indexPath.row];
+        
+        if (!item.imgIcon) {
+            if (![item.iconUrl isEqualToString:@""]) {
+                Downloader *down = [[Downloader alloc] init];
+                down.delegate = self;
+                down.identifier = indexPath;
+                [down get:[NSURL URLWithString:item.iconUrl]];
+            } else {
+                item.imgIcon = [UIImage imageNamed:@"no_icon.png"];
+                
+                OtherAppCell *cell = (OtherAppCell*)cellR;
+                cell.imgApp.image = [UIImage imageNamed:@"no_icon.png"];
+            }
+        } else {
+            
+        }
     }
 }
+
+-(void)downloader:(NSURLConnection *)conn didLoad:(NSMutableData *)data identifier:(id)identifier
+{
+    NSIndexPath *indexPath = (NSIndexPath*)identifier;
+    if (indexPath.row < [_otherApps count]) {
+        OtherAppCell *cell = (OtherAppCell*) [_tableView cellForRowAtIndexPath:indexPath];
+        AppItem *item = [_otherApps objectAtIndex:indexPath.row];
+        
+        if (data.length > 0) {
+            cell.imgApp.image = [UIImage imageWithData:data];
+            item.imgIcon = [UIImage imageWithData:data];
+        }
+    }
+}
+
+-(void)downloaderFailedIndentifier:(id)indentifier
+{
+    
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (scrollView == _tableView) {
+        if (!decelerate) {
+            [self downloadImageIcon];
+        }
+    }
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    if (scrollView == _tableView) {
+        [self downloadImageIcon];
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 @end

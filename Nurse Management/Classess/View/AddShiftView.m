@@ -51,7 +51,7 @@
     
     _pageControl.currentPageIndicatorTintColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain];
     
-    int page                    = (int)[shifts count] / 10 + 1;
+    int page                    = ([shifts count] % 10 == 0) ? (int)[shifts count] / 10  : (int)[shifts count] / 10 + 1;
     _pageControl.numberOfPages  = page;
     _pageControl.currentPage    = 0;
     

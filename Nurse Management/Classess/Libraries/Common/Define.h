@@ -20,4 +20,10 @@
 #define ENTITY_SHIFT            @"CDShift"
 #define ENTITY_SHIFT_ALERT      @"CDShiftAlert"
 
+//NotifiCation
+#define DID_ADD_SCHEDULE    @"DID_ADD_SCHEDULE"
+
+//More App
+#define URL_WS_OTHER_APP    @"http://site.dashapps.info/api/?appid=AP001&offset=%d&limit=%d"
+
 #endif

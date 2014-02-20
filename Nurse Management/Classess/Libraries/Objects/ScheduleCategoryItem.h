@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CDScheduleCategory.h"
 
 @interface ScheduleCategoryItem : NSObject
 
@@ -18,6 +19,8 @@
 
 @property (nonatomic, strong)   NSString *image;
 @property (nonatomic, strong)   UIColor *textColor;
+
++ (ScheduleCategoryItem*) convertForCDObject:(CDScheduleCategory*)cdCategory;
 
 
 @end

@@ -7,7 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoreVC">
             <connections>
+                <outlet property="_indicator" destination="ixe-mO-lCE" id="P3w-FU-JDx"/>
                 <outlet property="_lbTile" destination="27i-h2-bRE" id="0xW-Qj-TCM"/>
+                <outlet property="_tableView" destination="TCs-eU-4Jk" id="oNd-Nf-2sc"/>
                 <outlet property="_viewNavi" destination="u6o-ZN-nMX" id="QMC-id-NEd"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -65,6 +67,18 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
+                    <view key="tableFooterView" contentMode="scaleToFill" id="zaD-ni-Z5C">
+                        <rect key="frame" x="0.0" y="459.99996948242188" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" id="ixe-mO-lCE">
+                                <rect key="frame" x="151" y="11" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="f5H-46-ZUv"/>
                         <outlet property="delegate" destination="-1" id="Xne-Tv-WDa"/>
