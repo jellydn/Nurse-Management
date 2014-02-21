@@ -310,7 +310,7 @@
 }
 
 - (IBAction)chooseTime:(id)sender {
-    
+    NSLog(@"chon thoi gian");
     if ([sender tag] == START_TIME)
         [_timePickerView.datePicker setDate:_startTime?_startTime:[NSDate date] animated:NO];
     else if ([sender tag] == END_TIME)

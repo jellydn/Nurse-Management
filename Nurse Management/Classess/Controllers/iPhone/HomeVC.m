@@ -919,7 +919,9 @@
 }
 
 - (IBAction)addSchedule:(id)sender {
+    
     AddScheduleVC *vc                  = [[AddScheduleVC alloc] init];
+    vc.selectDate = _selectDate;
     FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
     
     [self.navigationController presentViewController:navi animated:YES completion:^{

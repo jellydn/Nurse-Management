@@ -97,7 +97,7 @@
     UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
     aCell.accessoryView = switchView;
     switchView.tag = indexPath.row;
-    
+    NSLog(@"trang thai %d", scheduleCategory.isDefault);
     if (scheduleCategory.isEnable)
         [switchView setOn:YES animated:NO];
     else
@@ -266,7 +266,7 @@
     }
     scheduleCategory.name = name;
     scheduleCategory.color = color;
-    scheduleCategory.isDefault = YES;
+    scheduleCategory.isDefault = NO;
     scheduleCategory.isEnable = YES;
     [[AppDelegate shared] saveContext];
     
