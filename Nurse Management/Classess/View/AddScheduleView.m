@@ -71,6 +71,9 @@
         _lbTimeStart.text   = [Common convertTimeToStringWithFormat:@"HH:mm" date:_dateTimeStart];
         _lbTimeEnd.text     = [Common convertTimeToStringWithFormat:@"HH:mm" date:_dateTimeEnd];
         
+        _btStartTime.enabled    = YES;
+        _btEndTime.enabled      = YES;
+        
         if (_delegate && [_delegate respondsToSelector:@selector(didShowView:)]) {
             [_delegate didShowView:self];
         }
@@ -344,11 +347,17 @@
             _lbTimeStart.text   = (_dateTimeStart == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_dateTimeStart];
             _lbTimeEnd.text     = (_dateTimeEnd == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_dateTimeEnd];
             
+            _btStartTime.enabled    = YES;
+            _btEndTime.enabled      = YES;
+            
         } else {
             _isAllDay = YES;
             [_btAllDay setBackgroundColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorMain]];
             _lbTimeStart.text   = @"00:00";
             _lbTimeEnd.text     = @"00:00";
+            
+            _btStartTime.enabled    = NO;
+            _btEndTime.enabled      = NO;
         }
         
         return;

@@ -32,6 +32,8 @@
 @property (nonatomic, weak) IBOutlet UILabel        *lbTimeStart;
 @property (nonatomic, weak) IBOutlet UILabel        *lbTimeEnd;
 @property (nonatomic, weak) IBOutlet UIButton       *btAllDay;
+@property (nonatomic, weak) IBOutlet UIButton       *btStartTime;
+@property (nonatomic, weak) IBOutlet UIButton       *btEndTime;
 @property (nonatomic, strong)        UIView         *viewSelect;
 @property (nonatomic, strong)        ChooseTimeView *chooseTimeView;
 @property (nonatomic, weak) IBOutlet UIDatePicker   *datePicker;
