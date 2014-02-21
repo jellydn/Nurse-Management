@@ -242,6 +242,10 @@
     _viewSelect.frame   = rect;
     
     _scheduleCategoryID = button.tag - 100;
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(didSelectCategory:categoryID:)]) {
+        [_delegate didSelectCategory:self categoryID:_scheduleCategoryID];
+    }
 }
 
 - (IBAction)selectCategory:(id)sender

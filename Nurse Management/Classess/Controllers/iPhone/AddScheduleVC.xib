@@ -10,6 +10,9 @@
                 <outlet property="EndTime" destination="5QQ-hx-Qdt" id="mO8-St-7uM"/>
                 <outlet property="beginTime" destination="DyP-vU-z75" id="0u5-1v-O8L"/>
                 <outlet property="bgReview" destination="Fh4-la-4he" id="xh9-gb-7Zs"/>
+                <outlet property="btEndTime" destination="Dpu-VG-HfQ" id="WU6-9y-S1e"/>
+                <outlet property="btIsAllTime" destination="3xe-MO-d68" id="SOC-kA-43U"/>
+                <outlet property="btStarTime" destination="5Gx-yb-imP" id="Pwo-RH-cth"/>
                 <outlet property="lbName" destination="eT3-yr-6ix" id="vnW-rh-9mY"/>
                 <outlet property="reviewName" destination="VjB-j0-Keg" id="PW2-G3-DUb"/>
                 <outlet property="textViewContent" destination="gYj-h8-RZc" id="vsR-9S-uEc"/>
@@ -59,6 +62,9 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="saveData:" destination="-1" eventType="touchUpInside" id="xWX-22-eUv"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -89,7 +95,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OZi-Y6-Q2c">
-                    <rect key="frame" x="20" y="403" width="278" height="33"/>
+                    <rect key="frame" x="22" y="520" width="278" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                     <color key="backgroundColor" red="0.84705882352941175" green="0.8784313725490196" blue="0.8666666666666667" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -99,7 +105,7 @@
                     </state>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="gYj-h8-RZc">
-                    <rect key="frame" x="20" y="302" width="278" height="86"/>
+                    <rect key="frame" x="20" y="309" width="278" height="86"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -112,7 +118,7 @@
                     <rect key="frame" x="10" y="122" width="232" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3xe-MO-d68">
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3xe-MO-d68">
                     <rect key="frame" x="250" y="123" width="50" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.84705882349999995" green="0.87843137250000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -123,6 +129,7 @@
                     </state>
                     <connections>
                         <action selector="btAllTime:" destination="-1" eventType="touchUpInside" id="oSm-o6-eCZ"/>
+                        <action selector="chooseTime:" destination="-1" eventType="touchUpInside" id="eCf-tz-6xs"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_writer_content_add_sc.png" id="Zrh-84-mEs">
@@ -173,6 +180,28 @@
                     <color key="textColor" red="0.4823529412" green="0.37254901959999998" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5Gx-yb-imP">
+                    <rect key="frame" x="22" y="125" width="98" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="chooseTime:" destination="-1" eventType="touchUpInside" id="LTJ-ON-4Zb"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dpu-VG-HfQ">
+                    <rect key="frame" x="138" y="126" width="94" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="chooseTime:" destination="-1" eventType="touchUpInside" id="zqf-WV-rcx"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.9882352941176471" green="0.95294117647058818" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

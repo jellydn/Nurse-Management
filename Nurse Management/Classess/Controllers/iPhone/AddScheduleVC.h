@@ -19,5 +19,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *beginTime;
 @property (weak, nonatomic) IBOutlet UILabel *EndTime;
 - (IBAction)cancel:(id)sender;
-
+- (IBAction)saveData:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btStarTime;
+@property (weak, nonatomic) IBOutlet UIButton *btEndTime;
+@property (weak, nonatomic) IBOutlet UIButton *btIsAllTime;
+@property (nonatomic, strong) NSMutableArray *arrayTimeAlerts;
+@property (nonatomic) BOOL isAllDay;
+@property (nonatomic, strong) NSDate *selectDate;
+@property (nonatomic) BOOL isSetTimeStart;
 @end
