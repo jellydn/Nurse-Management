@@ -483,7 +483,7 @@ static __weak AppDelegate *shared = nil;
     schedule.id                     = [self lastScheduleID] + 1;
     schedule.scheduleCategoryId     = [[info objectForKey:@"schedule_category_id"] integerValue];
     schedule.isAllDay               = [[info objectForKey:@"is_all_day"] isEqualToString:@"1"] ? YES : NO;
-    schedule.memo                   = @"";
+    schedule.memo                   = [info objectForKey:@"memo"];
     
     NSDate *onDate                  = [info objectForKey:@"select_date"];
     schedule.onDate                 = [onDate timeIntervalSince1970];
@@ -518,6 +518,57 @@ static __weak AppDelegate *shared = nil;
     //post notification
     [[NSNotificationCenter defaultCenter] postNotificationName:DID_ADD_SCHEDULE object:nil userInfo:nil];
     
+}
+
+- (void) editScheduleWithInfo:(NSDictionary*)info scheduleID:(int)scheduleID
+{
+    CDSchedule *schedule = [self getScheduleByID:scheduleID];
+    
+    if (schedule) {
+        
+        schedule.scheduleCategoryId     = [[info objectForKey:@"schedule_category_id"] integerValue];
+        schedule.isAllDay               = [[info objectForKey:@"is_all_day"] isEqualToString:@"1"] ? YES : NO;
+        schedule.memo                   = [info objectForKey:@"memo"];
+        
+        NSDate *onDate                  = [info objectForKey:@"select_date"];
+        schedule.onDate                 = [onDate timeIntervalSince1970];
+        
+        NSDate *timeEndDate             = [info objectForKey:@"end_time"];
+        schedule.timeEnd                = [timeEndDate timeIntervalSince1970];
+        
+        NSDate *timeStartDate           = [info objectForKey:@"start_time"];
+        schedule.timeStart              = [timeStartDate timeIntervalSince1970];
+        
+        schedule.fk_schedule_category   = [self getScheduleCategoryWithID:[[info objectForKey:@"schedule_category_id"] integerValue]];
+        
+        //remove old alert for schedule
+        for (CDScheduleAlert *alert in schedule.pk_schedule) {
+            [self.managedObjectContext deleteObject:alert];
+        }
+        
+        // add new alert
+        if ([[info objectForKey:@"array_alert"] isKindOfClass:[NSArray class]]) {
+            int alertID = [self lastScheduleAlertID];
+            alertID++;
+            for (NSDate *date in [info objectForKey:@"array_alert"]) {
+                
+                CDScheduleAlert *alert  = (CDScheduleAlert*) [NSEntityDescription insertNewObjectForEntityForName:@"CDScheduleAlert"
+                                                                                           inManagedObjectContext:self.managedObjectContext];
+                alert.id                = alertID;
+                alert.onTime            = [date timeIntervalSince1970];
+                alert.scheduleId        = schedule.id;
+                
+                alert.fk_alert_schedule = schedule;
+                
+            }
+        }
+        
+        [self saveContext];
+        
+        //post notification
+        [[NSNotificationCenter defaultCenter] postNotificationName:DID_ADD_SCHEDULE object:nil userInfo:nil];
+        
+    }
 }
 
 - (int) lastScheduleID

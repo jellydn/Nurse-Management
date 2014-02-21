@@ -800,6 +800,14 @@
     if (indexPath.section == 1) {
         ScheduleItem *item = [_scheduleOnDate objectAtIndex:indexPath.row];
         NSLog(@"schedule ID: %d",item.scheduleID);
+        AddScheduleVC *vc                  = [[AddScheduleVC alloc] init];
+        vc.selectDate = _selectDate;
+        vc.scheduleEditItem = item;
+        FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
+        
+        [self.navigationController presentViewController:navi animated:YES completion:^{
+            
+        }];
     }
 }
 
@@ -913,7 +921,9 @@
 }
 
 - (IBAction)addSchedule:(id)sender {
+    
     AddScheduleVC *vc                  = [[AddScheduleVC alloc] init];
+    vc.selectDate = _selectDate;
     FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
     
     [self.navigationController presentViewController:navi animated:YES completion:^{

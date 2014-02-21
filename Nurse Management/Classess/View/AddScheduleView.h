@@ -35,6 +35,7 @@
 @property (nonatomic, strong)        UIView         *viewSelect;
 @property (nonatomic, strong)        ChooseTimeView *chooseTimeView;
 @property (nonatomic, weak) IBOutlet UIDatePicker   *datePicker;
+@property (nonatomic, weak) IBOutlet UIView         *viewScheduleCategoryTitle;
 
 @property (nonatomic, weak) id<AddScheduleViewDelegate> delegate;
 
@@ -70,5 +71,6 @@
 - (void) didHideView:(AddScheduleView*)addScheduleView;
 
 - (void) didChoiceTime:(AddScheduleView*)addScheduleView;
+- (void) didSelectCategory:(AddScheduleView*)addScheduleView categoryID:(int)categoryID;
 
 @end

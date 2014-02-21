@@ -142,7 +142,7 @@
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     _lbTile.text = @"カテゴリー名編集";
-    if (_scheduleCategory.isDefault && _insertId != 0) {
+    if (!_scheduleCategory.isDefault && _insertId != 0) {
         _btDelete.hidden = NO;
     }else{
         _btDelete.hidden = YES;

@@ -180,7 +180,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="LvO-X1-W4O">
-                    <rect key="frame" x="0.0" y="368" width="320" height="200"/>
+                    <rect key="frame" x="320" y="368" width="320" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="PqO-Ry-c9R">
@@ -258,6 +258,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <outlet property="scrollScheduleView" destination="MyD-Nb-VqG" id="woE-wR-B9t"/>
                 <outlet property="viewContainer" destination="7o1-5R-y1x" id="3bb-AW-AhJ"/>
                 <outlet property="viewMask" destination="iPc-Ux-pIK" id="QN8-Oj-vp6"/>
+                <outlet property="viewScheduleCategoryTitle" destination="7ox-KS-zLv" id="io9-yp-Fac"/>
                 <outlet property="viewTime" destination="eNm-qO-4GR" id="H3r-gZ-7Qf"/>
                 <outlet property="viewTimePicker" destination="LvO-X1-W4O" id="P7K-nY-hBe"/>
             </connections>
