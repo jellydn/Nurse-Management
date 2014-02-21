@@ -386,6 +386,8 @@
     [_calendarView initCalendar];
     
     [self.view addSubview:_calendarView];
+    
+    [_calendarView reloadViewisFull:YES];
 }
 
 - (void)loadHomeNaivBar
@@ -676,8 +678,7 @@
                          month:[FXCalendarData getMonthWithDate:date]
                           year:[FXCalendarData getYearWithDate:date]];
     self.selectDate = date;
-    [_tableView setContentOffset:CGPointMake(0, 0) animated:YES];
-    [_tableView reloadData];
+    [self resetLayoutTableWithAnimate:YES];
 }
 
 - (void) fXCalendarView:(FXCalendarView*)fXCalendarView didSelectNextDay:(NSDate*)date
@@ -687,6 +688,11 @@
                           year:[FXCalendarData getYearWithDate:date]];
     self.selectDate = date;
     [self resetLayoutTableWithAnimate:YES];
+}
+
+- (void) fxcalendarView:(FXCalendarView*)fXCalendarView didFull:(BOOL)isFull
+{
+     _tableView.hidden   = isFull;
 }
 
 #pragma mark - Table view

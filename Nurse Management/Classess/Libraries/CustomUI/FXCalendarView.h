@@ -27,6 +27,7 @@
 - (void) setNextSelectDate;
 
 - (void) reloadData;
+- (void) reloadViewisFull:(BOOL)isFull;
 
 @end
 
@@ -35,5 +36,6 @@
 - (void) fXCalendarView:(FXCalendarView*)fXCalendarView didChangeMonthWithFirstDay:(NSDate*)date;
 - (void) fXCalendarView:(FXCalendarView*)fXCalendarView didSelectDay:(NSDate*)date;
 - (void) fXCalendarView:(FXCalendarView*)fXCalendarView didSelectNextDay:(NSDate*)date;
+- (void) fxcalendarView:(FXCalendarView*)fXCalendarView didFull:(BOOL)isFull;
 
 @end
