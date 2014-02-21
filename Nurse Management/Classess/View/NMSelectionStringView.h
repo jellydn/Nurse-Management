@@ -14,9 +14,12 @@
 
 @property (nonatomic, strong) id <NMSelectionStringViewDelegate> delegate;
 
-- (void)setArrayString:(NSArray *)arrString;
+//- (void)setArrayString:(NSArray *)arrString;
 - (void)setArrayCDMember:(NSMutableArray *)arrayCDMember;
 - (void)setColorForSelectionString:(UIColor *)color;
+
+- (void)reloadArrayCDMember:(NSMutableArray *)arrayCDMember selected:(NSMutableArray *)arraySelectedCDMember;
+- (void)resetSelectionStringView;
 
 @end
 

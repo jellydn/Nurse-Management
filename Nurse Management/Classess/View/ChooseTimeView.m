@@ -275,5 +275,60 @@
     }    
 }
 
+- (void)reloadDataWithArrayDate:(NSMutableArray *)arrDate andStartDate:(NSDate *)startDate
+{
+    for (int i = 0; i < NUMBER_OF_ITEM; i++) {
+        //change UI
+        UIView *view   = [self viewWithTag:i+TAG_VIEW];
+        view.backgroundColor = DEFAULT_BACKGROUND_COLOR;
+        UILabel *label = (UILabel *)[view viewWithTag:i+TAG_LABEL];
+        label.textColor      = DEFAULT_TEXT_COLOR;
+        [_dicValueSelect setObject:[NSString stringWithFormat:@"%d",0] forKey:[NSString stringWithFormat:@"%d",i+KEY_DEFAULT]];
+        
+        
+        for (int j = 0; j < arrDate.count; j++) {
+            
+            int indexSelect = [self indexOfNumberSellectedWithDate:arrDate[j] andStartDate:startDate];
+            if (indexSelect == i) {
+                //change UI
+                UIView *view   = [self viewWithTag:i+TAG_VIEW];
+                view.backgroundColor = SELECTED_BACKGROUND_COLOR;
+                UILabel *label = (UILabel *)[view viewWithTag:i+TAG_LABEL];
+                label.textColor      = [UIColor whiteColor];
+                
+                [_dicValueSelect setObject:[NSString stringWithFormat:@"%d",1] forKey:[NSString stringWithFormat:@"%d",i+KEY_DEFAULT]];
+                break;
+            }
+            
+            if (indexSelect == 5) {
+                _dateChooseTime = arrDate[j];
+            }
+        }
+        
+    }
+    _numberOfItemSelected = arrDate.count;
+}
+
+- (NSInteger)indexOfNumberSellectedWithDate:(NSDate *)dateSellected andStartDate:(NSDate *)startDate
+{
+    if ([dateSellected timeIntervalSince1970] == [startDate timeIntervalSince1970]) {
+        
+        return 0;
+    }else if ([dateSellected timeIntervalSince1970] + 15*60 == [startDate timeIntervalSince1970]) {
+        
+        return 1;
+    }if ([dateSellected timeIntervalSince1970] + 30*60 == [startDate timeIntervalSince1970]) {
+        
+        return 2;
+    }if ([dateSellected timeIntervalSince1970] + 60*60 == [startDate timeIntervalSince1970]) {
+        
+        return 3;
+    }if ([dateSellected timeIntervalSince1970] + 120*60 == [startDate timeIntervalSince1970]) {
+        
+        return 4;
+    }
+    
+    return 5;
+}
 
 @end

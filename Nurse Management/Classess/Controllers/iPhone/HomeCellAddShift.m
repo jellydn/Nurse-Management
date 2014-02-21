@@ -59,13 +59,36 @@
         
         _btEdit.tag = shift.id;
         
-        ShiftCategoryItem *shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
-        if (shiftCategory.isAllDay) {
-            _lbTime.text = [NSString stringWithFormat:@"00:00～24:00"];
-        } else {
-            _lbTime.text = [NSString stringWithFormat:@"%@～%@",shiftCategory.strTimeStart, shiftCategory.strTimeEnd];
-        }
+//        ShiftCategoryItem *shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
+//        if (shiftCategory.isAllDay) {
+//            _lbTime.text = [NSString stringWithFormat:@"00:00～24:00"];
+//        } else {
+//            _lbTime.text = [NSString stringWithFormat:@"%@～%@",shiftCategory.strTimeStart, shiftCategory.strTimeEnd];
+//        }
         
+//        if (shift.isAllDay) {
+//            _lbTime.text = [NSString stringWithFormat:@"00:00～24:00"];
+//        } else {
+//            _lbTime.text = [NSString stringWithFormat:@"%f～%f",shift.timeStart, shift.timeEnd];
+//        }
+        
+        NSDate *startDate = [NSDate dateWithTimeIntervalSince1970:shift.timeStart];
+        NSDate *endDate = [NSDate dateWithTimeIntervalSince1970:shift.timeEnd];
+        
+//        NSInteger startDay = [FXCalendarData getDayWithDate:startDate];
+        NSInteger endHour = [FXCalendarData getHourWithDate:endDate];
+        
+        NSString *strStartTime = [Common convertTimeToStringWithFormat:@"HH:mm" date:startDate];
+        NSString *strEndTime = (endHour == 0) ? @"24:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:endDate] ;
+        
+//        if (startDay != endDay)
+//            strStartTime = @"00:00";
+        
+//        NSString *strStartTime   = [Common convertTimeToStringWithFormat:@"HH:mm" date:startDate];
+        
+        _lbTime.text = [NSString stringWithFormat:@"%@～%@", strStartTime, strEndTime];
+        
+        ShiftCategoryItem *shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
         _imgCategory.image          = [UIImage imageNamed:shiftCategory.image];
         _lbCategoryName.text        = shiftCategory.name;
         _lbCategoryName.textColor   = shiftCategory.textColor;

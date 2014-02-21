@@ -106,17 +106,29 @@
 - (UIView *)viewWithPoint:(CGPoint)point andIndex:(NSInteger)index
 {
     NSMutableDictionary *dic = _arrayStringForText[index];
+    int statusButton = [dic[[NSString stringWithFormat:@"%d",index+KEY_STATUS]] intValue];
     //init view
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(point.x, point.y, WIDTH_ITEM, HEIGHT_ITEM)];
     view.tag = index+TAG_VIEW;
-    view.backgroundColor = DEFAULT_BACKGROUND_COLOR;
+    if (statusButton == 1) {
+        view.backgroundColor = SELECTED_BACKGROUND_COLOR;
+    }else {
+        view.backgroundColor = DEFAULT_BACKGROUND_COLOR;
+    }
+    
     //init label
     UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, WIDTH_ITEM, HEIGHT_ITEM)];
     lable.tag = index+TAG_LABEL;
     lable.text = dic[[NSString stringWithFormat:@"%d",index+KEY_VALUE]];
     lable.numberOfLines = 2;
     lable.font = [UIFont fontWithName:@"Helvetica Neue" size:11];
-    lable.textColor = DEFAULT_TEXT_COLOR;
+    
+    if (statusButton == 1) {
+        lable.textColor = [UIColor whiteColor];
+    }else {
+        lable.textColor = DEFAULT_TEXT_COLOR;
+    }
+    
     lable.textAlignment = NSTextAlignmentCenter;
     lable.backgroundColor = [UIColor clearColor];
     //init button
@@ -247,5 +259,61 @@
     //set delegate
     [self callReturnDataWithIndex:tapIndex];
 }
+
+- (void)reloadArrayCDMember:(NSMutableArray *)arrayCDMember selected:(NSMutableArray *)arraySelectedCDMember
+{
+    _isSetArrayString = NO;
+    _arrMember = arrayCDMember;
+    
+    if (_arrayStringForText.count) {
+        _arrayStringForText = nil;
+    }
+    _arrayStringForText = [NSMutableArray array];
+    for (int i = 0; i < arrayCDMember.count; i++) {
+        CDMember *member = _arrMember[i];
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic setObject:member.name forKey:[NSString stringWithFormat:@"%d",i+KEY_VALUE]];
+        [dic setObject:@"0" forKey:[NSString stringWithFormat:@"%d",i+KEY_STATUS]];
+        //change UI
+        UIView *view   = [_scrollView viewWithTag:i+TAG_VIEW];
+        view.backgroundColor = DEFAULT_BACKGROUND_COLOR;
+        UILabel *label = (UILabel *)[view viewWithTag:i+TAG_LABEL];
+        label.textColor      = DEFAULT_TEXT_COLOR;
+        
+        
+        for (int j = 0; j < arraySelectedCDMember.count; j++) {
+            
+            if (member.id == [arraySelectedCDMember[j] id]) {
+                
+                //change UI
+                UIView *view   = [_scrollView viewWithTag:i+TAG_VIEW];
+                view.backgroundColor = SELECTED_BACKGROUND_COLOR;
+                UILabel *label = (UILabel *)[view viewWithTag:i+TAG_LABEL];
+                label.textColor      = [UIColor whiteColor];
+                
+                [dic setObject:@"1" forKey:[NSString stringWithFormat:@"%d",i+KEY_STATUS]];
+            }
+        }
+        
+        
+        [_arrayStringForText addObject:dic];
+    }
+}
+
+- (void)resetSelectionStringView
+{
+    for (int i = 0; i < _arrayStringForText.count; i++) {
+        
+        //set value
+        NSMutableDictionary *dic = _arrayStringForText[i];
+        [dic setObject:@"0" forKey:[NSString stringWithFormat:@"%d",i+KEY_STATUS]];
+        //change UI
+        UIView *view   = [_scrollView viewWithTag:i+TAG_VIEW];
+        view.backgroundColor = DEFAULT_BACKGROUND_COLOR;
+        UILabel *label = (UILabel *)[view viewWithTag:i+TAG_LABEL];
+        label.textColor      = DEFAULT_TEXT_COLOR;
+    }
+}
+
 
 @end
