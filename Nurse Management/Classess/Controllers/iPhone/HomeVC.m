@@ -519,8 +519,12 @@
         }
         case 1:
         {
-            [_addScheduleView loadScheduleCategoryInfo:[self convertScheduleCategory] selectDate:_selectDate];
-            [_addScheduleView show];
+            if (!_isShowAddScheduleView) {
+                _isShowAddScheduleView = YES;
+                [_addScheduleView loadScheduleCategoryInfo:[self convertScheduleCategory] selectDate:_selectDate];
+                [_addScheduleView show];
+            }
+           
             break;
         }
         case 2:
@@ -568,6 +572,7 @@
         return;
     }
     
+    _isShowAddShiftView = YES;
     [_addShiftView loadInfoWithShiftCategories:[self convertShiftObject]];
     
     CGRect rect = _addShiftView.frame;
@@ -589,6 +594,7 @@
         return;
     }
     
+    _isShowAddShiftView = NO;
     CGRect rect     = _addShiftView.frame;
     rect.origin.y   += _addShiftView.frame.size.height;
     
