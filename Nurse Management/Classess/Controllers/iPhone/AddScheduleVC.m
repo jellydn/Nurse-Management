@@ -73,6 +73,46 @@
         _bgReview.image = [UIImage imageNamed:item.image];
         
     }
+    
+    [self setDataEdit];
+}
+-(void) setDataEdit
+{
+    if (_scheduleEditItem) {
+        _btDelete.hidden = NO;
+        _getIDScheduleCategory = _scheduleEditItem.scheduleCategoryId;
+        
+        _lbName.text     = _scheduleEditItem.category.name;
+        _reviewName.text = _scheduleEditItem.category.name;
+        _bgReview.image = [UIImage imageNamed:_scheduleEditItem.category.image];
+        
+        
+        _startTime = _scheduleEditItem.timeStart;
+        _endTime = _scheduleEditItem.timeEnd;
+
+        if (!_scheduleEditItem.isAllDay) {
+            _isAllDay = NO;
+            [_btIsAllTime setBackgroundColor:[UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]];
+            _beginTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+            _EndTime.text     = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+            _btEndTime.enabled = YES;
+            _btStarTime.enabled = YES;
+            
+        } else {
+            _isAllDay = YES;
+            [_btIsAllTime setBackgroundColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorMain]];
+            _beginTime.text   = @"00:00";
+            _EndTime.text     = @"00:00";
+            _btEndTime.enabled = NO;
+            _btStarTime.enabled = NO;
+        }
+        
+        _textViewContent.text = _scheduleEditItem.memo;
+        
+        
+    }else{
+        _btDelete.hidden = YES;
+    }
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -150,7 +190,12 @@
                         _textViewContent.text];
     
     NSDictionary *info = [NSDictionary dictionaryWithObjects:values forKeys:keys];
-    [[AppDelegate shared] addQuickScheduleWithInfo:info];
+    
+    if (_scheduleEditItem) {
+        [[AppDelegate shared] editScheduleWithInfo:info scheduleID:_scheduleEditItem.scheduleID];
+    }else{
+        [[AppDelegate shared] addQuickScheduleWithInfo:info];
+    }
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         
     }];
@@ -197,7 +242,7 @@
             
             if (_startTime) {
                 _timePickerView.datePicker.minimumDate = nil;
-                // _timePickerView.maximumDate = _endTime;
+                _timePickerView.datePicker.maximumDate = _endTime;
             }
             
             
@@ -208,10 +253,9 @@
             _isSetTimeStart = NO;
             
             if (_endTime) {
-                //    _timePickerView.minimumDate = _startTime;
-                //  _timePickerView.maximumDate = nil;
+                _timePickerView.datePicker.minimumDate = _startTime;
+                _timePickerView.datePicker.maximumDate = nil;
             }
-            
         }
         
         _timePickerView.datePicker.tag = [sender tag];
@@ -224,17 +268,22 @@
 
 - (void) datePicker:(NMTimePickerView *)picker dismissWithButtonDone:(BOOL)done {
     
-    if (picker.datePicker.tag == START_TIME) {
+    if (!done) {
         
-        _startTime = picker.datePicker.date;
-        _beginTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
-        
-    } else if (picker.datePicker.tag == END_TIME) {
-        
-        _endTime = picker.datePicker.date;
-        _EndTime.text     = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
-        
+    }else{
+        if (picker.datePicker.tag == START_TIME) {
+            
+            _startTime = picker.datePicker.date;
+            _beginTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+            
+        } else if (picker.datePicker.tag == END_TIME) {
+            
+            _endTime = picker.datePicker.date;
+            _EndTime.text     = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+            
+        }
     }
+    
     
 }
 
@@ -376,10 +425,16 @@
         } else {
             NSLog(@"total schedule item : %d",[_fetchedResultsControllerScheduleCategory.fetchedObjects count]);
         }
-        
     }
-    
     return _fetchedResultsControllerScheduleCategory;
 }
 
+- (IBAction)delete:(id)sender {
+    CDSchedule *item = [[AppDelegate shared] getScheduleByID:_scheduleEditItem.scheduleID];
+    [[AppDelegate shared].managedObjectContext deleteObject:item];
+    [[AppDelegate shared] saveContext];
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:DID_ADD_SCHEDULE object:nil userInfo:nil];
+    }];
+}
 @end

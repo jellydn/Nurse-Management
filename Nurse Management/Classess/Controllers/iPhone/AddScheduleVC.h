@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ScheduleItem.h"
 @interface AddScheduleVC : UIViewController
 @property (strong, nonatomic) IBOutlet UIView *viewContent;
 @property (weak, nonatomic) IBOutlet UITextView *textViewContent;
@@ -22,9 +22,12 @@
 - (IBAction)saveData:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *btStarTime;
 @property (weak, nonatomic) IBOutlet UIButton *btEndTime;
+@property (weak, nonatomic) IBOutlet UIButton *btDelete;
 @property (weak, nonatomic) IBOutlet UIButton *btIsAllTime;
 @property (nonatomic, strong) NSMutableArray *arrayTimeAlerts;
 @property (nonatomic) BOOL isAllDay;
 @property (nonatomic, strong) NSDate *selectDate;
 @property (nonatomic) BOOL isSetTimeStart;
+@property (nonatomic, strong) ScheduleItem *scheduleEditItem;
+- (IBAction)delete:(id)sender;
 @end

@@ -42,6 +42,7 @@
 - (CDScheduleCategory*) getScheduleCategoryWithID:(int)categoryID;
 - (CDSchedule*) getScheduleByID:(int)scheduleID;
 - (void) addQuickScheduleWithInfo:(NSDictionary*)info;
+- (void) editScheduleWithInfo:(NSDictionary*)info scheduleID:(int)scheduleID;
 - (int) lastScheduleID;
 - (int) lastScheduleAlertID;
 - (NSMutableArray*) getSchedulesOnDate:(NSDate*)date;
