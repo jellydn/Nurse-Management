@@ -17,6 +17,7 @@
 
 #import "Common.h"
 #import "Define.h"
+#import "FXCalendarData.h"
 
 static __weak AppDelegate *shared = nil;
 
@@ -231,12 +232,6 @@ static __weak AppDelegate *shared = nil;
             NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
         } else {
             NSLog(@"appdelegate total shift : %lu", (unsigned long)[_fetchedResultsControllerShift.fetchedObjects count]);
-            for (CDShift *item in _fetchedResultsControllerShift.fetchedObjects) {
-                NSLog(@"Shift id: %d  -- name: %@ -- onDate: %@",
-                      item.id,
-                      item.name,
-                      [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:[NSDate dateWithTimeIntervalSince1970:item.onDate]]);
-            }
         }
         
     }
@@ -510,10 +505,35 @@ static __weak AppDelegate *shared = nil;
             
             alert.fk_alert_schedule = schedule;
             
+            if ([date timeIntervalSince1970] > [[NSDate date] timeIntervalSince1970]) {
+                //add Push notification local
+                UILocalNotification* localNotification          = [[UILocalNotification alloc] init];
+                
+                localNotification.fireDate                      = date;
+                localNotification.alertBody                     = [NSString stringWithFormat:@"Schedule on %@",
+                                                                   [Common convertTimeToStringWithFormat:@"MMM dd, yyyy" date:date]];
+                localNotification.applicationIconBadgeNumber    = 0;
+                localNotification.soundName                     = UILocalNotificationDefaultSoundName;
+                localNotification.userInfo                      = info;
+                
+                [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+                
+                NSLog(@"Add push notification local");
+                
+            } else {
+                NSLog(@"No add push");
+            }
+            
+            
+            
+            
         }
     }
     
     [self saveContext];
+    
+    
+    
     
     //post notification
     [[NSNotificationCenter defaultCenter] postNotificationName:DID_ADD_SCHEDULE object:nil userInfo:nil];
@@ -644,11 +664,21 @@ static __weak AppDelegate *shared = nil;
 }
 
 #pragma mark - Others
-- (void) getInfoDayWithDate:(NSDate*)date
+
+#pragma mark - Push Notification
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    // query coredata : Shift --> get info shift for date;
+    NSLog(@"Recieved Notification %@",notification);
+    //NSDictionary *info = notification.userInfo;
     
-    // query coredata : schedule --> get list schedule for date;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:APP_NAME
+                                                    message:notification.alertBody
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles: nil];
+    [alert show];
+
+    application.applicationIconBadgeNumber = 0;
 }
 
 

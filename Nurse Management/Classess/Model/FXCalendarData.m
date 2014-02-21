@@ -201,6 +201,21 @@
     return  [[self getCalendarCurrent] dateFromComponents:comp];
 }
 
++ (NSDate*) trimSecOfDateWithDate:(NSDate*)date
+{
+    NSDateComponents *comp = [[self getCalendarCurrent] components:(NSYearCalendarUnit |
+                                                                    NSMonthCalendarUnit |
+                                                                    NSDayCalendarUnit |
+                                                                    NSHourCalendarUnit |
+                                                                    NSMinuteCalendarUnit |
+                                                                    NSSecondCalendarUnit)
+                                                          fromDate:date];
+    
+    [comp setSecond:0];
+    
+    return  [[self getCalendarCurrent] dateFromComponents:comp];
+}
+
 
 #pragma mark - HOUR
 + (NSInteger) getHourWithDate:(NSDate*)date

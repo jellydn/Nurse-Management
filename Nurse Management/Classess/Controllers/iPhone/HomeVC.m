@@ -386,6 +386,8 @@
     [_calendarView initCalendar];
     
     [self.view addSubview:_calendarView];
+    
+    [_calendarView reloadViewisFull:YES];
 }
 
 - (void)loadHomeNaivBar
@@ -517,8 +519,12 @@
         }
         case 1:
         {
-            [_addScheduleView loadScheduleCategoryInfo:[self convertScheduleCategory] selectDate:_selectDate];
-            [_addScheduleView show];
+            if (!_isShowAddScheduleView) {
+                _isShowAddScheduleView = YES;
+                [_addScheduleView loadScheduleCategoryInfo:[self convertScheduleCategory] selectDate:_selectDate];
+                [_addScheduleView show];
+            }
+           
             break;
         }
         case 2:
@@ -566,6 +572,7 @@
         return;
     }
     
+    _isShowAddShiftView = YES;
     [_addShiftView loadInfoWithShiftCategories:[self convertShiftObject]];
     
     CGRect rect = _addShiftView.frame;
@@ -587,6 +594,7 @@
         return;
     }
     
+    _isShowAddShiftView = NO;
     CGRect rect     = _addShiftView.frame;
     rect.origin.y   += _addShiftView.frame.size.height;
     
@@ -676,8 +684,7 @@
                          month:[FXCalendarData getMonthWithDate:date]
                           year:[FXCalendarData getYearWithDate:date]];
     self.selectDate = date;
-    [_tableView setContentOffset:CGPointMake(0, 0) animated:YES];
-    [_tableView reloadData];
+    [self resetLayoutTableWithAnimate:YES];
 }
 
 - (void) fXCalendarView:(FXCalendarView*)fXCalendarView didSelectNextDay:(NSDate*)date
@@ -687,6 +694,11 @@
                           year:[FXCalendarData getYearWithDate:date]];
     self.selectDate = date;
     [self resetLayoutTableWithAnimate:YES];
+}
+
+- (void) fxcalendarView:(FXCalendarView*)fXCalendarView didFull:(BOOL)isFull
+{
+     _tableView.hidden   = isFull;
 }
 
 #pragma mark - Table view

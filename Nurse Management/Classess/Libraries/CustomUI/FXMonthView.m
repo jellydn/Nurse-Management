@@ -255,7 +255,7 @@
     
     UIButton *button = (UIButton*)sender;
     
-    if (button.tag == _indexSelect) {
+    if (button.tag == _indexSelect && !_isViewFull) {
         return;
     }
     
@@ -269,6 +269,11 @@
         }
         
         day.isSelect = YES;
+        if (_isViewFull) {
+            if (_delegate && [_delegate respondsToSelector:@selector(fxMonthViewExitViewFull:)]) {
+                [_delegate fxMonthViewExitViewFull:self];
+            }
+        }
         
         [self reloadSelectViewWith:_indexSelect newSelect:(int)button.tag];
         
@@ -591,7 +596,51 @@
         self.frame = rect;
     }
 }
-   
+
+#pragma mark - View Full
+- (void) reloadViewToViewFullWithAnimate:(BOOL)isAnimate
+{
+    if (_isViewFull) {
+        return;
+    } else {
+        _isViewFull = YES;
+    }
+    
+    for (UIView *view in self.subviews) {
+        [view removeFromSuperview];
+    }
+    
+    _indexSelect        = -1;
+    _widthCell          = self.frame.size.width / 7;
+    _heightCell         = 60;
+    
+    CGRect frame        = self.frame;
+    frame.size.height   = _heightCell*6 + 1;
+    self.frame          = frame;
+    [self initLayout];
+}
+
+- (void) reloadViewForExitViewFullWithAnimate:(BOOL)isAnimate
+{
+    if (!_isViewFull) {
+        return;
+    } else {
+        _isViewFull = NO;
+    }
+    
+    for (UIView *view in self.subviews) {
+        [view removeFromSuperview];
+    }
+    
+    _indexSelect        = -1;
+    _widthCell          = self.frame.size.width / 7;
+    _heightCell         = 50;
+    
+    CGRect frame        = self.frame;
+    frame.size.height   = _heightCell*6 + 1;
+    self.frame          = frame;
+    [self initLayout];
+}
    
    
    

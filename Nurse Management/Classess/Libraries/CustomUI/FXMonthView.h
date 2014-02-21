@@ -27,6 +27,7 @@
 @property (nonatomic) BOOL is6Week;
 @property (nonatomic) BOOL isShowSelectDay;
 @property (nonatomic) BOOL isLoadDataForCell;
+@property (nonatomic) BOOL isViewFull;
 
 @property (nonatomic) int totalDay;
 @property (nonatomic) int monthIndex;
@@ -70,10 +71,13 @@
 - (void) loadDataForDate:(NSDate*)date isSetFirstDay:(BOOL)isSet;
 - (void) loadDataForDate:(NSDate *)date setSelectDay:(NSDate*)selectDate;
 - (void) reloadHeighForWeekWithAnimate:(BOOL)isAnimate;
+- (void) reloadViewToViewFullWithAnimate:(BOOL)isAnimate;
+- (void) reloadViewForExitViewFullWithAnimate:(BOOL)isAnimate;
 
 //instance method
 - (id)initWithWidth:(float)width;
 
+//Action
 - (IBAction)selectDay:(id)sender;
 
 @end
@@ -81,6 +85,7 @@
 @protocol FXMonthViewDelegate <NSObject>
 
 - (void) fxMonthView:(FXMonthView*) fxMonthView didSelectDayWith:(FXDay*)day;
+- (void) fxMonthViewExitViewFull:(FXMonthView *)fxMonthView;
 
 @end
 

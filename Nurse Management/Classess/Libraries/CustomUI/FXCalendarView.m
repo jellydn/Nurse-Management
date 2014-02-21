@@ -54,6 +54,11 @@
     [_monthView3 reloadHeighForWeekWithAnimate:NO];
     
     [_scrollView setContentOffset:CGPointMake(320, 0)];
+    
+    UISwipeGestureRecognizer* swipeUpGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                                   action:@selector(handleSwipeDownFrom:)];
+    swipeUpGestureRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
+    [self addGestureRecognizer:swipeUpGestureRecognizer];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -200,8 +205,57 @@
         _selectDate = day.date;
         [_delegate fXCalendarView:self didSelectDay:day.date];
     }
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(fxcalendarView:didFull:)]) {
+        [_delegate fxcalendarView:self didFull:_monthView2.isViewFull];
+    }
 }
 
+- (void) fxMonthViewExitViewFull:(FXMonthView *)fxMonthView
+{
+    [self reloadViewisFull:NO];
+}
+
+#pragma mark - Swipe
+- (void)handleSwipeDownFrom:(UIGestureRecognizer*)recognizer {
+    [self reloadViewisFull:YES];
+}
+
+- (void) reloadViewisFull:(BOOL)isFull
+{
+    if (isFull) {
+        [_monthView1 reloadViewToViewFullWithAnimate:NO];
+        [_monthView2 reloadViewToViewFullWithAnimate:YES];
+        [_monthView3 reloadViewToViewFullWithAnimate:NO];
+        
+        CGRect rect = self.frame;
+        rect.size.height = 381;
+        self.frame = rect;
+        
+        
+        if (_delegate && [_delegate respondsToSelector:@selector(fxcalendarView:didFull:)]) {
+            [_delegate fxcalendarView:self didFull:YES];
+        }
+    } else {
+        [_monthView1 reloadViewForExitViewFullWithAnimate:NO];
+        [_monthView2 reloadViewForExitViewFullWithAnimate:YES];
+        [_monthView3 reloadViewForExitViewFullWithAnimate:NO];
+        
+        CGRect rect = self.frame;
+        rect.size.height = 321;
+        self.frame = rect;
+        [_scrollView setContentSize:CGSizeMake(320 * 3, 301)];
+    }
+    
+    [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:_selectDate] isSetFirstDay:NO];
+    [_monthView1 reloadHeighForWeekWithAnimate:NO];
+    
+    [_monthView2 loadDataForDate:_selectDate setSelectDay:_selectDate];
+    [_monthView2 reloadHeighForWeekWithAnimate:YES];
+    
+    [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:_selectDate] isSetFirstDay:NO];
+    [_monthView3 reloadHeighForWeekWithAnimate:NO];
+}
 
 
 

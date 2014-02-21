@@ -75,8 +75,16 @@
             _lbMember.text = @"0 members";
         } else {
             _lbMember.text = @"";
+            int count = 0;
             for (CDMember *item in shift.pk_shift) {
-                _lbMember.text = [_lbMember.text stringByAppendingFormat:@"%@,",item.name];
+                
+                if (count == [shift.pk_shift count] - 1) {
+                    _lbMember.text = [_lbMember.text stringByAppendingFormat:@"%@",item.name];
+                } else {
+                    _lbMember.text = [_lbMember.text stringByAppendingFormat:@"%@, ",item.name];
+                }
+        
+                count++;
             }
         }
         

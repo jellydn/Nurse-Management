@@ -180,7 +180,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="LvO-X1-W4O">
-                    <rect key="frame" x="320" y="368" width="320" height="200"/>
+                    <rect key="frame" x="0.0" y="368" width="320" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="PqO-Ry-c9R">
@@ -251,6 +251,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="btAllDay" destination="8y7-Zx-HiO" id="7zR-Nx-sgv"/>
+                <outlet property="btEndTime" destination="IJz-U4-O1c" id="e0L-Wo-MBY"/>
+                <outlet property="btStartTime" destination="YyB-zu-ybG" id="VGY-ad-SuP"/>
                 <outlet property="datePicker" destination="2xr-IT-NrG" id="6ah-GA-qmf"/>
                 <outlet property="lbTimeEnd" destination="kpt-th-c1m" id="9LB-UP-F5C"/>
                 <outlet property="lbTimeStart" destination="uO7-Jh-Efg" id="Fs3-gM-8U5"/>

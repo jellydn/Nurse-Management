@@ -39,8 +39,7 @@
     _isCurrent  = (([FXCalendarData getDayWithDate:[NSDate date]] == _dayIndex) &&
                    ([FXCalendarData getMonthWithDate:[NSDate date]] == _monthIndex) &&
                    ([FXCalendarData getYearWithDate:[NSDate date]] == _yearIndex)) ? YES : NO;
-    
-    [[AppDelegate shared] getInfoDayWithDate:date];
+
 }
 
 #pragma mark - Setter
