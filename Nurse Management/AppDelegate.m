@@ -17,6 +17,7 @@
 
 #import "Common.h"
 #import "Define.h"
+#import "FXCalendarData.h"
 
 static __weak AppDelegate *shared = nil;
 
@@ -510,10 +511,35 @@ static __weak AppDelegate *shared = nil;
             
             alert.fk_alert_schedule = schedule;
             
+            if ([date timeIntervalSince1970] > [[NSDate date] timeIntervalSince1970]) {
+                //add Push notification local
+                UILocalNotification* localNotification          = [[UILocalNotification alloc] init];
+                
+                localNotification.fireDate                      = date;
+                localNotification.alertBody                     = [NSString stringWithFormat:@"Schedule on %@",
+                                                                   [Common convertTimeToStringWithFormat:@"MMM dd, yyyy" date:date]];
+                localNotification.applicationIconBadgeNumber    = 0;
+                localNotification.soundName                     = UILocalNotificationDefaultSoundName;
+                localNotification.userInfo                      = info;
+                
+                [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+                
+                NSLog(@"Add push notification local");
+                
+            } else {
+                NSLog(@"No add push");
+            }
+            
+            
+            
+            
         }
     }
     
     [self saveContext];
+    
+    
+    
     
     //post notification
     [[NSNotificationCenter defaultCenter] postNotificationName:DID_ADD_SCHEDULE object:nil userInfo:nil];
@@ -598,6 +624,22 @@ static __weak AppDelegate *shared = nil;
     // query coredata : Shift --> get info shift for date;
     
     // query coredata : schedule --> get list schedule for date;
+}
+
+#pragma mark - Push Notification
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    NSLog(@"Recieved Notification %@",notification);
+    //NSDictionary *info = notification.userInfo;
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:APP_NAME
+                                                    message:notification.alertBody
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles: nil];
+    [alert show];
+
+    application.applicationIconBadgeNumber = 0;
 }
 
 

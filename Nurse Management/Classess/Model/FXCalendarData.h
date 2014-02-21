@@ -45,6 +45,7 @@
 + (NSDate*) saturdayOfWeek:(NSDate*)date;
 + (NSDate*) dateNexHourFormDate:(NSDate*)date;
 + (NSDate*) dateWithSetHourWithHour:(NSInteger)hour date:(NSDate*)date;
++ (NSDate*) trimSecOfDateWithDate:(NSDate*)date;
 
 // Hour
 + (NSInteger) getHourWithDate:(NSDate*)date;
