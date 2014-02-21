@@ -20,6 +20,8 @@
 
 - (void)resetChooseTimeView;
 
+- (void)reloadDataWithArrayDate:(NSMutableArray *)arrDate andStartDate:(NSDate *)startDate;
+
 @end
 
 @protocol ChooseTimeViewDelegate <NSObject>

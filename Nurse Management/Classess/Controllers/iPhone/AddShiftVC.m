@@ -42,6 +42,7 @@
     __weak IBOutlet UIButton *_btnEndTime;
     __weak IBOutlet UIButton *_btnSave;
     __weak IBOutlet UIButton *_btnSaveAndNext;
+    __weak IBOutlet UIButton *_btnAllDay;
     __weak IBOutlet UILabel *_lblStartTime;
     __weak IBOutlet UILabel *_lblEndTime;
     __weak IBOutlet UILabel *_lblShiftCategoryName;
@@ -52,7 +53,7 @@
     NSDate *_startTime;
     NSDate *_endTime;
     NSArray *_arrMember;
-    NSArray *_arrAlerts;
+    NSMutableArray *_arrAlerts;
     
     BOOL _isShowAddShiftView;
     BOOL _isAllDay;
@@ -78,6 +79,7 @@
 - (void)keyboardWillShow:(NSNotification *)notification;
 - (void)keyboardWillHide:(NSNotification *)notification;
 
+//FIXME: Home - 1 alert
 
 @end
 
@@ -111,7 +113,6 @@
     [super viewDidLoad];
     [self configView];
     
-    // set tag for time buttons
     _btnStartTime.tag = START_TIME;
     _btnEndTime.tag = END_TIME;
     
@@ -288,44 +289,10 @@
 }
 
 - (IBAction)chooseTimeMode:(id)sender {
-    UIButton *btnAllDay = (UIButton *)sender;
     
-    if ([btnAllDay tag] == 1) {
-        
-        _isAllDay = YES;
-        btnAllDay.tag = 2;
-        btnAllDay.backgroundColor = ALERT_BG_COLOR;
-        
-        _lblStartTime.enabled = NO;
-        _lblStartTime.textColor = [UIColor grayColor];
-        _lblStartTime.text = @"00:00";
-        _lblEndTime.enabled = NO;
-        _lblEndTime.textColor = [UIColor grayColor];
-        _lblEndTime.text = @"00:00";
-        
-    } else if ([btnAllDay tag] == 2) {
-        
-        _isAllDay = NO;
-        btnAllDay.tag = 1;
-        btnAllDay.backgroundColor = BUTTON_BG_COLOR;
-        
-        _lblStartTime.enabled = YES;
-        _lblStartTime.textColor = TITLE_COLOR;
-
-        if (_startTime)
-            _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
-        else
-            _lblStartTime.text = @"00:00";
-        
-        _lblEndTime.enabled = YES;
-        _lblEndTime.textColor = TITLE_COLOR;
-        
-        if (_endTime)
-            _lblEndTime.text   = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
-        else
-            _lblEndTime.text = @"00:00";
-        
-    }
+    _isAllDay = !_isAllDay;
+    [self setAllDay:_isAllDay];
+    
 }
 
 - (IBAction)chooseTime:(id)sender {
@@ -359,11 +326,8 @@
         _lbTile.text = [NSString stringWithFormat:@"%d月%d日",[FXCalendarData getDayWithDate:_date], [FXCalendarData getMonthWithDate:_date]];
         [self clearDataFromUI];
         
-    } else {
-        
+    } else
         [Common showAlert:@"継続してシフトカテゴリを選択してください。" title:@""];
-        
-    }
 
 }
 
@@ -384,9 +348,6 @@
         _addShiftView.frame = rect;
     } completion:^(BOOL finished) {
         _isShowAddShiftView = YES;
-        
-        
-        
     }];
 }
 
@@ -413,11 +374,9 @@
     for (CDShiftCategory *cdShift in self.fetchedResultsControllerShiftCategory.fetchedObjects) {
         
         ShiftCategoryItem *item = [[ShiftCategoryItem alloc] init];
-        
         item.shiftCategoryID = cdShift.id;
         item.name            = cdShift.name;
         item.color           = cdShift.color;
-        
         [shifts addObject:item];
         
     }
@@ -544,7 +503,8 @@
     [_chooseTimeView resetChooseTimeView];
     _arrMember = nil;
     _arrAlerts = nil;
-    _txvMemo.text = @"";
+    _txvMemo.text = MEMO_PLACEHOLDER_TEXT;
+    _txvMemo.textColor = [UIColor lightGrayColor];
     _btnSaveAndNext.enabled = NO;
     
 }
@@ -552,11 +512,49 @@
 - (void) setDefaultTime {
     
     // set nearest time in roof
-    _startTime = [FXCalendarData dateNexHourFormDate:[NSDate date]];
+    NSDate *currentDate = [FXCalendarData dateWithSetHourWithHour:[FXCalendarData getHourWithDate:[NSDate date]] date:_date];
+    
+    _startTime = [FXCalendarData dateNexHourFormDate:currentDate];
     _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
     
     _endTime = [FXCalendarData dateNexHourFormDate:_startTime];
     _lblEndTime.text   = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+    
+}
+
+- (void) setAllDay: (BOOL)isAllDay {
+    
+    if (isAllDay == YES) {
+        
+//        _isAllDay = YES;
+        _btnAllDay.backgroundColor = ALERT_BG_COLOR;
+        _btnStartTime.enabled = NO;
+        _lblStartTime.textColor = [UIColor grayColor];
+        _lblStartTime.text = @"00:00";
+        _btnEndTime.enabled = NO;
+        _lblEndTime.textColor = [UIColor grayColor];
+        _lblEndTime.text = @"24:00";
+        
+    } else {
+        
+//        _isAllDay = NO;
+        _btnAllDay.backgroundColor = BUTTON_BG_COLOR;
+        
+        _btnStartTime.enabled = YES;
+        _lblStartTime.textColor = TITLE_COLOR;
+        if (_startTime)
+            _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+        else
+            _lblStartTime.text = @"00:00";
+        
+        _btnEndTime.enabled = YES;
+        _lblEndTime.textColor = TITLE_COLOR;
+        if (_endTime)
+            _lblEndTime.text   = (_endTime == nil) ? @"24:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+        else
+            _lblEndTime.text = @"24:00";
+        
+    }
     
 }
 
@@ -704,7 +702,7 @@
 }
 
 - (void) saveShiftToCoreData {
-    
+    //TODO: check update the data
     if (_isNewShift)
         _shift.id = [[AppDelegate shared] lastShiftID] + 1;
     
@@ -713,31 +711,36 @@
     if (!_isAllDay) {
         _shift.timeStart = [_startTime timeIntervalSince1970];
         _shift.timeEnd = [_endTime timeIntervalSince1970];
+    } else {
+        _shift.timeStart = [_date timeIntervalSince1970];
+        _shift.timeEnd = [[FXCalendarData nextDateFrom:_date] timeIntervalSince1970];
+        
     }
     
     _shift.onDate = [_date timeIntervalSince1970];
-    _shift.memo = _txvMemo.text;
+    
+    if ([_txvMemo.text isEqualToString:MEMO_PLACEHOLDER_TEXT])
+        _shift.memo = @"";
+    else
+        _shift.memo = _txvMemo.text;
     
     if (_arrMember) {
-        
         for (CDMember *member in _arrMember)
             [_shift addPk_shiftObject:member];
-        
     }
     
     if (_arrAlerts) {
-        
         for (NSDate *alertDate in _arrAlerts) {
             CDShiftAlert *shiftAlert = [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT_ALERT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
             shiftAlert.shiftId = _shift.id;
             shiftAlert.onTime = [alertDate timeIntervalSince1970];
-            
             [_shift addPk_shiftalertObject:shiftAlert];
         }
-        
     }
     
     [[AppDelegate shared] saveContext];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:DID_ADD_SCHEDULE object:nil userInfo:nil];
     
 }
 
@@ -755,15 +758,43 @@
     }
     
     // shift duration
-    if (_shift.isAllDay) {
-        _startTime = [NSDate dateWithTimeIntervalSince1970:_shift.timeStart];
-        _endTime = [NSDate dateWithTimeIntervalSince1970:_shift.timeEnd];
+    if (!_shift.isAllDay) {
+        _isAllDay = NO;
+    } else {
+        _isAllDay = YES;
     }
-    _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
-    _lblEndTime.text   = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+    
+    _startTime = [NSDate dateWithTimeIntervalSince1970:_shift.timeStart];
+    _endTime = [NSDate dateWithTimeIntervalSince1970:_shift.timeEnd];
+    
+    [self setAllDay:_isAllDay];
+    
+//    _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+//    _lblEndTime.text   = (_endTime == nil) ? @"24:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
     
     // shift members
-//    _arrMember = [_shift.pk_shift allObjects];
+    _arrMember = [_shift.pk_shift allObjects];
+//    CDMember *member = [_arrMember objectAtIndex:0];
+//    NSLog(@"member id: %d, member name: %@", member.id, member.name);
+
+    [_nMSelectionStringView reloadArrayCDMember:(NSMutableArray *)_fetchedResultsControllerMember.fetchedObjects selected:(NSMutableArray *)_arrMember];
+    
+    // shift alerts
+    NSArray *_arrAlertDates = [_shift.pk_shiftalert allObjects];
+    for (CDShiftAlert *shiftAlert in _arrAlertDates)
+         [_arrAlerts addObject:[NSDate dateWithTimeIntervalSince1970:shiftAlert.onTime]];
+//    CDShiftAlert *shiftAlert = [_arrAlerts objectAtIndex:0];
+//    NSLog(@"alert id: %d", shiftAlert.id);
+    
+    [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_date];
+    
+    if (_shift.memo == nil || [_shift.memo isEqualToString:@""]) {
+        _txvMemo.text = MEMO_PLACEHOLDER_TEXT;
+        _txvMemo.textColor = [UIColor lightGrayColor];
+    } else {
+        _txvMemo.text = _shift.memo;
+        _txvMemo.textColor = [UIColor blackColor];
+    }
 
 }
 
