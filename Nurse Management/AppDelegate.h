@@ -53,7 +53,5 @@
 // ------ Controller ----- //
 @property (nonatomic, strong) FXNavigationController *navigationController;
 
-//
-- (void) getInfoDayWithDate:(NSDate*)date;
 
 @end

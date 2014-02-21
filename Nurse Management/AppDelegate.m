@@ -232,12 +232,6 @@ static __weak AppDelegate *shared = nil;
             NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
         } else {
             NSLog(@"appdelegate total shift : %lu", (unsigned long)[_fetchedResultsControllerShift.fetchedObjects count]);
-            for (CDShift *item in _fetchedResultsControllerShift.fetchedObjects) {
-                NSLog(@"Shift id: %d  -- name: %@ -- onDate: %@",
-                      item.id,
-                      item.name,
-                      [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:[NSDate dateWithTimeIntervalSince1970:item.onDate]]);
-            }
         }
         
     }
@@ -619,12 +613,6 @@ static __weak AppDelegate *shared = nil;
 }
 
 #pragma mark - Others
-- (void) getInfoDayWithDate:(NSDate*)date
-{
-    // query coredata : Shift --> get info shift for date;
-    
-    // query coredata : schedule --> get list schedule for date;
-}
 
 #pragma mark - Push Notification
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification

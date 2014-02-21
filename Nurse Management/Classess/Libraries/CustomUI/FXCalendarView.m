@@ -213,15 +213,11 @@
 
 - (void) fxMonthViewExitViewFull:(FXMonthView *)fxMonthView
 {
-    NSLog(@"exit view full");
-    
     [self reloadViewisFull:NO];
 }
 
 #pragma mark - Swipe
 - (void)handleSwipeDownFrom:(UIGestureRecognizer*)recognizer {
-    NSLog(@"enter view full");
-    
     [self reloadViewisFull:YES];
 }
 
