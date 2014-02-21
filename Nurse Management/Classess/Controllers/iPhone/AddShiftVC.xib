@@ -8,6 +8,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddShiftVC">
             <connections>
                 <outlet property="_btnEndTime" destination="FmI-pu-CJo" id="UD7-N2-Rra"/>
+                <outlet property="_btnSave" destination="lkI-CA-5Jq" id="M2P-Mt-Feo"/>
+                <outlet property="_btnSaveAndNext" destination="Rrm-Dw-huo" id="SNN-dV-wgW"/>
                 <outlet property="_btnStartTime" destination="MBM-3i-3hZ" id="jCA-Sr-JjD"/>
                 <outlet property="_imvShiftCategoryBG" destination="EiO-0M-n1F" id="FvQ-Jm-Caw"/>
                 <outlet property="_lbTile" destination="XdA-gB-cwt" id="qvQ-bG-FDB"/>
@@ -52,7 +54,7 @@
                                         <action selector="cancel:" destination="-1" eventType="touchUpInside" id="9Do-sn-5cI"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lkI-CA-5Jq">
+                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lkI-CA-5Jq">
                                     <rect key="frame" x="262" y="7" width="51" height="29"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -186,7 +188,7 @@
                         <outlet property="delegate" destination="-1" id="aHV-8n-wdS"/>
                     </connections>
                 </textView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Rrm-Dw-huo">
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Rrm-Dw-huo">
                     <rect key="frame" x="15" y="523" width="290" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" red="0.84705882349999995" green="0.87843137250000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
