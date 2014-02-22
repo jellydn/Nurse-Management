@@ -64,14 +64,32 @@
         //init view
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(originX, 0, WIDTH_ITEM, HEIGHT_ITEM)];
         view.tag = i+TAG_VIEW;
-        view.backgroundColor = DEFAULT_BACKGROUND_COLOR;
+        
+        NSString *stringStatus = [_dicValueSelect objectForKey:[NSString stringWithFormat:@"%d",i+KEY_DEFAULT]];
+        if (stringStatus != nil && [stringStatus integerValue] == 1) {
+            
+            view.backgroundColor = _colorSelectBackground;
+        }else {
+            
+            view.backgroundColor = DEFAULT_BACKGROUND_COLOR;
+        }
+        
         //init label
         UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, WIDTH_ITEM, HEIGHT_ITEM)];
         lable.tag = i+TAG_LABEL;
         lable.text = arr[i];
         lable.numberOfLines = 2;
         lable.font = [UIFont fontWithName:@"Helvetica Neue" size:11];
-        lable.textColor = DEFAULT_TEXT_COLOR;
+        
+        if (stringStatus != nil && [stringStatus integerValue] == 1) {
+            
+            lable.textColor = [UIColor whiteColor];
+        }else {
+            
+            lable.textColor = DEFAULT_TEXT_COLOR;
+        }
+        
+        
         lable.textAlignment = NSTextAlignmentCenter;
         lable.backgroundColor = [UIColor clearColor];
         //init button
@@ -85,8 +103,13 @@
         
         //add into self
         [self addSubview:view];
+        
         //add value disselect item into dictionary
-        [_dicValueSelect setObject:[NSString stringWithFormat:@"%d",0] forKey:[NSString stringWithFormat:@"%d",i+KEY_DEFAULT]];
+        if (stringStatus == nil) {
+            
+            [_dicValueSelect setObject:[NSString stringWithFormat:@"%d",0] forKey:[NSString stringWithFormat:@"%d",i+KEY_DEFAULT]];
+        }
+        
     }
     _nMTimePicker = [[NMTimePickerView alloc] init];
 }
@@ -277,12 +300,14 @@
 
 - (void)reloadDataWithArrayDate:(NSMutableArray *)arrDate andStartDate:(NSDate *)startDate
 {
+    
     for (int i = 0; i < NUMBER_OF_ITEM; i++) {
         //change UI
         UIView *view   = [self viewWithTag:i+TAG_VIEW];
         view.backgroundColor = DEFAULT_BACKGROUND_COLOR;
         UILabel *label = (UILabel *)[view viewWithTag:i+TAG_LABEL];
         label.textColor      = DEFAULT_TEXT_COLOR;
+        
         [_dicValueSelect setObject:[NSString stringWithFormat:@"%d",0] forKey:[NSString stringWithFormat:@"%d",i+KEY_DEFAULT]];
         
         
@@ -304,8 +329,9 @@
                 _dateChooseTime = arrDate[j];
             }
         }
-        
     }
+    
+    _startDate = startDate;
     _numberOfItemSelected = arrDate.count;
 }
 
