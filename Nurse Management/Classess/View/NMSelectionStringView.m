@@ -22,6 +22,7 @@
 
 #define KEY_VALUE      5000
 #define KEY_STATUS     6000
+#define KEY_OBJECT     7000
 
 #define DEFAULT_BACKGROUND_COLOR    [UIColor colorWithRed:215/255.0 green:224/255.0 blue:221/255.0 alpha:1.0]
 #define DEFAULT_TEXT_COLOR          [UIColor colorWithRed:93/255.0 green:80/255.0 blue:76/255.0 alpha:1.0]
@@ -106,12 +107,12 @@
 - (UIView *)viewWithPoint:(CGPoint)point andIndex:(NSInteger)index
 {
     NSMutableDictionary *dic = _arrayStringForText[index];
-    int statusButton = [dic[[NSString stringWithFormat:@"%d",index+KEY_STATUS]] intValue];
+    NSString *stringStatus = dic[[NSString stringWithFormat:@"%d",index+KEY_STATUS]];
     //init view
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(point.x, point.y, WIDTH_ITEM, HEIGHT_ITEM)];
     view.tag = index+TAG_VIEW;
-    if (statusButton == 1) {
-        view.backgroundColor = SELECTED_BACKGROUND_COLOR;
+    if (stringStatus != nil && [stringStatus integerValue] == 1) {
+        view.backgroundColor = _colorSelectBackground;
     }else {
         view.backgroundColor = DEFAULT_BACKGROUND_COLOR;
     }
@@ -123,7 +124,7 @@
     lable.numberOfLines = 2;
     lable.font = [UIFont fontWithName:@"Helvetica Neue" size:11];
     
-    if (statusButton == 1) {
+    if (stringStatus != nil && [stringStatus integerValue] == 1) {
         lable.textColor = [UIColor whiteColor];
     }else {
         lable.textColor = DEFAULT_TEXT_COLOR;
@@ -143,7 +144,11 @@
     //add into self
     [self addSubview:view];
     //add value disselect item into dictionary
-    [dic setObject:@"0" forKey:[NSString stringWithFormat:@"%d",index+KEY_STATUS]];
+    if (stringStatus == nil) {
+        
+        [dic setObject:@"0" forKey:[NSString stringWithFormat:@"%d",index+KEY_STATUS]];
+    }
+    
     
     return view;
 }
@@ -157,7 +162,7 @@
             NSMutableDictionary *dic = _arrayStringForText[i];
             int statusButton = [[dic objectForKey:[NSString stringWithFormat:@"%d",i+KEY_STATUS]] intValue];
             if (statusButton == 1) {
-                [arrReturn addObject:_arrMember[i]];
+                [arrReturn addObject:[dic objectForKey:[NSString stringWithFormat:@"%d",i+KEY_OBJECT]]];
             }
         }
         if (_isSetArrayString) {
@@ -172,17 +177,26 @@
 - (void)setArrayCDMember:(NSMutableArray *)arrayCDMember
 {
     _isSetArrayString = NO;
-    _arrMember = arrayCDMember;
+    _arrMember = [NSMutableArray array];
     
     if (_arrayStringForText.count) {
         _arrayStringForText = nil;
     }
+    for (int i = 0; i < arrayCDMember.count; i ++) {
+        CDMember *member = arrayCDMember[i];
+        if (member.isDisplay) {
+            [_arrMember addObject:member];
+        }
+    }
+    
     _arrayStringForText = [NSMutableArray array];
-    for (int i = 0; i < arrayCDMember.count; i++) {
+    for (int i = 0; i < _arrMember.count; i++) {
         CDMember *member = _arrMember[i];
+        
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         [dic setObject:member.name forKey:[NSString stringWithFormat:@"%d",i+KEY_VALUE]];
         [dic setObject:@"0" forKey:[NSString stringWithFormat:@"%d",i+KEY_STATUS]];
+        [dic setObject:member forKey:[NSString stringWithFormat:@"%d",i+KEY_OBJECT]];
         
         [_arrayStringForText addObject:dic];
     }
@@ -191,7 +205,11 @@
 - (void)setArrayString:(NSArray *)arrString
 {
     _isSetArrayString = YES;
-    _arrMember = [NSMutableArray arrayWithArray:arrString];
+    if (_arrMember) {
+        _arrMember = nil;
+    }
+    _arrMember = [NSMutableArray array];
+    
     
     if (_arrayStringForText.count) {
         _arrayStringForText = nil;
@@ -263,17 +281,31 @@
 - (void)reloadArrayCDMember:(NSMutableArray *)arrayCDMember selected:(NSMutableArray *)arraySelectedCDMember
 {
     _isSetArrayString = NO;
-    _arrMember = arrayCDMember;
+    if (_arrMember) {
+        _arrMember = nil;
+    }
+    _arrMember = [NSMutableArray array];
+    
+    
+    for (int i = 0; i < arrayCDMember.count; i ++) {
+        CDMember *member = arrayCDMember[i];
+        if (member.isDisplay) {
+            [_arrMember addObject:member];
+        }
+    }
     
     if (_arrayStringForText.count) {
         _arrayStringForText = nil;
     }
     _arrayStringForText = [NSMutableArray array];
-    for (int i = 0; i < arrayCDMember.count; i++) {
+    for (int i = 0; i < _arrMember.count; i++) {
         CDMember *member = _arrMember[i];
+        
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         [dic setObject:member.name forKey:[NSString stringWithFormat:@"%d",i+KEY_VALUE]];
         [dic setObject:@"0" forKey:[NSString stringWithFormat:@"%d",i+KEY_STATUS]];
+        [dic setObject:member forKey:[NSString stringWithFormat:@"%d",i+KEY_OBJECT]];
+        
         //change UI
         UIView *view   = [_scrollView viewWithTag:i+TAG_VIEW];
         view.backgroundColor = DEFAULT_BACKGROUND_COLOR;
@@ -287,7 +319,7 @@
                 
                 //change UI
                 UIView *view   = [_scrollView viewWithTag:i+TAG_VIEW];
-                view.backgroundColor = SELECTED_BACKGROUND_COLOR;
+                view.backgroundColor = _colorSelectBackground;
                 UILabel *label = (UILabel *)[view viewWithTag:i+TAG_LABEL];
                 label.textColor      = [UIColor whiteColor];
                 

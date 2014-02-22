@@ -52,7 +52,7 @@
     
     NSDate *_startTime;
     NSDate *_endTime;
-    NSArray *_arrMember;
+    NSMutableArray *_arrMember;
     NSMutableArray *_arrAlerts;
     
     BOOL _isShowAddShiftView;
@@ -125,7 +125,7 @@
     // Choose Time view
     _chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 362, 320 - 15*2, 44)];
     _chooseTimeView.delegate = self;
-    [_chooseTimeView setStartDate:[NSDate date]];
+    [_chooseTimeView setStartDate:_date];
     [self.view addSubview:_chooseTimeView];
     
     // load core data
@@ -496,11 +496,14 @@
 
 - (void) clearDataFromUI {
     
+    _isAllDay = NO;
+    [self setAllDay:_isAllDay];
     _btnSave.enabled = NO;
     _imvShiftCategoryBG.image = [UIImage imageNamed:@""];
     _lblShiftCategoryName.text = @"";
     [self setDefaultTime];
     [_chooseTimeView resetChooseTimeView];
+    [_nMSelectionStringView resetSelectionStringView];
     _arrMember = nil;
     _arrAlerts = nil;
     _txvMemo.text = MEMO_PLACEHOLDER_TEXT;
@@ -547,10 +550,11 @@
         else
             _lblStartTime.text = @"00:00";
         
+        NSInteger endHour = [FXCalendarData getHourWithDate:_endTime];
         _btnEndTime.enabled = YES;
         _lblEndTime.textColor = TITLE_COLOR;
         if (_endTime)
-            _lblEndTime.text   = (_endTime == nil) ? @"24:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+            _lblEndTime.text   = (_endTime == nil || endHour == 0) ? @"24:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
         else
             _lblEndTime.text = @"24:00";
         
@@ -725,11 +729,19 @@
         _shift.memo = _txvMemo.text;
     
     if (_arrMember) {
+
+//        for (CDMember *member in _shift.pk_shift)
+//            [_shift removePk_shiftObject:member];
+        [_shift removePk_shift:_shift.pk_shift];
+        
         for (CDMember *member in _arrMember)
             [_shift addPk_shiftObject:member];
     }
     
     if (_arrAlerts) {
+        
+        [_shift removePk_shiftalert:_shift.pk_shiftalert];
+        
         for (NSDate *alertDate in _arrAlerts) {
             CDShiftAlert *shiftAlert = [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT_ALERT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
             shiftAlert.shiftId = _shift.id;
@@ -769,22 +781,18 @@
     
     [self setAllDay:_isAllDay];
     
-//    _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
-//    _lblEndTime.text   = (_endTime == nil) ? @"24:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
-    
     // shift members
     _arrMember = [_shift.pk_shift allObjects];
-//    CDMember *member = [_arrMember objectAtIndex:0];
-//    NSLog(@"member id: %d, member name: %@", member.id, member.name);
-
     [_nMSelectionStringView reloadArrayCDMember:(NSMutableArray *)_fetchedResultsControllerMember.fetchedObjects selected:(NSMutableArray *)_arrMember];
     
     // shift alerts
     NSArray *_arrAlertDates = [_shift.pk_shiftalert allObjects];
-    for (CDShiftAlert *shiftAlert in _arrAlertDates)
-         [_arrAlerts addObject:[NSDate dateWithTimeIntervalSince1970:shiftAlert.onTime]];
-//    CDShiftAlert *shiftAlert = [_arrAlerts objectAtIndex:0];
-//    NSLog(@"alert id: %d", shiftAlert.id);
+    if (_arrAlerts)
+        _arrAlerts = nil;
+    _arrAlerts = [[NSMutableArray alloc] init];
+    for (CDShiftAlert *shiftAlert in _arrAlertDates) {
+        [_arrAlerts addObject:[NSDate dateWithTimeIntervalSince1970:shiftAlert.onTime]];
+    }
     
     [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_date];
     
