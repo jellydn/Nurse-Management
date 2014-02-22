@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>backgroundColor</key>
+	<string>#fcf3e9</string>
+	<key>backgroundImage</key>
+	<string></string>
+	<key>toolbarColor</key>
+	<string>#f0897c</string>
+	<key>toolbarImage</key>
+	<string></string>
+	<key>navibarColor</key>
+	<string>#f0897c</string>
+	<key>navibarImage</key>
+	<string></string>
+	<key>themeName</key>
+	<string>_fxThemeNameDefaultPink</string>
+	<key>mainColor</key>
+	<string>#f0897c</string>
+	<key>homeNaviBarFileXib</key>
+	<string>HomeNaviBarView</string>
+	<key>homeToolBarFileXib</key>
+	<string>HomeToolBarView</string>
+	<key>homeAddShiftFileXib</key>
+	<string>AddShiftView</string>
+	<key>homeAddScheduleFileXib</key>
+	<string>AddScheduleView</string>
+</dict>
+</plist>

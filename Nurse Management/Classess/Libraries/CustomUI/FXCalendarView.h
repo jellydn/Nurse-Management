@@ -28,6 +28,7 @@
 
 - (void) reloadData;
 - (void) reloadViewisFull:(BOOL)isFull;
+- (void) reloadTheme;
 
 @end
 

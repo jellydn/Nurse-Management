@@ -11,6 +11,8 @@
 //name
 #define _fxThemeNameDefault                 @"_fxThemeNameDefault"
 #define _fxThemeNameDefaultGreen            @"_fxThemeNameDefaultGreen"
+#define _fxThemeNameDefaultOrange           @"_fxThemeNameDefaultOrange"
+#define _fxThemeNameDefaultPink             @"_fxThemeNameDefaultPink"
 
 //notification
 #define _fxThemeNotificationChangeTheme     @"_fxThemeNotificationChangeTheme"
