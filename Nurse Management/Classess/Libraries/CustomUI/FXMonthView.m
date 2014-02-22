@@ -206,7 +206,7 @@
     _viewContainerSelect.backgroundColor    = [UIColor clearColor];
     
     _viewSelect                     = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _widthCell, _heightCell)];
-    _viewSelect.backgroundColor     = self.selectColor;
+    _viewSelect.backgroundColor     = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain];
     _viewSelect.hidden              = YES;
     
     UIView *viewBGSelect            = [[UIView alloc] initWithFrame:CGRectMake(2, 2, _viewSelect.frame.size.width - 2, _viewSelect.frame.size.height - 2)];
@@ -640,6 +640,11 @@
     frame.size.height   = _heightCell*6 + 1;
     self.frame          = frame;
     [self initLayout];
+}
+
+- (void) reloadTheme
+{
+    _viewSelect.backgroundColor     = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain];
 }
    
    

@@ -257,6 +257,11 @@
     [_monthView3 reloadHeighForWeekWithAnimate:NO];
 }
 
+- (void) reloadTheme
+{
+    [_monthView2 reloadTheme];
+}
+
 
 
 

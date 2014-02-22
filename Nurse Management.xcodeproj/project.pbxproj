@@ -177,6 +177,14 @@
 		2A75E64318ADA98800E74E4F /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A75E64218ADA98800E74E4F /* Member.m */; };
 		2A75E64618ADA9AB00E74E4F /* ic_cell_shift.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E64418ADA9AB00E74E4F /* ic_cell_shift.png */; };
 		2A75E64718ADA9AB00E74E4F /* ic_cell_shift@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E64518ADA9AB00E74E4F /* ic_cell_shift@2x.png */; };
+		2A8A860C18B839E600332B68 /* screen_theme_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A8A860618B839E600332B68 /* screen_theme_0.png */; };
+		2A8A860D18B839E600332B68 /* screen_theme_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A8A860718B839E600332B68 /* screen_theme_1.png */; };
+		2A8A860E18B839E600332B68 /* screen_theme_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A8A860818B839E600332B68 /* screen_theme_2.png */; };
+		2A8A860F18B839E600332B68 /* screen_theme_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A8A860918B839E600332B68 /* screen_theme_3.png */; };
+		2A8A861018B839E600332B68 /* screen_theme_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A8A860A18B839E600332B68 /* screen_theme_4.png */; };
+		2A8A861118B839E600332B68 /* screen_theme_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A8A860B18B839E600332B68 /* screen_theme_5.png */; };
+		2A8A861418B845B200332B68 /* theme_default_pink.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A8A861218B845B200332B68 /* theme_default_pink.plist */; };
+		2A8A861518B845B200332B68 /* theme_default_orange.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A8A861318B845B200332B68 /* theme_default_orange.plist */; };
 		2A97525518B5B01D00C0946E /* CDSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97525418B5B01D00C0946E /* CDSchedule.m */; };
 		2A97525818B5B6F800C0946E /* ScheduleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97525718B5B6F800C0946E /* ScheduleItem.m */; };
 		2A97525B18B5EF8B00C0946E /* CDScheduleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A97525A18B5EF8B00C0946E /* CDScheduleCategory.m */; };
@@ -469,6 +477,14 @@
 		2A75E64218ADA98800E74E4F /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Member.m; sourceTree = "<group>"; };
 		2A75E64418ADA9AB00E74E4F /* ic_cell_shift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_cell_shift.png; sourceTree = "<group>"; };
 		2A75E64518ADA9AB00E74E4F /* ic_cell_shift@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_cell_shift@2x.png"; sourceTree = "<group>"; };
+		2A8A860618B839E600332B68 /* screen_theme_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_theme_0.png; sourceTree = "<group>"; };
+		2A8A860718B839E600332B68 /* screen_theme_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_theme_1.png; sourceTree = "<group>"; };
+		2A8A860818B839E600332B68 /* screen_theme_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_theme_2.png; sourceTree = "<group>"; };
+		2A8A860918B839E600332B68 /* screen_theme_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_theme_3.png; sourceTree = "<group>"; };
+		2A8A860A18B839E600332B68 /* screen_theme_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_theme_4.png; sourceTree = "<group>"; };
+		2A8A860B18B839E600332B68 /* screen_theme_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_theme_5.png; sourceTree = "<group>"; };
+		2A8A861218B845B200332B68 /* theme_default_pink.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = theme_default_pink.plist; sourceTree = "<group>"; };
+		2A8A861318B845B200332B68 /* theme_default_orange.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = theme_default_orange.plist; sourceTree = "<group>"; };
 		2A97525318B5B01D00C0946E /* CDSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDSchedule.h; path = "Nurse Management/Classess/Model/CDSchedule.h"; sourceTree = SOURCE_ROOT; };
 		2A97525418B5B01D00C0946E /* CDSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDSchedule.m; path = "Nurse Management/Classess/Model/CDSchedule.m"; sourceTree = SOURCE_ROOT; };
 		2A97525618B5B6F800C0946E /* ScheduleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleItem.h; sourceTree = "<group>"; };
@@ -812,6 +828,7 @@
 		2A394C0A18A9FF7600F30F2D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2A8A860518B839E600332B68 /* screen_themes */,
 				2A394C5218AA259B00F30F2D /* Common */,
 				2A394C0B18A9FF7600F30F2D /* icons */,
 				2A394C1718A9FF7600F30F2D /* Splash */,
@@ -913,6 +930,8 @@
 				2A394C4418AA0C9D00F30F2D /* FXThemeManager.m */,
 				2A394C4618AA129600F30F2D /* theme_default.plist */,
 				2A3C24AF18AB271F00C20A04 /* theme_default_green.plist */,
+				2A8A861318B845B200332B68 /* theme_default_orange.plist */,
+				2A8A861218B845B200332B68 /* theme_default_pink.plist */,
 			);
 			path = FXThemeManager;
 			sourceTree = "<group>";
@@ -1277,6 +1296,19 @@
 			name = Schedule;
 			sourceTree = "<group>";
 		};
+		2A8A860518B839E600332B68 /* screen_themes */ = {
+			isa = PBXGroup;
+			children = (
+				2A8A860618B839E600332B68 /* screen_theme_0.png */,
+				2A8A860718B839E600332B68 /* screen_theme_1.png */,
+				2A8A860818B839E600332B68 /* screen_theme_2.png */,
+				2A8A860918B839E600332B68 /* screen_theme_3.png */,
+				2A8A860A18B839E600332B68 /* screen_theme_4.png */,
+				2A8A860B18B839E600332B68 /* screen_theme_5.png */,
+			);
+			path = screen_themes;
+			sourceTree = "<group>";
+		};
 		2A97526A18B6024000C0946E /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -1446,12 +1478,14 @@
 				2A3C24F018AB78C900C20A04 /* AddScheduleView.xib in Resources */,
 				B6B10DE118AF0C3A004E3229 /* EditShiftVC.xib in Resources */,
 				B6B10E0818AF0C9E004E3229 /* ic_edit_shift_color_8.png in Resources */,
+				2A8A860D18B839E600332B68 /* screen_theme_1.png in Resources */,
 				C000F2F918AF6C2000280464 /* ic_clock.png in Resources */,
 				2A4F228B18B456BE00A5C97C /* schedule_bg_4@2x.png in Resources */,
 				2A75E64718ADA9AB00E74E4F /* ic_cell_shift@2x.png in Resources */,
 				2A394C3818AA024A00F30F2D /* HomeVC.xib in Resources */,
 				B6B10E0B18AF0C9E004E3229 /* ic_edit_shift_color_9@2x.png in Resources */,
 				2A394C2718A9FF7600F30F2D /* Default.png in Resources */,
+				2A8A860F18B839E600332B68 /* screen_theme_3.png in Resources */,
 				2A4F229618B4570700A5C97C /* icon_right_more_cell@2x.png in Resources */,
 				2A3C24D518AB5CC100C20A04 /* img_add_shift_home_title.png in Resources */,
 				B651F30618B4BF6000E8577B /* icon_right_more_cell.png in Resources */,
@@ -1464,6 +1498,7 @@
 				2A3C24B618AB295500C20A04 /* ChangeThemeVC.xib in Resources */,
 				2A4F229E18B4575000A5C97C /* MoreCell.xib in Resources */,
 				2A4F227E18B456BE00A5C97C /* schedule_bg_9.png in Resources */,
+				2A8A860C18B839E600332B68 /* screen_theme_0.png in Resources */,
 				B6B10DFB18AF0C9E004E3229 /* ic_edit_shift_color_1@2x.png in Resources */,
 				2A4F228018B456BE00A5C97C /* home_add_quick_schedule_time_bg.png in Resources */,
 				2A3C24A918AB1BFE00C20A04 /* MoreVC.xib in Resources */,
@@ -1497,10 +1532,12 @@
 				C000F2F518AF6C2000280464 /* bg_duration.png in Resources */,
 				2A6FDB7918AF1ACA00D33D21 /* icon_reminder_add_sc.png in Resources */,
 				2A3C24AD18AB1EF500C20A04 /* ic_bt_back.png in Resources */,
+				2A8A860E18B839E600332B68 /* screen_theme_2.png in Resources */,
 				2A394C4718AA129600F30F2D /* theme_default.plist in Resources */,
 				2A394C2418A9FF7600F30F2D /* iTunesArtwork@2x_ios7.png in Resources */,
 				C000F2FD18AF6C2000280464 /* ic_memo.png in Resources */,
 				B6B10DF818AF0C9E004E3229 /* bg_edit_shift_time.png in Resources */,
+				2A8A861518B845B200332B68 /* theme_default_orange.plist in Resources */,
 				2A3F495518AE034A00D3137D /* HomeCellAddSchedule.xib in Resources */,
 				2A3F495918AE047300D3137D /* img_bg_home_cell_shift@2x.png in Resources */,
 				C000F2F418AF6C2000280464 /* bg_dashed_frame@2x.png in Resources */,
@@ -1530,6 +1567,7 @@
 				2A3F495818AE047300D3137D /* img_bg_home_cell_shift.png in Resources */,
 				2A6FDB6B18AF117D00D33D21 /* AddScheduleVC.xib in Resources */,
 				2A3F495018AE032500D3137D /* HomeCellAddShift.xib in Resources */,
+				2A8A861418B845B200332B68 /* theme_default_pink.plist in Resources */,
 				2A4F228518B456BE00A5C97C /* schedule_bg_1@2x.png in Resources */,
 				2A3C24A418AB1BF100C20A04 /* RankingVC.xib in Resources */,
 				2A3F497918AE242E00D3137D /* ic_bt_save.png in Resources */,
@@ -1543,6 +1581,7 @@
 				2A3C24D018AB593300C20A04 /* icon_r3_c7.png in Resources */,
 				2AAE597118B60636003FA40E /* white_arrow@2x.png in Resources */,
 				2A4F228A18B456BE00A5C97C /* schedule_bg_4.png in Resources */,
+				2A8A861018B839E600332B68 /* screen_theme_4.png in Resources */,
 				B6B10E0418AF0C9E004E3229 /* ic_edit_shift_color_6.png in Resources */,
 				2A4F228618B456BE00A5C97C /* schedule_bg_2.png in Resources */,
 				2A3C24C918AB593300C20A04 /* icon_r1_c3.png in Resources */,
@@ -1556,6 +1595,7 @@
 				C000F2F618AF6C2000280464 /* bg_duration@2x.png in Resources */,
 				2A3C249218AB062F00C20A04 /* ic_toolbar_add_shift@2x.png in Resources */,
 				2A3F497118AE197C00D3137D /* img_temp1.png in Resources */,
+				2A8A861118B839E600332B68 /* screen_theme_5.png in Resources */,
 				2A3F496118AE096A00D3137D /* img_bg_home_cell_schedule_1.png in Resources */,
 				2A6FDB7518AF1ACA00D33D21 /* icon_category_add_sc.png in Resources */,
 				B6B10E0518AF0C9E004E3229 /* ic_edit_shift_color_6@2x.png in Resources */,

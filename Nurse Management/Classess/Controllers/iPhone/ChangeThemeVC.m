@@ -11,16 +11,20 @@
 #import "Common.h"
 #import "FXThemeManager.h"
 
-@interface ChangeThemeVC ()
+@interface ChangeThemeVC ()<UIScrollViewDelegate>
 {
     
     __weak IBOutlet UIView *_viewNavi;
     __weak IBOutlet UILabel *_lbTile;
+    
+    __weak IBOutlet UIScrollView *_scrollView;
+    __weak IBOutlet UIPageControl *_pageControll;
+    __weak IBOutlet UILabel *_lbThemeTitleName;
+    
+    NSArray *_themeTitleName;
 }
 - (IBAction)backVC:(id)sender;
-
-- (IBAction)changeThemeBlue:(id)sender;
-- (IBAction)changeThemeGreen:(id)sender;
+- (IBAction)selectTheme:(id)sender;
 
 @end
 
@@ -54,23 +58,73 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)changeThemeBlue:(id)sender {
-    [[FXThemeManager shared] changeThemeWithName:_fxThemeNameDefault];
-}
 
-- (IBAction)changeThemeGreen:(id)sender {
-    [[FXThemeManager shared] changeThemeWithName:_fxThemeNameDefaultGreen];
+- (IBAction)selectTheme:(id)sender
+{
+    UIButton *button = (UIButton*)sender;
+    NSLog(@"select theme %d : %@", button.tag, _themeTitleName[button.tag]);
+    
+    switch (button.tag) {
+        case 0:
+        {
+            [[FXThemeManager shared] changeThemeWithName:_fxThemeNameDefault];
+            break;
+        }
+        case 1:
+        {
+            [[FXThemeManager shared] changeThemeWithName:_fxThemeNameDefaultGreen];
+            break;
+        }
+        case 2:
+        {
+            [[FXThemeManager shared] changeThemeWithName:_fxThemeNameDefaultOrange];
+            break;
+        }
+        case 3:
+        {
+            [[FXThemeManager shared] changeThemeWithName:_fxThemeNameDefaultPink];
+            break;
+        }
+        case 4:
+        {
+            [Common showAlert:@"No support." title:APP_NAME];
+            break;
+        }
+        case 5:
+        {
+            [Common showAlert:@"No support." title:APP_NAME];
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 #pragma mark - Others
 - (void) configView
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
-    _lbTile.text = @"Change Theme";
+    _lbTile.text = @"カレンダーテーマ設定";
+    
+    [_scrollView setContentSize:CGSizeMake(320*6, 0)];
+    
+    _themeTitleName = @[@"SimpleBlue",
+                        @"SimpleGreen",
+                        @"SimpleOrange",
+                        @"SimplePink",
+                        @"Girlie",
+                        @"Sweet"];
+    
+    [self setThemeWith:0];
 }
 
 #pragma mark - Others
 
+- (void) setThemeWith:(int)page
+{
+    _pageControll.currentPage   = page;
+    _lbThemeTitleName.text      = _themeTitleName[page];
+}
 
 #pragma mark - Notification
 - (void)eventListenerDidReceiveNotification:(NSNotification *)notif
@@ -79,6 +133,19 @@
     {
         _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     }
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate) {
+        [self setThemeWith:scrollView.contentOffset.x / 320];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+     [self setThemeWith:scrollView.contentOffset.x / 320];
 }
 
 

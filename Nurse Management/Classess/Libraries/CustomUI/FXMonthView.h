@@ -14,6 +14,7 @@
 #import "CDShift.h"
 #import "CDShiftCategory.h"
 #import "ShiftCategoryItem.h"
+#import "FXThemeManager.h"
 
 @protocol FXMonthViewDelegate;
 
@@ -73,6 +74,7 @@
 - (void) reloadHeighForWeekWithAnimate:(BOOL)isAnimate;
 - (void) reloadViewToViewFullWithAnimate:(BOOL)isAnimate;
 - (void) reloadViewForExitViewFullWithAnimate:(BOOL)isAnimate;
+- (void) reloadTheme;
 
 //instance method
 - (id)initWithWidth:(float)width;
