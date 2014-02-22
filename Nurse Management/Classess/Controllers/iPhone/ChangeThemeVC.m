@@ -106,7 +106,7 @@
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     _lbTile.text = @"カレンダーテーマ設定";
     
-    [_scrollView setContentSize:CGSizeMake(320*6, 0)];
+    [_scrollView setContentSize:CGSizeMake(240*6, 0)];
     
     _themeTitleName = @[@"SimpleBlue",
                         @"SimpleGreen",
@@ -139,13 +139,13 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     if (!decelerate) {
-        [self setThemeWith:scrollView.contentOffset.x / 320];
+        [self setThemeWith:scrollView.contentOffset.x / 240];
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-     [self setThemeWith:scrollView.contentOffset.x / 320];
+     [self setThemeWith:scrollView.contentOffset.x / 240];
 }
 
 
