@@ -14,6 +14,7 @@
 
 #import "CDShift.h"
 #import "CDShiftCategory.h"
+#import "CDShiftAlert.h"
 
 #import "Common.h"
 #import "Define.h"
@@ -54,9 +55,17 @@ static __weak AppDelegate *shared = nil;
     //load core data
     [self fetchedResultsControllerShiftCategory];
     [self fetchedResultsControllerShift];
+    [self fetchedResultsControllerShiftAlert];
     [self fetchedResultsControllerSchedule];
     [self fetchedResultsControllerScheduleCategory];
     [self fetchedResultsControllerScheduleAlert];
+    
+    // Handle launching from a notification
+    UILocalNotification *locationNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (locationNotification) {
+        // Set icon badge number to zero
+        application.applicationIconBadgeNumber = 0;
+    }
     
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
@@ -239,6 +248,47 @@ static __weak AppDelegate *shared = nil;
     return _fetchedResultsControllerShift;
 }
 
+- (NSFetchedResultsController*) fetchedResultsControllerShiftAlert
+{
+    if (!_fetchedResultsControllerShiftAlert)
+    {
+        
+        NSString *entityName = ENTITY_SHIFT_ALERT;
+        
+        NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
+        [NSFetchedResultsController deleteCacheWithName:cacheName];
+        
+        NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self.managedObjectContext];
+        
+        
+        NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+        NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        fetchRequest.entity = entity;
+        fetchRequest.fetchBatchSize = 20;
+        fetchRequest.sortDescriptors = sortList;
+        fetchRequest.predicate = predicate;
+        _fetchedResultsControllerShiftAlert = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                                     managedObjectContext:self.managedObjectContext
+                                                                                       sectionNameKeyPath:nil
+                                                                                                cacheName:cacheName];
+        _fetchedResultsControllerShiftAlert.delegate = self;
+        
+        NSError *error = nil;
+        [_fetchedResultsControllerShiftAlert performFetch:&error];
+        if (error) {
+            NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+        } else {
+            NSLog(@"appdelegate total schedule alert : %lu", (unsigned long)[_fetchedResultsControllerShiftAlert.fetchedObjects count]);
+        }
+        
+    }
+    
+    return _fetchedResultsControllerShiftAlert;
+}
+
 - (NSFetchedResultsController*) fetchedResultsControllerSchedule
 {
     if (!_fetchedResultsControllerSchedule) {
@@ -409,6 +459,15 @@ static __weak AppDelegate *shared = nil;
     } else {
         CDShift *cdShift = [self.fetchedResultsControllerShift.fetchedObjects lastObject];
         return cdShift.id;
+    }
+}
+
+- (int) lastShiftAlertID {
+    if ([self.fetchedResultsControllerShiftAlert.fetchedObjects count] == 0) {
+        return 0;
+    } else {
+        CDShiftAlert *cdShiftAlert = [self.fetchedResultsControllerShiftAlert.fetchedObjects lastObject];
+        return cdShiftAlert.id;
     }
 }
 
