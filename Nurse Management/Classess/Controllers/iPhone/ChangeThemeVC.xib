@@ -53,16 +53,16 @@
                     <color key="backgroundColor" red="0.39607843139999999" green="0.52941176469999995" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" id="Rvt-pD-Nbn">
-                    <rect key="frame" x="0.0" y="63.999999999999986" width="320" height="504"/>
+                <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" id="Rvt-pD-Nbn">
+                    <rect key="frame" x="40" y="63.999999999999986" width="240" height="504"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="faN-sl-oNR">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="504"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="i3k-Cu-HPh">
-                                    <rect key="frame" x="50" y="50" width="220" height="348"/>
+                                    <rect key="frame" x="10" y="78" width="220" height="348"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" backgroundImage="screen_theme_0.png">
@@ -76,11 +76,11 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="t4M-f9-i3n">
-                            <rect key="frame" x="320" y="0.0" width="320" height="504"/>
+                            <rect key="frame" x="240" y="0.0" width="240" height="504"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DrA-lc-1k2">
-                                    <rect key="frame" x="50" y="50" width="220" height="348"/>
+                                    <rect key="frame" x="10" y="78" width="220" height="348"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" backgroundImage="screen_theme_1.png">
@@ -94,11 +94,11 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="mlz-3b-e45">
-                            <rect key="frame" x="640" y="0.0" width="320" height="504"/>
+                            <rect key="frame" x="480" y="0.0" width="240" height="504"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t0X-Xb-wfS">
-                                    <rect key="frame" x="50" y="50" width="220" height="348"/>
+                                    <rect key="frame" x="10" y="78" width="220" height="348"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" backgroundImage="screen_theme_2.png">
@@ -112,11 +112,11 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="awL-v4-8Tg">
-                            <rect key="frame" x="960" y="0.0" width="320" height="504"/>
+                            <rect key="frame" x="720" y="0.0" width="240" height="504"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SBH-Lu-T8E">
-                                    <rect key="frame" x="50" y="50" width="220" height="348"/>
+                                    <rect key="frame" x="10" y="78" width="220" height="348"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" backgroundImage="screen_theme_3.png">
@@ -130,11 +130,11 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="5n2-g4-Zau">
-                            <rect key="frame" x="1280" y="0.0" width="320" height="504"/>
+                            <rect key="frame" x="960" y="0.0" width="240" height="504"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gqa-YX-HuZ">
-                                    <rect key="frame" x="50" y="50" width="220" height="348"/>
+                                    <rect key="frame" x="10" y="78" width="220" height="348"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" backgroundImage="screen_theme_4.png">
@@ -148,11 +148,11 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="10e-8k-6fE">
-                            <rect key="frame" x="1600" y="0.0" width="320" height="504"/>
+                            <rect key="frame" x="1200" y="0.0" width="240" height="504"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1Sb-cR-ZbF">
-                                    <rect key="frame" x="50" y="50" width="220" height="348"/>
+                                    <rect key="frame" x="10" y="78" width="220" height="348"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" backgroundImage="screen_theme_5.png">
