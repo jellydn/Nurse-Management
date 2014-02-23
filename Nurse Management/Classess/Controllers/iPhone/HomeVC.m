@@ -235,7 +235,7 @@
                     cdShiftCategory.name = tmpArr[0];
                     cdShiftCategory.timeStart = tmpArr[1];
                     cdShiftCategory.timeEnd = tmpArr[2];
-                    
+                    cdShiftCategory.isEnable = YES;
                     if ([tmpArr[3] integerValue]) {
                         cdShiftCategory.isAllDay = YES;
                     }
@@ -907,7 +907,7 @@
     AddShiftVC *addShiftVC = [[AddShiftVC alloc] init];
     addShiftVC.isNewShift = NO;
     addShiftVC.date = _selectDate;
-    addShiftVC.shiftID = (int32_t)[sender tag];
+    addShiftVC.shiftID = [sender tag];
     FXNavigationController *nc = [[FXNavigationController alloc] initWithRootViewController:addShiftVC];
     [self.navigationController presentViewController:nc animated:YES completion:nil];
 }

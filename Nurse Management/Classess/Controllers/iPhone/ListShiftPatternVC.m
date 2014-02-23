@@ -193,13 +193,39 @@
     if ([cdShiftCategory.color isEqualToString:@"color9"]) {
         cell.iconShift.image = [UIImage imageNamed:@"icon_r3_c9.png"];
     }
-        
+    
+    if (cdShiftCategory.isEnable)
+        [cell.swichShift setOn:YES animated:NO];
+    else
+        [cell.swichShift setOn:NO animated:NO];
+    
+    cell.swichShift.tag = indexPath.row;
+
+    [cell.swichShift addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+
 //    UISwitch* switcher = (UISwitch*)[cell.contentView viewWithTag:100];
 //    [switcher setOn:!switcher.on animated:YES];
 //
 //    cell.swichShift.transform = CGAffineTransformMakeScale(0.8, 0.65);
 //    cell.swichShift.onTintColor = [UIColor colorWithRed:0.0/255.0 green:131.0/255.0 blue:234.0/255.0 alpha:1.0];
     return cell;
+}
+
+- (void) switchChanged:(id)sender {
+    UISwitch* switchControl = sender;
+    
+    if ([[AppDelegate shared].fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:switchControl.tag]) {
+        CDShiftCategory *cdShiftCategory = [[AppDelegate shared].fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:switchControl.tag];
+        if (switchControl.on)
+            cdShiftCategory.isEnable = YES;
+        else
+            cdShiftCategory.isEnable = NO;
+        
+        [[AppDelegate shared] saveContext];
+        
+    }
+    
+    NSLog( @"The switch is %@", switchControl.on ? @"ON" : @"OFF" );
 }
 
 

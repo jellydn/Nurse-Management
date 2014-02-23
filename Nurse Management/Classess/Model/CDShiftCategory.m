@@ -2,7 +2,7 @@
 //  CDShiftCategory.m
 //  Nurse Management
 //
-//  Created by PhuNQ on 2/19/14.
+//  Created by Huynh Duc Dung on 2/23/14.
 //  Copyright (c) 2014 Le Phuong Tien. All rights reserved.
 //
 
@@ -18,6 +18,7 @@
 @dynamic name;
 @dynamic timeEnd;
 @dynamic timeStart;
+@dynamic isEnable;
 @dynamic pk_shiftcategory;
 
 @end

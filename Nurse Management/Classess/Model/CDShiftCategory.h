@@ -2,7 +2,7 @@
 //  CDShiftCategory.h
 //  Nurse Management
 //
-//  Created by PhuNQ on 2/19/14.
+//  Created by Huynh Duc Dung on 2/23/14.
 //  Copyright (c) 2014 Le Phuong Tien. All rights reserved.
 //
 
@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * timeEnd;
 @property (nonatomic, retain) NSString * timeStart;
+@property (nonatomic) BOOL isEnable;
 @property (nonatomic, retain) NSSet *pk_shiftcategory;
 @end
 
