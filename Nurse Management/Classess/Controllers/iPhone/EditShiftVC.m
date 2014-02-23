@@ -15,7 +15,7 @@
 
 #import "AppDelegate.h"
 
-@interface EditShiftVC ()<UITextFieldDelegate,NMTimePickerViewDelegate>{
+@interface EditShiftVC ()<UITextFieldDelegate,NMTimePickerViewDelegate,UIActionSheetDelegate>{
     CDShiftCategory *_shiftCategory;
     NSDate *_startTime;
     NSDate *_endTime;
@@ -183,6 +183,7 @@
     if (!_insertId) {
         
         _shiftCategory = (CDShiftCategory *) [NSEntityDescription insertNewObjectForEntityForName:@"CDShiftCategory" inManagedObjectContext:[AppDelegate shared].managedObjectContext];
+        _shiftCategory.isEnable = YES;
         
     } else {
         
@@ -280,6 +281,7 @@
 }
     
 - (IBAction)chooseTime:(id)sender {
+    _isAllDay = NO;
     if ([sender tag] == START_TIME){
         [_timePickerView.datePicker setDate:_startTime?_startTime:[NSDate date] animated:NO];
     }
@@ -291,4 +293,42 @@
     [_timePickerView showActionSheetInView:self.view];
 
 }
+
+- (IBAction)delete:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Delete", nil];
+    [actionSheet showInView:self.view];
+
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:     // delete
+            
+            for (CDShiftCategory *item in [AppDelegate shared].fetchedResultsControllerShiftCategory.fetchedObjects) {
+                if (item.id == _insertId) {
+                    [[AppDelegate shared].managedObjectContext deleteObject:item];
+                    
+                    //TODO: Remove all shift relate shift category
+                    
+                    [[AppDelegate shared] saveContext];
+                    break;
+                }
+            }
+
+            
+            [self.navigationController dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+            break;
+            
+        case 1:     // cancel
+            break;
+            
+        default:
+            break;
+    }
+}
+
 @end

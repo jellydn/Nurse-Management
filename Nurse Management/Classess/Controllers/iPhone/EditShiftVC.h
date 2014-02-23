@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btDelete;
 - (IBAction)btAllTime:(id)sender;
 - (IBAction)chooseTime:(id)sender;
+- (IBAction)delete:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *txtBeginTime;
 @property (weak, nonatomic) IBOutlet UILabel *txtEndTime;
     @property (weak, nonatomic) IBOutlet UIButton *btnBeginTime;
