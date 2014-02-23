@@ -16,7 +16,7 @@
 #import "CDShiftCategory.h"
 #import "FXNavigationController.h"
 
-@interface ListShiftPatternVC ()<UITableViewDelegate, UITableViewDataSource, AddShiftCategoryDelegate>
+@interface ListShiftPatternVC ()<UITableViewDelegate, UITableViewDataSource>
 {
     
     __weak IBOutlet UIView *_viewNavi;
@@ -47,115 +47,45 @@
     [self configView];
     _isLoadCoreData = YES;
     
-    [self fetchedResultsControllerShiftCategory];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleUpdatedData:)
+                                                 name:@"TableShiftCategoryUpdate"
+                                               object:nil];
     
 }
 
-- (void)viewDidUnload {
-    self.fetchedResultsControllerShiftCategory = nil;
-}
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"TableShiftCategoryUpdate"
+                                                  object:nil];
 
+}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
 
-- (void) saveShiftCategory: (CDShiftCategory*)category andInsertId:(int32_t)insertId
-{
-    
-}
-
-#pragma mark - load Coredata
-
-- (NSFetchedResultsController *)fetchedResultsControllerShiftCategory {
-    
-    if (_fetchedResultsControllerShiftCategory != nil) {
-        return _fetchedResultsControllerShiftCategory;
+    - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+    {
     }
     
-    NSString *entityName = @"CDShiftCategory";
-    AppDelegate *_appDelegate = [AppDelegate shared];
-    
-    NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
-    [NSFetchedResultsController deleteCacheWithName:cacheName];
-    
-    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:_appDelegate.managedObjectContext];
-    
-    
-    NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
-    NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    fetchRequest.entity = entity;
-    fetchRequest.fetchBatchSize = 20;
-    fetchRequest.sortDescriptors = sortList;
-    fetchRequest.predicate = predicate;
-    _fetchedResultsControllerShiftCategory = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                                                          managedObjectContext:_appDelegate.managedObjectContext
-                                                                            sectionNameKeyPath:nil
-                                                                                     cacheName:cacheName];
-    _fetchedResultsControllerShiftCategory.delegate = self;
-    
-    NSError *error = nil;
-    [_fetchedResultsControllerShiftCategory performFetch:&error];
-    if (error) {
-        NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+    {
+        [_tableView reloadData];
     }
     
-    if ([_fetchedResultsControllerShiftCategory.fetchedObjects count] == 0) {
-        NSLog(@"add data for shift category");
-        
-        //read file
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"predefault" ofType:@"plist"];
-        
-        // Load the file content and read the data into arrays
-        if (path)
-        {
-            NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
-            NSArray *totalCategory = [dict objectForKey:@"ShiftCategory"];
-            NSLog(@" totalCategory %@",totalCategory);
-            //Creater coredata
-            for (int i = 0 ; i < [totalCategory count]; i++) {
-                NSLog(@" key %d object %@",i, totalCategory[i]);
-                CDShiftCategory *cdShiftCategory = (CDShiftCategory *)[NSEntityDescription insertNewObjectForEntityForName:@"CDShiftCategory" inManagedObjectContext:_appDelegate.managedObjectContext];
-                NSArray *tmpArr = totalCategory[i];
-                
-                cdShiftCategory.id = i + 1;
-                cdShiftCategory.name = tmpArr[0];
-                cdShiftCategory.timeStart = tmpArr[1];
-                cdShiftCategory.timeEnd = tmpArr[2];
-                
-                if ([tmpArr[3] integerValue]) {
-                    cdShiftCategory.isAllDay = YES;
-                }
-                else
-                {
-                    cdShiftCategory.isAllDay = NO ;
-                }
-                
-                cdShiftCategory.color = tmpArr[4];
-                
-                NSLog(@" name %@ is All Day %d", cdShiftCategory.name, cdShiftCategory.isAllDay);
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+    {
+    }
 
-            }
-            
-            [_appDelegate saveContext];
-                        
-        } else {
-            NSLog(@"path error");
-        }
-        
-    } else {
-        NSLog(@"total item : %lu",(unsigned long)[_fetchedResultsControllerShiftCategory.fetchedObjects count]);
-    }
-    
+-(void)handleUpdatedData:(NSNotification *)notification {
+    NSLog(@"recieved");
     [_tableView reloadData];
-    _isLoadCoreData = NO;
-    
-    return _fetchedResultsControllerShiftCategory;
-    
 }
 
 
@@ -168,7 +98,6 @@
 - (IBAction)addShift:(id)sender {
     EditShiftVC *vc                  = [[EditShiftVC alloc] init];
     vc.insertId = 0;
-    vc.delegate = self;
     vc.date                         = [NSDate date];
     vc.typeShift                    = YES;
     FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];
@@ -200,7 +129,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_fetchedResultsControllerShiftCategory.fetchedObjects  count];
+    return [[AppDelegate shared].fetchedResultsControllerShiftCategory.fetchedObjects  count];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -212,8 +141,7 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ShiftCell" owner:self options:nil] lastObject];
     }
-    CDShiftCategory *cdShiftCategory = [_fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:indexPath.row];
-    NSLog(@" name %@ is All Day %d", cdShiftCategory.name, cdShiftCategory.isAllDay);
+    CDShiftCategory *cdShiftCategory = [[AppDelegate shared].fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:indexPath.row];
     cell.lbName.text = cdShiftCategory.name;
     if (cdShiftCategory.isAllDay) {
         cell.lbShift.text = @"終日";
@@ -277,13 +205,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    CDShiftCategory *shiftCategory = [_fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:indexPath.row];
+    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    CDShiftCategory *shiftCategory = [[AppDelegate shared].fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:indexPath.row];
     
     EditShiftVC *vc                 = [[EditShiftVC alloc] init];
     vc.typeShift                    = NO;
-    vc.insertId = shiftCategory.id;
-    vc.delegate = self;
+    vc.insertId = shiftCategory.id  ;
     [vc loadShiftCategory:shiftCategory];
     
     FXNavigationController *navi    = [[FXNavigationController alloc] initWithRootViewController:vc];

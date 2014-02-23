@@ -148,6 +148,9 @@ static __weak AppDelegate *shared = nil;
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TableShiftCategoryUpdate"
+                                                        object:self];
+
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
