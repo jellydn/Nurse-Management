@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 @class CDShiftCategory;
-@protocol AddShiftCategoryDelegate;
 
 @interface EditShiftVC : UIViewController
 @property(nonatomic,strong) NSDate *date;
@@ -22,16 +21,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtName;
 @property (weak, nonatomic) IBOutlet UIButton *btDelete;
 - (IBAction)btAllTime:(id)sender;
+- (IBAction)chooseTime:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *txtBeginTime;
 @property (weak, nonatomic) IBOutlet UILabel *txtEndTime;
+    @property (weak, nonatomic) IBOutlet UIButton *btnBeginTime;
+    @property (weak, nonatomic) IBOutlet UIButton *btnEndTime;
 
 - (void) loadShiftCategory: (CDShiftCategory *) selectedCategory;
-@property (nonatomic, weak) id<AddShiftCategoryDelegate> delegate;
 @property (nonatomic, assign) int32_t insertId;     // to distinguish add or edit member
-@end
-
-@protocol AddShiftCategoryDelegate <NSObject>
-
-- (void) saveShiftCategory: (CDShiftCategory*)category andInsertId:(int32_t)insertId;
-
 @end
