@@ -529,7 +529,6 @@
     
     if (isAllDay == YES) {
         
-//        _isAllDay = YES;
         _btnAllDay.backgroundColor = ALERT_BG_COLOR;
         _btnStartTime.enabled = NO;
         _lblStartTime.textColor = [UIColor grayColor];
@@ -540,7 +539,6 @@
         
     } else {
         
-//        _isAllDay = NO;
         _btnAllDay.backgroundColor = BUTTON_BG_COLOR;
         
         _btnStartTime.enabled = YES;
@@ -560,6 +558,34 @@
         
     }
     
+}
+
+- (void) addLocalNotificationForDate: (CDShiftAlert *) alarm {
+    NSDate *alarmDate = [NSDate dateWithTimeIntervalSince1970:alarm.onTime];
+    NSLog(@"shift alarm date: %@", alarmDate);
+    
+    NSArray *keys = @[@"shift_id",
+                      @"alarm_id",
+                      @"alarm_date",
+                      ];
+    
+    NSArray *values = @[[NSString stringWithFormat:@"%d",alarm.shiftId],
+                        [NSString stringWithFormat:@"%d",alarm.id],
+                        alarmDate];
+    
+    NSDictionary *info = [NSDictionary dictionaryWithObjects:values forKeys:keys];
+    
+    
+    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+    localNotification.fireDate = alarmDate;
+    localNotification.alertBody = [NSString stringWithFormat:@"Shift on %@", [Common convertTimeToStringWithFormat:@"MMM dd, yyyy" date:alarmDate]];
+    localNotification.alertAction = @"View";
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.applicationIconBadgeNumber = 0;
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
+    localNotification.userInfo = info;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
 
 #pragma mark - Core Data
@@ -706,7 +732,6 @@
 }
 
 - (void) saveShiftToCoreData {
-    //TODO: check update the data
     if (_isNewShift)
         _shift.id = [[AppDelegate shared] lastShiftID] + 1;
     
@@ -729,25 +754,63 @@
         _shift.memo = _txvMemo.text;
     
     if (_arrMember) {
-
-//        for (CDMember *member in _shift.pk_shift)
-//            [_shift removePk_shiftObject:member];
         [_shift removePk_shift:_shift.pk_shift];
-        
         for (CDMember *member in _arrMember)
             [_shift addPk_shiftObject:member];
     }
     
     if (_arrAlerts) {
-        
-        [_shift removePk_shiftalert:_shift.pk_shiftalert];
-        
-        for (NSDate *alertDate in _arrAlerts) {
-            CDShiftAlert *shiftAlert = [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT_ALERT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
-            shiftAlert.shiftId = _shift.id;
-            shiftAlert.onTime = [alertDate timeIntervalSince1970];
-            [_shift addPk_shiftalertObject:shiftAlert];
+//        [_shift removePk_shiftalert:_shift.pk_shiftalert];
+        if (_isNewShift) {
+            for (NSDate *alertDate in _arrAlerts) {
+                CDShiftAlert *shiftAlert = [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT_ALERT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
+                shiftAlert.id = [[AppDelegate shared] lastShiftAlertID] + 1;
+                NSLog(@"shift alert id: %d", shiftAlert.id);
+                shiftAlert.shiftId = _shift.id;
+                shiftAlert.onTime = [alertDate timeIntervalSince1970];
+                [_shift addPk_shiftalertObject:shiftAlert];
+                [[AppDelegate shared] saveContext];
+                [self addLocalNotificationForDate:shiftAlert];
+            }
+        } else {
+            // get all alarms of this shift
+            NSMutableArray *alarms = (NSMutableArray *)[_shift.pk_shiftalert allObjects];
+            // remove all unavailable alarms
+            for (CDShiftAlert *item in alarms) {
+                BOOL isIt = NO;
+                for (NSDate *alertDate in _arrAlerts) {
+                    if ([alertDate compare:[NSDate dateWithTimeIntervalSince1970:item.onTime]] == NSOrderedSame) {
+                        isIt = YES;
+                        break;
+                    }
+                }
+                if (!isIt) {
+                    [_shift removePk_shiftalertObject:item];
+                    [[AppDelegate shared] saveContext];
+                }
+            }
+            // add new alarm if existing
+            for (NSDate *alertDate in _arrAlerts) {
+                BOOL isNew = YES;
+                for (CDShiftAlert *item in alarms) {
+                    if ([alertDate compare:[NSDate dateWithTimeIntervalSince1970:item.onTime]] == NSOrderedSame) {
+                        isNew = NO;
+                        break;
+                    }
+                }
+                if (isNew) {
+                    CDShiftAlert *shiftAlert = [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT_ALERT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
+                    shiftAlert.id = [[AppDelegate shared] lastShiftAlertID] + 1;
+                    NSLog(@"shift alert id: %d", shiftAlert.id);
+                    shiftAlert.shiftId = _shift.id;
+                    shiftAlert.onTime = [alertDate timeIntervalSince1970];
+                    [_shift addPk_shiftalertObject:shiftAlert];
+                    [[AppDelegate shared] saveContext];
+                    [self addLocalNotificationForDate:shiftAlert];
+                }
+            }
         }
+        
     }
     
     [[AppDelegate shared] saveContext];

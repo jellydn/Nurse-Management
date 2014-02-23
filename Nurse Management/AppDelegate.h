@@ -25,6 +25,7 @@
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerShift;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerShiftCategory;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerShiftAlert;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerSchedule;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerScheduleCategory;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerScheduleAlert;
@@ -45,6 +46,7 @@
 - (void) editScheduleWithInfo:(NSDictionary*)info scheduleID:(int)scheduleID;
 - (int) lastScheduleID;
 - (int) lastScheduleAlertID;
+- (int) lastShiftAlertID;
 - (NSMutableArray*) getSchedulesOnDate:(NSDate*)date;
 - (NSMutableArray*) getColorsSchedulesOnDate:(NSDate*)date;
 
