@@ -273,9 +273,7 @@
         if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:item.url]]) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:item.url]];
         }
-    }
-    
-    
+    }    
 }
 
 #pragma mark - OtherAppWSDelegate
