@@ -54,7 +54,7 @@
                     <color key="backgroundColor" red="0.39607843139999999" green="0.52941176469999995" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
                 </view>
-                <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" id="Rvt-pD-Nbn">
+                <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="Rvt-pD-Nbn">
                     <rect key="frame" x="10" y="63.999999999999986" width="300" height="504"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <subviews>

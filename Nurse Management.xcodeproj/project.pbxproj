@@ -247,6 +247,10 @@
 		2AD1CDCF18BB281900FE3E1F /* HomeSweetToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AD1CDCE18BB281900FE3E1F /* HomeSweetToolBarView.xib */; };
 		2AD1CDD218BB3CAF00FE3E1F /* ic_bt_back_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD1CDD018BB3CAF00FE3E1F /* ic_bt_back_2.png */; };
 		2AD1CDD318BB3CAF00FE3E1F /* ic_bt_back_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD1CDD118BB3CAF00FE3E1F /* ic_bt_back_2@2x.png */; };
+		2AD1CDD618BB458D00FE3E1F /* sweet_bg_calendar_header.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD1CDD418BB458D00FE3E1F /* sweet_bg_calendar_header.png */; };
+		2AD1CDD718BB458D00FE3E1F /* sweet_bg_calendar_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD1CDD518BB458D00FE3E1F /* sweet_bg_calendar_header@2x.png */; };
+		2AD1CDDA18BB459700FE3E1F /* girlie_bg_calendar_header.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD1CDD818BB459700FE3E1F /* girlie_bg_calendar_header.png */; };
+		2AD1CDDB18BB459700FE3E1F /* girlie_bg_calendar_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD1CDD918BB459700FE3E1F /* girlie_bg_calendar_header@2x.png */; };
 		2AF0757E18ACABFD0008D875 /* FXDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0757D18ACABFD0008D875 /* FXDayView.m */; };
 		2AF0758118ACAC250008D875 /* FXDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0758018ACAC250008D875 /* FXDay.m */; };
 		2AF0758318ACB60A0008D875 /* FXDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF0758218ACB60A0008D875 /* FXDayView.xib */; };
@@ -611,6 +615,10 @@
 		2AD1CDCE18BB281900FE3E1F /* HomeSweetToolBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeSweetToolBarView.xib; sourceTree = "<group>"; };
 		2AD1CDD018BB3CAF00FE3E1F /* ic_bt_back_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bt_back_2.png; sourceTree = "<group>"; };
 		2AD1CDD118BB3CAF00FE3E1F /* ic_bt_back_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bt_back_2@2x.png"; sourceTree = "<group>"; };
+		2AD1CDD418BB458D00FE3E1F /* sweet_bg_calendar_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sweet_bg_calendar_header.png; sourceTree = "<group>"; };
+		2AD1CDD518BB458D00FE3E1F /* sweet_bg_calendar_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sweet_bg_calendar_header@2x.png"; sourceTree = "<group>"; };
+		2AD1CDD818BB459700FE3E1F /* girlie_bg_calendar_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = girlie_bg_calendar_header.png; sourceTree = "<group>"; };
+		2AD1CDD918BB459700FE3E1F /* girlie_bg_calendar_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "girlie_bg_calendar_header@2x.png"; sourceTree = "<group>"; };
 		2AF0757C18ACABFD0008D875 /* FXDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDayView.h; sourceTree = "<group>"; };
 		2AF0757D18ACABFD0008D875 /* FXDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXDayView.m; sourceTree = "<group>"; };
 		2AF0757F18ACAC250008D875 /* FXDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDay.h; sourceTree = "<group>"; };
@@ -1333,6 +1341,8 @@
 		2A50DF0D18BAE9F90033FE11 /* Theme_girlie */ = {
 			isa = PBXGroup;
 			children = (
+				2AD1CDD818BB459700FE3E1F /* girlie_bg_calendar_header.png */,
+				2AD1CDD918BB459700FE3E1F /* girlie_bg_calendar_header@2x.png */,
 				2AD1CDD018BB3CAF00FE3E1F /* ic_bt_back_2.png */,
 				2AD1CDD118BB3CAF00FE3E1F /* ic_bt_back_2@2x.png */,
 				2A50DF3918BAFE2D0033FE11 /* bg_tool_bar_theme_girlie.png */,
@@ -1360,6 +1370,8 @@
 		2A50DF1218BAEC8A0033FE11 /* Theme_sweet */ = {
 			isa = PBXGroup;
 			children = (
+				2AD1CDD418BB458D00FE3E1F /* sweet_bg_calendar_header.png */,
+				2AD1CDD518BB458D00FE3E1F /* sweet_bg_calendar_header@2x.png */,
 				2AD1CDBA18BB27EA00FE3E1F /* bg_tool_bar_theme_sweet.png */,
 				2AD1CDBB18BB27EA00FE3E1F /* bg_tool_bar_theme_sweet@2x.png */,
 				2AD1CDBC18BB27EA00FE3E1F /* sweet_ic_toolbar_more.png */,
@@ -1636,6 +1648,7 @@
 				2A50DF3118BAFD970033FE11 /* girlie_ic_toolbar_ranking.png in Resources */,
 				B6D7A3B518B1B21500E98936 /* predefault.plist in Resources */,
 				B6B10E0218AF0C9E004E3229 /* ic_edit_shift_color_5.png in Resources */,
+				2AD1CDD618BB458D00FE3E1F /* sweet_bg_calendar_header.png in Resources */,
 				2A50DF3518BAFD970033FE11 /* girlie_ic_toolbar_add_shift@2x.png in Resources */,
 				2A6FDB7D18AF1F5300D33D21 /* bg_review_add_schedule.png in Resources */,
 				2A50DF4718BB021C0033FE11 /* ic_bar_bt_theme_sweet_email@2x.png in Resources */,
@@ -1644,6 +1657,7 @@
 				2A3C24CC18AB593300C20A04 /* icon_r1_c9.png in Resources */,
 				2A50DF3218BAFD970033FE11 /* girlie_ic_toolbar_ranking@2x.png in Resources */,
 				2A75E64018ADA97700E74E4F /* ShiftCell.xib in Resources */,
+				2AD1CDDA18BB459700FE3E1F /* girlie_bg_calendar_header.png in Resources */,
 				2A3C24E618AB701500C20A04 /* AddShiftVC.xib in Resources */,
 				2A50DF0B18BAE1110033FE11 /* theme_sweet.plist in Resources */,
 				2A3C24E018AB6DFF00C20A04 /* ic_bt_add@2x.png in Resources */,
@@ -1746,6 +1760,7 @@
 				2A75E63E18ADA97700E74E4F /* ListMembersVC.xib in Resources */,
 				B6B10DFE18AF0C9E004E3229 /* ic_edit_shift_color_3.png in Resources */,
 				2A394BE218A9FD5300F30F2D /* Images.xcassets in Resources */,
+				2AD1CDDB18BB459700FE3E1F /* girlie_bg_calendar_header@2x.png in Resources */,
 				2A4F227918B456BE00A5C97C /* schedule_bg_6@2x.png in Resources */,
 				2A394C2018A9FF7600F30F2D /* Icon.png in Resources */,
 				2A394C5B18AA25AE00F30F2D /* ic_bt_bar_today@2x.png in Resources */,
@@ -1812,6 +1827,7 @@
 				2AD1CDCA18BB27EA00FE3E1F /* sweet_ic_toolbar_add_schedule.png in Resources */,
 				2A3F497118AE197C00D3137D /* img_temp1.png in Resources */,
 				2A8A861118B839E600332B68 /* screen_theme_5.png in Resources */,
+				2AD1CDD718BB458D00FE3E1F /* sweet_bg_calendar_header@2x.png in Resources */,
 				2AD1CDCF18BB281900FE3E1F /* HomeSweetToolBarView.xib in Resources */,
 				2A3F496118AE096A00D3137D /* img_bg_home_cell_schedule_1.png in Resources */,
 				2A6FDB7518AF1ACA00D33D21 /* icon_category_add_sc.png in Resources */,

@@ -28,6 +28,10 @@
 	<string>AddScheduleView</string>
 	<key>naviTitleColor</key>
 	<string>#ffffff</string>
+	<key>calendarHeaderColor</key>
+	<string>#f8e0c2</string>
+	<key>calendarHeaderImage</key>
+	<string></string>
 	<key>backButtonImage</key>
 	<string>ic_bt_back.png</string>
 </dict>
