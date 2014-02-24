@@ -7,12 +7,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChangeThemeVC">
             <connections>
-                <outlet property="_imgNavi" destination="DlG-jI-BhP" id="c5w-wt-T10"/>
                 <outlet property="_lbThemeTitleName" destination="D9v-Tc-hI3" id="Q5w-d2-TAg"/>
-                <outlet property="_lbTile" destination="wKb-69-js8" id="iWs-9M-vzv"/>
                 <outlet property="_pageControll" destination="cN7-gi-UH0" id="crm-yG-zd5"/>
                 <outlet property="_scrollView" destination="Rvt-pD-Nbn" id="2vT-iY-LVO"/>
                 <outlet property="_viewNavi" destination="SB0-qJ-gbD" id="Pe2-WO-1pR"/>
+                <outlet property="btBack" destination="Mgz-NW-aM0" id="ctd-wv-h0S"/>
+                <outlet property="lbTile" destination="wKb-69-js8" id="Bx5-4M-LSK"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -25,10 +25,6 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="DlG-jI-BhP">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
                         <view contentMode="scaleToFill" id="0ah-BE-wOt">
                             <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -58,7 +54,7 @@
                     <color key="backgroundColor" red="0.39607843139999999" green="0.52941176469999995" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
                 </view>
-                <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" id="Rvt-pD-Nbn">
+                <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="Rvt-pD-Nbn">
                     <rect key="frame" x="10" y="63.999999999999986" width="300" height="504"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <subviews>

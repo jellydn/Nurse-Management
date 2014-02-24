@@ -26,10 +26,14 @@
 #define _fxThemeColorNaviBar                @"navibarColor"
 #define _fxThemeColorToolBar                @"toolbarColor"
 #define _fxThemeColorMain                   @"mainColor"
+#define _fxThemeColorNaviTitle              @"naviTitleColor"
+#define _fxThemeColorCalendarHeader         @"calendarHeaderColor"
 
 #define _fxThemeImageBackground             @"backgroundImage"
 #define _fxThemeImageNavi                   @"navibarImage"
 #define _fxThemeImageToolbar                @"toolbarImage"
+#define _fxThemeImageBackButton             @"backButtonImage"
+#define _fxThemeImageCalendarHeader         @"calendarHeaderImage"
 
 #define _fxThemeXibHomeNaviBar              @"homeNaviBarFileXib"
 #define _fxThemeXibHomeToolBar              @"homeToolBarFileXib"

@@ -59,11 +59,19 @@
         self.view.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorBackground];
     }
     
+    //set navi view
     if ([Common isIOS7]) {
         [self.navigationController.navigationBar setBarTintColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar]];
     } else {
         [self.navigationController.navigationBar setTintColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar]];
     }
+    
+    // back button
+    [_btBack setImage:[[FXThemeManager shared] getImageWithKey:_fxThemeImageBackButton]
+             forState:UIControlStateNormal];
+    
+    // label title
+    _lbTile.textColor           = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviTitle];
 }
 
 - (void)didReceiveMemoryWarning
@@ -144,6 +152,14 @@
         } else {
             [self.navigationController.navigationBar setTintColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar]];
         }
+        
+        
+        // back button
+        [_btBack setImage:[[FXThemeManager shared] getImageWithKey:_fxThemeImageBackButton]
+                 forState:UIControlStateNormal];
+        
+        // label title
+        _lbTile.textColor           = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviTitle];
     }
 }
 

@@ -17,7 +17,7 @@
 	<key>themeName</key>
 	<string>_fxThemeNameGirlie</string>
 	<key>mainColor</key>
-	<string>#6587c7</string>
+	<string>#f0897c</string>
 	<key>homeNaviBarFileXib</key>
 	<string>HomeGirlieNaviBarView</string>
 	<key>homeToolBarFileXib</key>
@@ -26,5 +26,13 @@
 	<string>AddShiftView</string>
 	<key>homeAddScheduleFileXib</key>
 	<string>AddScheduleView</string>
+	<key>naviTitleColor</key>
+	<string>#7B6128</string>
+	<key>calendarHeaderColor</key>
+	<string></string>
+	<key>calendarHeaderImage</key>
+	<string>girlie_bg_calendar_header.png</string>
+	<key>backButtonImage</key>
+	<string>ic_bt_back_2.png</string>
 </dict>
 </plist>

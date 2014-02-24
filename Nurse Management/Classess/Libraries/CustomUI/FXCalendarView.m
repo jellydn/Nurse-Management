@@ -28,6 +28,14 @@
 
 - (void) initCalendar
 {
+    //set theme for header
+    if ([[FXThemeManager shared] getImageWithKey:_fxThemeImageCalendarHeader]) {
+        _headerView.backgroundColor = [[UIColor alloc] initWithPatternImage:[[FXThemeManager shared] getImageWithKey:_fxThemeImageCalendarHeader]];
+    } else {
+        _headerView.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorCalendarHeader];
+    }
+    
+    
     [_scrollView setContentSize:CGSizeMake(320 * 3, 301)];
     
     NSDate *date = [NSDate date];
@@ -259,6 +267,13 @@
 
 - (void) reloadTheme
 {
+    //set theme for header
+    if ([[FXThemeManager shared] getImageWithKey:_fxThemeImageCalendarHeader]) {
+        _headerView.backgroundColor = [[UIColor alloc] initWithPatternImage:[[FXThemeManager shared] getImageWithKey:_fxThemeImageCalendarHeader]];
+    } else {
+        _headerView.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorCalendarHeader];
+    }
+    
     [_monthView2 reloadTheme];
 }
 

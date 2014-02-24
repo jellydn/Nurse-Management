@@ -17,6 +17,9 @@ typedef void (^FXReloadThemeOfView)(NSString *themeName);
 @property (nonatomic) BOOL isHideNaviBarWhenBack;
 @property (nonatomic, strong) FXReloadThemeOfView blockReloadThemeOfView;
 
+@property (nonatomic, weak) IBOutlet UIButton        *btBack;
+@property (nonatomic, weak) IBOutlet UILabel         *lbTile;
+
 - (void) setBlockReloadThemeOfView:(FXReloadThemeOfView)blockReloadThemeOfView;
 
 - (void) loadHomeNaivBar;

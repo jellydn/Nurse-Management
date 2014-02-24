@@ -26,5 +26,13 @@
 	<string>AddShiftView</string>
 	<key>homeAddScheduleFileXib</key>
 	<string>AddScheduleView</string>
+	<key>naviTitleColor</key>
+	<string>#ffffff</string>
+	<key>calendarHeaderColor</key>
+	<string>#d7e3ff</string>
+	<key>calendarHeaderImage</key>
+	<string></string>
+	<key>backButtonImage</key>
+	<string>ic_bt_back.png</string>
 </dict>
 </plist>
