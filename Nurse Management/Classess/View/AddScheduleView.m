@@ -256,6 +256,7 @@
     if (_delegate && [_delegate respondsToSelector:@selector(didShowCategoryName:)]) {
         [_delegate didShowCategoryName:self];
     }
+    
 }
 
 - (IBAction)choiceTime:(id)sender

@@ -32,10 +32,10 @@
         _lbTitle.text = @"利用規約";
         _nameFile = @"term-privacy_data";
     }else if (_selectTerm == 9){
-        _lbTitle.text = @"利用規約 2";
+        _lbTitle.text = @"プライバシーポリシー";
         _nameFile = @"term-privacy_row_two";
     }else{
-        _lbTitle.text = @"利用規約 4";
+        _lbTitle.text = @"お問い合わせ";
         _nameFile = @"term-privacy_three";
     }
     [self initDataContent];
