@@ -28,6 +28,7 @@
 #define _fxThemeColorMain                   @"mainColor"
 #define _fxThemeColorNaviTitle              @"naviTitleColor"
 #define _fxThemeColorCalendarHeader         @"calendarHeaderColor"
+#define _fxThemeColorAddShiftButton         @"homeAddShiftButtonColor"
 
 #define _fxThemeImageBackground             @"backgroundImage"
 #define _fxThemeImageNavi                   @"navibarImage"

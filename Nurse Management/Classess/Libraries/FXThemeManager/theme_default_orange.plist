@@ -30,6 +30,8 @@
 	<string>#ffffff</string>
 	<key>calendarHeaderColor</key>
 	<string>#f8e0c2</string>
+	<key>homeAddShiftButtonColor</key>
+	<string>#f29540</string>
 	<key>calendarHeaderImage</key>
 	<string></string>
 	<key>backButtonImage</key>

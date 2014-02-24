@@ -50,9 +50,9 @@
         }
     }
     
-    [_btClose setTitleColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorMain] forState:UIControlStateNormal];
+    [_btClose setTitleColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorAddShiftButton] forState:UIControlStateNormal];
     _btClose.layer.borderWidth = 1.0;
-    _btClose.layer.borderColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain].CGColor;
+    _btClose.layer.borderColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorAddShiftButton].CGColor;
     [_btClose.layer setCornerRadius:6.0];
     _btClose.layer.masksToBounds = YES;
     
