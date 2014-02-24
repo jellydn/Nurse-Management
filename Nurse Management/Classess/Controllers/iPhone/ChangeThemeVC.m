@@ -15,13 +15,14 @@
 {
     
     __weak IBOutlet UIView *_viewNavi;
+    __weak IBOutlet UIImageView *_imgNavi;
     __weak IBOutlet UILabel *_lbTile;
     
     __weak IBOutlet UIScrollView *_scrollView;
     __weak IBOutlet UIPageControl *_pageControll;
     __weak IBOutlet UILabel *_lbThemeTitleName;
     
-    NSArray *_themeTitleName;
+    NSArray *_themeTitleName, *_themeName;
     int _pageCurrent;
 }
 - (IBAction)backVC:(id)sender;
@@ -114,10 +115,12 @@
 - (void) configView
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
+    _imgNavi.image = [[FXThemeManager shared] getImageWithKey:_fxThemeImageNavi];
+    
     _lbTile.text = @"カレンダーテーマ設定";
     
     [_scrollView setContentSize:CGSizeMake(1400, 0)];
-    [_scrollView setContentOffset:CGPointMake(50, 0)];
+    
     
     _themeTitleName = @[@"SimpleBlue",
                         @"SimpleGreen",
@@ -126,7 +129,15 @@
                         @"Girlie",
                         @"Sweet"];
     
-    [self setThemeWith:0];
+    _themeName = @[@"_fxThemeNameDefault",
+                   @"_fxThemeNameDefaultGreen",
+                   @"_fxThemeNameDefaultOrange",
+                   @"_fxThemeNameDefaultPink",
+                   @"_fxThemeNameGirlie",
+                   @"_fxThemeNameSweet"];
+    
+    [self setThemeWith:[_themeName indexOfObject:[FXThemeManager shared].themeName]];
+    [_scrollView setContentOffset:CGPointMake([_themeName indexOfObject:[FXThemeManager shared].themeName]*200 + 50, 0)];
 }
 
 #pragma mark - Others
@@ -141,9 +152,12 @@
 #pragma mark - Notification
 - (void)eventListenerDidReceiveNotification:(NSNotification *)notif
 {
+    [super eventListenerDidReceiveNotification:notif];
+    
     if ([[notif name] isEqualToString:_fxThemeNotificationChangeTheme])
     {
         _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
+        _imgNavi.image = [[FXThemeManager shared] getImageWithKey:_fxThemeImageNavi];
     }
 }
 

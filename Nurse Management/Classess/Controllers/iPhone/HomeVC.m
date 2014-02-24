@@ -375,6 +375,8 @@
 #pragma mark - Notification
 - (void)eventListenerDidReceiveNotification:(NSNotification *)notif
 {
+    [super eventListenerDidReceiveNotification:notif];
+    
     if ([[notif name] isEqualToString:_fxThemeNotificationChangeTheme]) {
         [self loadHomeNaivBar];
         [self loadHomeToolBar];

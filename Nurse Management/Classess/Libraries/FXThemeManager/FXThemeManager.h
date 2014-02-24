@@ -65,6 +65,7 @@ typedef enum {
 - (UIColor*)getColorWithKey:(NSString*)key;
 
 // images
+- (UIImage*)getImageWithKey:(NSString*)key;
 
 // font
 
