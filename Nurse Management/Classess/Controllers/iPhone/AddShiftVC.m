@@ -384,11 +384,13 @@
     
     for (CDShiftCategory *cdShift in self.fetchedResultsControllerShiftCategory.fetchedObjects) {
         
-        ShiftCategoryItem *item = [[ShiftCategoryItem alloc] init];
-        item.shiftCategoryID = cdShift.id;
-        item.name            = cdShift.name;
-        item.color           = cdShift.color;
-        [shifts addObject:item];
+        if (cdShift.isEnable) {
+            ShiftCategoryItem *item = [[ShiftCategoryItem alloc] init];
+            item.shiftCategoryID = cdShift.id;
+            item.name            = cdShift.name;
+            item.color           = cdShift.color;
+            [shifts addObject:item];
+        }
         
     }
     
@@ -899,7 +901,10 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    [self loadChooseMemberView];
+    if (controller == _fetchedResultsControllerMember)
+        [self loadChooseMemberView];
+    else if (controller == _fetchedResultsControllerShiftCategory)
+        [_addShiftView loadInfoWithShiftCategories:[self convertShiftObject]];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
