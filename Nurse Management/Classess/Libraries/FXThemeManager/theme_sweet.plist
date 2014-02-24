@@ -36,5 +36,14 @@
 	<string>sweet_bg_calendar_header.png</string>
 	<key>backButtonImage</key>
 	<string>ic_bt_back_2.png</string>
+	<key>homeAddScheduleOthers</key>
+	<dict>
+		<key>button1</key>
+		<string>ic_bt_home_add_schedule_step1_sweet.png</string>
+		<key>button2</key>
+		<string>ic_bt_add_schedule_back_sweet.png</string>
+		<key>button3</key>
+		<string>ic_bt_save_sweet.png</string>
+	</dict>
 </dict>
 </plist>

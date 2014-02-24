@@ -38,6 +38,13 @@
     
     _datePicker.calendar        = [NSCalendar autoupdatingCurrentCalendar];
     _datePicker.datePickerMode  = UIDatePickerModeTime;
+    
+    NSDictionary *tempDic = [[FXThemeManager shared].themeData objectForKey:_fxThemeOthersAddSchedule];
+    
+    [_btNextSchedule setImage:[UIImage imageNamed:[tempDic objectForKey:@"button1"]] forState:UIControlStateNormal];
+    [_btBackChoiceCategory setImage:[UIImage imageNamed:[tempDic objectForKey:@"button2"]] forState:UIControlStateNormal];
+    [_btSaveSchedule setImage:[UIImage imageNamed:[tempDic objectForKey:@"button3"]] forState:UIControlStateNormal];
+    
 }
 
 - (void) show
