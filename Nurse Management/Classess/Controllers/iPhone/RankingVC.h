@@ -10,5 +10,7 @@
 #import "FXViewController.h"
 
 @interface RankingVC : FXViewController
+@property (weak, nonatomic) IBOutlet UIWebView *webViewContent;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 
 @end
