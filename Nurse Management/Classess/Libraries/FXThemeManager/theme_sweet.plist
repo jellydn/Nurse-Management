@@ -9,7 +9,7 @@
 	<key>toolbarColor</key>
 	<string>#fcd7d7</string>
 	<key>toolbarImage</key>
-	<string></string>
+	<string>bg_tool_bar_theme_sweet.png</string>
 	<key>navibarColor</key>
 	<string>#fcd7d7</string>
 	<key>navibarImage</key>
@@ -21,7 +21,7 @@
 	<key>homeNaviBarFileXib</key>
 	<string>HomeSweetNaviBarView</string>
 	<key>homeToolBarFileXib</key>
-	<string>HomeToolBarView</string>
+	<string>HomeSweetToolBarView</string>
 	<key>homeAddShiftFileXib</key>
 	<string>AddShiftView</string>
 	<key>homeAddScheduleFileXib</key>
