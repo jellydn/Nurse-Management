@@ -25,5 +25,5 @@
 
 //More App
 #define URL_WS_OTHER_APP    @"http://site.dashapps.info/api/?appid=AP001&offset=%d&limit=%d"
-
+#define URL_WS_RANKING         @"https://www.google.com"
 #endif

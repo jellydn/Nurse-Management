@@ -10,6 +10,7 @@
 #import "Define.h"
 #import "Common.h"
 #import "FXThemeManager.h"
+#import "Define.h"
 
 @interface RankingVC ()
 {
@@ -36,6 +37,11 @@
 {
     [super viewDidLoad];
     [self configView];
+    //load webview
+    NSString* url = URL_WS_RANKING;
+    NSURL* nsUrl = [NSURL URLWithString:url];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsUrl];
+    [_webViewContent loadRequest:requestObj];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,7 +57,7 @@
 - (void) configView
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
-    _lbTile.text = @"Ranking";
+    _lbTile.text = @"転職ランキング";
 }
 
 #pragma mark - Notification
@@ -61,6 +67,32 @@
     {
         _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     }
+}
+#pragma mark - UIWebViewDelegate
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    return YES;
+    
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    _webViewContent.hidden = YES;
+    _indicator.hidden = NO;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    
+    _webViewContent.hidden = NO;
+    _indicator.hidden = YES;
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    _webViewContent.hidden = NO;
+    _indicator.hidden = YES;
 }
 
 
