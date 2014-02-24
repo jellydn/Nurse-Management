@@ -5,23 +5,23 @@
 	<key>backgroundColor</key>
 	<string>#fcf3e9</string>
 	<key>backgroundImage</key>
-	<string></string>
+	<string>bg_theme_girlie.png</string>
 	<key>toolbarColor</key>
-	<string>#6587c7</string>
+	<string>#fdf7e4</string>
 	<key>toolbarImage</key>
-	<string></string>
+	<string>bg_tool_bar_theme_girlie.png</string>
 	<key>navibarColor</key>
-	<string>#6587c7</string>
+	<string>#fdf7e4</string>
 	<key>navibarImage</key>
-	<string></string>
+	<string>bg_navi_theme_girlie.png</string>
 	<key>themeName</key>
 	<string>_fxThemeNameGirlie</string>
 	<key>mainColor</key>
 	<string>#6587c7</string>
 	<key>homeNaviBarFileXib</key>
-	<string>HomeNaviBarView</string>
+	<string>HomeGirlieNaviBarView</string>
 	<key>homeToolBarFileXib</key>
-	<string>HomeToolBarView</string>
+	<string>HomeGirlieToolBarView</string>
 	<key>homeAddShiftFileXib</key>
 	<string>AddShiftView</string>
 	<key>homeAddScheduleFileXib</key>

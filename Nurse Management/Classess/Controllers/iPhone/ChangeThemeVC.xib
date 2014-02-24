@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChangeThemeVC">
             <connections>
+                <outlet property="_imgNavi" destination="DlG-jI-BhP" id="c5w-wt-T10"/>
                 <outlet property="_lbThemeTitleName" destination="D9v-Tc-hI3" id="Q5w-d2-TAg"/>
                 <outlet property="_lbTile" destination="wKb-69-js8" id="iWs-9M-vzv"/>
                 <outlet property="_pageControll" destination="cN7-gi-UH0" id="crm-yG-zd5"/>
@@ -24,6 +25,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="DlG-jI-BhP">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <view contentMode="scaleToFill" id="0ah-BE-wOt">
                             <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

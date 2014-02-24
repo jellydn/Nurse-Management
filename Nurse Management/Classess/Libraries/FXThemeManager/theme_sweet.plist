@@ -5,21 +5,21 @@
 	<key>backgroundColor</key>
 	<string>#fcf3e9</string>
 	<key>backgroundImage</key>
-	<string></string>
+	<string>bg_theme_sweet.png</string>
 	<key>toolbarColor</key>
-	<string>#6587c7</string>
+	<string>#fcd7d7</string>
 	<key>toolbarImage</key>
 	<string></string>
 	<key>navibarColor</key>
-	<string>#6587c7</string>
+	<string>#fcd7d7</string>
 	<key>navibarImage</key>
-	<string></string>
+	<string>bg_navi_theme_sweet.png</string>
 	<key>themeName</key>
 	<string>_fxThemeNameSweet</string>
 	<key>mainColor</key>
 	<string>#6587c7</string>
 	<key>homeNaviBarFileXib</key>
-	<string>HomeNaviBarView</string>
+	<string>HomeSweetNaviBarView</string>
 	<key>homeToolBarFileXib</key>
 	<string>HomeToolBarView</string>
 	<key>homeAddShiftFileXib</key>

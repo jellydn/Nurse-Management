@@ -131,7 +131,23 @@ static FXThemeManager *shared = nil;
 
 - (UIColor*)getColorWithKey:(NSString*)key
 {
-    return [self colorFromHexString:[_themeData objectForKey:key]];
+    
+    if ([[_themeData objectForKey:key] isEqualToString:@""] ||
+        [_themeData objectForKey:key] == nil) {
+        return [UIColor clearColor];
+    } else {
+        return [self colorFromHexString:[_themeData objectForKey:key]];
+    }
+}
+
+- (UIImage*)getImageWithKey:(NSString*)key
+{
+    if ([[_themeData objectForKey:key] isEqualToString:@""] ||
+        [_themeData objectForKey:key] == nil) {
+        return nil;
+    } else {
+        return [UIImage imageNamed:[_themeData objectForKey:key]];
+    }
 }
 
 

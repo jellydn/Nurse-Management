@@ -53,7 +53,11 @@
                                                object:nil];
     
     //set background
-    self.view.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorBackground];
+    if ([[FXThemeManager shared] getImageWithKey:_fxThemeImageBackground]) {
+        self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[[FXThemeManager shared] getImageWithKey:_fxThemeImageBackground]];
+    } else {
+        self.view.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorBackground];
+    }
     
     if ([Common isIOS7]) {
         [self.navigationController.navigationBar setBarTintColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar]];
@@ -127,6 +131,20 @@
 
 - (void)eventListenerDidReceiveNotification:(NSNotification *)notif
 {
+    if ([[notif name] isEqualToString:_fxThemeNotificationChangeTheme]) {
+        //set background
+        if ([[FXThemeManager shared] getImageWithKey:_fxThemeImageBackground]) {
+            self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[[FXThemeManager shared] getImageWithKey:_fxThemeImageBackground]];
+        } else {
+            self.view.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorBackground];
+        }
+        
+        if ([Common isIOS7]) {
+            [self.navigationController.navigationBar setBarTintColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar]];
+        } else {
+            [self.navigationController.navigationBar setTintColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar]];
+        }
+    }
 }
 
 

@@ -15,6 +15,7 @@
 {
     
     __weak IBOutlet UIView *_viewNavi;
+    __weak IBOutlet UIImageView *_imgNavi;
     __weak IBOutlet UILabel *_lbTile;
     
     __weak IBOutlet UIScrollView *_scrollView;
@@ -114,6 +115,8 @@
 - (void) configView
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
+    _imgNavi.image = [[FXThemeManager shared] getImageWithKey:_fxThemeImageNavi];
+    
     _lbTile.text = @"カレンダーテーマ設定";
     
     [_scrollView setContentSize:CGSizeMake(1400, 0)];
@@ -141,9 +144,12 @@
 #pragma mark - Notification
 - (void)eventListenerDidReceiveNotification:(NSNotification *)notif
 {
+    [super eventListenerDidReceiveNotification:notif];
+    
     if ([[notif name] isEqualToString:_fxThemeNotificationChangeTheme])
     {
         _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
+        _imgNavi.image = [[FXThemeManager shared] getImageWithKey:_fxThemeImageNavi];
     }
 }
 
