@@ -153,6 +153,8 @@
 		2A4F229F18B4575000A5C97C /* MoreCellTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F229B18B4575000A5C97C /* MoreCellTitle.m */; };
 		2A4F22A018B4575000A5C97C /* MoreCellTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A4F229C18B4575000A5C97C /* MoreCellTitle.xib */; };
 		2A4F22A318B4575A00A5C97C /* MoreCellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4F22A218B4575A00A5C97C /* MoreCellItem.m */; };
+		2A50DF0B18BAE1110033FE11 /* theme_sweet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A50DF0918BAE1110033FE11 /* theme_sweet.plist */; };
+		2A50DF0C18BAE1110033FE11 /* theme_girlie.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A50DF0A18BAE1110033FE11 /* theme_girlie.plist */; };
 		2A516C9818AC5C1A00F82B5A /* ScheduleCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A516C9618AC5C1A00F82B5A /* ScheduleCategoryVC.m */; };
 		2A516C9918AC5C1A00F82B5A /* ScheduleCategoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A516C9718AC5C1A00F82B5A /* ScheduleCategoryVC.xib */; };
 		2A516C9E18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A516C9C18AC5E1800F82B5A /* AddScheduleCategoryNameVC.m */; };
@@ -450,6 +452,8 @@
 		2A4F229C18B4575000A5C97C /* MoreCellTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreCellTitle.xib; sourceTree = "<group>"; };
 		2A4F22A118B4575A00A5C97C /* MoreCellItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCellItem.h; sourceTree = "<group>"; };
 		2A4F22A218B4575A00A5C97C /* MoreCellItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCellItem.m; sourceTree = "<group>"; };
+		2A50DF0918BAE1110033FE11 /* theme_sweet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = theme_sweet.plist; sourceTree = "<group>"; };
+		2A50DF0A18BAE1110033FE11 /* theme_girlie.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = theme_girlie.plist; sourceTree = "<group>"; };
 		2A516C9518AC5C1A00F82B5A /* ScheduleCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCategoryVC.h; sourceTree = "<group>"; };
 		2A516C9618AC5C1A00F82B5A /* ScheduleCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCategoryVC.m; sourceTree = "<group>"; };
 		2A516C9718AC5C1A00F82B5A /* ScheduleCategoryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCategoryVC.xib; sourceTree = "<group>"; };
@@ -944,6 +948,8 @@
 				2A3C24AF18AB271F00C20A04 /* theme_default_green.plist */,
 				2A8A861318B845B200332B68 /* theme_default_orange.plist */,
 				2A8A861218B845B200332B68 /* theme_default_pink.plist */,
+				2A50DF0A18BAE1110033FE11 /* theme_girlie.plist */,
+				2A50DF0918BAE1110033FE11 /* theme_sweet.plist */,
 			);
 			path = FXThemeManager;
 			sourceTree = "<group>";
@@ -1486,6 +1492,7 @@
 				2A3C24CC18AB593300C20A04 /* icon_r1_c9.png in Resources */,
 				2A75E64018ADA97700E74E4F /* ShiftCell.xib in Resources */,
 				2A3C24E618AB701500C20A04 /* AddShiftVC.xib in Resources */,
+				2A50DF0B18BAE1110033FE11 /* theme_sweet.plist in Resources */,
 				2A3C24E018AB6DFF00C20A04 /* ic_bt_add@2x.png in Resources */,
 				2A3F497018AE197C00D3137D /* ic_time@2x.png in Resources */,
 				2A4F228418B456BE00A5C97C /* schedule_bg_1.png in Resources */,
@@ -1598,6 +1605,7 @@
 				2A8A861418B845B200332B68 /* theme_default_pink.plist in Resources */,
 				2A4F228518B456BE00A5C97C /* schedule_bg_1@2x.png in Resources */,
 				2A3C24A418AB1BF100C20A04 /* RankingVC.xib in Resources */,
+				2A50DF0C18BAE1110033FE11 /* theme_girlie.plist in Resources */,
 				2A3F497918AE242E00D3137D /* ic_bt_save.png in Resources */,
 				B6B10DFC18AF0C9E004E3229 /* ic_edit_shift_color_2.png in Resources */,
 				2A3C24D118AB593300C20A04 /* icon_r3_c9.png in Resources */,

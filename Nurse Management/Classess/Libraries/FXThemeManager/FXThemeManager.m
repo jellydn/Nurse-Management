@@ -59,6 +59,16 @@ static FXThemeManager *shared = nil;
         _themeType      = FXThemeManagerTypeDefaultGreen;
         _themeFileData  = @"theme_default_pink";
         
+    } else if ([themeName isEqualToString:_fxThemeNameGirlie]) {
+        
+        _themeType      = FXThemeManagerTypeDefaultGreen;
+        _themeFileData  = @"theme_girlie";
+        
+    } else if ([themeName isEqualToString:_fxThemeNameSweet]) {
+        
+        _themeType      = FXThemeManagerTypeDefaultGreen;
+        _themeFileData  = @"theme_sweet";
+        
     }
 }
 
