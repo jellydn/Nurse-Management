@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditShiftVC">
             <connections>
+                <outlet property="_btnAllDay" destination="LTI-T4-sUU" id="MFN-Ti-qMN"/>
                 <outlet property="backgrounReview" destination="OLh-hY-dzl" id="rKJ-z6-sYe"/>
                 <outlet property="btDelete" destination="3je-Tu-Vet" id="zRO-Nc-ECo"/>
                 <outlet property="btnBeginTime" destination="zVU-kq-xEn" id="o1g-Uq-TuC"/>
