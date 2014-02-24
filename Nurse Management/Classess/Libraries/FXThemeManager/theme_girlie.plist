@@ -30,6 +30,8 @@
 	<string>#7B6128</string>
 	<key>calendarHeaderColor</key>
 	<string></string>
+	<key>homeAddShiftButtonColor</key>
+	<string>#8d6b0a</string>
 	<key>calendarHeaderImage</key>
 	<string>girlie_bg_calendar_header.png</string>
 	<key>backButtonImage</key>
