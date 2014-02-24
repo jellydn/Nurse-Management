@@ -14,6 +14,9 @@
 #import "NMTimePickerView.h"
 
 #import "AppDelegate.h"
+#define ALERT_BG_COLOR	 [UIColor colorWithRed:100.0/255.0 green:137.0/255.0 blue:199.0/255.0 alpha:1.0]
+#define BUTTON_BG_COLOR	 [UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]
+#define TITLE_COLOR	 [UIColor colorWithRed:126.0/255.0 green:96.0/255.0 blue:39.0/255.0 alpha:1.0]
 
 @interface EditShiftVC ()<UITextFieldDelegate,NMTimePickerViewDelegate,UIActionSheetDelegate>{
     CDShiftCategory *_shiftCategory;
@@ -23,6 +26,7 @@
     NSString * _color;
     BOOL _isAllDay;
     NSString * _name;
+    __weak IBOutlet UIButton *_btnAllDay;
     
     NMTimePickerView *_timePickerView;
 }
@@ -74,13 +78,31 @@
         _color = _shiftCategory.color;
         _isAllDay = _shiftCategory.isAllDay;
         if (_shiftCategory.isAllDay) {
+            _btnAllDay.backgroundColor = ALERT_BG_COLOR;
+            _btnBeginTime.enabled = NO;
+            _txtBeginTime.textColor = [UIColor grayColor];
             _txtBeginTime.text = @"00:00";
-            _txtEndTime.text = @"00:00";
+            _btnEndTime.enabled = NO;
+            _txtEndTime.textColor = [UIColor grayColor];
+            _txtEndTime.text = @"24:00";
+            
+            // set edit time
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"HH:mm"];
+            _endTime = _startTime = [dateFormatter dateFromString:@"00:00"];
+            
         }
         else
         {
             _txtBeginTime.text = _shiftCategory.timeStart;
             _txtEndTime.text = _shiftCategory.timeEnd;
+
+            // set edit time
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"HH:mm"];
+            _startTime = [dateFormatter dateFromString:_shiftCategory.timeStart];
+            _endTime = [dateFormatter dateFromString:_shiftCategory.timeEnd];
+
         }
         
         if ([_shiftCategory.color isEqualToString:@"color0"]) {
@@ -275,11 +297,45 @@
     // _reviewCategory.text = textField.text;
 }
 - (IBAction)btAllTime:(id)sender {
-    _txtBeginTime.text = @"00:00";
-    _txtEndTime.text = @"00:00";
-    _isAllDay = YES;
-}
+    _isAllDay = !_isAllDay;
+
+    if (_isAllDay == YES) {
+        
+        _btnAllDay.backgroundColor = ALERT_BG_COLOR;
+        _btnBeginTime.enabled = NO;
+        _txtBeginTime.textColor = [UIColor grayColor];
+        _txtBeginTime.text = @"00:00";
+        _btnEndTime.enabled = NO;
+        _txtEndTime.textColor = [UIColor grayColor];
+        _txtEndTime.text = @"24:00";
+        
+    } else {
+        
+        _btnAllDay.backgroundColor = BUTTON_BG_COLOR;
+        
+        _btnBeginTime.enabled = YES;
+        _txtBeginTime.textColor = TITLE_COLOR;
+        if (_startTime)
+            _txtBeginTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+        else
+            _txtBeginTime.text = @"00:00";
+        
+        NSInteger endHour = [FXCalendarData getHourWithDate:_endTime];
+        _btnEndTime.enabled = YES;
+        _txtEndTime.textColor = TITLE_COLOR;
+        
+        NSLog(@"%@", _endTime);
+        
+        if (_endTime)
+            _txtEndTime.text   = (_endTime == nil || endHour == 0) ? @"24:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+        else
+            _txtEndTime.text = @"24:00";
+        
+    }
     
+
+}
+
 - (IBAction)chooseTime:(id)sender {
     _isAllDay = NO;
     if ([sender tag] == START_TIME){
