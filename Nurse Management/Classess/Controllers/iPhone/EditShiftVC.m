@@ -369,6 +369,8 @@
                     //TODO: Remove all shift relate shift category
                     
                     [[AppDelegate shared] saveContext];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:DID_ADD_SCHEDULE object:nil userInfo:nil];
+
                     break;
                 }
             }
