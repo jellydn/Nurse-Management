@@ -20,7 +20,7 @@
 #import "AppItem.h"
 
 #import "Downloader.h"
-
+#import "TermVC.h"
 @interface MoreVC ()<UIScrollViewDelegate, OtherAppWSDelegate, DownloaderDelegate>
 {
     
@@ -261,6 +261,10 @@
         if (indexPath.row == 1) {
             ChangeThemeVC *vc = [[ChangeThemeVC alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
+        }else if (indexPath.row == 8 || indexPath.row == 9 || indexPath.row == 10){
+            TermVC *term = [[TermVC alloc] init];
+            term.selectTerm = indexPath.row;
+            [self.navigationController pushViewController:term animated:YES];
         }
     } else if (indexPath.section == 1) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
