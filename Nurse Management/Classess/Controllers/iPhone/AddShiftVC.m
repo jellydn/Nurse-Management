@@ -190,8 +190,6 @@
             [self setViewMovedUp:YES];
         }
         
-        
-        
         if ([textView.text isEqualToString:MEMO_PLACEHOLDER_TEXT]) {
             textView.text = @"";
             textView.textColor = [UIColor blackColor]; //optional
@@ -227,6 +225,7 @@
         }
     }
     
+    [self hideAddShift];
 }
 
 - (void) addShiftViewDidSelectShowListShiftPattern:(AddShiftView*)addShiftView
