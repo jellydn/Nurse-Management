@@ -245,6 +245,8 @@
 		2AD1CDCC18BB27EA00FE3E1F /* sweet_ic_toolbar_add_shift.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD1CDC218BB27EA00FE3E1F /* sweet_ic_toolbar_add_shift.png */; };
 		2AD1CDCD18BB27EA00FE3E1F /* sweet_ic_toolbar_add_shift@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD1CDC318BB27EA00FE3E1F /* sweet_ic_toolbar_add_shift@2x.png */; };
 		2AD1CDCF18BB281900FE3E1F /* HomeSweetToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AD1CDCE18BB281900FE3E1F /* HomeSweetToolBarView.xib */; };
+		2AD1CDD218BB3CAF00FE3E1F /* ic_bt_back_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD1CDD018BB3CAF00FE3E1F /* ic_bt_back_2.png */; };
+		2AD1CDD318BB3CAF00FE3E1F /* ic_bt_back_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD1CDD118BB3CAF00FE3E1F /* ic_bt_back_2@2x.png */; };
 		2AF0757E18ACABFD0008D875 /* FXDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0757D18ACABFD0008D875 /* FXDayView.m */; };
 		2AF0758118ACAC250008D875 /* FXDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF0758018ACAC250008D875 /* FXDay.m */; };
 		2AF0758318ACB60A0008D875 /* FXDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF0758218ACB60A0008D875 /* FXDayView.xib */; };
@@ -602,6 +604,8 @@
 		2AD1CDC218BB27EA00FE3E1F /* sweet_ic_toolbar_add_shift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sweet_ic_toolbar_add_shift.png; sourceTree = "<group>"; };
 		2AD1CDC318BB27EA00FE3E1F /* sweet_ic_toolbar_add_shift@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sweet_ic_toolbar_add_shift@2x.png"; sourceTree = "<group>"; };
 		2AD1CDCE18BB281900FE3E1F /* HomeSweetToolBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeSweetToolBarView.xib; sourceTree = "<group>"; };
+		2AD1CDD018BB3CAF00FE3E1F /* ic_bt_back_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bt_back_2.png; sourceTree = "<group>"; };
+		2AD1CDD118BB3CAF00FE3E1F /* ic_bt_back_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bt_back_2@2x.png"; sourceTree = "<group>"; };
 		2AF0757C18ACABFD0008D875 /* FXDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDayView.h; sourceTree = "<group>"; };
 		2AF0757D18ACABFD0008D875 /* FXDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXDayView.m; sourceTree = "<group>"; };
 		2AF0757F18ACAC250008D875 /* FXDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXDay.h; sourceTree = "<group>"; };
@@ -1317,6 +1321,8 @@
 		2A50DF0D18BAE9F90033FE11 /* Theme_girlie */ = {
 			isa = PBXGroup;
 			children = (
+				2AD1CDD018BB3CAF00FE3E1F /* ic_bt_back_2.png */,
+				2AD1CDD118BB3CAF00FE3E1F /* ic_bt_back_2@2x.png */,
 				2A50DF3918BAFE2D0033FE11 /* bg_tool_bar_theme_girlie.png */,
 				2A50DF3A18BAFE2D0033FE11 /* bg_tool_bar_theme_girlie@2x.png */,
 				2A50DF2718BAFD970033FE11 /* girlie_ic_toolbar_more@2x.png */,
@@ -1579,6 +1585,7 @@
 			files = (
 				2A50DF3618BAFD970033FE11 /* girlie_ic_toolbar_add_shift.png in Resources */,
 				B6B10E0318AF0C9E004E3229 /* ic_edit_shift_color_5@2x.png in Resources */,
+				2AD1CDD318BB3CAF00FE3E1F /* ic_bt_back_2@2x.png in Resources */,
 				B6B10DFF18AF0C9E004E3229 /* ic_edit_shift_color_3@2x.png in Resources */,
 				2A4F228918B456BE00A5C97C /* schedule_bg_3@2x.png in Resources */,
 				2A3F496B18AE197C00D3137D /* ic_home_cell_edit_shitf.png in Resources */,
@@ -1782,6 +1789,7 @@
 				2A6FDB7518AF1ACA00D33D21 /* icon_category_add_sc.png in Resources */,
 				B6B10E0518AF0C9E004E3229 /* ic_edit_shift_color_6@2x.png in Resources */,
 				2AD1CDCD18BB27EA00FE3E1F /* sweet_ic_toolbar_add_shift@2x.png in Resources */,
+				2AD1CDD218BB3CAF00FE3E1F /* ic_bt_back_2.png in Resources */,
 				2A6FDB7C18AF1F5300D33D21 /* bg_review_add_schedule@2x.png in Resources */,
 				2A3C24CD18AB593300C20A04 /* icon_r3_c1.png in Resources */,
 				2A394C5A18AA25AE00F30F2D /* ic_bt_bar_today.png in Resources */,

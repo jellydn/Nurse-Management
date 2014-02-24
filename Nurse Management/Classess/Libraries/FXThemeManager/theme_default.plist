@@ -26,5 +26,9 @@
 	<string>AddShiftView</string>
 	<key>homeAddScheduleFileXib</key>
 	<string>AddScheduleView</string>
+	<key>naviTitleColor</key>
+	<string>#ffffff</string>
+	<key>backButtonImage</key>
+	<string>ic_bt_back.png</string>
 </dict>
 </plist>

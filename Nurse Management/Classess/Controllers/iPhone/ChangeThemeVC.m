@@ -14,9 +14,7 @@
 @interface ChangeThemeVC ()<UIScrollViewDelegate>
 {
     
-    __weak IBOutlet UIView *_viewNavi;
-    __weak IBOutlet UIImageView *_imgNavi;
-    __weak IBOutlet UILabel *_lbTile;
+    __weak IBOutlet UIView          *_viewNavi;
     
     __weak IBOutlet UIScrollView *_scrollView;
     __weak IBOutlet UIPageControl *_pageControll;
@@ -114,10 +112,8 @@
 #pragma mark - Others
 - (void) configView
 {
-    _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
-    _imgNavi.image = [[FXThemeManager shared] getImageWithKey:_fxThemeImageNavi];
-    
-    _lbTile.text = @"カレンダーテーマ設定";
+    _viewNavi.backgroundColor   = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
+    self.lbTile.text = @"カレンダーテーマ設定";
     
     [_scrollView setContentSize:CGSizeMake(1400, 0)];
     
@@ -156,8 +152,8 @@
     
     if ([[notif name] isEqualToString:_fxThemeNotificationChangeTheme])
     {
-        _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
-        _imgNavi.image = [[FXThemeManager shared] getImageWithKey:_fxThemeImageNavi];
+        _viewNavi.backgroundColor   = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
+        
     }
 }
 
