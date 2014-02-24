@@ -489,7 +489,11 @@ static __weak AppDelegate *shared = nil;
         
         cdShift.name                = shiftCategory.name;
         cdShift.shiftCategoryId     = shiftCategory.id;
-        cdShift.isAllDay            = YES;
+//        cdShift.isAllDay            = YES;
+        cdShift.isAllDay            = shiftCategory.isAllDay;
+        cdShift.onDate              = [date timeIntervalSince1970];
+        cdShift.timeStart           = [[Common dateAppenedFromDate:date andTime:shiftCategory.timeStart] timeIntervalSince1970];
+        cdShift.timeEnd             =[[Common dateAppenedFromDate:date andTime:shiftCategory.timeEnd] timeIntervalSince1970];
         cdShift.fk_shift_category   = shiftCategory;
         
     } else {
@@ -501,8 +505,11 @@ static __weak AppDelegate *shared = nil;
         cdShift2.id                  = [self lastShiftID] + 1;
         cdShift2.name                = shiftCategory.name;
         cdShift2.shiftCategoryId     = shiftCategory.id;
-        cdShift2.isAllDay            = YES;
+//        cdShift2.isAllDay            = YES;
+        cdShift2.isAllDay            = shiftCategory.isAllDay;
         cdShift2.onDate              = [date timeIntervalSince1970];
+        cdShift2.timeStart           = [[Common dateAppenedFromDate:date andTime:shiftCategory.timeStart] timeIntervalSince1970];
+        cdShift2.timeEnd             =[[Common dateAppenedFromDate:date andTime:shiftCategory.timeEnd] timeIntervalSince1970];
         cdShift2.fk_shift_category   = shiftCategory;
     }
     
