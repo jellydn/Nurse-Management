@@ -212,6 +212,29 @@
     CDShiftCategory *shiftCategory = [[AppDelegate shared] getshiftCategoryWithID:index];
     _shift.fk_shift_category = shiftCategory;
     _shift.shiftCategoryId = shiftCategory.id;
+    _shift.isAllDay = shiftCategory.isAllDay;
+    
+//    // change current date to string
+//    NSMutableString *startDate = [[Common stringFromDate:_date withFormat:TIME_FORMAT_DMY_HYPHEN] mutableCopy];
+//    
+//    // append hour and minute from shift category
+//    [startDate appendString:@" "];
+//    [startDate appendString:shiftCategory.timeStart];
+//    
+//    //convert to nsdate
+//    NSDate *dateStart = [Common dateFromString:startDate withFormat:TIME_FORMAT_FULL];
+    
+    // save to shift
+    NSDate *dateStart = [Common dateAppenedFromDate:_date andTime:shiftCategory.timeStart];
+    _startTime = dateStart;
+//    _shift.timeStart = [dateStart timeIntervalSince1970];
+    
+    NSDate *dateEnd = [Common dateAppenedFromDate:_date andTime:shiftCategory.timeEnd];
+//    _shift.timeEnd = [dateEnd timeIntervalSince1970];
+    _endTime = dateEnd;
+    
+    [self setAllDay:_shift.isAllDay];
+    
     _btnSave.enabled = YES;
     _btnSaveAndNext.enabled = YES;
     

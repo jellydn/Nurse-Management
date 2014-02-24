@@ -26,4 +26,11 @@
 //More App
 #define URL_WS_OTHER_APP    @"http://site.dashapps.info/api/?appid=AP001&offset=%d&limit=%d"
 #define URL_WS_RANKING         @"https://www.google.com"
+
+// time formats
+
+#define TIME_FORMAT_DMY_HYPHEN      @"dd-MM-yyyy"
+//#define TIME_FORMAT_HM_COLONS       @"HH:mm"
+#define TIME_FORMAT_FULL            @"dd-MM-yyyy HH:mm"
+
 #endif
