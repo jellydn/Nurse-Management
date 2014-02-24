@@ -14,8 +14,9 @@
 
 @property(nonatomic, weak) id<AddShiftViewDelegate> delegate;
 
-@property(nonatomic, weak) IBOutlet UIScrollView *scrollView;
-@property(nonatomic, weak) IBOutlet UIPageControl *pageControl;
+@property(nonatomic, weak) IBOutlet UIScrollView    *scrollView;
+@property(nonatomic, weak) IBOutlet UIPageControl   *pageControl;
+@property(nonatomic, weak) IBOutlet UIButton        *btClose;
 
 - (IBAction)selectItem:(id)sender;
 - (IBAction)showListShiftPattern:(id)sender;
