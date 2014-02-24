@@ -259,6 +259,11 @@
 		C0B2B1EA18B44F7100CF4B76 /* CDShiftAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1E918B44F7100CF4B76 /* CDShiftAlert.m */; };
 		C0CB919218B83A2F00D61253 /* ChooseTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CB918F18B83A2E00D61253 /* ChooseTimeView.m */; };
 		C0CB919318B83A2F00D61253 /* NMSelectionStringView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CB919118B83A2E00D61253 /* NMSelectionStringView.m */; };
+		C936BEF118BAEC6800897B6D /* TermVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C936BEEF18BAEC6800897B6D /* TermVC.m */; };
+		C936BEF218BAEC6800897B6D /* TermVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C936BEF018BAEC6800897B6D /* TermVC.xib */; };
+		C936BEF418BAF2A600897B6D /* term-privacy_data.html in Resources */ = {isa = PBXBuildFile; fileRef = C936BEF318BAF2A600897B6D /* term-privacy_data.html */; };
+		C936BEF618BAF9D800897B6D /* term-privacy_row_two.html in Resources */ = {isa = PBXBuildFile; fileRef = C936BEF518BAF9D800897B6D /* term-privacy_row_two.html */; };
+		C936BEF818BAF9F400897B6D /* term-privacy_three.html in Resources */ = {isa = PBXBuildFile; fileRef = C936BEF718BAF9F400897B6D /* term-privacy_three.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -590,6 +595,12 @@
 		C0CB918F18B83A2E00D61253 /* ChooseTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTimeView.m; sourceTree = "<group>"; };
 		C0CB919018B83A2E00D61253 /* NMSelectionStringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMSelectionStringView.h; sourceTree = "<group>"; };
 		C0CB919118B83A2E00D61253 /* NMSelectionStringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMSelectionStringView.m; sourceTree = "<group>"; };
+		C936BEEE18BAEC6800897B6D /* TermVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermVC.h; sourceTree = "<group>"; };
+		C936BEEF18BAEC6800897B6D /* TermVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermVC.m; sourceTree = "<group>"; };
+		C936BEF018BAEC6800897B6D /* TermVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TermVC.xib; sourceTree = "<group>"; };
+		C936BEF318BAF2A600897B6D /* term-privacy_data.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "term-privacy_data.html"; sourceTree = "<group>"; };
+		C936BEF518BAF9D800897B6D /* term-privacy_row_two.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "term-privacy_row_two.html"; sourceTree = "<group>"; };
+		C936BEF718BAF9F400897B6D /* term-privacy_three.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "term-privacy_three.html"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -714,6 +725,7 @@
 		2A394C0118A9FF7600F30F2D /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				C936BEED18BAEBE900897B6D /* TermPrivacy */,
 				2A6FDB6618AF115900D33D21 /* AddSchedule */,
 				B6B10DDC18AF0B2A004E3229 /* MemberShiftVC */,
 				2A516C9A18AC5DF700F82B5A /* AddScheduleCategoryNameVC */,
@@ -1351,6 +1363,9 @@
 		B6D7A3B118B1A85F00E98936 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C936BEF318BAF2A600897B6D /* term-privacy_data.html */,
+				C936BEF518BAF9D800897B6D /* term-privacy_row_two.html */,
+				C936BEF718BAF9F400897B6D /* term-privacy_three.html */,
 				2A4F226018B456A600A5C97C /* tienlp_predefault.plist */,
 				B6D7A3B418B1B21500E98936 /* predefault.plist */,
 			);
@@ -1364,6 +1379,16 @@
 				C000F2E518AF68AD00280464 /* UIPickerActionSheet.m */,
 			);
 			name = UIPickerActionSheet;
+			sourceTree = "<group>";
+		};
+		C936BEED18BAEBE900897B6D /* TermPrivacy */ = {
+			isa = PBXGroup;
+			children = (
+				C936BEEE18BAEC6800897B6D /* TermVC.h */,
+				C936BEEF18BAEC6800897B6D /* TermVC.m */,
+				C936BEF018BAEC6800897B6D /* TermVC.xib */,
+			);
+			name = TermPrivacy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1489,6 +1514,7 @@
 				C000F2F918AF6C2000280464 /* ic_clock.png in Resources */,
 				2A4F228B18B456BE00A5C97C /* schedule_bg_4@2x.png in Resources */,
 				2A75E64718ADA9AB00E74E4F /* ic_cell_shift@2x.png in Resources */,
+				C936BEF418BAF2A600897B6D /* term-privacy_data.html in Resources */,
 				2A394C3818AA024A00F30F2D /* HomeVC.xib in Resources */,
 				B6B10E0B18AF0C9E004E3229 /* ic_edit_shift_color_9@2x.png in Resources */,
 				2A394C2718A9FF7600F30F2D /* Default.png in Resources */,
@@ -1513,6 +1539,7 @@
 				2A394C1F18A9FF7600F30F2D /* Icon-Small@2x_ios7.png in Resources */,
 				C000F2FB18AF6C2000280464 /* ic_injection_needle.png in Resources */,
 				2A4F228318B456BE00A5C97C /* schedule_bg_0@2x.png in Resources */,
+				C936BEF818BAF9F400897B6D /* term-privacy_three.html in Resources */,
 				2A4F22A018B4575000A5C97C /* MoreCellTitle.xib in Resources */,
 				2A3F497218AE197C00D3137D /* img_temp1@2x.png in Resources */,
 				2A4F226118B456A600A5C97C /* tienlp_predefault.plist in Resources */,
@@ -1573,6 +1600,7 @@
 				2A3C249D18AB084900C20A04 /* HomeToolBarView.xib in Resources */,
 				2A3F495818AE047300D3137D /* img_bg_home_cell_shift.png in Resources */,
 				2A6FDB6B18AF117D00D33D21 /* AddScheduleVC.xib in Resources */,
+				C936BEF618BAF9D800897B6D /* term-privacy_row_two.html in Resources */,
 				2A3F495018AE032500D3137D /* HomeCellAddShift.xib in Resources */,
 				2A8A861418B845B200332B68 /* theme_default_pink.plist in Resources */,
 				2A4F228518B456BE00A5C97C /* schedule_bg_1@2x.png in Resources */,
@@ -1586,6 +1614,7 @@
 				2A4F229518B4570700A5C97C /* icon_right_more_cell.png in Resources */,
 				2A394C1B18A9FF7600F30F2D /* Icon-60@2x.png in Resources */,
 				C000F2F318AF6C2000280464 /* bg_dashed_frame.png in Resources */,
+				C936BEF218BAEC6800897B6D /* TermVC.xib in Resources */,
 				2A3C24D018AB593300C20A04 /* icon_r3_c7.png in Resources */,
 				2AAE597118B60636003FA40E /* white_arrow@2x.png in Resources */,
 				2A4F228A18B456BE00A5C97C /* schedule_bg_4.png in Resources */,
@@ -1655,6 +1684,7 @@
 				2A394C2B18A9FFB000F30F2D /* Common.m in Sources */,
 				C0B2B1E718B44F7100CF4B76 /* CDMember.m in Sources */,
 				2A4F225B18B4567F00A5C97C /* ScheduleCategoryItem.m in Sources */,
+				C936BEF118BAEC6800897B6D /* TermVC.m in Sources */,
 				2A394C5018AA1EE300F30F2D /* HomeNaviBarView.m in Sources */,
 				2A3C24E518AB701500C20A04 /* AddShiftVC.m in Sources */,
 				2A97525B18B5EF8B00C0946E /* CDScheduleCategory.m in Sources */,
