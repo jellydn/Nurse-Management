@@ -252,6 +252,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <connections>
                 <outlet property="btAllDay" destination="8y7-Zx-HiO" id="7zR-Nx-sgv"/>
                 <outlet property="btEndTime" destination="IJz-U4-O1c" id="e0L-Wo-MBY"/>
+                <outlet property="btNextSchedule" destination="jda-7L-UnV" id="rUi-XH-SDg"/>
                 <outlet property="btStartTime" destination="YyB-zu-ybG" id="VGY-ad-SuP"/>
                 <outlet property="datePicker" destination="2xr-IT-NrG" id="6ah-GA-qmf"/>
                 <outlet property="lbTimeEnd" destination="kpt-th-c1m" id="9LB-UP-F5C"/>

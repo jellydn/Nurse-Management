@@ -17,8 +17,9 @@
 #import "ScheduleCategoryItem.h"
 #import "AppDelegate.h"
 #import "FXCalendarData.h"
+#import "ScheduleCategoryVC.h"
 
-@interface AddScheduleVC ()<UITextViewDelegate, NSFetchedResultsControllerDelegate, ChooseTimeViewDelegate, AddScheduleViewDelegate, NMTimePickerViewDelegate, ChooseTimeViewDelegate>{
+@interface AddScheduleVC ()<UITextViewDelegate, NSFetchedResultsControllerDelegate, ChooseTimeViewDelegate, AddScheduleViewDelegate, NMTimePickerViewDelegate, ChooseTimeViewDelegate, UIActionSheetDelegate>{
     NSDate *_startTime;
     NSDate *_endTime;
     AddScheduleView *_addScheduleView;
@@ -153,7 +154,8 @@
                                                                         owner:self
                                                                       options:nil][0];
     _addScheduleView.delegate           = self;
-    _addScheduleView.viewScheduleCategoryTitle.hidden = YES;
+    _addScheduleView.viewScheduleCategoryTitle.hidden = NO;
+    _addScheduleView.btNextSchedule.hidden = YES;
     _addScheduleView.frame              = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [_addScheduleView initLayoutView];
     
@@ -171,7 +173,31 @@
         
     }];
 }
+- (IBAction)delete:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Delete", nil];
+    [actionSheet showInView:self.view];
+}
+#pragma mark - UIActionSheetDelegate
 
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:     // delete
+            {
+                CDSchedule *item = [[AppDelegate shared] getScheduleByID:_scheduleEditItem.scheduleID];
+                [[AppDelegate shared].managedObjectContext deleteObject:item];
+                [[AppDelegate shared] saveContext];
+                [self.navigationController dismissViewControllerAnimated:YES completion:^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:DID_ADD_SCHEDULE object:nil userInfo:nil];}];
+            }
+            break;
+            
+        case 1:     // cancel
+            break;
+            
+        default:
+            break;
+    }
+}
 - (IBAction)saveData:(id)sender {
     NSArray *keys = @[@"schedule_category_id",
                       @"start_time",
@@ -290,7 +316,9 @@
 #pragma mark - AddScheduleViewDelegate
 - (void) didShowCategoryName:(AddScheduleView*)addScheduleView
 {
-    
+    ScheduleCategoryVC *vc = [[ScheduleCategoryVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 - (void) didSaveSchedule:(AddScheduleView*)addScheduleView info:(NSDictionary*)info
@@ -427,14 +455,5 @@
         }
     }
     return _fetchedResultsControllerScheduleCategory;
-}
-
-- (IBAction)delete:(id)sender {
-    CDSchedule *item = [[AppDelegate shared] getScheduleByID:_scheduleEditItem.scheduleID];
-    [[AppDelegate shared].managedObjectContext deleteObject:item];
-    [[AppDelegate shared] saveContext];
-    [self.navigationController dismissViewControllerAnimated:YES completion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:DID_ADD_SCHEDULE object:nil userInfo:nil];
-    }];
 }
 @end

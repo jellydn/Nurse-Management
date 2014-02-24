@@ -38,6 +38,8 @@
 @property (nonatomic, strong)        ChooseTimeView *chooseTimeView;
 @property (nonatomic, weak) IBOutlet UIDatePicker   *datePicker;
 @property (nonatomic, weak) IBOutlet UIView         *viewScheduleCategoryTitle;
+@property (weak, nonatomic) IBOutlet UIButton *btNextSchedule;
+
 
 @property (nonatomic, weak) id<AddScheduleViewDelegate> delegate;
 

@@ -151,7 +151,7 @@
 - (void) configView
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
-    _lbTile.text = @"More";
+    _lbTile.text = @"その他";
     
     
 }
