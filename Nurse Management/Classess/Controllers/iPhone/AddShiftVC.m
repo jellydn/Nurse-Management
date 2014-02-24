@@ -30,8 +30,10 @@
 #define ALERT_BG_COLOR	 [UIColor colorWithRed:100.0/255.0 green:137.0/255.0 blue:199.0/255.0 alpha:1.0]
 #define BUTTON_BG_COLOR	 [UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]
 #define TITLE_COLOR	 [UIColor colorWithRed:126.0/255.0 green:96.0/255.0 blue:39.0/255.0 alpha:1.0]
-#define kOFFSET_FOR_KEYBOARD 160.0
+//#define kOFFSET_FOR_KEYBOARD 160.0
+#define kOFFSET_FOR_KEYBOARD 217.0
 #define MEMO_PLACEHOLDER_TEXT    @"メモがあったら入力しよう"
+#define IS_IPHONE_5 (((double)[[UIScreen mainScreen] bounds].size.height) == ((double)568))
 
 @interface AddShiftVC () <UITextViewDelegate, UIActionSheetDelegate, ChooseTimeViewDelegate, AddShiftViewDelegate, NMSelectionStringViewDelegate, NSFetchedResultsControllerDelegate, NMTimePickerViewDelegate>
 {
@@ -175,11 +177,20 @@
     
     if ([textView isEqual:_txvMemo])
     {
+        
+//        [_scrollView scrollRectToVisible:_txvMemo.frame animated:YES];
+        
+//        CGRect frame = _txvMemo.frame;
+//        frame.origin.y += _txvMemo.frame.size.height;
+//        [_scrollView scrollRectToVisible:frame animated:YES];
+        
         //move the main view, so that the keyboard does not hide it.
         if  (self.view.frame.origin.y >= 0)
         {
             [self setViewMovedUp:YES];
         }
+        
+        
         
         if ([textView.text isEqualToString:MEMO_PLACEHOLDER_TEXT]) {
             textView.text = @"";
@@ -336,6 +347,9 @@
         return;
     }
     
+    _addShiftView.hidden = NO;
+    [self.view bringSubviewToFront:_addShiftView];
+    
     [_addShiftView loadInfoWithShiftCategories:[self convertShiftObject]];
     
     CGRect rect = _addShiftView.frame;
@@ -361,6 +375,7 @@
         _addShiftView.frame = rect;
     } completion:^(BOOL finished) {
         _isShowAddShiftView = NO;
+        _addShiftView.hidden = YES;
     }];
 }
 
@@ -420,27 +435,32 @@
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     _lbTile.text = [NSString stringWithFormat:@"%d月%d日",[FXCalendarData getDayWithDate:_date], [FXCalendarData getMonthWithDate:_date]];
     [_scrollView setContentOffset:CGPointMake(0.0, 64.0)];
-    [_scrollView setContentSize:CGSizeMake(320.0, 495.0)];
+    [_scrollView setContentSize:CGSizeMake(320.0, 510.0)];
 }
 
 //method to move the view up/down whenever the keyboard is shown/dismissed
 -(void)setViewMovedUp:(BOOL)movedUp
 {
+    [self.view bringSubviewToFront:_scrollView];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3]; // if you want to slide up the view
+    
+    int number = 0;
+    if (!IS_IPHONE_5)
+        number = 40;
     
     CGRect rect = self.view.frame;
     if (movedUp)
     {
         // 1. move the view's origin up so that the text field that will be hidden come above the keyboard
         // 2. increase the size of the view so that the area behind the keyboard is covered up.
-        rect.origin.y -= kOFFSET_FOR_KEYBOARD;
+        rect.origin.y -= kOFFSET_FOR_KEYBOARD + number;
         rect.size.height += kOFFSET_FOR_KEYBOARD;
     }
     else
     {
         // revert back to the normal state.
-        rect.origin.y += kOFFSET_FOR_KEYBOARD;
+        rect.origin.y += kOFFSET_FOR_KEYBOARD + number;
         rect.size.height -= kOFFSET_FOR_KEYBOARD;
     }
     self.view.frame = rect;
@@ -465,6 +485,7 @@
     _addShiftView.frame = CGRectMake(0, height - detalIOS, 320, 200);
     
     [self.view addSubview:_addShiftView];
+    _addShiftView.hidden = YES;
 }
 
 - (void) loadChooseMemberView {
