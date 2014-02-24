@@ -22,6 +22,7 @@
     __weak IBOutlet UILabel *_lbThemeTitleName;
     
     NSArray *_themeTitleName;
+    int _pageCurrent;
 }
 - (IBAction)backVC:(id)sender;
 - (IBAction)selectTheme:(id)sender;
@@ -61,10 +62,19 @@
 
 - (IBAction)selectTheme:(id)sender
 {
-    UIButton *button = (UIButton*)sender;
-    NSLog(@"select theme %d : %@", button.tag, _themeTitleName[button.tag]);
     
-    switch (button.tag) {
+    UIButton *button = (UIButton*)sender;
+    int index = button.tag;
+    
+    int page = (_scrollView.contentOffset.x - 50) / 200;
+    if (page != button.tag) {
+        [self setThemeWith:button.tag];
+        
+        [_scrollView setContentOffset:CGPointMake(button.tag* 200 + 50, 0) animated:YES];
+        index = -1;
+    }
+    
+    switch (index) {
         case 0:
         {
             [[FXThemeManager shared] changeThemeWithName:_fxThemeNameDefault];
@@ -87,12 +97,12 @@
         }
         case 4:
         {
-            [Common showAlert:@"No support." title:APP_NAME];
+            [[FXThemeManager shared] changeThemeWithName:_fxThemeNameGirlie];
             break;
         }
         case 5:
         {
-            [Common showAlert:@"No support." title:APP_NAME];
+            [[FXThemeManager shared] changeThemeWithName:_fxThemeNameSweet];
             break;
         }
         default:
@@ -106,7 +116,8 @@
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     _lbTile.text = @"カレンダーテーマ設定";
     
-    [_scrollView setContentSize:CGSizeMake(240*6, 0)];
+    [_scrollView setContentSize:CGSizeMake(1400, 0)];
+    [_scrollView setContentOffset:CGPointMake(50, 0)];
     
     _themeTitleName = @[@"SimpleBlue",
                         @"SimpleGreen",
@@ -124,6 +135,7 @@
 {
     _pageControll.currentPage   = page;
     _lbThemeTitleName.text      = _themeTitleName[page];
+    _pageCurrent = page;
 }
 
 #pragma mark - Notification
@@ -139,15 +151,20 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     if (!decelerate) {
-        [self setThemeWith:scrollView.contentOffset.x / 240];
+        
+        int page = (scrollView.contentOffset.x - 50) / 200;
+        [_scrollView setContentOffset:CGPointMake(page* 200 + 50, 0) animated:YES];
+        [self setThemeWith:page];
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-     [self setThemeWith:scrollView.contentOffset.x / 240];
+    int page = (scrollView.contentOffset.x - 50) / 200;
+    [_scrollView setContentOffset:CGPointMake(page* 200 + 50, 0) animated:YES];
+    
+    [self setThemeWith:page];
 }
-
 
 
 
