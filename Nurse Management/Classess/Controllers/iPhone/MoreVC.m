@@ -15,7 +15,9 @@
 #import "MoreCellItem.h"
 #import "MoreCellTitle.h"
 #import "OtherAppCell.h"
-
+#import "ListShiftPatternVC.h"
+#import "ListMembersVC.h"
+#import "ScheduleCategoryVC.h"
 #import "OtherAppWS.h"
 #import "AppItem.h"
 
@@ -37,7 +39,6 @@
     
 }
 - (IBAction)backVC:(id)sender;
-- (IBAction)goChangeThemeVC:(id)sender;
 
 @end
 
@@ -140,11 +141,6 @@
 
 - (IBAction)backVC:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (IBAction)goChangeThemeVC:(id)sender {
-    ChangeThemeVC *vc = [[ChangeThemeVC alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Others
@@ -259,9 +255,26 @@
 {
     if (indexPath.section == 0) {
         if (indexPath.row == 1) {
+            NSLog(@"ListShiftPatternVC");
+            ListShiftPatternVC *vc = [[ListShiftPatternVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else if (indexPath.row == 2) {
+            ScheduleCategoryVC *vc = [[ScheduleCategoryVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else if (indexPath.row == 3) {
+            ListMembersVC *vc = [[ListMembersVC alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else if (indexPath.row == 4) {
             ChangeThemeVC *vc = [[ChangeThemeVC alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
-        }else if (indexPath.row == 8 || indexPath.row == 9 || indexPath.row == 10){
+        }
+        else if (indexPath.row == 5) {
+            //TODO: switch to begin date : Sunday or Monday
+        }
+        else if (indexPath.row == 8 || indexPath.row == 9 || indexPath.row == 10){
             TermVC *term = [[TermVC alloc] init];
             term.selectTerm = indexPath.row;
             [self.navigationController pushViewController:term animated:YES];
