@@ -346,6 +346,21 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
+    if (controller == _fetchedResultsControllerShiftCategory) {
+        
+        if (_isShowAddShiftView) {
+            [_addShiftView loadInfoWithShiftCategories:[self convertShiftObject]];
+        }
+        
+    } else if (controller == _fetchedResultsControllerScheduleCategory) {
+        
+        if (_isShowAddScheduleView) {
+            [_addScheduleView loadScheduleCategoryInfo:[self convertScheduleCategory] selectDate:_selectDate];
+        }
+        
+    } if (controller == _fetchedResultsControllerMember) {
+        
+    }
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
@@ -555,13 +570,15 @@
     
     for (CDShiftCategory *cdShift in self.fetchedResultsControllerShiftCategory.fetchedObjects) {
         
-        ShiftCategoryItem *item = [[ShiftCategoryItem alloc] init];
-        
-        item.shiftCategoryID = cdShift.id;
-        item.name            = cdShift.name;
-        item.color           = cdShift.color;
-        
-        [shifts addObject:item];
+        if (cdShift.isEnable) {
+            ShiftCategoryItem *item = [[ShiftCategoryItem alloc] init];
+            
+            item.shiftCategoryID = cdShift.id;
+            item.name            = cdShift.name;
+            item.color           = cdShift.color;
+            
+            [shifts addObject:item];
+        }
         
     }
     
