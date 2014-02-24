@@ -16,9 +16,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Yg0-32-Cm4">
-                            <rect key="frame" x="254" y="5" width="46" height="30"/>
+                            <rect key="frame" x="254" y="12" width="46" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="閉じる">
                                 <color key="titleColor" red="0.39607843139999999" green="0.52941176469999995" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -187,6 +187,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="btClose" destination="Yg0-32-Cm4" id="Wnn-pe-Jng"/>
                 <outlet property="pageControl" destination="KIm-Qt-GVP" id="hOR-nu-Wx1"/>
                 <outlet property="scrollView" destination="4fY-hW-aH8" id="NYT-ZT-e8d"/>
             </connections>

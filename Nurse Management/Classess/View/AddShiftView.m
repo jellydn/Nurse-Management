@@ -9,6 +9,7 @@
 #import "AddShiftView.h"
 #import "ShiftCategoryItem.h"
 #import "FXThemeManager.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface AddShiftView ()
 
@@ -48,6 +49,12 @@
             [view removeFromSuperview];
         }
     }
+    
+    [_btClose setTitleColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorMain] forState:UIControlStateNormal];
+    _btClose.layer.borderWidth = 1.0;
+    _btClose.layer.borderColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain].CGColor;
+    [_btClose.layer setCornerRadius:6.0];
+    _btClose.layer.masksToBounds = YES;
     
     _pageControl.currentPageIndicatorTintColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain];
     
