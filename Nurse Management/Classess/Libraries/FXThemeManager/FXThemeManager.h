@@ -41,6 +41,8 @@
 #define _fxThemeXibHomeAddShift             @"homeAddShiftFileXib"
 #define _fxThemeXibHomeAddSchedule          @"homeAddScheduleFileXib"
 
+#define _fxThemeOthersAddSchedule           @"homeAddScheduleOthers"
+
 
 typedef enum {
     FXThemeManagerTypeDefault,

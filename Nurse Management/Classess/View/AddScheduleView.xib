@@ -28,7 +28,7 @@
                                     <rect key="frame" x="220" y="5" width="90" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" backgroundImage="ic_bt_home_add_schedule_step1.png">
+                                    <state key="normal" image="ic_bt_home_add_schedule_step1.png">
                                         <color key="titleColor" red="0.39607843139999999" green="0.52941176469999995" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -251,8 +251,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="btAllDay" destination="8y7-Zx-HiO" id="7zR-Nx-sgv"/>
+                <outlet property="btBackChoiceCategory" destination="i0C-3h-36D" id="L6a-e1-RWg"/>
                 <outlet property="btEndTime" destination="IJz-U4-O1c" id="e0L-Wo-MBY"/>
                 <outlet property="btNextSchedule" destination="jda-7L-UnV" id="rUi-XH-SDg"/>
+                <outlet property="btSaveSchedule" destination="qh1-VG-CiQ" id="rxT-Th-z27"/>
                 <outlet property="btStartTime" destination="YyB-zu-ybG" id="VGY-ad-SuP"/>
                 <outlet property="datePicker" destination="2xr-IT-NrG" id="6ah-GA-qmf"/>
                 <outlet property="lbTimeEnd" destination="kpt-th-c1m" id="9LB-UP-F5C"/>

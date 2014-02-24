@@ -39,6 +39,8 @@
 @property (nonatomic, weak) IBOutlet UIDatePicker   *datePicker;
 @property (nonatomic, weak) IBOutlet UIView         *viewScheduleCategoryTitle;
 @property (weak, nonatomic) IBOutlet UIButton *btNextSchedule;
+@property (weak, nonatomic) IBOutlet UIButton *btBackChoiceCategory;
+@property (weak, nonatomic) IBOutlet UIButton *btSaveSchedule;
 
 
 @property (nonatomic, weak) id<AddScheduleViewDelegate> delegate;
