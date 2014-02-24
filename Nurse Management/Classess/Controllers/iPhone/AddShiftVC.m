@@ -37,6 +37,7 @@
 {
     __weak IBOutlet UIView *_viewNavi;
     __weak IBOutlet UILabel *_lbTile;
+    __weak IBOutlet UIScrollView *_scrollView;
     
     __weak IBOutlet UIButton *_btnStartTime;
     __weak IBOutlet UIButton *_btnEndTime;
@@ -122,15 +123,12 @@
     _timePickerView.datePicker.datePickerMode = UIDatePickerModeTime;
     _timePickerView.datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
     
-    // Choose Time view
-    _chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 362, 320 - 15*2, 44)];
-    _chooseTimeView.delegate = self;
-    [_chooseTimeView setStartDate:_date];
-    [self.view addSubview:_chooseTimeView];
-    
     // load core data
     [self fetchedResultsControllerMember];
     [self fetchedResultsControllerShiftCategory];
+    
+    // init Choose Time view
+    [self loadChooseTimeView];
     
     // init Add Shift view
     [self loadHomeAddShiftView];
@@ -196,7 +194,6 @@
         textView.text = MEMO_PLACEHOLDER_TEXT;
         textView.textColor = [UIColor lightGrayColor]; //optional
     }
-//    [textView resignFirstResponder];
 }
 
 #pragma mark - AddShiftViewDelegate
@@ -422,6 +419,8 @@
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     _lbTile.text = [NSString stringWithFormat:@"%d月%d日",[FXCalendarData getDayWithDate:_date], [FXCalendarData getMonthWithDate:_date]];
+    [_scrollView setContentOffset:CGPointMake(0.0, 64.0)];
+    [_scrollView setContentSize:CGSizeMake(320.0, 495.0)];
 }
 
 //method to move the view up/down whenever the keyboard is shown/dismissed
@@ -474,12 +473,19 @@
         [_nMSelectionStringView removeFromSuperview];
         _nMSelectionStringView = nil;
     }
-    _nMSelectionStringView = [[NMSelectionStringView alloc] initWithFrame:CGRectMake(15, 215, 320 - 15*2, 118)];
+    _nMSelectionStringView = [[NMSelectionStringView alloc] initWithFrame:CGRectMake(15, 152, 320 - 15*2, 118)];
     _nMSelectionStringView.delegate = self;
     [_nMSelectionStringView setArrayCDMember:(NSMutableArray *)_fetchedResultsControllerMember.fetchedObjects];
     
-    [self.view addSubview:_nMSelectionStringView];
+    [_scrollView addSubview:_nMSelectionStringView];
     
+}
+
+- (void) loadChooseTimeView {
+    _chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 302, 320 - 15*2, 44)];
+    _chooseTimeView.delegate = self;
+    [_chooseTimeView setStartDate:_date];
+    [_scrollView addSubview:_chooseTimeView];
 }
 
 - (NSDate *) dateAfterSetHour: (int)hour andMinute: (int)minute fromDate: (NSDate *)currentDate {
@@ -656,8 +662,6 @@
     } else {
         NSLog(@"total item : %lu",(unsigned long)[_fetchedResultsControllerMember.fetchedObjects count]);
     }
-
-//    _isLoadCoreData = NO;
     
     return _fetchedResultsControllerMember;
 }
@@ -760,7 +764,6 @@
     }
     
     if (_arrAlerts) {
-//        [_shift removePk_shiftalert:_shift.pk_shiftalert];
         if (_isNewShift) {
             for (NSDate *alertDate in _arrAlerts) {
                 CDShiftAlert *shiftAlert = [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT_ALERT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
@@ -814,7 +817,6 @@
     }
     
     [[AppDelegate shared] saveContext];
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:DID_ADD_SCHEDULE object:nil userInfo:nil];
     
 }
@@ -845,7 +847,7 @@
     [self setAllDay:_isAllDay];
     
     // shift members
-    _arrMember = [_shift.pk_shift allObjects];
+    _arrMember = (NSMutableArray *) [_shift.pk_shift allObjects];
     [_nMSelectionStringView reloadArrayCDMember:(NSMutableArray *)_fetchedResultsControllerMember.fetchedObjects selected:(NSMutableArray *)_arrMember];
     
     // shift alerts
