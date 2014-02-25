@@ -81,7 +81,10 @@
     NSString *tempStr = [[NSString alloc] initWithBytes: [_data mutableBytes]
                                                  length:[_data length]
                                                encoding:NSUTF8StringEncoding];
-    NSMutableDictionary *dic = [tempStr JSONValue];
+    //NSString *newString = [tempStr stringByReplacingOccurrencesOfString:@",}" withString:@"}" options:0 range:NSMakeRange(_data.length - 3, 3)];
+    
+    NSString *newString = [tempStr stringByReplacingOccurrencesOfString:@",}" withString:@"}"];
+    NSMutableDictionary *dic = [newString JSONValue];
     
     //    NSLog(@"Data JSON: %@",dic);
     
