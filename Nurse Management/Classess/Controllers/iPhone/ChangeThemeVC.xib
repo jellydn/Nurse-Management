@@ -55,7 +55,7 @@
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
                 </view>
                 <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="Rvt-pD-Nbn">
-                    <rect key="frame" x="10" y="63.999999999999986" width="300" height="504"/>
+                    <rect key="frame" x="10" y="64" width="300" height="504"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="faN-sl-oNR">

@@ -33,6 +33,11 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.screenName = GA_RANKINGVC;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

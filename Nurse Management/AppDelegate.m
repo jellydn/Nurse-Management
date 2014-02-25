@@ -21,6 +21,10 @@
 #import "FXCalendarData.h"
 
 static __weak AppDelegate *shared = nil;
+/******* Set your tracking ID here *******/
+static NSString *const kTrackingId      = @"UA-48355055-1";
+static NSString *const kAllowTracking   = @"allowTracking";
+
 
 @implementation AppDelegate
 
@@ -38,6 +42,17 @@ static __weak AppDelegate *shared = nil;
     shared = self;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    //Google Analytics
+    NSDictionary *appDefaults = @{kAllowTracking: @(YES)};
+    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    // User must be able to opt out of tracking
+    [GAI sharedInstance].optOut = ![[NSUserDefaults standardUserDefaults] boolForKey:kAllowTracking];
+    // Initialize Google Analytics with a 120-second dispatch interval. There is a
+    // tradeoff between battery usage and timely dispatch.
+    [GAI sharedInstance].dispatchInterval           = 120;
+    [GAI sharedInstance].trackUncaughtExceptions    = YES;
+    self.tracker = [[GAI sharedInstance] trackerWithName:APP_NAME trackingId:kTrackingId];
     
     // set status bar
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];

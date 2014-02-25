@@ -15,9 +15,13 @@
 #import "CDScheduleAlert.h"
 #import "ScheduleItem.h"
 
+#import "GAI.h"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate, NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property(nonatomic, strong) id<GAITracker> tracker;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;

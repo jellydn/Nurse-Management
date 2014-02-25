@@ -7,9 +7,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TermVC">
             <connections>
+                <outlet property="btBack" destination="gJm-Qh-hz5" id="c6a-ZZ-5Ht"/>
                 <outlet property="content" destination="9iB-5g-bhH" id="s5p-2N-8U9"/>
+                <outlet property="lbTile" destination="Gtm-qw-Thh" id="hdP-cE-2mg"/>
                 <outlet property="lbTitle" destination="Gtm-qw-Thh" id="Yi9-QO-TBr"/>
                 <outlet property="view" destination="1" id="3"/>
+                <outlet property="viewNavi" destination="G04-ZG-B6A" id="Rdg-TN-oq7"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

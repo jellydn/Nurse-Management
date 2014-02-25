@@ -9,7 +9,9 @@
             <connections>
                 <outlet property="_lbTile" destination="URq-iI-wdI" id="RWu-so-hsn"/>
                 <outlet property="_viewNavi" destination="NVL-wc-6wB" id="8lr-9D-Bb2"/>
+                <outlet property="btBack" destination="5Th-4S-uyd" id="lCU-of-j5u"/>
                 <outlet property="indicator" destination="Sya-XP-B5T" id="zfw-2c-73Y"/>
+                <outlet property="lbTile" destination="URq-iI-wdI" id="peJ-9I-0g4"/>
                 <outlet property="view" destination="1" id="3"/>
                 <outlet property="webViewContent" destination="gDO-2D-mqT" id="bfx-yU-tgY"/>
             </connections>

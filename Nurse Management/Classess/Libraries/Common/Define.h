@@ -33,4 +33,14 @@
 //#define TIME_FORMAT_HM_COLONS       @"HH:mm"
 #define TIME_FORMAT_FULL            @"dd-MM-yyyy HH:mm"
 
+
+// Google Analytics
+#define GA_HOMEVC                   @"Calendar screen"
+
+#define GA_RANKINGVC                @"Ranking screen"
+#define GA_MOREVC                   @"More screen"
+
+
+
+
 #endif
