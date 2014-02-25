@@ -10,6 +10,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <AudioToolbox/AudioServices.h>
 #import "Reachability.h"
+#import "Define.h"
 
 static User *user = nil;
 
@@ -458,6 +459,18 @@ static User *user = nil;
     return [formatter stringFromDate:date];
 }
 
++ (NSDate *) dateAppenedFromDate: (NSDate*)date andTime: (NSString *)time {
+    // change current date to string
+    NSMutableString *strDate = [[Common stringFromDate:date withFormat:TIME_FORMAT_DMY_HYPHEN] mutableCopy];
+    
+    // append hour and minute from shift category
+    [strDate appendString:@" "];
+    [strDate appendString:time];
+    
+    //convert to nsdate
+    NSDate *fullDate = [Common dateFromString:strDate withFormat:TIME_FORMAT_FULL];
+    return fullDate;
+}
 
 #pragma mark - Sound
 + (void) playPushSound

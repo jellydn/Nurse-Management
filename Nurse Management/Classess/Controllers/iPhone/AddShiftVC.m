@@ -212,6 +212,14 @@
     CDShiftCategory *shiftCategory = [[AppDelegate shared] getshiftCategoryWithID:index];
     _shift.fk_shift_category = shiftCategory;
     _shift.shiftCategoryId = shiftCategory.id;
+    _shift.isAllDay = shiftCategory.isAllDay;
+    _isAllDay = shiftCategory.isAllDay;
+    
+    // get time from shift category
+    _startTime = [Common dateAppenedFromDate:_date andTime:shiftCategory.timeStart];
+   _endTime = [Common dateAppenedFromDate:_date andTime:shiftCategory.timeEnd];
+    [self setAllDay:_isAllDay];
+    
     _btnSave.enabled = YES;
     _btnSaveAndNext.enabled = YES;
     
