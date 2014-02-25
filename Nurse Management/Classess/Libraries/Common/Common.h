@@ -70,9 +70,11 @@
 + (NSDate *) getDateFromStr: (NSString *)strDate;
 
 + (NSString *)timeAgoFromUnixTime:(double)seconds;
++ (NSString *)durationFromUnixTime:(double)seconds;
 
 + (NSString*) convertTimeToStringWithFormat:(NSString*)strFormat date:(NSDate*)date;
 + (NSDate *) dateAppenedFromDate: (NSDate*)date andTime: (NSString *)time;
++ (NSDate *) getStringOfHour: (int)hour andMinute: (int)minute fromDate: (NSDate *)currentDate;
 
 //Audio
 + (void) playPushSound;

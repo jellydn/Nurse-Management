@@ -129,6 +129,8 @@
     [self fetchedResultsControllerMember];
     [self fetchedResultsControllerShiftCategory];
     
+    [self setDefaultTime];
+    
     // init Choose Time view
     [self loadChooseTimeView];
     
@@ -141,7 +143,7 @@
     if (_isNewShift) {
         
         _shift = (CDShift *) [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
-        [self setDefaultTime];
+//        [self setDefaultTime];
         _txvMemo.text = MEMO_PLACEHOLDER_TEXT;
         _txvMemo.textColor = [UIColor lightGrayColor];
         
@@ -233,6 +235,7 @@
         }
     }
     
+    [_chooseTimeView setStartDate:_startTime];
     [self hideAddShift];
 }
 
@@ -514,20 +517,9 @@
 - (void) loadChooseTimeView {
     _chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 302, 320 - 15*2, 44)];
     _chooseTimeView.delegate = self;
-    [_chooseTimeView setStartDate:_date];
+//    [_chooseTimeView setStartDate:_date];
+    [_chooseTimeView setStartDate:_startTime];
     [_scrollView addSubview:_chooseTimeView];
-}
-
-- (NSDate *) dateAfterSetHour: (int)hour andMinute: (int)minute fromDate: (NSDate *)currentDate {
-    
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
-    NSDateComponents *components = [gregorian components: NSUIntegerMax fromDate: currentDate];
-    [components setHour: hour];
-    [components setMinute: minute];
-    [components setSecond: 0];
-    
-    NSDate *newDate = [gregorian dateFromComponents: components];
-    return newDate;
 }
 
 - (void) clearDataFromUI {
@@ -889,7 +881,8 @@
         [_arrAlerts addObject:[NSDate dateWithTimeIntervalSince1970:shiftAlert.onTime]];
     }
     
-    [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_date];
+//    [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_date];
+    [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_startTime];
     
     if (_shift.memo == nil || [_shift.memo isEqualToString:@""]) {
         _txvMemo.text = MEMO_PLACEHOLDER_TEXT;

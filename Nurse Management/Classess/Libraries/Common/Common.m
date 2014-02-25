@@ -448,6 +448,33 @@ static User *user = nil;
     }
 }
 
++ (NSString *)durationFromUnixTime:(double)seconds
+{
+    double difference = seconds;
+    if (difference > 0) {
+        NSMutableArray *periods = [NSMutableArray arrayWithObjects:@"second", @"min", @"hr", @"day", @"week", @"month", @"year", @"decade", nil];
+        NSArray *lengths = [NSArray arrayWithObjects:@60, @60, @24, @7, @4.35, @12, @10, nil];
+        int j = 0;
+        for(j=0; difference >= [[lengths objectAtIndex:j] doubleValue]; j++)
+        {
+            difference /= [[lengths objectAtIndex:j] doubleValue];
+        }
+        difference = roundl(difference);
+        if(difference != 1)
+        {
+            [periods insertObject:[[periods objectAtIndex:j] stringByAppendingString:@"s"] atIndex:j];
+        }
+        NSString *result = [NSString stringWithFormat:@"%li %@", (long)difference, [periods objectAtIndex:j]];
+        if ([result isEqualToString:@"15 mins"] || [result isEqualToString:@"30 mins"] || [result isEqualToString:@"1 hr"] || [result isEqualToString:@"2 hrs"])
+            return result;
+        else return  @"";
+    } else if (difference == 0) {
+        return @"on time";
+    } else {
+        return @"";
+    }
+}
+
 + (NSString*) convertTimeToStringWithFormat:(NSString*)strFormat date:(NSDate*)date
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -470,6 +497,18 @@ static User *user = nil;
     //convert to nsdate
     NSDate *fullDate = [Common dateFromString:strDate withFormat:TIME_FORMAT_FULL];
     return fullDate;
+}
+
++ (NSDate *) dateAfterSetHour: (int)hour andMinute: (int)minute fromDate: (NSDate *)currentDate {
+    
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
+    NSDateComponents *components = [gregorian components: NSUIntegerMax fromDate: currentDate];
+    [components setHour: hour];
+    [components setMinute: minute];
+    [components setSecond: 0];
+    
+    NSDate *newDate = [gregorian dateFromComponents: components];
+    return newDate;
 }
 
 #pragma mark - Sound
