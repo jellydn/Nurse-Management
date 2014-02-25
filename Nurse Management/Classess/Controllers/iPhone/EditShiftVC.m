@@ -233,7 +233,8 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"TableShiftCategoryUpdate"
                                                         object:self];
     [[AppDelegate shared] saveContext];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:DID_ADD_SCHEDULE object:nil userInfo:nil];
+
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
     }];
 
