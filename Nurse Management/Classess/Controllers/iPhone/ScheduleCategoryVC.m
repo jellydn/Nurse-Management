@@ -246,6 +246,7 @@
 //    _isLoadCoreData = NO;
     
     return _fetchedResultsControllerScheduleCategory;
+//    return nil;
     
 }
 - (void) saveScheduleCategoryName:(NSString *)name andColor:(NSString *)color andInsertId:(int32_t)insertId{
