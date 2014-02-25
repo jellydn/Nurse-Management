@@ -732,16 +732,25 @@ static NSString *const kAllowTracking   = @"allowTracking";
 
 - (NSMutableArray*) getColorsSchedulesOnDate:(NSDate*)date
 {
-    NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
+    //NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
     NSMutableArray *schedules = [[NSMutableArray alloc] init];
     
     int count = 0;
     for (CDSchedule *itemCD in self.fetchedResultsControllerSchedule.fetchedObjects) {
         
         NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:itemCD.onDate];
-        NSString *strTemp = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate];
+        //NSString *strTemp = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate];
         
-        if ([strTemp isEqualToString:strDate]) {
+        //if ([strTemp isEqualToString:strDate]) {
+            //[schedules addObject:itemCD.fk_schedule_category.color];
+            //count++;
+        //}
+        
+        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&date interval:NULL forDate:date];
+        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&tempDate interval:NULL forDate:tempDate];
+        
+        NSComparisonResult result = [date compare:tempDate];
+        if (result == NSOrderedSame) {
             [schedules addObject:itemCD.fk_schedule_category.color];
             count++;
         }
