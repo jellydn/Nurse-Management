@@ -17,12 +17,42 @@
 
 @implementation AddShiftView
 
+- (void)awakeFromNib
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideMaskView) name:@"hide_mask_view_addShiftView" object:nil];
+    
+    _viewMask.alpha = 0;
+}
+
+- (void)hideMaskView
+{
+        
+    _viewMask.alpha = 0;
+    NSLog(@"fdav _viewMask.hidden = YES;");
+    
+}
+
 - (IBAction)selectItem:(id)sender
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(addShiftView:didSelectWithIndex:)]) {
-        UIButton *button = (UIButton*)sender;
-        [_delegate addShiftView:self didSelectWithIndex:(int)button.tag - 100];
-    }
+    NSLog(@"fdaf _viewMask.hidden = no;");
+    
+    _viewMask.alpha = 0.5;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (_delegate && [_delegate respondsToSelector:@selector(addShiftView:didSelectWithIndex:)]) {
+                UIButton *button = (UIButton*)sender;
+                
+                [_delegate addShiftView:self didSelectWithIndex:(int)button.tag - 100];
+                
+            }else {
+                _viewMask.alpha = 0;
+            }
+
+        });
+    });
+    
 }
 
 - (IBAction)showListShiftPattern:(id)sender
