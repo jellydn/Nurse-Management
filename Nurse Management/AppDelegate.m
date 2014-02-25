@@ -444,14 +444,24 @@ static NSString *const kAllowTracking   = @"allowTracking";
 
 - (CDShift*) getShiftWithDate:(NSDate*)date
 {
-    NSString *strDay = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
+//    NSString *strDay = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
     
     for (CDShift *item in self.fetchedResultsControllerShift.fetchedObjects) {
         
         NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:item.onDate];
-        if ([[Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate] isEqualToString:strDay]) {
+//        if ([[Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate] isEqualToString:strDay]) {
+//            return item;
+//        }
+        
+        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&date interval:NULL forDate:date];
+        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&tempDate interval:NULL forDate:tempDate];
+        
+        NSComparisonResult result = [date compare:tempDate];
+        if (result == NSOrderedSame) {
+            NSLog(@"The same:");
             return item;
         }
+        
     }
     
     return nil;
@@ -699,17 +709,26 @@ static NSString *const kAllowTracking   = @"allowTracking";
 
 - (NSMutableArray*) getSchedulesOnDate:(NSDate*)date
 {
-    NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
+//    NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
     NSMutableArray *schedules = [[NSMutableArray alloc] init];
     
     for (CDSchedule *itemCD in self.fetchedResultsControllerSchedule.fetchedObjects) {
         
         NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:itemCD.onDate];
-        NSString *strTemp = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate];
+//        NSString *strTemp = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate];
      
-        if ([strTemp isEqualToString:strDate]) {
+//        if ([strTemp isEqualToString:strDate]) {
+//            [schedules addObject:[ScheduleItem convertForCDObjet:itemCD]];
+//        }
+        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&date interval:NULL forDate:date];
+        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&tempDate interval:NULL forDate:tempDate];
+        
+        NSComparisonResult result = [date compare:tempDate];
+        if (result == NSOrderedSame) {
+            NSLog(@"The same:");
             [schedules addObject:[ScheduleItem convertForCDObjet:itemCD]];
         }
+        
     }
     
     return schedules;
@@ -717,19 +736,31 @@ static NSString *const kAllowTracking   = @"allowTracking";
 
 - (NSMutableArray*) getColorsSchedulesOnDate:(NSDate*)date
 {
-    NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
+//    NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
     NSMutableArray *schedules = [[NSMutableArray alloc] init];
     
     int count = 0;
     for (CDSchedule *itemCD in self.fetchedResultsControllerSchedule.fetchedObjects) {
         
         NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:itemCD.onDate];
-        NSString *strTemp = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate];
+//        NSString *strTemp = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate];
         
-        if ([strTemp isEqualToString:strDate]) {
+//        if ([strTemp isEqualToString:strDate]) {
+//            [schedules addObject:itemCD.fk_schedule_category.color];
+//            count++;
+//        }
+        
+        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&date interval:NULL forDate:date];
+        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&tempDate interval:NULL forDate:tempDate];
+        
+        NSComparisonResult result = [date compare:tempDate];
+        if (result == NSOrderedSame) {
+            NSLog(@"The same:");
             [schedules addObject:itemCD.fk_schedule_category.color];
             count++;
+
         }
+        
         
         if (count == 3) {
             break;

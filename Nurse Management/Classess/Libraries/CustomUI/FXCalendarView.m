@@ -194,6 +194,8 @@
     [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:_selectDate] isSetFirstDay:NO];
     [_monthView3 reloadHeighForWeekWithAnimate:NO];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hide_mask_view_addShiftView" object:nil];
+    
     if (_delegate && [_delegate respondsToSelector:@selector(fXCalendarView:didSelectNextDay:)]) {
         [_delegate fXCalendarView:self didSelectNextDay:_selectDate];
     }

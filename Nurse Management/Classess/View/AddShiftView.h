@@ -17,6 +17,9 @@
 @property(nonatomic, weak) IBOutlet UIScrollView    *scrollView;
 @property(nonatomic, weak) IBOutlet UIPageControl   *pageControl;
 @property(nonatomic, weak) IBOutlet UIButton        *btClose;
+@property (weak, nonatomic) IBOutlet UIView *viewMask;
+
+
 
 - (IBAction)selectItem:(id)sender;
 - (IBAction)showListShiftPattern:(id)sender;
