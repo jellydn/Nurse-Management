@@ -31,6 +31,7 @@
     NSMutableArray *_arrAlerts;
     ChooseTimeView *_chooseTimeView;
     CDSchedule *_schedule;
+    BOOL _isShowAddScheduleView;
 }
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerScheduleCategory;
 
@@ -193,7 +194,7 @@
     [_addScheduleView initLayoutView];
     
     [self.view addSubview:_addScheduleView];
-
+     _isShowAddScheduleView = YES;
     [_addScheduleView loadScheduleCategoryInfo:[self convertScheduleCategory] selectDate:[NSDate date]];
     [_addScheduleView show];
 }
@@ -401,12 +402,24 @@
     _arrayTimeAlerts = arrayChooseTime;
 }
 #pragma mark - CoreData
+- (void) didShowView:(AddScheduleView*)addScheduleView
+{
+    _isShowAddScheduleView = YES;
+}
+
+- (void) didHideView:(AddScheduleView*)addScheduleView
+{
+    _isShowAddScheduleView = NO;
+}
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
+    if (_isShowAddScheduleView) {
+        [_addScheduleView loadScheduleCategoryInfo:[self convertScheduleCategory] selectDate:_selectDate];
+    }
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
