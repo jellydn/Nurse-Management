@@ -52,7 +52,9 @@
         
     } else {
   
-        _isFirstOfSunday = YES;
+        _isFirstOfSunday            = YES;
+        _headerViewMonday.hidden    = YES;
+        _headerViewSunday.hidden    = NO;
         
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:FIRST_OF_CALENDAR];
         [[NSUserDefaults standardUserDefaults] synchronize];
