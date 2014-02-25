@@ -41,4 +41,8 @@
 #define GA_RANKINGVC                @"Ranking screen"
 #define GA_MOREVC                   @"More screen"
 
+#define GA_ADDSHIFTVC               @"Add Shift screen"
+#define GA_LISTMEMBERSVC            @"List Members screen"
+#define GA_ADDMEMBERVC              @"Add Member screen"
+
 #endif

@@ -157,6 +157,11 @@
     
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.screenName = GA_ADDSHIFTVC;
+}
+
 - (void) viewWillDisappear:(BOOL)animated {
     // unregister for keyboard notifications while not visible.
     [[NSNotificationCenter defaultCenter] removeObserver:self
