@@ -265,7 +265,6 @@
 		2AAE597018B60636003FA40E /* white_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AAE596E18B60636003FA40E /* white_arrow.png */; };
 		2AAE597118B60636003FA40E /* white_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AAE596F18B60636003FA40E /* white_arrow@2x.png */; };
 		2AC8E69D18BC2E9F005C47FC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC8E69C18BC2E9F005C47FC /* SystemConfiguration.framework */; };
-		2AC8E69E18BC30C9005C47FC /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC8E69A18BC2E61005C47FC /* libGoogleAnalyticsServices.a */; };
 		2AC8E6A018BC322A005C47FC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC8E69F18BC322A005C47FC /* libz.dylib */; };
 		2AD1CDC418BB27EA00FE3E1F /* bg_tool_bar_theme_sweet.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD1CDBA18BB27EA00FE3E1F /* bg_tool_bar_theme_sweet.png */; };
 		2AD1CDC518BB27EA00FE3E1F /* bg_tool_bar_theme_sweet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD1CDBB18BB27EA00FE3E1F /* bg_tool_bar_theme_sweet@2x.png */; };
@@ -330,6 +329,8 @@
 		C000F2FC18AF6C2000280464 /* ic_injection_needle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F018AF6C2000280464 /* ic_injection_needle@2x.png */; };
 		C000F2FD18AF6C2000280464 /* ic_memo.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F118AF6C2000280464 /* ic_memo.png */; };
 		C000F2FE18AF6C2000280464 /* ic_memo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F218AF6C2000280464 /* ic_memo@2x.png */; };
+		C036524018BC9B3200B8CBE6 /* CSLINEOpener.m in Sources */ = {isa = PBXBuildFile; fileRef = C036523F18BC9B3200B8CBE6 /* CSLINEOpener.m */; };
+		C0A92D4518BC3D1700CC7E07 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC8E69A18BC2E61005C47FC /* libGoogleAnalyticsServices.a */; };
 		C0AD15E618B4A7C500709E81 /* NMTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AD15E318B4A7C500709E81 /* NMTimePickerView.m */; };
 		C0B2B1D518B44F7000CF4B76 /* CDShiftMember.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1D418B44F7000CF4B76 /* CDShiftMember.m */; };
 		C0B2B1D818B44F7100CF4B76 /* CDScheduleAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1D718B44F7100CF4B76 /* CDScheduleAlert.m */; };
@@ -743,6 +744,8 @@
 		C000F2F018AF6C2000280464 /* ic_injection_needle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_injection_needle@2x.png"; sourceTree = "<group>"; };
 		C000F2F118AF6C2000280464 /* ic_memo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_memo.png; sourceTree = "<group>"; };
 		C000F2F218AF6C2000280464 /* ic_memo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_memo@2x.png"; sourceTree = "<group>"; };
+		C036523E18BC9B3200B8CBE6 /* CSLINEOpener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSLINEOpener.h; sourceTree = "<group>"; };
+		C036523F18BC9B3200B8CBE6 /* CSLINEOpener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSLINEOpener.m; sourceTree = "<group>"; };
 		C0AD15E218B4A7C500709E81 /* NMTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMTimePickerView.h; sourceTree = "<group>"; };
 		C0AD15E318B4A7C500709E81 /* NMTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMTimePickerView.m; sourceTree = "<group>"; };
 		C0B2B1D318B44F7000CF4B76 /* CDShiftMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDShiftMember.h; path = "Nurse Management/Classess/Model/CDShiftMember.h"; sourceTree = SOURCE_ROOT; };
@@ -772,9 +775,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0A92D4518BC3D1700CC7E07 /* libGoogleAnalyticsServices.a in Frameworks */,
 				2AC8E6A018BC322A005C47FC /* libz.dylib in Frameworks */,
 				2AC8E69D18BC2E9F005C47FC /* SystemConfiguration.framework in Frameworks */,
-				2AC8E69E18BC30C9005C47FC /* libGoogleAnalyticsServices.a in Frameworks */,
 				2A394BCD18A9FD5300F30F2D /* CoreGraphics.framework in Frameworks */,
 				2A394BD118A9FD5300F30F2D /* CoreData.framework in Frameworks */,
 				2A394BCF18A9FD5300F30F2D /* UIKit.framework in Frameworks */,
@@ -956,6 +959,8 @@
 				2A394C2D18A9FFBC00F30F2D /* User.m */,
 				2A97526418B601D400C0946E /* Error.h */,
 				2A97526518B601D400C0946E /* Error.m */,
+				C036523E18BC9B3200B8CBE6 /* CSLINEOpener.h */,
+				C036523F18BC9B3200B8CBE6 /* CSLINEOpener.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1202,7 +1207,17 @@
 		2A3C249F18AB1BE000C20A04 /* MoreVC */ = {
 			isa = PBXGroup;
 			children = (
-				2AC8E6A118BC3D91005C47FC /* MoveCell */,
+				2A97525C18B600F500C0946E /* OtherAppCell.h */,
+				2A97525D18B600F500C0946E /* OtherAppCell.m */,
+				2A97525E18B600F500C0946E /* OtherAppCell.xib */,
+				2A4F22A118B4575A00A5C97C /* MoreCellItem.h */,
+				2A4F22A218B4575A00A5C97C /* MoreCellItem.m */,
+				2A4F229718B4575000A5C97C /* MoreCell.h */,
+				2A4F229818B4575000A5C97C /* MoreCell.m */,
+				2A4F229918B4575000A5C97C /* MoreCell.xib */,
+				2A4F229A18B4575000A5C97C /* MoreCellTitle.h */,
+				2A4F229B18B4575000A5C97C /* MoreCellTitle.m */,
+				2A4F229C18B4575000A5C97C /* MoreCellTitle.xib */,
 				2A3C24A518AB1BFE00C20A04 /* MoreVC.h */,
 				2A3C24A618AB1BFE00C20A04 /* MoreVC.m */,
 				2A3C24A718AB1BFE00C20A04 /* MoreVC.xib */,
@@ -1611,24 +1626,6 @@
 				2AC8E69A18BC2E61005C47FC /* libGoogleAnalyticsServices.a */,
 			);
 			path = "Google Analytics";
-			sourceTree = "<group>";
-		};
-		2AC8E6A118BC3D91005C47FC /* MoveCell */ = {
-			isa = PBXGroup;
-			children = (
-				2A97525C18B600F500C0946E /* OtherAppCell.h */,
-				2A97525D18B600F500C0946E /* OtherAppCell.m */,
-				2A97525E18B600F500C0946E /* OtherAppCell.xib */,
-				2A4F22A118B4575A00A5C97C /* MoreCellItem.h */,
-				2A4F22A218B4575A00A5C97C /* MoreCellItem.m */,
-				2A4F229718B4575000A5C97C /* MoreCell.h */,
-				2A4F229818B4575000A5C97C /* MoreCell.m */,
-				2A4F229918B4575000A5C97C /* MoreCell.xib */,
-				2A4F229A18B4575000A5C97C /* MoreCellTitle.h */,
-				2A4F229B18B4575000A5C97C /* MoreCellTitle.m */,
-				2A4F229C18B4575000A5C97C /* MoreCellTitle.xib */,
-			);
-			name = MoveCell;
 			sourceTree = "<group>";
 		};
 		B6B10DDC18AF0B2A004E3229 /* MemberShiftVC */ = {
@@ -2072,6 +2069,7 @@
 				2A75E63F18ADA97700E74E4F /* ShiftCell.m in Sources */,
 				2A3C24B518AB295500C20A04 /* ChangeThemeVC.m in Sources */,
 				2A97525518B5B01D00C0946E /* CDSchedule.m in Sources */,
+				C036524018BC9B3200B8CBE6 /* CSLINEOpener.m in Sources */,
 				C0B2B1EA18B44F7100CF4B76 /* CDShiftAlert.m in Sources */,
 				2A394C5E18AA2AA600F30F2D /* FXCalendarData.m in Sources */,
 				2A97527D18B6024100C0946E /* SBJsonWriter.m in Sources */,
@@ -2216,6 +2214,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Volumes/MacData/TienLP/Code/NurseManagement/04/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
+					"/Volumes/DATA/PhuNQ/iOS/nurse_management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2233,6 +2232,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Volumes/MacData/TienLP/Code/NurseManagement/04/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
+					"/Volumes/DATA/PhuNQ/iOS/nurse_management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;

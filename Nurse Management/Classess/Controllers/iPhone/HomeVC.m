@@ -14,6 +14,7 @@
 #import "Common.h"
 #import "Define.h"
 #import "FXCalendarData.h"
+#import "CSLINEOpener.h"
 
 #import "HomeNaviBarView.h"
 #import "HomeToolBarView.h"
@@ -882,6 +883,72 @@
         case 1:     // send LINE with a shift
         {
             
+            CDShift *shift = [[AppDelegate shared] getShiftWithDate:self.selectDate];
+            NSLog(@"selected date: %@", self.selectDate);
+            if ([CSLINEOpener canOpenLINE]) {
+                
+                if (shift) {
+                    ShiftCategoryItem *shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
+                    
+                    NSDate *startDate = [NSDate dateWithTimeIntervalSince1970:shift.timeStart];
+                    NSDate *endDate = [NSDate dateWithTimeIntervalSince1970:shift.timeEnd];
+                    NSInteger endHour = [FXCalendarData getHourWithDate:endDate];
+                    NSString *strStartTime = [Common convertTimeToStringWithFormat:@"HH:mm" date:startDate];
+                    NSString *strEndTime = (endHour == 0) ? @"24:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:endDate] ;
+                    
+                    NSString *shiftInformation = [NSString stringWithFormat:@"Shift category: %@ \nDuration: %@ \n", shiftCategory.name, shift.isAllDay?TEXT_ALL_DAY:[NSString stringWithFormat:@"%@～%@", strStartTime, strEndTime]];
+                    
+                    NSString *member = @"";
+                    if ([shift.pk_shift count] == 0) {
+                        member = [member stringByAppendingString:@"0 members"];
+                    } else {
+                        int count = 0;
+                        for (CDMember *item in shift.pk_shift) {
+                            
+                            if (count == [shift.pk_shift count] - 1) {
+                                member = [member stringByAppendingFormat:@"%@",item.name];
+                            } else {
+                                member = [member stringByAppendingFormat:@"%@, ",item.name];
+                            }
+                            
+                            count++;
+                        }
+                    }
+                    
+                    shiftInformation = [shiftInformation stringByAppendingString:[NSString stringWithFormat:@"Members: %@\n", member]];
+                    
+                    NSString *alert = @"";
+                    if ([shift.pk_shiftalert count] == 0)
+                        alert = @"0 alerts";
+                    else {
+                        int count = 0;
+                        for (CDShiftAlert *alarm in [shift.pk_shiftalert allObjects]) {
+                            // get the interval of the alarm time
+                            double duration = shift.timeStart - alarm.onTime;
+                            NSString *strAlert = [Common durationFromUnixTime:duration];
+                            if ([strAlert isEqualToString:@""]) {
+                                strAlert = [Common stringFromDate:[NSDate dateWithTimeIntervalSince1970:alarm.onTime] withFormat:@"HH:mm"];
+                            }
+                            if (count == [shift.pk_shiftalert count] - 1) {
+                                alert = [alert stringByAppendingString:strAlert];
+                            } else {
+                                alert = [alert stringByAppendingString:[NSString stringWithFormat:@"%@, ", strAlert]];
+                            }
+                            count++;
+                        }
+                    }
+                    
+                    shiftInformation = [shiftInformation stringByAppendingString:[NSString stringWithFormat:@"Alarms: %@\n", alert]];
+                    
+                    [CSLINEOpener openLINEAppWithText:shiftInformation];
+                    
+                } else {
+                    [CSLINEOpener openLINEAppWithText:@"No shift at this date"];
+                }
+                
+            } else {
+                [CSLINEOpener openAppStore];
+            }
             
             break;
         }
@@ -897,6 +964,15 @@
         }
             
         case 3:     // send LINE with captured calendar
+            
+            if ([CSLINEOpener canOpenLINE]) {
+                NSData *data = [self captureScreenshot];
+                UIImage *image = [UIImage imageWithData:data];
+                [CSLINEOpener openLINEAppWithImage:image];
+            } else {
+                [CSLINEOpener openAppStore];
+            }
+            
             break;
             
         default:
