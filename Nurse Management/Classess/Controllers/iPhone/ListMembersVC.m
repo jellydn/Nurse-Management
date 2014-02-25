@@ -47,6 +47,11 @@
     
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.screenName = GA_LISTMEMBERSVC;
+}
+
 - (void)viewDidUnload {
     self.fetchedResultsControllerMember = nil;
 }

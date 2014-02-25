@@ -8,6 +8,7 @@
 
 #import "ChooseTimeView.h"
 #import "NMTimePickerView.h"
+#import "Common.h"
 
 //---------define--------------
 #define NUMBER_OF_ITEM   6
@@ -215,7 +216,6 @@
                         
                     case 5:
                     {
-                        
                         NSDate *date = _dateChooseTime?_dateChooseTime:[NSDate date];
                         [arrayNumberOfTimeSelected addObject:date];
                     }
@@ -265,7 +265,16 @@
 //    nMTimePicker.navigationBar.topItem.title = @"";
 //    _nMTimePicker.datePicker.maximumDate = _startDate;
     
-    [_nMTimePicker.datePicker setDate:_dateChooseTime?_dateChooseTime:[NSDate date] animated:NO];
+    // get the current hour & minute
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
+    NSDateComponents *components = [gregorian components: NSUIntegerMax fromDate: [NSDate date]];
+    NSString *currentTime = [NSString stringWithFormat:@"%d:%d", components.hour, components.minute];
+    
+    // append to selected date
+    NSDate *currentDate = [Common dateAppenedFromDate:_startDate andTime:currentTime];
+    
+//    [_nMTimePicker.datePicker setDate:_dateChooseTime?_dateChooseTime:[NSDate date] animated:NO];
+    [_nMTimePicker.datePicker setDate:_dateChooseTime?_dateChooseTime:currentDate animated:NO];
     [_nMTimePicker showActionSheetInView:self];
 }
 

@@ -45,6 +45,11 @@
     [self configView];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.screenName = GA_ADDMEMBERVC;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

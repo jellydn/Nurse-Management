@@ -194,6 +194,7 @@
         rectLine.origin.x           = i * _widthCell;
         
         UIView *viewLine            = [[UIView alloc] initWithFrame:rectLine];
+        viewLine.autoresizingMask   = UIViewAutoresizingFlexibleHeight;
         viewLine.tag                = 0;
         viewLine.backgroundColor    = self.borderColor;
         
@@ -260,6 +261,52 @@
     }
     
     [self addSubview:_viewContainerDays];
+}
+
+- (void) reloadLayout:(float)oldHeight newHeight:(float)newHeight
+{
+    [UIView animateWithDuration:0.3 animations:^{
+       
+        //view lines
+        _viewLines.frame = CGRectMake(0, 0, _widthCell * 7, _heightCell*6 + 1);
+        
+        for (UIView *view in _viewLines.subviews) {
+            if (view.tag > 0) {
+                CGRect rect = view.frame;
+                rect.origin.y += (newHeight - oldHeight) * view.tag;
+                
+                view.frame = rect;
+            }
+        }
+        
+        //view select
+        _viewContainerSelect.frame = _viewLines.frame;
+        
+        [_viewSelect removeFromSuperview];
+        
+        _viewSelect                     = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _widthCell, _heightCell)];
+        _viewSelect.backgroundColor     = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain];
+        _viewSelect.hidden              = YES;
+        
+        UIView *viewBGSelect            = [[UIView alloc] initWithFrame:CGRectMake(2, 2, _viewSelect.frame.size.width - 2, _viewSelect.frame.size.height - 2)];
+        viewBGSelect.backgroundColor    = self.backgoundSelectDay;
+        viewBGSelect.clipsToBounds      = YES;
+        
+        [_viewSelect addSubview:viewBGSelect];
+        [_viewContainerSelect addSubview:_viewSelect];
+        
+        //view container days
+        _viewContainerDays.frame = _viewLines.frame;
+        
+        //add day view
+        for (FXDayView *dayView in _viewContainerDays.subviews) {
+            dayView.frame = CGRectMake(_widthCell * (dayView.tag%7) + 1,
+                                       _heightCell * (dayView.tag/7) + 1,
+                                       _widthCell  - 1.5,
+                                       _heightCell - 1.5);
+        }
+        
+    }];
 }
 
 #pragma mark - Action
@@ -406,12 +453,14 @@
         
         if (_isLoadDataForCell) {
             
-            CDShift *shift  = [[AppDelegate shared] getShiftWithDate:tempDate];
-            if (shift) {
-                day.shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
-            } else {
-                day.shiftCategory = nil;
-            }
+            day.shiftCategory = [[AppDelegate shared] getShiftCategoryWithDate:tempDate];
+            
+//            CDShift *shift  = [[AppDelegate shared] getShiftWithDate:tempDate];
+//            if (shift) {
+//                day.shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
+//            } else {
+//                day.shiftCategory = nil;
+//            }
             
             NSArray *arrayColor = [[AppDelegate shared] getColorsSchedulesOnDate:tempDate];
             if ([arrayColor count] >= 1) {
@@ -535,12 +584,14 @@
         
         if (_isLoadDataForCell) {
             
-            CDShift *shift  = [[AppDelegate shared] getShiftWithDate:tempDate];
-            if (shift) {
-                day.shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
-            } else {
-                day.shiftCategory = nil;
-            }
+            day.shiftCategory = [[AppDelegate shared] getShiftCategoryWithDate:tempDate];
+            
+//            CDShift *shift  = [[AppDelegate shared] getShiftWithDate:tempDate];
+//            if (shift) {
+//                day.shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
+//            } else {
+//                day.shiftCategory = nil;
+//            }
             
             NSArray *arrayColor = [[AppDelegate shared] getColorsSchedulesOnDate:tempDate];
             if ([arrayColor count] >= 1) {
@@ -563,6 +614,94 @@
         
         tempDate = [FXCalendarData nextDateFrom:tempDate];
         
+    }
+    
+    float allDay        = 35;
+    _is6Week            = NO;
+    _numberWeekOfMonth  = 5;
+    
+    if ([_days count] > 35) {
+        
+        allDay              = 42;
+        _is6Week            = YES;
+        _numberWeekOfMonth  = 6;
+    }
+    
+    for (int i = (int)[_days count]; i < allDay ; i++) {
+        FXDay *day = [[FXDay alloc] init];
+        day.isOutOfDay = YES;
+        day.date = tempDate;
+        
+        [_days addObject:day];
+        
+        tempDate = [FXCalendarData nextDateFrom:tempDate];
+    }
+    
+    [self reloadInfoDay];
+}
+
+- (void) reloadDays
+{
+    
+    NSMutableArray *tempDays = [[NSMutableArray alloc] init];
+    for (FXDay *day in _days) {
+        if (!day.isOutOfDay) {
+            [tempDays addObject:day];
+        }
+    }
+    
+    _firstdayIndex  = (int)[FXCalendarData getWeekDayWithDate:_firstDay];
+    _enddayIndex    = (int)[FXCalendarData getWeekDayWithDate:_endDay];
+    _totalDay       = (int)[FXCalendarData numberDayOfMonthWithDate:_date];
+    
+    if (!_days) {
+        _days = [[NSMutableArray alloc] init];
+    } else {
+        [_days removeAllObjects];
+    }
+    
+    
+    if (!_isFirstOfSunday) {
+        if (_firstdayIndex == 1 ) {
+            _firstdayIndex = 7;
+        } else {
+            _firstdayIndex--;
+        }
+        
+        if (_enddayIndex == 1) {
+            _enddayIndex = 7;
+        } else {
+            _enddayIndex--;
+        }
+    }
+    
+    
+    //get out of day with first week
+    for (int i = _firstdayIndex - 1; i > 0; i--) {
+        
+        FXDay *day = [[FXDay alloc] init];
+        day.isOutOfDay = YES;
+        
+        [_days addObject:day];
+    }
+    
+    // add day in out of days
+    NSDate *tempDate = _firstDay;
+    for (int i = (int)[_days count] - 1; i >= 0; i--) {
+        
+        tempDate = [FXCalendarData prevDateFrom:tempDate];
+        FXDay *day = _days[i];
+        day.date   = tempDate;
+        
+    }
+    
+    //add day in month
+    tempDate = _firstDay;
+    
+    for (FXDay *day in tempDays) {
+        [_days addObject:day];
+        
+        tempDate = [FXCalendarData nextDateFrom:tempDate];
     }
     
     float allDay        = 35;
@@ -648,9 +787,9 @@
         _isViewFull = YES;
     }
     
-    for (UIView *view in self.subviews) {
-        [view removeFromSuperview];
-    }
+//    for (UIView *view in self.subviews) {
+//        [view removeFromSuperview];
+//    }
     
     _indexSelect        = -1;
     _widthCell          = self.frame.size.width / 7;
@@ -659,7 +798,10 @@
     CGRect frame        = self.frame;
     frame.size.height   = _heightCell*6 + 1;
     self.frame          = frame;
-    [self initLayout];
+    
+    
+    //[self initLayout];
+    [self reloadLayout:50 newHeight:60];
 }
 
 - (void) reloadViewForExitViewFullWithAnimate:(BOOL)isAnimate
@@ -670,9 +812,9 @@
         _isViewFull = NO;
     }
     
-    for (UIView *view in self.subviews) {
-        [view removeFromSuperview];
-    }
+//    for (UIView *view in self.subviews) {
+//        [view removeFromSuperview];
+//    }
     
     _indexSelect        = -1;
     _widthCell          = self.frame.size.width / 7;
@@ -681,7 +823,10 @@
     CGRect frame        = self.frame;
     frame.size.height   = _heightCell*6 + 1;
     self.frame          = frame;
-    [self initLayout];
+    
+    
+    //[self initLayout];
+    [self reloadLayout:60 newHeight:50];
 }
 
 - (void) reloadTheme
@@ -708,76 +853,20 @@
     
 }
 
-- (void) reloadDays
-{
 
-    _firstdayIndex  = (int)[FXCalendarData getWeekDayWithDate:_firstDay];
-    _enddayIndex    = (int)[FXCalendarData getWeekDayWithDate:_endDay];
-    _totalDay       = (int)[FXCalendarData numberDayOfMonthWithDate:_date];
-    
-    if (!_days) {
-        _days = [[NSMutableArray alloc] init];
-    } else {
-        [_days removeAllObjects];
-    }
-    
-    
-    if (!_isFirstOfSunday) {
-        if (_firstdayIndex == 1 ) {
-            _firstdayIndex = 7;
-        } else {
-            _firstdayIndex--;
-        }
-        
-        if (_enddayIndex == 1) {
-            _enddayIndex = 7;
-        } else {
-            _enddayIndex--;
-        }
-    }
-    
-    
-    //get out of day with first week
-    for (int i = _firstdayIndex - 1; i > 0; i--) {
-        
-        FXDay *day = [[FXDay alloc] init];
-        day.isOutOfDay = YES;
-        
-        [_days addObject:day];
-    }
-    
-    // add day in out of days
-    NSDate *tempDate = _firstDay;
-    for (int i = (int)[_days count] - 1; i >= 0; i--) {
-        
-        tempDate = [FXCalendarData prevDateFrom:tempDate];
-        FXDay *day = _days[i];
-        day.date   = tempDate;
-        
-    }
-    
-    //add day in month
-    tempDate = _firstDay;
-    for (int i = 1; i <= _totalDay; i++) {
-        
-        FXDay *day          = [[FXDay alloc] init];
-        day.isOutOfDay      = NO;
-        day.isFirstOfSunday = _isFirstOfSunday;
-        day.date            = tempDate;
-        day.color1          = @"";
-        day.color2          = @"";
-        day.color3          = @"";
-        
-        if (_isLoadDataForCell) {
+
+#pragma mark - Cell
+- (void) reloadCellWithTag:(int)tag
+{
+    for (FXDayView *dayView in _viewContainerDays.subviews) {
+        if (dayView.tag < [_days count] &&
+            dayView.tag == tag) {
             
-            CDShift *shift  = [[AppDelegate shared] getShiftWithDate:tempDate];
-            if (shift) {
-                day.shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
-            } else {
-                day.shiftCategory = nil;
-            }
+            FXDay *day = _days[dayView.tag];
+            day.isSelect = NO;
             
-            NSArray *arrayColor = [[AppDelegate shared] getColorsSchedulesOnDate:tempDate];
+            day.shiftCategory = [[AppDelegate shared] getShiftCategoryWithDate:day.date];
+            NSArray *arrayColor = [[AppDelegate shared] getColorsSchedulesOnDate:day.date];
             if ([arrayColor count] >= 1) {
                 day.color1      = arrayColor[0];
             }
@@ -790,38 +879,14 @@
                 day.color3      = arrayColor[2];
             }
             
-        } else {
-            day.shiftCategory = nil;
+            [dayView reloadInfo:day];
+            
+            _indexSelect++;
+            _viewSelect.hidden  = NO;
+            _viewSelect.frame   = CGRectMake(_widthCell * (tag%7) - 1, _heightCell * (tag/7) - 1, _widthCell + 2, _heightCell + 2);
+            
         }
-        
-        [_days addObject:day];
-        
-        tempDate = [FXCalendarData nextDateFrom:tempDate];
-        
     }
-    
-    float allDay        = 35;
-    _is6Week            = NO;
-    _numberWeekOfMonth  = 5;
-    
-    if ([_days count] > 35) {
-        
-        allDay              = 42;
-        _is6Week            = YES;
-        _numberWeekOfMonth  = 6;
-    }
-    
-    for (int i = (int)[_days count]; i < allDay ; i++) {
-        FXDay *day = [[FXDay alloc] init];
-        day.isOutOfDay = YES;
-        day.date = tempDate;
-        
-        [_days addObject:day];
-        
-        tempDate = [FXCalendarData nextDateFrom:tempDate];
-    }
-    
-    [self reloadInfoDay];
 }
    
    

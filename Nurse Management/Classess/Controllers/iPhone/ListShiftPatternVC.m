@@ -53,7 +53,11 @@
                                                object:nil];
     
 }
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.screenName = @"List Schedule";
+}
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self

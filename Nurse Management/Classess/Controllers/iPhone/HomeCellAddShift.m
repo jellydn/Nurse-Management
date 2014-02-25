@@ -10,6 +10,7 @@
 #import "FXCalendarData.h"
 #import "Common.h"
 #import "ShiftCategoryItem.h"
+#import "Define.h"
 
 @interface HomeCellAddShift ()
 
@@ -56,37 +57,19 @@
         
         _viewAdd.hidden     = YES;
         _viewInfo.hidden    = NO;
-        
         _btEdit.tag = shift.id;
-        
-//        ShiftCategoryItem *shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
-//        if (shiftCategory.isAllDay) {
-//            _lbTime.text = [NSString stringWithFormat:@"00:00～24:00"];
-//        } else {
-//            _lbTime.text = [NSString stringWithFormat:@"%@～%@",shiftCategory.strTimeStart, shiftCategory.strTimeEnd];
-//        }
-        
-//        if (shift.isAllDay) {
-//            _lbTime.text = [NSString stringWithFormat:@"00:00～24:00"];
-//        } else {
-//            _lbTime.text = [NSString stringWithFormat:@"%f～%f",shift.timeStart, shift.timeEnd];
-//        }
+    
         
         NSDate *startDate = [NSDate dateWithTimeIntervalSince1970:shift.timeStart];
         NSDate *endDate = [NSDate dateWithTimeIntervalSince1970:shift.timeEnd];
-        
-//        NSInteger startDay = [FXCalendarData getDayWithDate:startDate];
         NSInteger endHour = [FXCalendarData getHourWithDate:endDate];
-        
         NSString *strStartTime = [Common convertTimeToStringWithFormat:@"HH:mm" date:startDate];
         NSString *strEndTime = (endHour == 0) ? @"24:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:endDate] ;
         
-//        if (startDay != endDay)
-//            strStartTime = @"00:00";
-        
-//        NSString *strStartTime   = [Common convertTimeToStringWithFormat:@"HH:mm" date:startDate];
-        
-        _lbTime.text = [NSString stringWithFormat:@"%@～%@", strStartTime, strEndTime];
+        if (shift.isAllDay)
+            _lbTime.text = TEXT_ALL_DAY;
+        else
+            _lbTime.text = [NSString stringWithFormat:@"%@～%@", strStartTime, strEndTime];
         
         ShiftCategoryItem *shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
         _imgCategory.image          = [UIImage imageNamed:shiftCategory.image];
@@ -112,7 +95,27 @@
         }
         
         //load alert
-        _lbAlert.text = [NSString stringWithFormat:@"%d alerts",(int)[shift.pk_shiftalert count]];
+//        _lbAlert.text = [NSString stringWithFormat:@"%d alerts",(int)[shift.pk_shiftalert count]];
+        if ([shift.pk_shiftalert count] == 0)
+            _lbAlert.text = @"0 alerts";
+        else {
+            int count = 0;
+            _lbAlert.text = @"";
+            for (CDShiftAlert *alarm in [shift.pk_shiftalert allObjects]) {
+                // get the interval of the alarm time
+                double duration = shift.timeStart - alarm.onTime;
+                NSString *strAlert = [Common durationFromUnixTime:duration];
+                if ([strAlert isEqualToString:@""]) {
+                    strAlert = [Common stringFromDate:[NSDate dateWithTimeIntervalSince1970:alarm.onTime] withFormat:@"HH:mm"];
+                }
+                if (count == [shift.pk_shiftalert count] - 1) {
+                    _lbAlert.text = [_lbAlert.text stringByAppendingString:strAlert];
+                } else {
+                    _lbAlert.text = [_lbAlert.text stringByAppendingString:[NSString stringWithFormat:@"%@, ", strAlert]];
+                }
+                count++;
+            }
+        }
         
     } else {
         

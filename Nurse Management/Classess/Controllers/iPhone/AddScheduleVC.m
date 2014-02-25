@@ -20,6 +20,7 @@
 #import "ScheduleCategoryVC.h"
 #import "CDScheduleAlert.h"
 #import "CDSchedule.h"
+#import "FXViewController.h"
 
 @interface AddScheduleVC ()<UITextViewDelegate, NSFetchedResultsControllerDelegate, ChooseTimeViewDelegate, AddScheduleViewDelegate, NMTimePickerViewDelegate, ChooseTimeViewDelegate, UIActionSheetDelegate>{
     NSDate *_startTime;
@@ -48,7 +49,15 @@
     }
     return self;
 }
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (_scheduleEditItem) {
+        self.screenName = @"Add Schedule";
+    }else{
+        self.screenName = @"Edit Schedule";
+    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -134,18 +143,13 @@
 }
 -(void)loadScheduleDate
 {
-    
-    
-    
     NSArray *_arrAlertDates = [_schedule.pk_schedule allObjects];
     if (_arrAlerts)
         _arrAlerts = nil;
     _arrAlerts = [[NSMutableArray alloc] init];
     for (CDScheduleAlert *scheduleAlert in _arrAlertDates) {
-        NSLog(@"ddd %@", scheduleAlert);
         [_arrAlerts addObject:[NSDate dateWithTimeIntervalSince1970:scheduleAlert.onTime]];
     }
-    NSLog(@"mang %@", _arrAlertDates);
     [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:[NSDate date]];
 
 }
@@ -271,10 +275,6 @@
     
 }
 - (IBAction)chooseTime:(id)sender {
-    NSLog(@"tag %d", [sender tag]);
-    
-    
-    
     if ([sender tag] == 3){
         
         if (_isAllDay) {

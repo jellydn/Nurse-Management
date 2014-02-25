@@ -7,7 +7,7 @@
 //
 
 #import "TermVC.h"
-
+#import "FXViewController.h"
 @interface TermVC (){
     NSString *_nameFile;
 }
@@ -39,6 +39,18 @@
         _nameFile = @"term-privacy_three";
     }
     [self initDataContent];
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (_selectTerm == 8) {
+        self.screenName = @"User Agreement";
+    }else if (_selectTerm == 9){
+        self.screenName = @"Policy";
+    }else{
+        self.screenName = @"Contact";
+    }
+
 }
 -(void)initDataContent
 {

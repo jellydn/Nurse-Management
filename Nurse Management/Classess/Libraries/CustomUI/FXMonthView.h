@@ -77,6 +77,8 @@
 - (void) reloadViewForExitViewFullWithAnimate:(BOOL)isAnimate;
 - (void) reloadTheme;
 - (void) reloadChangeFirstOfCalendar:(BOOL)isFirstOfSunday;
+- (void) reloadDays;
+- (void) reloadCellWithTag:(int)tag;
 
 //instance method
 - (id)initWithWidth:(float)width;

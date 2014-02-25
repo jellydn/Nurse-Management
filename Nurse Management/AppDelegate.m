@@ -75,6 +75,10 @@ static NSString *const kAllowTracking   = @"allowTracking";
     [self fetchedResultsControllerScheduleCategory];
     [self fetchedResultsControllerScheduleAlert];
     
+    //init dictionary
+    [self initDictionaryShift];
+    [self initDictionarySchedule];
+    
     // Handle launching from a notification
     UILocalNotification *locationNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     if (locationNotification) {
@@ -176,6 +180,11 @@ static NSString *const kAllowTracking   = @"allowTracking";
     [[NSNotificationCenter defaultCenter] postNotificationName:@"TableShiftCategoryUpdate"
                                                         object:self];
 
+    if (controller == _fetchedResultsControllerShift) {
+        [self initDictionaryShift];
+    } else if (controller == _fetchedResultsControllerSchedule) {
+        [self initDictionarySchedule];
+    }
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
@@ -732,26 +741,55 @@ static NSString *const kAllowTracking   = @"allowTracking";
 
 - (NSMutableArray*) getColorsSchedulesOnDate:(NSDate*)date
 {
+
+//    //NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
+//    NSMutableArray *schedules = [[NSMutableArray alloc] init];
+//    
+//    int count = 0;
+//    for (CDSchedule *itemCD in self.fetchedResultsControllerSchedule.fetchedObjects) {
+//        
+//        NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:itemCD.onDate];
+//        //NSString *strTemp = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate];
+//        
+//        //if ([strTemp isEqualToString:strDate]) {
+//            //[schedules addObject:itemCD.fk_schedule_category.color];
+//            //count++;
+//        //}
+//        
+//        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&date interval:NULL forDate:date];
+//        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&tempDate interval:NULL forDate:tempDate];
+//        
+//        NSComparisonResult result = [date compare:tempDate];
+//        if (result == NSOrderedSame) {
+//            [schedules addObject:itemCD.fk_schedule_category.color];
+//            count++;
+//        }
+//        
+//        if (count == 3) {
+//            break;
+//        }
+//    }
+
     NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
-    NSMutableArray *schedules = [[NSMutableArray alloc] init];
+//    NSMutableArray *schedules = [[NSMutableArray alloc] init];
+//    
+//    int count = 0;
+//    for (CDSchedule *itemCD in self.fetchedResultsControllerSchedule.fetchedObjects) {
+//        
+//        NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:itemCD.onDate];
+//        NSString *strTemp = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate];
+//        
+//        if ([strTemp isEqualToString:strDate]) {
+//            [schedules addObject:itemCD.fk_schedule_category.color];
+//            count++;
+//        }
+//        
+//        if (count == 3) {
+//            break;
+//        }
+//    }
     
-    int count = 0;
-    for (CDSchedule *itemCD in self.fetchedResultsControllerSchedule.fetchedObjects) {
-        
-        NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:itemCD.onDate];
-        NSString *strTemp = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate];
-        
-        if ([strTemp isEqualToString:strDate]) {
-            [schedules addObject:itemCD.fk_schedule_category.color];
-            count++;
-        }
-        
-        if (count == 3) {
-            break;
-        }
-    }
-    
-    return schedules;
+    return [_dictionarySchedule objectForKey:strDate];
 }
 
 
@@ -781,6 +819,91 @@ static NSString *const kAllowTracking   = @"allowTracking";
 
     application.applicationIconBadgeNumber = 0;
 }
+
+
+#pragma mark - Dictionary
+- (void) initDictionaryShift
+{
+    NSLog(@"initDictionaryShift");
+    if (_dictionaryShift) {
+        [_dictionaryShift removeAllObjects];
+    } else {
+        _dictionaryShift = [[NSMutableDictionary alloc] init];
+    }
+    
+    for (CDShift *shift in self.fetchedResultsControllerShift.fetchedObjects) {
+        
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:shift.onDate];
+        NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
+        [_dictionaryShift setObject:[ShiftCategoryItem convertForCDObject:shift.fk_shift_category] forKey:strDate];
+        
+    }
+     NSLog(@"initDictionaryShift ---- end");
+    
+}
+
+- (void) initDictionarySchedule
+{
+    NSLog(@"initDictionarySchedule");
+    if (_dictionarySchedule) {
+        [_dictionarySchedule removeAllObjects];
+    } else {
+        _dictionarySchedule = [[NSMutableDictionary alloc] init];
+    }
+    
+    
+    for (CDSchedule *item in self.fetchedResultsControllerSchedule.fetchedObjects) {
+        
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:item.onDate];
+        NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
+        
+        if ([_dictionarySchedule objectForKey:strDate]) {
+            NSMutableArray *arrayColor = [_dictionarySchedule objectForKey:strDate];
+            [arrayColor addObject:item.fk_schedule_category.color];
+            
+            [_dictionarySchedule setObject:arrayColor forKey:strDate];
+        } else {
+            NSMutableArray *arrayColor = [[NSMutableArray alloc] init];
+            [arrayColor addObject:item.fk_schedule_category.color];
+            
+            [_dictionarySchedule setObject:arrayColor forKey:strDate];
+        }
+        
+    }
+    
+    
+    NSLog(@"initDictionarySchedule ---- end");
+}
+
+- (ShiftCategoryItem*) getShiftCategoryWithDate:(NSDate*)date
+{
+    return [_dictionaryShift objectForKey:[Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date]];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

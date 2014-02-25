@@ -14,6 +14,7 @@
 #import "CDScheduleCategory.h"
 #import "CDScheduleAlert.h"
 #import "ScheduleItem.h"
+#import "ShiftCategoryItem.h"
 
 #import "GAI.h"
 
@@ -53,6 +54,14 @@
 - (int) lastShiftAlertID;
 - (NSMutableArray*) getSchedulesOnDate:(NSDate*)date;
 - (NSMutableArray*) getColorsSchedulesOnDate:(NSDate*)date;
+
+// dic
+@property (nonatomic, strong) NSMutableDictionary *dictionaryShift;
+@property (nonatomic, strong) NSMutableDictionary *dictionarySchedule;
+
+- (void) initDictionaryShift;
+- (void) initDictionarySchedule;
+- (ShiftCategoryItem*) getShiftCategoryWithDate:(NSDate*)date;
 
 // share
 + (AppDelegate *)shared;

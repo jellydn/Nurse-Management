@@ -102,6 +102,8 @@
 {
     
     if (!decelerate) {
+        
+        NSLog(@"scrollViewDidEndDragging");
         if (scrollView.contentOffset.x == 0) {
 
             NSDate *date = _monthView1.date;
@@ -142,6 +144,7 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    NSLog(@"scrollViewDidEndDecelerating");
     if (scrollView.contentOffset.x == 0) {
         
         NSDate *date = _monthView1.date;
@@ -211,16 +214,27 @@
 
 - (void) setNextSelectDate
 {
+    int oldMonth = [FXCalendarData getMonthWithDate:_selectDate];
+    
     _selectDate = [FXCalendarData nextDateFrom:_selectDate];
+    int newMonth = [FXCalendarData getMonthWithDate:_selectDate];
     
-    [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:_selectDate] isSetFirstDay:NO];
-    [_monthView1 reloadHeighForWeekWithAnimate:NO];
+    if (oldMonth == newMonth) {
+        [_monthView2 reloadCellWithTag:_monthView2.indexSelect];
+    } else {
+        [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:_selectDate] isSetFirstDay:NO];
+        [_monthView1 reloadHeighForWeekWithAnimate:NO];
+        
+        [_monthView2 loadDataForDate:_selectDate setSelectDay:_selectDate];
+        [_monthView2 reloadHeighForWeekWithAnimate:YES];
+        
+        [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:_selectDate] isSetFirstDay:NO];
+        [_monthView3 reloadHeighForWeekWithAnimate:NO];
+    }
     
-    [_monthView2 loadDataForDate:_selectDate setSelectDay:_selectDate];
-    [_monthView2 reloadHeighForWeekWithAnimate:YES];
     
-    [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:_selectDate] isSetFirstDay:NO];
-    [_monthView3 reloadHeighForWeekWithAnimate:NO];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hide_mask_view_addShiftView" object:nil];
     
     if (_delegate && [_delegate respondsToSelector:@selector(fXCalendarView:didSelectNextDay:)]) {
         [_delegate fXCalendarView:self didSelectNextDay:_selectDate];
@@ -301,14 +315,24 @@
         [_scrollView setContentSize:CGSizeMake(320 * 3, 301)];
     }
     
-    [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:_selectDate] isSetFirstDay:NO];
+    [_monthView1 reloadDays];
     [_monthView1 reloadHeighForWeekWithAnimate:NO];
     
-    [_monthView2 loadDataForDate:_selectDate setSelectDay:_selectDate];
+    [_monthView2 reloadDays];
     [_monthView2 reloadHeighForWeekWithAnimate:YES];
     
-    [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:_selectDate] isSetFirstDay:NO];
+    [_monthView3 reloadDays];
     [_monthView3 reloadHeighForWeekWithAnimate:NO];
+    
+//    [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:_selectDate] isSetFirstDay:NO];
+//    [_monthView1 reloadHeighForWeekWithAnimate:NO];
+//    
+//    [_monthView2 loadDataForDate:_selectDate setSelectDay:_selectDate];
+//    [_monthView2 reloadHeighForWeekWithAnimate:YES];
+//    
+//    [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:_selectDate] isSetFirstDay:NO];
+//    [_monthView3 reloadHeighForWeekWithAnimate:NO];
+    
 }
 
 - (void) reloadTheme
