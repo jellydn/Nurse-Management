@@ -25,7 +25,8 @@
 #define DID_ADD_SCHEDULE    @"DID_ADD_SCHEDULE"
 
 //More App
-#define URL_WS_OTHER_APP    @"http://site.dashapps.info/api/?appid=AP001&offset=%d&limit=%d"
+//#define URL_WS_OTHER_APP      @"http://site.dashapps.info/api/?appid=AP001&offset=%d&limit=%d"
+#define URL_WS_OTHER_APP        @"http://ad.smaad.jp/moreApps/dataJSON/?zoneId=61517948&type=ios&start=%d&limit=%d"
 #define URL_WS_RANKING         @"https://www.google.com"
 
 // time formats

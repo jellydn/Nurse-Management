@@ -18,6 +18,9 @@
 #import "AppDelegate.h"
 #import "FXCalendarData.h"
 #import "ScheduleCategoryVC.h"
+#import "CDScheduleAlert.h"
+#import "CDSchedule.h"
+#import "FXViewController.h"
 
 @interface AddScheduleVC ()<UITextViewDelegate, NSFetchedResultsControllerDelegate, ChooseTimeViewDelegate, AddScheduleViewDelegate, NMTimePickerViewDelegate, ChooseTimeViewDelegate, UIActionSheetDelegate>{
     NSDate *_startTime;
@@ -26,6 +29,10 @@
     NMTimePickerView *_timePickerView;
     int _getIDScheduleCategory;
     NSDate  *_getDate;
+    NSMutableArray *_arrAlerts;
+    ChooseTimeView *_chooseTimeView;
+    CDSchedule *_schedule;
+    BOOL _isShowAddScheduleView;
 }
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerScheduleCategory;
 
@@ -42,10 +49,19 @@
     }
     return self;
 }
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (_scheduleEditItem) {
+        self.screenName = @"Add Schedule";
+    }else{
+        self.screenName = @"Edit Schedule";
+    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _arrayTimeAlerts = [[NSMutableArray alloc] init];
     //set tag for button
     _btStarTime.tag = START_TIME;
     _btEndTime.tag = END_TIME;
@@ -57,11 +73,11 @@
     _timePickerView.datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
     // view choose time
 
-    ChooseTimeView *chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 210, 320 - 15*2, 44)];
-    chooseTimeView.delegate = self;
-    [chooseTimeView setStartDate:[NSDate date]];
+    _chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 210, 320 - 15*2, 44)];
+    _chooseTimeView.delegate = self;
+    [_chooseTimeView setStartDate:_selectDate];
     
-    [self.view addSubview:chooseTimeView];
+    [self.view addSubview:_chooseTimeView];
     [self setDefaultTime];
     [self fetchedResultsControllerScheduleCategory];
     
@@ -109,11 +125,33 @@
         }
         
         _textViewContent.text = _scheduleEditItem.memo;
-        
+        if (_arrAlerts) {
+            _arrAlerts = nil;
+        }
+        _arrAlerts = [[NSMutableArray alloc] init];
+        CDSchedule *cdSchedule = [[AppDelegate shared] getScheduleByID:_scheduleEditItem.scheduleID];
+        for (CDScheduleAlert *item in cdSchedule.pk_schedule) {
+            NSLog(@"alert: %d --- : %f",item.id, item.onTime);
+            [_arrAlerts addObject:[NSDate dateWithTimeIntervalSince1970:item.onTime]];
+        }
+        [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_selectDate];
+
         
     }else{
         _btDelete.hidden = YES;
     }
+}
+-(void)loadScheduleDate
+{
+    NSArray *_arrAlertDates = [_schedule.pk_schedule allObjects];
+    if (_arrAlerts)
+        _arrAlerts = nil;
+    _arrAlerts = [[NSMutableArray alloc] init];
+    for (CDScheduleAlert *scheduleAlert in _arrAlertDates) {
+        [_arrAlerts addObject:[NSDate dateWithTimeIntervalSince1970:scheduleAlert.onTime]];
+    }
+    [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:[NSDate date]];
+
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -160,7 +198,7 @@
     [_addScheduleView initLayoutView];
     
     [self.view addSubview:_addScheduleView];
-
+     _isShowAddScheduleView = YES;
     [_addScheduleView loadScheduleCategoryInfo:[self convertScheduleCategory] selectDate:[NSDate date]];
     [_addScheduleView show];
 }
@@ -237,10 +275,6 @@
     
 }
 - (IBAction)chooseTime:(id)sender {
-    NSLog(@"tag %d", [sender tag]);
-    
-    
-    
     if ([sender tag] == 3){
         
         if (_isAllDay) {
@@ -368,12 +402,24 @@
     _arrayTimeAlerts = arrayChooseTime;
 }
 #pragma mark - CoreData
+- (void) didShowView:(AddScheduleView*)addScheduleView
+{
+    _isShowAddScheduleView = YES;
+}
+
+- (void) didHideView:(AddScheduleView*)addScheduleView
+{
+    _isShowAddScheduleView = NO;
+}
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
+    if (_isShowAddScheduleView) {
+        [_addScheduleView loadScheduleCategoryInfo:[self convertScheduleCategory] selectDate:_selectDate];
+    }
 }
 
 - (void)controller:(NSFetchedResultsController *)controller

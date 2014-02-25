@@ -51,7 +51,8 @@
     _btnBeginTime.tag = START_TIME;
     _btnEndTime.tag = END_TIME;
 
-    
+    NSLog(@"viewDidLoad");
+
     // init time picker view
     _timePickerView = [[NMTimePickerView alloc] init];
     _timePickerView.delegate = self;
@@ -63,6 +64,7 @@
 
 - (void) configView
 {
+    NSLog(@"_insertId %d",_insertId);
     if (!_insertId) {
         _txtName.text = @"";
         _startTime = [FXCalendarData dateNexHourFormDate:[NSDate date]];
@@ -75,6 +77,7 @@
 
     } else {
         _name = _txtName.text = _shiftCategory.name;
+        NSLog(@"name %@", _name);
         _color = _shiftCategory.color;
         _isAllDay = _shiftCategory.isAllDay;
         if (_shiftCategory.isAllDay) {
@@ -152,6 +155,9 @@
                                             if ([_shiftCategory.color isEqualToString:@"color9"]) {
                                                 _backgrounReview.image = [UIImage imageNamed:@"icon_r3_c9.png"];
                                             }
+        
+        _reviewCategory.text = _shiftCategory.name;
+
 
     }
         
@@ -233,7 +239,8 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"TableShiftCategoryUpdate"
                                                         object:self];
     [[AppDelegate shared] saveContext];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:DID_ADD_SCHEDULE object:nil userInfo:nil];
+
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
     }];
 

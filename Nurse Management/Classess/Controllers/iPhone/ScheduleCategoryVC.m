@@ -47,20 +47,6 @@
     [super viewDidLoad];
     [self configView];
     
-    // temporarely initialize data
-    Member *member1 = [[Member alloc] init];
-    member1.memberID = @"1";
-    member1.name = @"￼美容院";
-    member1.isOfficial = YES;
-    member1.isEnable = YES;
-    
-    Member *member2 = [[Member alloc] init];
-    member2.memberID = @"2";
-    member2.name = @"マツエク";
-    member2.isOfficial = NO;
-    member2.isEnable = NO;
-    
-    arrItems = [[NSMutableArray alloc] initWithObjects:member1, member2, nil];
     [self fetchedResultsControllerScheduleCategory];
 }
 
@@ -246,6 +232,7 @@
 //    _isLoadCoreData = NO;
     
     return _fetchedResultsControllerScheduleCategory;
+//    return nil;
     
 }
 - (void) saveScheduleCategoryName:(NSString *)name andColor:(NSString *)color andInsertId:(int32_t)insertId{
