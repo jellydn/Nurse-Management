@@ -98,6 +98,7 @@
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
+    
     if (!decelerate) {
         if (scrollView.contentOffset.x == 0) {
 

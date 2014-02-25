@@ -123,6 +123,8 @@
     switch (buttonIndex) {
         case 0:     // delete
             [_delegate deleteScheduleCategoryName:_insertId];
+            [[NSNotificationCenter defaultCenter] postNotificationName:DID_ADD_SCHEDULE object:nil userInfo:nil];
+
             [self.navigationController dismissViewControllerAnimated:YES completion:^{
                 
             }];
@@ -216,6 +218,8 @@
     if (!_insertId)
         _scheduleCategory.name = _txtName.text;
     [_delegate saveScheduleCategoryName:_txtName.text andColor:_typeColor andInsertId:_insertId];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DID_ADD_SCHEDULE object:nil userInfo:nil];
+
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         
     }];
