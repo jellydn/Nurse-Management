@@ -99,6 +99,11 @@
     self.fetchedResultsControllerMember = nil;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.screenName = GA_HOMEVC;
+}
+
 
 - (void)didReceiveMemoryWarning
 {

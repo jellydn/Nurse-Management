@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "FXThemeManager.h"
 #import "Define.h"
+#import "GAITrackedViewController.h"
 
 typedef void (^FXReloadThemeOfView)(NSString *themeName);
 
-@interface FXViewController : UIViewController
+@interface FXViewController : GAITrackedViewController
 
 @property (nonatomic) BOOL isHideNaviBarWhenBack;
 @property (nonatomic, strong) FXReloadThemeOfView blockReloadThemeOfView;

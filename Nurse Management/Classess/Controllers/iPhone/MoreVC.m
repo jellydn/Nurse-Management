@@ -59,6 +59,12 @@
     [self configView];
     [self initData];
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.screenName = GA_MOREVC;
+}
+
 -(void)initData
 {
     _items = [[NSMutableArray alloc] init];
@@ -155,6 +161,8 @@
 #pragma mark - Notification
 - (void)eventListenerDidReceiveNotification:(NSNotification *)notif
 {
+    [super eventListenerDidReceiveNotification:notif];
+    
     if ([[notif name] isEqualToString:_fxThemeNotificationChangeTheme])
     {
         _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
