@@ -609,7 +609,7 @@ static NSString *const kAllowTracking   = @"allowTracking";
             }
             
             
-            
+            alertID++;
             
         }
     }
@@ -663,6 +663,8 @@ static NSString *const kAllowTracking   = @"allowTracking";
                 alert.scheduleId        = schedule.id;
                 
                 alert.fk_alert_schedule = schedule;
+                
+                alertID++;
                 
             }
         }
