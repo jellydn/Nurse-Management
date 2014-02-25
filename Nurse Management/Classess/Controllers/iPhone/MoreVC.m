@@ -23,7 +23,7 @@
 
 #import "Downloader.h"
 #import "TermVC.h"
-@interface MoreVC ()<UIScrollViewDelegate, OtherAppWSDelegate, DownloaderDelegate>
+@interface MoreVC ()<UIScrollViewDelegate, OtherAppWSDelegate, DownloaderDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 {
     
     __weak IBOutlet UIView *_viewNavi;
@@ -36,9 +36,17 @@
     NSMutableArray *_otherApps;
     int _offset,_limit;
     
+
+    __weak IBOutlet UIView *_viewChangeDayCalendar;
+    __weak IBOutlet UIView *_viewChangeDayCalendarMask;
+    __weak IBOutlet UIPickerView *_pickerView;
+    BOOL _isShowPicker;
+    int _indexSelectCalendar;
     
 }
 - (IBAction)backVC:(id)sender;
+- (IBAction)cancelPicker:(id)sender;
+- (IBAction)donePicker:(id)sender;
 
 @end
 
@@ -149,12 +157,33 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+
 #pragma mark - Others
 - (void) configView
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     _lbTile.text = @"その他";
     
+   
+    float detalIOS = [Common isIOS7] ? 0 : 20;
+    float height = [Common checkScreenIPhone5] ? 568 : 480;
+    
+    _viewChangeDayCalendar.frame = CGRectMake(0,
+                                              height - detalIOS,
+                                              _viewChangeDayCalendar.frame.size.width,
+                                              _viewChangeDayCalendar.frame.size.height);
+    [self.view addSubview:_viewChangeDayCalendar];
+    _isShowPicker = NO;
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:FIRST_OF_CALENDAR]) {
+        _indexSelectCalendar = [[NSUserDefaults standardUserDefaults] integerForKey:FIRST_OF_CALENDAR];
+    } else {
+        _indexSelectCalendar = 0;
+        
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:FIRST_OF_CALENDAR];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     
 }
 
@@ -281,6 +310,7 @@
         }
         else if (indexPath.row == 5) {
             //TODO: switch to begin date : Sunday or Monday
+            [self show];
         }
         else if (indexPath.row == 8 || indexPath.row == 9 || indexPath.row == 10){
             TermVC *term = [[TermVC alloc] init];
@@ -407,11 +437,86 @@
     }
 }
 
+#pragma mark - Picker change day
 
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch= [touches anyObject];
+    if ([touch view] == _viewChangeDayCalendarMask) {
+        [self hide];
+    }
+}
 
+- (void) show
+{
+    if (_isShowPicker) {
+        return;
+    }
+    
+    CGRect rect = _viewChangeDayCalendar.frame;
+    rect.origin.y -= rect.size.height;
+    [_pickerView selectRow:_indexSelectCalendar inComponent:0 animated:YES];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        _viewChangeDayCalendar.frame = rect;
+    } completion:^(BOOL finished) {
+        _isShowPicker = YES;
+    }];
+}
 
+- (void) hide
+{
+    if (!_isShowPicker) {
+        return;
+    }
+    
+    CGRect rect = _viewChangeDayCalendar.frame;
+    rect.origin.y += rect.size.height;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        _viewChangeDayCalendar.frame = rect;
+    } completion:^(BOOL finished) {
+        _isShowPicker = NO;
+    }];
+}
 
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
 
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return 2;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    if (row == 0) {
+        return @"日曜日";
+    } else if (row == 1) {
+        return @"月曜日";
+    }
+    
+    return @"";
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    _indexSelectCalendar = row;
+}
+
+- (IBAction)cancelPicker:(id)sender {
+    [self hide];
+}
+
+- (IBAction)donePicker:(id)sender {
+    [self hide];
+    
+    [[NSUserDefaults standardUserDefaults] setInteger:_indexSelectCalendar forKey:FIRST_OF_CALENDAR];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FIRST_OF_CALENDAR object:nil userInfo:nil];
+}
 
 
 

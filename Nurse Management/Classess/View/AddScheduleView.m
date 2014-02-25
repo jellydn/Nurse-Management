@@ -256,6 +256,8 @@
     if (_delegate && [_delegate respondsToSelector:@selector(didSelectCategory:categoryID:)]) {
         [_delegate didSelectCategory:self categoryID:_scheduleCategoryID];
     }
+    
+    [self choiceTime:_btNextSchedule];
 }
 
 - (IBAction)selectCategory:(id)sender
@@ -263,6 +265,8 @@
     if (_delegate && [_delegate respondsToSelector:@selector(didShowCategoryName:)]) {
         [_delegate didShowCategoryName:self];
     }
+    
+    
     
 }
 

@@ -33,6 +33,8 @@
 //#define TIME_FORMAT_HM_COLONS       @"HH:mm"
 #define TIME_FORMAT_FULL            @"dd-MM-yyyy HH:mm"
 
+//index first of Calendar
+#define FIRST_OF_CALENDAR           @"FIRST_OF_CALENDAR"
 
 // Google Analytics
 #define GA_HOMEVC                   @"Calendar screen"

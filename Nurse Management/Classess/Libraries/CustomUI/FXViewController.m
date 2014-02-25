@@ -52,6 +52,11 @@
                                                  name:DID_ADD_SCHEDULE
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(eventListenerDidReceiveNotification:)
+                                                 name:FIRST_OF_CALENDAR
+                                               object:nil];
+    
     //set background
     if ([[FXThemeManager shared] getImageWithKey:_fxThemeImageBackground]) {
         self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[[FXThemeManager shared] getImageWithKey:_fxThemeImageBackground]];

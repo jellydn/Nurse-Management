@@ -1202,17 +1202,7 @@
 		2A3C249F18AB1BE000C20A04 /* MoreVC */ = {
 			isa = PBXGroup;
 			children = (
-				2A97525C18B600F500C0946E /* OtherAppCell.h */,
-				2A97525D18B600F500C0946E /* OtherAppCell.m */,
-				2A97525E18B600F500C0946E /* OtherAppCell.xib */,
-				2A4F22A118B4575A00A5C97C /* MoreCellItem.h */,
-				2A4F22A218B4575A00A5C97C /* MoreCellItem.m */,
-				2A4F229718B4575000A5C97C /* MoreCell.h */,
-				2A4F229818B4575000A5C97C /* MoreCell.m */,
-				2A4F229918B4575000A5C97C /* MoreCell.xib */,
-				2A4F229A18B4575000A5C97C /* MoreCellTitle.h */,
-				2A4F229B18B4575000A5C97C /* MoreCellTitle.m */,
-				2A4F229C18B4575000A5C97C /* MoreCellTitle.xib */,
+				2AC8E6A118BC3D91005C47FC /* MoveCell */,
 				2A3C24A518AB1BFE00C20A04 /* MoreVC.h */,
 				2A3C24A618AB1BFE00C20A04 /* MoreVC.m */,
 				2A3C24A718AB1BFE00C20A04 /* MoreVC.xib */,
@@ -1621,6 +1611,24 @@
 				2AC8E69A18BC2E61005C47FC /* libGoogleAnalyticsServices.a */,
 			);
 			path = "Google Analytics";
+			sourceTree = "<group>";
+		};
+		2AC8E6A118BC3D91005C47FC /* MoveCell */ = {
+			isa = PBXGroup;
+			children = (
+				2A97525C18B600F500C0946E /* OtherAppCell.h */,
+				2A97525D18B600F500C0946E /* OtherAppCell.m */,
+				2A97525E18B600F500C0946E /* OtherAppCell.xib */,
+				2A4F22A118B4575A00A5C97C /* MoreCellItem.h */,
+				2A4F22A218B4575A00A5C97C /* MoreCellItem.m */,
+				2A4F229718B4575000A5C97C /* MoreCell.h */,
+				2A4F229818B4575000A5C97C /* MoreCell.m */,
+				2A4F229918B4575000A5C97C /* MoreCell.xib */,
+				2A4F229A18B4575000A5C97C /* MoreCellTitle.h */,
+				2A4F229B18B4575000A5C97C /* MoreCellTitle.m */,
+				2A4F229C18B4575000A5C97C /* MoreCellTitle.xib */,
+			);
+			name = MoveCell;
 			sourceTree = "<group>";
 		};
 		B6B10DDC18AF0B2A004E3229 /* MemberShiftVC */ = {
