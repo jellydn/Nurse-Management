@@ -396,7 +396,7 @@
         [_tableView setContentOffset:CGPointMake(0, 0) animated:YES];
     } else if ([[notif name] isEqualToString:FIRST_OF_CALENDAR]) {
         
-        NSLog(@"change FIRST_OF_CALENDAR");
+        [_calendarView reloadChangeFirstDayOfCalendar];
         
     }
 }

@@ -16,6 +16,8 @@
 
 @property (nonatomic, weak) id <FXCalendarViewDelegate> delegate;
 @property (nonatomic, weak) IBOutlet UIView *headerView;
+@property (nonatomic, weak) IBOutlet UIView *headerViewSunday;
+@property (nonatomic, weak) IBOutlet UIView *headerViewMonday;
 
 @property (nonatomic, strong) NSDate *selectDate;
 
@@ -29,6 +31,7 @@
 - (void) reloadData;
 - (void) reloadViewisFull:(BOOL)isFull;
 - (void) reloadTheme;
+- (void) reloadChangeFirstDayOfCalendar;
 
 @end
 

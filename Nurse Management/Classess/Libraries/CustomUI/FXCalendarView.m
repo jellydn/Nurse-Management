@@ -12,6 +12,7 @@
 
 #import "FXMonthView.h"
 #import "FXDayView.h"
+#import "Define.h"
 
 @interface FXCalendarView ()<UIScrollViewDelegate, FXMonthViewDelegate>
 {
@@ -19,6 +20,7 @@
     FXMonthView *_monthView2;
     FXMonthView *_monthView3;
 
+    BOOL _isFirstOfSunday;
 }
 
 @end
@@ -35,6 +37,27 @@
         _headerView.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorCalendarHeader];
     }
     
+    //set first of calendar
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:FIRST_OF_CALENDAR]) {
+        
+        if ([[NSUserDefaults standardUserDefaults] integerForKey:FIRST_OF_CALENDAR] == 0) {
+            _isFirstOfSunday            = YES;
+            _headerViewMonday.hidden    = YES;
+            _headerViewSunday.hidden    = NO;
+        } else {
+            _isFirstOfSunday            = NO;
+            _headerViewMonday.hidden    = NO;
+            _headerViewSunday.hidden    = YES;
+        }
+        
+    } else {
+  
+        _isFirstOfSunday = YES;
+        
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:FIRST_OF_CALENDAR];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
     
     [_scrollView setContentSize:CGSizeMake(320 * 3, 301)];
     
@@ -43,6 +66,7 @@
     
     _monthView1 = [[FXMonthView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
     _monthView1.isLoadDataForCell   = NO;
+    _monthView1.isFirstOfSunday     = _isFirstOfSunday;
     [_monthView1 loadDataForDate:[FXCalendarData datePrevMonthFormDate:date] isSetFirstDay:NO];
     [_scrollView addSubview:_monthView1];
     [_monthView1 reloadHeighForWeekWithAnimate:NO];
@@ -51,12 +75,14 @@
     _monthView2                     = [[FXMonthView alloc] initWithFrame:CGRectMake(320, 0, 320, 0)];
     _monthView2.delegate            = self;
     _monthView2.isLoadDataForCell   = YES;
+    _monthView2.isFirstOfSunday     = _isFirstOfSunday;
     [_monthView2 loadDataForDate:date setSelectDay:date];
     [_scrollView addSubview:_monthView2];
     [_monthView2 reloadHeighForWeekWithAnimate:YES];
     
     _monthView3 = [[FXMonthView alloc] initWithFrame:CGRectMake(640, 0, 320, 0)];
     _monthView3.isLoadDataForCell   = NO;
+    _monthView3.isFirstOfSunday     = _isFirstOfSunday;
     [_monthView3 loadDataForDate:[FXCalendarData dateNextMonthFormDate:date] isSetFirstDay:NO];
     [_scrollView addSubview:_monthView3];
     [_monthView3 reloadHeighForWeekWithAnimate:NO];
@@ -202,6 +228,23 @@
 {
     [_monthView2 loadDataForDate:_selectDate setSelectDay:_selectDate];
     [_monthView2 reloadHeighForWeekWithAnimate:YES];
+}
+
+- (void) reloadChangeFirstDayOfCalendar
+{
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:FIRST_OF_CALENDAR] == 0) {
+        _isFirstOfSunday            = YES;
+        _headerViewMonday.hidden    = YES;
+        _headerViewSunday.hidden    = NO;
+    } else {
+        _isFirstOfSunday            = NO;
+        _headerViewMonday.hidden    = NO;
+        _headerViewSunday.hidden    = YES;
+    }
+    
+    [_monthView1 reloadChangeFirstOfCalendar:_isFirstOfSunday];
+    [_monthView2 reloadChangeFirstOfCalendar:_isFirstOfSunday];
+    [_monthView3 reloadChangeFirstOfCalendar:_isFirstOfSunday];
 }
 
 #pragma mark - FXMonthViewDelegate

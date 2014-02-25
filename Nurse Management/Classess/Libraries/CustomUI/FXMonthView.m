@@ -160,13 +160,27 @@
     // set BG color
     [self setBackgroundColor:self.bgColor];
     
-    UIView *viewSaturday            = [[UIView alloc] initWithFrame:CGRectMake(_widthCell*6, 0, _widthCell, _heightCell*6)];
-    viewSaturday.backgroundColor    = self.backgoundSaturdayColor;
-    [self addSubview:viewSaturday];
-    
-    UIView *viewSunday              = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _widthCell, _heightCell*6)];
-    viewSunday.backgroundColor      = self.backgoundSundayColor;
-    [self addSubview:viewSunday];
+    if (_isFirstOfSunday) {
+        UIView *viewSaturday            = [[UIView alloc] initWithFrame:CGRectMake(_widthCell*6, 0, _widthCell, _heightCell*6)];
+        viewSaturday.backgroundColor    = self.backgoundSaturdayColor;
+        viewSaturday.tag                = 999;
+        [self addSubview:viewSaturday];
+        
+        UIView *viewSunday              = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _widthCell, _heightCell*6)];
+        viewSunday.backgroundColor      = self.backgoundSundayColor;
+        viewSunday.tag                  = 998;
+        [self addSubview:viewSunday];
+    } else {
+        UIView *viewSaturday            = [[UIView alloc] initWithFrame:CGRectMake(_widthCell*5, 0, _widthCell, _heightCell*6)];
+        viewSaturday.backgroundColor    = self.backgoundSaturdayColor;
+        viewSaturday.tag                = 999;
+        [self addSubview:viewSaturday];
+        
+        UIView *viewSunday              = [[UIView alloc] initWithFrame:CGRectMake(_widthCell*6, 0, _widthCell, _heightCell*6)];
+        viewSunday.backgroundColor      = self.backgoundSundayColor;
+        viewSunday.tag                  = 998;
+        [self addSubview:viewSunday];
+    }
     
     //add lines
     _viewLines                  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _widthCell * 7, _heightCell*6 + 1)];
@@ -345,7 +359,19 @@
         [_days removeAllObjects];
     }
     
-    
+    if (!_isFirstOfSunday) {
+        if (_firstdayIndex == 1 ) {
+            _firstdayIndex = 7;
+        } else {
+            _firstdayIndex--;
+        }
+        
+        if (_enddayIndex == 1) {
+            _enddayIndex = 7;
+        } else {
+            _enddayIndex--;
+        }
+    }
     
     //get out of day with first week
     for (int i = _firstdayIndex - 1; i > 0; i--) {
@@ -370,12 +396,13 @@
     tempDate = _firstDay;
     for (int i = 1; i <= _totalDay; i++) {
         
-        FXDay *day      = [[FXDay alloc] init];
-        day.isOutOfDay  = NO;
-        day.date        = tempDate;
-        day.color1      = @"";
-        day.color2      = @"";
-        day.color3      = @"";
+        FXDay *day          = [[FXDay alloc] init];
+        day.isOutOfDay      = NO;
+        day.isFirstOfSunday = _isFirstOfSunday;
+        day.date            = tempDate;
+        day.color1          = @"";
+        day.color2          = @"";
+        day.color3          = @"";
         
         if (_isLoadDataForCell) {
             
@@ -460,6 +487,20 @@
     }
     
     
+    if (!_isFirstOfSunday) {
+        if (_firstdayIndex == 1 ) {
+            _firstdayIndex = 7;
+        } else {
+            _firstdayIndex--;
+        }
+        
+        if (_enddayIndex == 1) {
+            _enddayIndex = 7;
+        } else {
+            _enddayIndex--;
+        }
+    }
+    
     
     //get out of day with first week
     for (int i = _firstdayIndex - 1; i > 0; i--) {
@@ -484,12 +525,13 @@
     tempDate = _firstDay;
     for (int i = 1; i <= _totalDay; i++) {
         
-        FXDay *day      = [[FXDay alloc] init];
-        day.isOutOfDay  = NO;
-        day.date        = tempDate;
-        day.color1      = @"";
-        day.color2      = @"";
-        day.color3      = @"";
+        FXDay *day          = [[FXDay alloc] init];
+        day.isOutOfDay      = NO;
+        day.isFirstOfSunday = _isFirstOfSunday;
+        day.date            = tempDate;
+        day.color1          = @"";
+        day.color2          = @"";
+        day.color3          = @"";
         
         if (_isLoadDataForCell) {
             
@@ -645,6 +687,141 @@
 - (void) reloadTheme
 {
     _viewSelect.backgroundColor     = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain];
+}
+
+- (void) reloadChangeFirstOfCalendar:(BOOL)isFirstOfSunday
+{
+    self.isFirstOfSunday = isFirstOfSunday;
+    
+    for (UIView *view in self.subviews) {
+        if (view.tag == 999) {
+            int temp = _isFirstOfSunday ? 6 : 5;
+            view.frame = CGRectMake(_widthCell*temp, 0, _widthCell, _heightCell*6);
+        } else if (view.tag == 998) {
+            int temp = _isFirstOfSunday ? 0 : 6;
+            view.frame = CGRectMake(_widthCell*temp, 0, _widthCell, _heightCell*6);
+        }
+    }
+    
+    [self reloadDays];
+    
+    
+}
+
+- (void) reloadDays
+{
+
+    _firstdayIndex  = (int)[FXCalendarData getWeekDayWithDate:_firstDay];
+    _enddayIndex    = (int)[FXCalendarData getWeekDayWithDate:_endDay];
+    _totalDay       = (int)[FXCalendarData numberDayOfMonthWithDate:_date];
+    
+    if (!_days) {
+        _days = [[NSMutableArray alloc] init];
+    } else {
+        [_days removeAllObjects];
+    }
+    
+    
+    if (!_isFirstOfSunday) {
+        if (_firstdayIndex == 1 ) {
+            _firstdayIndex = 7;
+        } else {
+            _firstdayIndex--;
+        }
+        
+        if (_enddayIndex == 1) {
+            _enddayIndex = 7;
+        } else {
+            _enddayIndex--;
+        }
+    }
+    
+    
+    //get out of day with first week
+    for (int i = _firstdayIndex - 1; i > 0; i--) {
+        
+        FXDay *day = [[FXDay alloc] init];
+        day.isOutOfDay = YES;
+        
+        [_days addObject:day];
+    }
+    
+    // add day in out of days
+    NSDate *tempDate = _firstDay;
+    for (int i = (int)[_days count] - 1; i >= 0; i--) {
+        
+        tempDate = [FXCalendarData prevDateFrom:tempDate];
+        FXDay *day = _days[i];
+        day.date   = tempDate;
+        
+    }
+    
+    //add day in month
+    tempDate = _firstDay;
+    for (int i = 1; i <= _totalDay; i++) {
+        
+        FXDay *day          = [[FXDay alloc] init];
+        day.isOutOfDay      = NO;
+        day.isFirstOfSunday = _isFirstOfSunday;
+        day.date            = tempDate;
+        day.color1          = @"";
+        day.color2          = @"";
+        day.color3          = @"";
+        
+        if (_isLoadDataForCell) {
+            
+            CDShift *shift  = [[AppDelegate shared] getShiftWithDate:tempDate];
+            if (shift) {
+                day.shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
+            } else {
+                day.shiftCategory = nil;
+            }
+            
+            NSArray *arrayColor = [[AppDelegate shared] getColorsSchedulesOnDate:tempDate];
+            if ([arrayColor count] >= 1) {
+                day.color1      = arrayColor[0];
+            }
+            
+            if ([arrayColor count] >= 2) {
+                day.color2      = arrayColor[1];
+            }
+            
+            if ([arrayColor count] >= 3) {
+                day.color3      = arrayColor[2];
+            }
+            
+        } else {
+            day.shiftCategory = nil;
+        }
+        
+        [_days addObject:day];
+        
+        tempDate = [FXCalendarData nextDateFrom:tempDate];
+        
+    }
+    
+    float allDay        = 35;
+    _is6Week            = NO;
+    _numberWeekOfMonth  = 5;
+    
+    if ([_days count] > 35) {
+        
+        allDay              = 42;
+        _is6Week            = YES;
+        _numberWeekOfMonth  = 6;
+    }
+    
+    for (int i = (int)[_days count]; i < allDay ; i++) {
+        FXDay *day = [[FXDay alloc] init];
+        day.isOutOfDay = YES;
+        day.date = tempDate;
+        
+        [_days addObject:day];
+        
+        tempDate = [FXCalendarData nextDateFrom:tempDate];
+    }
+    
+    [self reloadInfoDay];
 }
    
    

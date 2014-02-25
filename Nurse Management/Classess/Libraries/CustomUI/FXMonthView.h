@@ -29,6 +29,7 @@
 @property (nonatomic) BOOL isShowSelectDay;
 @property (nonatomic) BOOL isLoadDataForCell;
 @property (nonatomic) BOOL isViewFull;
+@property (nonatomic) BOOL isFirstOfSunday;
 
 @property (nonatomic) int totalDay;
 @property (nonatomic) int monthIndex;
@@ -75,6 +76,7 @@
 - (void) reloadViewToViewFullWithAnimate:(BOOL)isAnimate;
 - (void) reloadViewForExitViewFullWithAnimate:(BOOL)isAnimate;
 - (void) reloadTheme;
+- (void) reloadChangeFirstOfCalendar:(BOOL)isFirstOfSunday;
 
 //instance method
 - (id)initWithWidth:(float)width;
