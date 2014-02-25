@@ -18,6 +18,8 @@
 #import "AppDelegate.h"
 #import "FXCalendarData.h"
 #import "ScheduleCategoryVC.h"
+#import "CDScheduleAlert.h"
+#import "CDSchedule.h"
 
 @interface AddScheduleVC ()<UITextViewDelegate, NSFetchedResultsControllerDelegate, ChooseTimeViewDelegate, AddScheduleViewDelegate, NMTimePickerViewDelegate, ChooseTimeViewDelegate, UIActionSheetDelegate>{
     NSDate *_startTime;
@@ -26,6 +28,9 @@
     NMTimePickerView *_timePickerView;
     int _getIDScheduleCategory;
     NSDate  *_getDate;
+    NSMutableArray *_arrAlerts;
+    ChooseTimeView *_chooseTimeView;
+    CDSchedule *_schedule;
 }
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerScheduleCategory;
 
@@ -46,6 +51,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _arrayTimeAlerts = [[NSMutableArray alloc] init];
     //set tag for button
     _btStarTime.tag = START_TIME;
     _btEndTime.tag = END_TIME;
@@ -57,11 +63,11 @@
     _timePickerView.datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
     // view choose time
 
-    ChooseTimeView *chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 210, 320 - 15*2, 44)];
-    chooseTimeView.delegate = self;
-    [chooseTimeView setStartDate:[NSDate date]];
+    _chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 210, 320 - 15*2, 44)];
+    _chooseTimeView.delegate = self;
+    [_chooseTimeView setStartDate:_selectDate];
     
-    [self.view addSubview:chooseTimeView];
+    [self.view addSubview:_chooseTimeView];
     [self setDefaultTime];
     [self fetchedResultsControllerScheduleCategory];
     
@@ -109,11 +115,38 @@
         }
         
         _textViewContent.text = _scheduleEditItem.memo;
-        
+        if (_arrAlerts) {
+            _arrAlerts = nil;
+        }
+        _arrAlerts = [[NSMutableArray alloc] init];
+        CDSchedule *cdSchedule = [[AppDelegate shared] getScheduleByID:_scheduleEditItem.scheduleID];
+        for (CDScheduleAlert *item in cdSchedule.pk_schedule) {
+            NSLog(@"alert: %d --- : %f",item.id, item.onTime);
+            [_arrAlerts addObject:[NSDate dateWithTimeIntervalSince1970:item.onTime]];
+        }
+        [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_selectDate];
+
         
     }else{
         _btDelete.hidden = YES;
     }
+}
+-(void)loadScheduleDate
+{
+    
+    
+    
+    NSArray *_arrAlertDates = [_schedule.pk_schedule allObjects];
+    if (_arrAlerts)
+        _arrAlerts = nil;
+    _arrAlerts = [[NSMutableArray alloc] init];
+    for (CDScheduleAlert *scheduleAlert in _arrAlertDates) {
+        NSLog(@"ddd %@", scheduleAlert);
+        [_arrAlerts addObject:[NSDate dateWithTimeIntervalSince1970:scheduleAlert.onTime]];
+    }
+    NSLog(@"mang %@", _arrAlertDates);
+    [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:[NSDate date]];
+
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
