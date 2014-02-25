@@ -444,12 +444,18 @@ static NSString *const kAllowTracking   = @"allowTracking";
 
 - (CDShift*) getShiftWithDate:(NSDate*)date
 {
-    NSString *strDay = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
-    
     for (CDShift *item in self.fetchedResultsControllerShift.fetchedObjects) {
         
         NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:item.onDate];
-        if ([[Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate] isEqualToString:strDay]) {
+        //if ([[Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate] isEqualToString:strDay]) {
+            //return item;
+        //}
+        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&date interval:NULL forDate:date];
+        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&tempDate interval:NULL forDate:tempDate];
+        
+        NSComparisonResult result = [date compare:tempDate];
+        if (result == NSOrderedSame) {
+            //NSLog(@"The same:");
             return item;
         }
     }
