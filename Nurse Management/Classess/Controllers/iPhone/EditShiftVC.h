@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FXViewController.h"
+
 @class CDShiftCategory;
 
-@interface EditShiftVC : UIViewController
+@interface EditShiftVC : FXViewController
 @property(nonatomic,strong) NSDate *date;
 @property(nonatomic,strong) NSString *name;
 @property(nonatomic) BOOL typeShift;

@@ -15,10 +15,12 @@
                 <outlet property="btIsAllTime" destination="3xe-MO-d68" id="SOC-kA-43U"/>
                 <outlet property="btStarTime" destination="5Gx-yb-imP" id="Pwo-RH-cth"/>
                 <outlet property="lbName" destination="eT3-yr-6ix" id="vnW-rh-9mY"/>
+                <outlet property="lbTile" destination="oXm-y2-6Dv" id="euj-lv-wN7"/>
                 <outlet property="reviewName" destination="VjB-j0-Keg" id="PW2-G3-DUb"/>
                 <outlet property="textViewContent" destination="gYj-h8-RZc" id="vsR-9S-uEc"/>
                 <outlet property="view" destination="1" id="3"/>
                 <outlet property="viewContent" destination="1" id="0xl-0S-qPk"/>
+                <outlet property="viewNavi" destination="U9P-Sc-mxg" id="SUU-QE-7X4"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -215,6 +217,7 @@
     <resources>
         <image name="bg_edit_shift_time.png" width="225" height="44"/>
         <image name="bg_review_add_schedule.png" width="56" height="49"/>
+        <image name="ic_bg_bar_button.png" width="75" height="29"/>
         <image name="ic_bg_bar_button.png" width="75" height="29"/>
         <image name="icon_category_add_sc.png" width="19" height="20"/>
         <image name="icon_reminder_add_sc.png" width="15" height="15"/>

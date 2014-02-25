@@ -19,6 +19,7 @@ typedef void (^FXReloadThemeOfView)(NSString *themeName);
 
 @property (nonatomic, weak) IBOutlet UIButton        *btBack;
 @property (nonatomic, weak) IBOutlet UILabel         *lbTile;
+@property (nonatomic, weak) IBOutlet UIView          *viewNavi;
 
 - (void) setBlockReloadThemeOfView:(FXReloadThemeOfView)blockReloadThemeOfView;
 

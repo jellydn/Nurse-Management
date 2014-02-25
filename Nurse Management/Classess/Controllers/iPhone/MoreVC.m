@@ -339,7 +339,7 @@
         NSIndexPath *indexPath = [_tableView indexPathForCell:cellR];
         
         if (indexPath.section == 0) {
-            return;
+            continue;
         }
         
         AppItem *item = [_otherApps objectAtIndex:indexPath.row];

@@ -277,6 +277,7 @@
     _chooseTimeView             = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 140, 320 - 15*2, 44)];
     _chooseTimeView.delegate    = self;
     [_chooseTimeView setStartDate:_dateTimeStart];
+    [_chooseTimeView setColorForActiontionChoose:[[FXThemeManager shared] getColorWithKey:_fxThemeColorMain]];
     [_viewTime addSubview:_chooseTimeView];
     
     CGRect rect1 = _viewContainer.frame;

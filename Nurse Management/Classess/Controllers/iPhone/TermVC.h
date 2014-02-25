@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FXViewController.h"
 
-@interface TermVC : UIViewController
+@interface TermVC : FXViewController
 - (IBAction)back:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *lbTitle;
 @property (weak, nonatomic) IBOutlet UIWebView *content;

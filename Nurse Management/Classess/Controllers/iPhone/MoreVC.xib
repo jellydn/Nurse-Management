@@ -11,6 +11,8 @@
                 <outlet property="_lbTile" destination="27i-h2-bRE" id="0xW-Qj-TCM"/>
                 <outlet property="_tableView" destination="TCs-eU-4Jk" id="oNd-Nf-2sc"/>
                 <outlet property="_viewNavi" destination="u6o-ZN-nMX" id="QMC-id-NEd"/>
+                <outlet property="btBack" destination="O0i-aH-0WA" id="eJP-2X-aKB"/>
+                <outlet property="lbTile" destination="27i-h2-bRE" id="KJY-4h-Knb"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>

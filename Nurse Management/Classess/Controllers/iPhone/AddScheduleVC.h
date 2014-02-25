@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ScheduleItem.h"
-@interface AddScheduleVC : UIViewController
+#import "FXViewController.h"
+@interface AddScheduleVC : FXViewController
 @property (strong, nonatomic) IBOutlet UIView *viewContent;
 @property (weak, nonatomic) IBOutlet UITextView *textViewContent;
 @property (weak, nonatomic) IBOutlet UILabel *lbName;

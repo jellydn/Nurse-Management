@@ -72,6 +72,8 @@
     
     // label title
     _lbTile.textColor           = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviTitle];
+    
+    _viewNavi.backgroundColor   = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
 }
 
 - (void)didReceiveMemoryWarning
@@ -160,6 +162,8 @@
         
         // label title
         _lbTile.textColor           = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviTitle];
+        
+        _viewNavi.backgroundColor   = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     }
 }
 

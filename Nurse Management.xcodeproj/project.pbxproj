@@ -1628,9 +1628,9 @@
 		C0DF5DAA18BB3D7F0065E115 /* TermVC */ = {
 			isa = PBXGroup;
 			children = (
+				C0DF5DAD18BB3D930065E115 /* TermVC.h */,
 				C0DF5DAB18BB3D930065E115 /* TermVC.m */,
 				C0DF5DAC18BB3D930065E115 /* TermVC.xib */,
-				C0DF5DAD18BB3D930065E115 /* TermVC.h */,
 			);
 			name = TermVC;
 			sourceTree = "<group>";
