@@ -587,7 +587,7 @@ static __weak AppDelegate *shared = nil;
             }
             
             
-            
+            alertID++;
             
         }
     }
@@ -641,6 +641,8 @@ static __weak AppDelegate *shared = nil;
                 alert.scheduleId        = schedule.id;
                 
                 alert.fk_alert_schedule = schedule;
+                
+                alertID++;
                 
             }
         }
