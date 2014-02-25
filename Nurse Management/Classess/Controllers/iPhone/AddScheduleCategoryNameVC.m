@@ -155,6 +155,7 @@
         _reviewCategory.text = @"";
     } else {
        _txtName.text = _scheduleCategory.name;
+        _reviewCategory.text = _scheduleCategory.name;
         _typeColor = _scheduleCategory.color;
         switch ([ _scheduleCategory.color intValue]) {
             case 0:
