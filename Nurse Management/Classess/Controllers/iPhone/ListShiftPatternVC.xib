@@ -69,7 +69,7 @@
                     <rect key="frame" x="0.0" y="65" width="320" height="503"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.9882352941176471" green="0.95294117647058818" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
-                    <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
+                    <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="Mji-2x-27o"/>
                         <outlet property="delegate" destination="-1" id="pGy-V6-LBB"/>
