@@ -103,6 +103,16 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.screenName = GA_HOMEVC;
+    
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (animated) {
+        [_tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+        [_tableView reloadData];
+    }
 }
 
 

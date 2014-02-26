@@ -43,6 +43,8 @@
     _lbDay.text = [NSString stringWithFormat:@"%d",(int) [FXCalendarData getDayWithDate:date]];
     _lbMonth.text = [NSString stringWithFormat:@"%d", (int) [FXCalendarData getMonthWithDate:date]];
     
+    _lbMember.hidden = [[NSUserDefaults standardUserDefaults] boolForKey:HIDE_MEMBER];
+    
     NSArray *arrayWeekDays = @[@"-",
                                @"sun",
                                @"mon",

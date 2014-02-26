@@ -43,10 +43,13 @@
     BOOL _isShowPicker;
     int _indexSelectCalendar;
     
+    BOOL _isHideMemeber;
+    
 }
 - (IBAction)backVC:(id)sender;
 - (IBAction)cancelPicker:(id)sender;
 - (IBAction)donePicker:(id)sender;
+- (IBAction)changeMember:(id)sender;
 
 @end
 
@@ -157,7 +160,13 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
+- (IBAction)changeMember:(id)sender
+{
+    _isHideMemeber = !_isHideMemeber;
+    
+    [[NSUserDefaults standardUserDefaults] setBool:_isHideMemeber forKey:HIDE_MEMBER];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 #pragma mark - Others
 - (void) configView
@@ -182,6 +191,15 @@
         _indexSelectCalendar = 0;
         
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:FIRST_OF_CALENDAR];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:HIDE_MEMBER]) {
+        _isHideMemeber = [[NSUserDefaults standardUserDefaults] boolForKey:HIDE_MEMBER];
+    } else {
+        _isHideMemeber = NO;
+        
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:HIDE_MEMBER];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
@@ -234,10 +252,16 @@
             if (!cell) {
                 cell = [[[NSBundle mainBundle] loadNibNamed:@"MoreCell" owner:self options:nil] lastObject];
             }
+            
             if (indexPath.row == 6) {
                 cell.btStatus.hidden = NO;
                 cell.iconRight.hidden = YES;
+                cell.btStatus.on = _isHideMemeber;
+            } else {
+                cell.btStatus.hidden = YES;
+                cell.iconRight.hidden = NO;
             }
+            
             cell.lbName.text = item.title;
             return cell;
             

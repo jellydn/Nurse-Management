@@ -102,8 +102,6 @@
 {
     
     if (!decelerate) {
-        
-        NSLog(@"scrollViewDidEndDragging");
         if (scrollView.contentOffset.x == 0) {
 
             NSDate *date = _monthView1.date;
@@ -144,7 +142,6 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    NSLog(@"scrollViewDidEndDecelerating");
     if (scrollView.contentOffset.x == 0) {
         
         NSDate *date = _monthView1.date;

@@ -28,6 +28,9 @@
                     <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="6ja-Sy-QVQ">
                         <rect key="frame" x="255" y="6" width="51" height="31"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                        <connections>
+                            <action selector="changeMember:" destination="-1" eventType="valueChanged" id="ao3-a7-PZU"/>
+                        </connections>
                     </switch>
                 </subviews>
             </tableViewCellContentView>

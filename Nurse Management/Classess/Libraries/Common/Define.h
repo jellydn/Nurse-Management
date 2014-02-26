@@ -35,6 +35,7 @@
 
 //index first of Calendar
 #define FIRST_OF_CALENDAR           @"FIRST_OF_CALENDAR"
+#define HIDE_MEMBER                 @"HIDE_MEMBER"
 
 #define TEXT_ALL_DAY            @"終日"
 

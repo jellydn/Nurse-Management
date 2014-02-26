@@ -180,9 +180,11 @@ static NSString *const kAllowTracking   = @"allowTracking";
     [[NSNotificationCenter defaultCenter] postNotificationName:@"TableShiftCategoryUpdate"
                                                         object:self];
 
-    if (controller == _fetchedResultsControllerShift) {
+    if (controller == _fetchedResultsControllerShift ||
+        controller == _fetchedResultsControllerShiftCategory) {
         [self initDictionaryShift];
-    } else if (controller == _fetchedResultsControllerSchedule) {
+    } else if (controller == _fetchedResultsControllerSchedule ||
+               controller == _fetchedResultsControllerScheduleCategory) {
         [self initDictionarySchedule];
     }
 }
