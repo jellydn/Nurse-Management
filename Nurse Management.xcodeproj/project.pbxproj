@@ -345,7 +345,6 @@
 		B6B10E0B18AF0C9E004E3229 /* ic_edit_shift_color_9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B10DF518AF0C9E004E3229 /* ic_edit_shift_color_9@2x.png */; };
 		B6B10E0C18AF0C9E004E3229 /* ic_edit_shift_color_10.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B10DF618AF0C9E004E3229 /* ic_edit_shift_color_10.png */; };
 		B6B10E0D18AF0C9E004E3229 /* ic_edit_shift_color_10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B10DF718AF0C9E004E3229 /* ic_edit_shift_color_10@2x.png */; };
-		B6B6D74518BC900200342777 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0643085218BC4A750098AE85 /* libGoogleAnalyticsServices.a */; };
 		B6D7A3B518B1B21500E98936 /* predefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6D7A3B418B1B21500E98936 /* predefault.plist */; };
 		C000F2E618AF68AD00280464 /* UIPickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C000F2E518AF68AD00280464 /* UIPickerActionSheet.m */; };
 		C000F2F318AF6C2000280464 /* bg_dashed_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2E718AF6C2000280464 /* bg_dashed_frame.png */; };
@@ -360,12 +359,14 @@
 		C000F2FC18AF6C2000280464 /* ic_injection_needle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F018AF6C2000280464 /* ic_injection_needle@2x.png */; };
 		C000F2FD18AF6C2000280464 /* ic_memo.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F118AF6C2000280464 /* ic_memo.png */; };
 		C000F2FE18AF6C2000280464 /* ic_memo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F218AF6C2000280464 /* ic_memo@2x.png */; };
+		C0487D0A18BD903D00077DFA /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0643085218BC4A750098AE85 /* libGoogleAnalyticsServices.a */; };
 		C0AD15E618B4A7C500709E81 /* NMTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AD15E318B4A7C500709E81 /* NMTimePickerView.m */; };
 		C0B2B1D518B44F7000CF4B76 /* CDShiftMember.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1D418B44F7000CF4B76 /* CDShiftMember.m */; };
 		C0B2B1D818B44F7100CF4B76 /* CDScheduleAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1D718B44F7100CF4B76 /* CDScheduleAlert.m */; };
 		C0B2B1E418B44F7100CF4B76 /* CDShift.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1E318B44F7100CF4B76 /* CDShift.m */; };
 		C0B2B1E718B44F7100CF4B76 /* CDMember.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1E618B44F7100CF4B76 /* CDMember.m */; };
 		C0B2B1EA18B44F7100CF4B76 /* CDShiftAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1E918B44F7100CF4B76 /* CDShiftAlert.m */; };
+		C0C1224018BD8FE400CCFB02 /* CSLINEOpener.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C1223F18BD8FE400CCFB02 /* CSLINEOpener.m */; };
 		C0CB919218B83A2F00D61253 /* ChooseTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CB918F18B83A2E00D61253 /* ChooseTimeView.m */; };
 		C0CB919318B83A2F00D61253 /* NMSelectionStringView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CB919118B83A2E00D61253 /* NMSelectionStringView.m */; };
 		C0DF5DA718BB3D720065E115 /* term-privacy_data.html in Resources */ = {isa = PBXBuildFile; fileRef = C0DF5DA418BB3D720065E115 /* term-privacy_data.html */; };
@@ -815,6 +816,8 @@
 		C0B2B1E618B44F7100CF4B76 /* CDMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDMember.m; path = "Nurse Management/Classess/Model/CDMember.m"; sourceTree = SOURCE_ROOT; };
 		C0B2B1E818B44F7100CF4B76 /* CDShiftAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDShiftAlert.h; path = "Nurse Management/Classess/Model/CDShiftAlert.h"; sourceTree = SOURCE_ROOT; };
 		C0B2B1E918B44F7100CF4B76 /* CDShiftAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDShiftAlert.m; path = "Nurse Management/Classess/Model/CDShiftAlert.m"; sourceTree = SOURCE_ROOT; };
+		C0C1223E18BD8FE400CCFB02 /* CSLINEOpener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSLINEOpener.h; sourceTree = "<group>"; };
+		C0C1223F18BD8FE400CCFB02 /* CSLINEOpener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSLINEOpener.m; sourceTree = "<group>"; };
 		C0CB918E18B83A2E00D61253 /* ChooseTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTimeView.h; sourceTree = "<group>"; };
 		C0CB918F18B83A2E00D61253 /* ChooseTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTimeView.m; sourceTree = "<group>"; };
 		C0CB919018B83A2E00D61253 /* NMSelectionStringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMSelectionStringView.h; sourceTree = "<group>"; };
@@ -832,7 +835,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6B6D74518BC900200342777 /* libGoogleAnalyticsServices.a in Frameworks */,
+				C0487D0A18BD903D00077DFA /* libGoogleAnalyticsServices.a in Frameworks */,
 				2AC8E6A018BC322A005C47FC /* libz.dylib in Frameworks */,
 				2AC8E69D18BC2E9F005C47FC /* SystemConfiguration.framework in Frameworks */,
 				2A394BCD18A9FD5300F30F2D /* CoreGraphics.framework in Frameworks */,
@@ -1023,6 +1026,8 @@
 		2A394C0418A9FF7600F30F2D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C0C1223E18BD8FE400CCFB02 /* CSLINEOpener.h */,
+				C0C1223F18BD8FE400CCFB02 /* CSLINEOpener.m */,
 				2A394C0518A9FF7600F30F2D /* Define.h */,
 				2A394C2918A9FFB000F30F2D /* Common.h */,
 				2A394C2A18A9FFB000F30F2D /* Common.m */,
@@ -2184,6 +2189,7 @@
 				2A75E63F18ADA97700E74E4F /* ShiftCell.m in Sources */,
 				2A3C24B518AB295500C20A04 /* ChangeThemeVC.m in Sources */,
 				2A97525518B5B01D00C0946E /* CDSchedule.m in Sources */,
+				C0C1224018BD8FE400CCFB02 /* CSLINEOpener.m in Sources */,
 				C0B2B1EA18B44F7100CF4B76 /* CDShiftAlert.m in Sources */,
 				2A394C5E18AA2AA600F30F2D /* FXCalendarData.m in Sources */,
 				2A97527D18B6024100C0946E /* SBJsonWriter.m in Sources */,
@@ -2330,6 +2336,7 @@
 					"/Volumes/MacData/TienLP/Code/NurseManagement/04/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
 					"/Users/indanang/Documents/Repositories/Git/Nurse-Management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
 					"/Users/huynhducdung/Developers/mobile/Nurse\\ Management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
+					"/Volumes/DATA/PhuNQ/iOS/nurse_management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2349,6 +2356,7 @@
 					"/Volumes/MacData/TienLP/Code/NurseManagement/04/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
 					"/Users/indanang/Documents/Repositories/Git/Nurse-Management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
 					"/Users/huynhducdung/Developers/mobile/Nurse\\ Management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
+					"/Volumes/DATA/PhuNQ/iOS/nurse_management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
