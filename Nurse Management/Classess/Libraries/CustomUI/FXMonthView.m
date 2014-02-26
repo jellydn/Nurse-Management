@@ -7,6 +7,7 @@
 //
 
 #import "FXMonthView.h"
+#import "Define.h"
 
 @interface FXMonthView()
 {
@@ -157,10 +158,17 @@
 {
     self.clipsToBounds = YES;
     
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:FIRST_OF_CALENDAR] == 0) {
+        _isFirstOfSunday            = YES;
+    } else {
+        _isFirstOfSunday            = NO;
+    }
+    
     // set BG color
     [self setBackgroundColor:self.bgColor];
     
     if (_isFirstOfSunday) {
+        NSLog(@"_isFirstOf Sunday");
         UIView *viewSaturday            = [[UIView alloc] initWithFrame:CGRectMake(_widthCell*6, 0, _widthCell, _heightCell*6)];
         viewSaturday.autoresizingMask   = UIViewAutoresizingFlexibleHeight;
         viewSaturday.backgroundColor    = self.backgoundSaturdayColor;
@@ -173,6 +181,7 @@
         viewSunday.tag                  = 998;
         [self addSubview:viewSunday];
     } else {
+        NSLog(@"_isFirstOf Monday");
         UIView *viewSaturday            = [[UIView alloc] initWithFrame:CGRectMake(_widthCell*5, 0, _widthCell, _heightCell*6)];
         viewSaturday.autoresizingMask   = UIViewAutoresizingFlexibleHeight;
         viewSaturday.backgroundColor    = self.backgoundSaturdayColor;

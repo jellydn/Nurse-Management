@@ -76,6 +76,13 @@
     self.screenName = GA_MOREVC;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    if (animated) {
+        [_tableView reloadData];
+    }
+}
+
 -(void)initData
 {
     _items = [[NSMutableArray alloc] init];
