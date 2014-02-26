@@ -896,7 +896,7 @@
             
             _indexSelect++;
             _viewSelect.hidden  = NO;
-            _viewSelect.frame   = CGRectMake(_widthCell * (tag%7) - 1, _heightCell * (tag/7) - 1, _widthCell + 2, _heightCell + 2);
+            _viewSelect.frame   = CGRectMake(_widthCell * (_indexSelect%7) - 1, _heightCell * (_indexSelect/7) - 1, _widthCell + 2, _heightCell + 2);
             
         }
     }
