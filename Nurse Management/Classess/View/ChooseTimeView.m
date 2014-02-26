@@ -9,6 +9,7 @@
 #import "ChooseTimeView.h"
 #import "NMTimePickerView.h"
 #import "Common.h"
+#import "FXThemeManager.h"
 
 //---------define--------------
 #define NUMBER_OF_ITEM   6
@@ -49,7 +50,8 @@
        
         self.backgroundColor = [UIColor clearColor];
         _dicValueSelect = [NSMutableDictionary dictionary];
-        _colorSelectBackground = SELECTED_BACKGROUND_COLOR;
+        //_colorSelectBackground = SELECTED_BACKGROUND_COLOR;
+        _colorSelectBackground = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain];
     }
     return self;
 }
