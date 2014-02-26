@@ -86,7 +86,7 @@
     [_btClose.layer setCornerRadius:6.0];
     _btClose.layer.masksToBounds = YES;
     
-    _pageControl.currentPageIndicatorTintColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain];
+    //_pageControl.currentPageIndicatorTintColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain];
     
     int page                    = ([shifts count] % 10 == 0) ? (int)[shifts count] / 10  : (int)[shifts count] / 10 + 1;
     _pageControl.numberOfPages  = page;

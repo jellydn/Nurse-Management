@@ -46,11 +46,8 @@
     [super viewDidLoad];
     [self configView];
     _isLoadCoreData = YES;
+    [self fetchedResultsControllerShiftCategory];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleUpdatedData:)
-                                                 name:@"TableShiftCategoryUpdate"
-                                               object:nil];
     
 }
 -(void)viewDidAppear:(BOOL)animated
@@ -58,20 +55,55 @@
     [super viewDidAppear:animated];
     self.screenName = @"List Schedule";
 }
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:@"TableShiftCategoryUpdate"
-                                                  object:nil];
 
-}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
 
-    - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+#pragma mark - Fetch Data
+
+- (NSFetchedResultsController*) fetchedResultsControllerShiftCategory
+{
+    if (!_fetchedResultsControllerShiftCategory) {
+        NSString *entityName = @"CDShiftCategory";
+        
+        NSString *cacheName = [NSString stringWithFormat:@"%@",entityName];
+        [NSFetchedResultsController deleteCacheWithName:cacheName];
+        
+        NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:[AppDelegate shared].managedObjectContext];
+        
+        
+        NSSortDescriptor *sort0 = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+        NSArray *sortList = [NSArray arrayWithObjects:sort0, nil];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id != nil"];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        fetchRequest.entity = entity;
+        fetchRequest.fetchBatchSize = 20;
+        fetchRequest.sortDescriptors = sortList;
+        fetchRequest.predicate = predicate;
+        _fetchedResultsControllerShiftCategory = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                                     managedObjectContext:[AppDelegate shared].managedObjectContext
+                                                                                       sectionNameKeyPath:nil
+                                                                                                cacheName:cacheName];
+        _fetchedResultsControllerShiftCategory.delegate = self;
+        
+        NSError *error = nil;
+        [_fetchedResultsControllerShiftCategory performFetch:&error];
+        if (error) {
+            NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
+        }else {
+            NSLog(@"appdelegate total shift category : %lu", (unsigned long)[_fetchedResultsControllerShiftCategory.fetchedObjects count]);
+        }
+        
+    }
+    
+    return _fetchedResultsControllerShiftCategory;
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
     {
     }
     
@@ -133,7 +165,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[AppDelegate shared].fetchedResultsControllerShiftCategory.fetchedObjects  count];
+    return [self.fetchedResultsControllerShiftCategory.fetchedObjects  count];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -145,7 +177,7 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ShiftCell" owner:self options:nil] lastObject];
     }
-    CDShiftCategory *cdShiftCategory = [[AppDelegate shared].fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:indexPath.row];
+    CDShiftCategory *cdShiftCategory = [self.fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:indexPath.row];
     cell.lbName.text = cdShiftCategory.name;
     if (cdShiftCategory.isAllDay) {
         cell.lbShift.text = @"終日";
@@ -218,8 +250,8 @@
 - (void) switchChanged:(id)sender {
     UISwitch* switchControl = sender;
     
-    if ([[AppDelegate shared].fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:switchControl.tag]) {
-        CDShiftCategory *cdShiftCategory = [[AppDelegate shared].fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:switchControl.tag];
+    if ([self.fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:switchControl.tag]) {
+        CDShiftCategory *cdShiftCategory = [self.fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:switchControl.tag];
         if (switchControl.on)
             cdShiftCategory.isEnable = YES;
         else
@@ -237,7 +269,7 @@
 {
     [_tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    CDShiftCategory *shiftCategory = [[AppDelegate shared].fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:indexPath.row];
+    CDShiftCategory *shiftCategory = [self.fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:indexPath.row];
     
     EditShiftVC *vc                 = [[EditShiftVC alloc] init];
     vc.typeShift                    = NO;

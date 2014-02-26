@@ -177,9 +177,7 @@ static NSString *const kAllowTracking   = @"allowTracking";
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"TableShiftCategoryUpdate"
-                                                        object:self];
-
+    
     if (controller == _fetchedResultsControllerShift ||
         controller == _fetchedResultsControllerShiftCategory) {
         [self initDictionaryShift];
@@ -835,10 +833,12 @@ static NSString *const kAllowTracking   = @"allowTracking";
     
     for (CDShift *shift in self.fetchedResultsControllerShift.fetchedObjects) {
         
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:shift.onDate];
-        NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
-        [_dictionaryShift setObject:[ShiftCategoryItem convertForCDObject:shift.fk_shift_category] forKey:strDate];
-        
+        if (shift.fk_shift_category.isEnable) {
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:shift.onDate];
+            NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
+            [_dictionaryShift setObject:[ShiftCategoryItem convertForCDObject:shift.fk_shift_category] forKey:strDate];
+        }
+
     }
      NSLog(@"initDictionaryShift ---- end");
     
