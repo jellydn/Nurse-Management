@@ -250,11 +250,12 @@
                   insertNewObjectForEntityForName:@"CDScheduleCategory"
                   inManagedObjectContext: [AppDelegate shared].managedObjectContext];
         scheduleCategory.id = lastScheduleCategory.id + 1;
+        scheduleCategory.isDefault = NO;
+        scheduleCategory.isEnable = YES;
+
     }
     scheduleCategory.name = name;
     scheduleCategory.color = color;
-    scheduleCategory.isDefault = NO;
-    scheduleCategory.isEnable = YES;
     [[AppDelegate shared] saveContext];
     
 }
