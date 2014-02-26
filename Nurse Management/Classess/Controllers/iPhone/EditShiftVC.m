@@ -17,7 +17,7 @@
 #define ALERT_BG_COLOR	 [UIColor colorWithRed:100.0/255.0 green:137.0/255.0 blue:199.0/255.0 alpha:1.0]
 #define BUTTON_BG_COLOR	 [UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]
 #define TITLE_COLOR	 [UIColor colorWithRed:126.0/255.0 green:96.0/255.0 blue:39.0/255.0 alpha:1.0]
-
+#import "FXViewController.h"
 @interface EditShiftVC ()<UITextFieldDelegate,NMTimePickerViewDelegate,UIActionSheetDelegate>{
     CDShiftCategory *_shiftCategory;
     NSDate *_startTime;
@@ -61,6 +61,14 @@
     
     [self configView];
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+        [super viewDidAppear:animated];
+    
+        self.screenName = @"Edit Shift";
+}
+
 
 - (void) configView
 {

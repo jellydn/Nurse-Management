@@ -10,7 +10,7 @@
 #import "Define.h"
 #import "Common.h"
 #import "FXThemeManager.h"
-
+#import "FXViewController.h"
 @interface ChangeThemeVC ()<UIScrollViewDelegate>
 {
     
@@ -46,6 +46,14 @@
     
     
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+        [super viewDidAppear:animated];
+    
+        self.screenName = @"Change Theme";
+}
+
 
 - (void)didReceiveMemoryWarning
 {

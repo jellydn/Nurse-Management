@@ -15,7 +15,7 @@
 #import "AddScheduleCategoryNameVC.h"
 #import "CDScheduleCategory.h"
 #import "AppDelegate.h"
-
+#import "FXViewController.h"
 @interface ScheduleCategoryVC ()<AddScheduleCategoryDelegate>
 {
     __weak IBOutlet UIView *_viewNavi;
@@ -49,6 +49,13 @@
     
     [self fetchedResultsControllerScheduleCategory];
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+        [super viewDidAppear:animated];
+        self.screenName = @"List Schedule Category";
+}
+
 
 - (void)viewDidUnload {
 //    self.fetchedResultsControllerScheduleCategory = nil;

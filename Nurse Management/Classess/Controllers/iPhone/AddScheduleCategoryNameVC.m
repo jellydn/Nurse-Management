@@ -11,7 +11,7 @@
 #import "Common.h"
 #import "FXThemeManager.h"
 #import "CDScheduleCategory.h"
-
+#import "FXViewController.h"
 @interface AddScheduleCategoryNameVC ()<UIActionSheetDelegate>
 {
     __weak IBOutlet UIView *_viewNavi;
@@ -42,6 +42,17 @@
     _typeColor = @"0";
     [self configView];
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+        [super viewDidAppear:animated];
+        if (!_insertId){
+                self.screenName = @"Edit Schedule Category";
+        }else{
+                    self.screenName = @"Add Schedule Category";
+                }
+}
+
 
 - (void)didReceiveMemoryWarning
 {
