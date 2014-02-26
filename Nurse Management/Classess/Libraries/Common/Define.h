@@ -27,7 +27,7 @@
 //More App
 //#define URL_WS_OTHER_APP      @"http://site.dashapps.info/api/?appid=AP001&offset=%d&limit=%d"
 #define URL_WS_OTHER_APP        @"http://ad.smaad.jp/moreApps/dataJSON/?zoneId=61517948&type=ios&start=%d&limit=%d"
-#define URL_WS_RANKING         @"https://www.google.com"
+#define URL_WS_RANKING         @"http://app.grillshop.info/ranking/ranking.html"
 
 // time formats
 #define TIME_FORMAT_DMY_HYPHEN      @"dd-MM-yyyy"

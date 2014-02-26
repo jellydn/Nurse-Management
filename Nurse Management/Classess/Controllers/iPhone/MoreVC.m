@@ -255,6 +255,23 @@
             
             if (indexPath.row == 6) {
                 cell.btStatus.hidden = NO;
+                
+                // Load setting
+                
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                NSString *isDisplayMember = [defaults objectForKey:@"memberDisplay"];
+                
+                NSLog(@"isDisplayMember %@", isDisplayMember);
+                
+                // Check are member is display or not
+                if ([isDisplayMember isEqualToString:@"1"] || isDisplayMember == NULL)
+                    [cell.btStatus setOn:YES animated:NO];
+                else
+                    [cell.btStatus setOn:NO animated:NO];
+                
+                [cell.btStatus addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+
+                
                 cell.iconRight.hidden = YES;
                 cell.btStatus.on = _isHideMemeber;
             } else {
@@ -528,6 +545,19 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     _indexSelectCalendar = row;
+}
+
+- (void) switchChanged:(id)sender {
+    UISwitch* switchControl = sender;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if (switchControl.on)
+            [defaults setValue:@"1" forKey:@"memberDisplay"];
+        else
+            [defaults setValue:@"0" forKey:@"memberDisplay"];
+    
+    [defaults synchronize];
+
+    
 }
 
 - (IBAction)cancelPicker:(id)sender {
