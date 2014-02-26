@@ -42,6 +42,7 @@
 #define _fxThemeXibHomeAddSchedule          @"homeAddScheduleFileXib"
 
 #define _fxThemeOthersAddSchedule           @"homeAddScheduleOthers"
+#define _fxThemeBarButtons                  @"barButtons"
 
 
 typedef enum {
@@ -75,5 +76,8 @@ typedef enum {
 - (UIImage*)getImageWithKey:(NSString*)key;
 
 // font
+
+// others
+- (UIColor *)colorFromHexString:(NSString *)hexString;
 
 @end

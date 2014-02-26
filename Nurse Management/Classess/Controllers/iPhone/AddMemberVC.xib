@@ -12,6 +12,8 @@
                 <outlet property="_lbTile" destination="g7C-1E-sFU" id="fuC-IA-irh"/>
                 <outlet property="_txfName" destination="DST-BE-Ztr" id="oE8-8k-hon"/>
                 <outlet property="_viewNavi" destination="Xvo-lh-dFw" id="WM8-oR-tp4"/>
+                <outlet property="btCancel" destination="1QE-ZT-Sg1" id="ccs-AG-6Ts"/>
+                <outlet property="btSave" destination="3oK-Xk-BVv" id="ehq-jH-RSI"/>
                 <outlet property="lbTile" destination="g7C-1E-sFU" id="7Gd-ic-DlT"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>

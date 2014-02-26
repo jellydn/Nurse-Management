@@ -20,6 +20,8 @@
                 <outlet property="_scrollView" destination="3b6-Kb-Qdf" id="HuG-0a-SrQ"/>
                 <outlet property="_txvMemo" destination="Beg-RO-ERx" id="RYf-mP-0me"/>
                 <outlet property="_viewNavi" destination="ncE-Sd-DaO" id="ngj-a2-gTX"/>
+                <outlet property="btCancel" destination="6Di-yh-htf" id="fBa-C8-N4g"/>
+                <outlet property="btSave" destination="lkI-CA-5Jq" id="LDx-4E-aJ6"/>
                 <outlet property="lbTile" destination="XdA-gB-cwt" id="9nR-p3-bP7"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>

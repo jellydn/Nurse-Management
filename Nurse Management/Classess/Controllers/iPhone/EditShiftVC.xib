@@ -9,7 +9,9 @@
             <connections>
                 <outlet property="_btnAllDay" destination="LTI-T4-sUU" id="MFN-Ti-qMN"/>
                 <outlet property="backgrounReview" destination="OLh-hY-dzl" id="rKJ-z6-sYe"/>
+                <outlet property="btCancel" destination="15Z-Ok-wpm" id="NzR-BS-oJr"/>
                 <outlet property="btDelete" destination="3je-Tu-Vet" id="zRO-Nc-ECo"/>
+                <outlet property="btSave" destination="daK-vM-sG9" id="gkA-sG-89Z"/>
                 <outlet property="btnBeginTime" destination="zVU-kq-xEn" id="o1g-Uq-TuC"/>
                 <outlet property="btnEndTime" destination="nr3-SC-qlD" id="8ik-z6-56u"/>
                 <outlet property="lbTile" destination="PBX-eJ-Wqm" id="Ceg-a2-sh2"/>

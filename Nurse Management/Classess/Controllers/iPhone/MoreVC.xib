@@ -63,7 +63,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="20" maxX="0.0" maxY="-20"/>
                     <view key="tableFooterView" contentMode="scaleToFill" id="zaD-ni-Z5C">
-                        <rect key="frame" x="0.0" y="460" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="459.99996948242188" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" id="ixe-mO-lCE">

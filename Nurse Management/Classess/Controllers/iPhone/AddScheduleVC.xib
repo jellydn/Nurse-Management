@@ -10,9 +10,11 @@
                 <outlet property="EndTime" destination="5QQ-hx-Qdt" id="mO8-St-7uM"/>
                 <outlet property="beginTime" destination="DyP-vU-z75" id="0u5-1v-O8L"/>
                 <outlet property="bgReview" destination="Fh4-la-4he" id="xh9-gb-7Zs"/>
+                <outlet property="btCancel" destination="pGz-ra-PAf" id="gXD-EE-nwL"/>
                 <outlet property="btDelete" destination="OZi-Y6-Q2c" id="95u-o5-ZRp"/>
                 <outlet property="btEndTime" destination="Dpu-VG-HfQ" id="WU6-9y-S1e"/>
                 <outlet property="btIsAllTime" destination="3xe-MO-d68" id="SOC-kA-43U"/>
+                <outlet property="btSave" destination="qbl-LL-99E" id="w9N-ed-rdt"/>
                 <outlet property="btStarTime" destination="5Gx-yb-imP" id="Pwo-RH-cth"/>
                 <outlet property="lbName" destination="eT3-yr-6ix" id="vnW-rh-9mY"/>
                 <outlet property="lbTile" destination="oXm-y2-6Dv" id="euj-lv-wN7"/>

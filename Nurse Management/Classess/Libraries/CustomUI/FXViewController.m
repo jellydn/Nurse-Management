@@ -79,6 +79,19 @@
     _lbTile.textColor           = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviTitle];
     
     _viewNavi.backgroundColor   = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
+    
+    // barButton
+    NSDictionary *tempDic = [[FXThemeManager shared].themeData objectForKey:_fxThemeBarButtons];
+    
+    [_btAdd setImage:[UIImage imageNamed:[tempDic objectForKey:@"add"]] forState:UIControlStateNormal];
+    
+    [_btCancel setBackgroundImage:[UIImage imageNamed:[tempDic objectForKey:@"background"]] forState:UIControlStateNormal];
+    [_btCancel setTitleColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviTitle]
+                    forState:UIControlStateNormal];
+    
+    [_btSave setBackgroundImage:[UIImage imageNamed:[tempDic objectForKey:@"background"]] forState:UIControlStateNormal];
+    [_btSave setTitleColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviTitle]
+                  forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -102,6 +115,14 @@
 - (void)backVC
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
 #pragma mark - Public mehtod
@@ -169,6 +190,19 @@
         _lbTile.textColor           = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviTitle];
         
         _viewNavi.backgroundColor   = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
+        
+        // barButton
+        NSDictionary *tempDic = [[FXThemeManager shared].themeData objectForKey:_fxThemeBarButtons];
+        
+        [_btAdd setImage:[UIImage imageNamed:[tempDic objectForKey:@"add"]] forState:UIControlStateNormal];
+        
+        [_btCancel setBackgroundImage:[UIImage imageNamed:[tempDic objectForKey:@"background"]] forState:UIControlStateNormal];
+        [_btCancel setTitleColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviTitle]
+                        forState:UIControlStateNormal];
+        
+        [_btSave setBackgroundImage:[UIImage imageNamed:[tempDic objectForKey:@"background"]] forState:UIControlStateNormal];
+        [_btSave setTitleColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviTitle]
+                      forState:UIControlStateNormal];
     }
 }
 

@@ -10,7 +10,9 @@
                 <outlet property="_lbTile" destination="pel-Ge-YCk" id="tJ7-1A-Yvh"/>
                 <outlet property="_viewNavi" destination="Dq3-mh-pR9" id="oor-OS-Rcg"/>
                 <outlet property="backgrounReview" destination="6jR-bg-sqF" id="gPa-OV-kvh"/>
+                <outlet property="btCancel" destination="a1y-j5-elQ" id="kd4-hP-5tU"/>
                 <outlet property="btDelete" destination="oeX-7F-LdK" id="Jmc-2U-ewU"/>
+                <outlet property="btSave" destination="6Gd-7f-y2K" id="iLp-IX-R7t"/>
                 <outlet property="lbTile" destination="pel-Ge-YCk" id="AIv-JO-zUY"/>
                 <outlet property="reviewCategory" destination="Eds-uE-BCw" id="FeC-E0-tvU"/>
                 <outlet property="txtName" destination="hM6-ea-LpU" id="bRt-eY-odv"/>

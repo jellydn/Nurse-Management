@@ -45,5 +45,18 @@
 		<key>button3</key>
 		<string>ic_bt_save_orange.png</string>
 	</dict>
+	<key>barButtons</key>
+	<dict>
+		<key>back</key>
+		<string>ic_bt_back.png</string>
+		<key>cancel</key>
+		<string></string>
+		<key>save</key>
+		<string></string>
+		<key>add</key>
+		<string>ic_bt_add.png</string>
+		<key>background</key>
+		<string>ic_bg_bar_button.png</string>
+	</dict>
 </dict>
 </plist>

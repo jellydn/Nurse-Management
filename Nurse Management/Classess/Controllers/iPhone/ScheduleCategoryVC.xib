@@ -10,6 +10,7 @@
                 <outlet property="_lbTile" destination="aDd-K8-5Nv" id="Ojr-Fg-Kma"/>
                 <outlet property="_tableView" destination="0Ru-gi-P0l" id="7dR-VJ-jBg"/>
                 <outlet property="_viewNavi" destination="4SV-Bf-JJs" id="pof-bZ-7uW"/>
+                <outlet property="btAdd" destination="Zrw-gw-gkQ" id="wdW-vc-cGA"/>
                 <outlet property="btBack" destination="uYr-f0-QOy" id="fg7-Fy-35H"/>
                 <outlet property="lbTile" destination="aDd-K8-5Nv" id="9gJ-Kp-yAC"/>
                 <outlet property="view" destination="1" id="3"/>

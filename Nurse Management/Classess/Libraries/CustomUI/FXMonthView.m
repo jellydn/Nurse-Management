@@ -162,21 +162,25 @@
     
     if (_isFirstOfSunday) {
         UIView *viewSaturday            = [[UIView alloc] initWithFrame:CGRectMake(_widthCell*6, 0, _widthCell, _heightCell*6)];
+        viewSaturday.autoresizingMask   = UIViewAutoresizingFlexibleHeight;
         viewSaturday.backgroundColor    = self.backgoundSaturdayColor;
         viewSaturday.tag                = 999;
         [self addSubview:viewSaturday];
         
         UIView *viewSunday              = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _widthCell, _heightCell*6)];
+        viewSunday.autoresizingMask     = UIViewAutoresizingFlexibleHeight;
         viewSunday.backgroundColor      = self.backgoundSundayColor;
         viewSunday.tag                  = 998;
         [self addSubview:viewSunday];
     } else {
         UIView *viewSaturday            = [[UIView alloc] initWithFrame:CGRectMake(_widthCell*5, 0, _widthCell, _heightCell*6)];
+        viewSaturday.autoresizingMask   = UIViewAutoresizingFlexibleHeight;
         viewSaturday.backgroundColor    = self.backgoundSaturdayColor;
         viewSaturday.tag                = 999;
         [self addSubview:viewSaturday];
         
         UIView *viewSunday              = [[UIView alloc] initWithFrame:CGRectMake(_widthCell*6, 0, _widthCell, _heightCell*6)];
+        viewSunday.autoresizingMask     = UIViewAutoresizingFlexibleHeight;
         viewSunday.backgroundColor      = self.backgoundSundayColor;
         viewSunday.tag                  = 998;
         [self addSubview:viewSunday];

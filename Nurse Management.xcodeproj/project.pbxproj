@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A2D8D9618BD7E01006C32C1 /* ic_bt_add_sweet.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A2D8D8E18BD7E01006C32C1 /* ic_bt_add_sweet.png */; };
+		2A2D8D9718BD7E01006C32C1 /* ic_bt_add_girlie.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A2D8D8F18BD7E01006C32C1 /* ic_bt_add_girlie.png */; };
+		2A2D8D9818BD7E01006C32C1 /* ic_bt_add_sweet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A2D8D9018BD7E01006C32C1 /* ic_bt_add_sweet@2x.png */; };
+		2A2D8D9918BD7E01006C32C1 /* ic_bt_add_girlie@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A2D8D9118BD7E01006C32C1 /* ic_bt_add_girlie@2x.png */; };
+		2A2D8D9A18BD7E01006C32C1 /* ic_bg_bar_button_sweet.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A2D8D9218BD7E01006C32C1 /* ic_bg_bar_button_sweet.png */; };
+		2A2D8D9B18BD7E01006C32C1 /* ic_bg_bar_button_girlie.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A2D8D9318BD7E01006C32C1 /* ic_bg_bar_button_girlie.png */; };
+		2A2D8D9C18BD7E01006C32C1 /* ic_bg_bar_button_sweet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A2D8D9418BD7E01006C32C1 /* ic_bg_bar_button_sweet@2x.png */; };
+		2A2D8D9D18BD7E01006C32C1 /* ic_bg_bar_button_girlie@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A2D8D9518BD7E01006C32C1 /* ic_bg_bar_button_girlie@2x.png */; };
 		2A394BCB18A9FD5300F30F2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A394BCA18A9FD5300F30F2D /* Foundation.framework */; };
 		2A394BCD18A9FD5300F30F2D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A394BCC18A9FD5300F30F2D /* CoreGraphics.framework */; };
 		2A394BCF18A9FD5300F30F2D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A394BCE18A9FD5300F30F2D /* UIKit.framework */; };
@@ -357,6 +365,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A2D8D8E18BD7E01006C32C1 /* ic_bt_add_sweet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bt_add_sweet.png; sourceTree = "<group>"; };
+		2A2D8D8F18BD7E01006C32C1 /* ic_bt_add_girlie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bt_add_girlie.png; sourceTree = "<group>"; };
+		2A2D8D9018BD7E01006C32C1 /* ic_bt_add_sweet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bt_add_sweet@2x.png"; sourceTree = "<group>"; };
+		2A2D8D9118BD7E01006C32C1 /* ic_bt_add_girlie@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bt_add_girlie@2x.png"; sourceTree = "<group>"; };
+		2A2D8D9218BD7E01006C32C1 /* ic_bg_bar_button_sweet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bg_bar_button_sweet.png; sourceTree = "<group>"; };
+		2A2D8D9318BD7E01006C32C1 /* ic_bg_bar_button_girlie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bg_bar_button_girlie.png; sourceTree = "<group>"; };
+		2A2D8D9418BD7E01006C32C1 /* ic_bg_bar_button_sweet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bg_bar_button_sweet@2x.png"; sourceTree = "<group>"; };
+		2A2D8D9518BD7E01006C32C1 /* ic_bg_bar_button_girlie@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_bg_bar_button_girlie@2x.png"; sourceTree = "<group>"; };
 		2A394BC718A9FD5300F30F2D /* Nurse Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nurse Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A394BCA18A9FD5300F30F2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2A394BCC18A9FD5300F30F2D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1228,6 +1244,14 @@
 		2A3C24AA18AB1E8600C20A04 /* Button */ = {
 			isa = PBXGroup;
 			children = (
+				2A2D8D8E18BD7E01006C32C1 /* ic_bt_add_sweet.png */,
+				2A2D8D9018BD7E01006C32C1 /* ic_bt_add_sweet@2x.png */,
+				2A2D8D8F18BD7E01006C32C1 /* ic_bt_add_girlie.png */,
+				2A2D8D9118BD7E01006C32C1 /* ic_bt_add_girlie@2x.png */,
+				2A2D8D9218BD7E01006C32C1 /* ic_bg_bar_button_sweet.png */,
+				2A2D8D9418BD7E01006C32C1 /* ic_bg_bar_button_sweet@2x.png */,
+				2A2D8D9318BD7E01006C32C1 /* ic_bg_bar_button_girlie.png */,
+				2A2D8D9518BD7E01006C32C1 /* ic_bg_bar_button_girlie@2x.png */,
 				2A921F8418BB5A0E00EEC4FF /* ic_bt_save_pink.png */,
 				2A921F8918BB5A0E00EEC4FF /* ic_bt_save_pink@2x.png */,
 				2A921F8518BB5A0E00EEC4FF /* ic_bt_save_orange.png */,
@@ -1768,6 +1792,7 @@
 				2A3C249518AB062F00C20A04 /* ic_toolbar_ranking.png in Resources */,
 				2A50DF4818BB021C0033FE11 /* ic_bar_bt_theme_sweet_today@2x.png in Resources */,
 				2A3C249318AB062F00C20A04 /* ic_toolbar_more.png in Resources */,
+				2A2D8D9818BD7E01006C32C1 /* ic_bt_add_sweet@2x.png in Resources */,
 				2AD1CDC918BB27EA00FE3E1F /* sweet_ic_toolbar_ranking@2x.png in Resources */,
 				2AD1CDCB18BB27EA00FE3E1F /* sweet_ic_toolbar_add_schedule@2x.png in Resources */,
 				2A921F7D18BB587E00EEC4FF /* ic_bt_add_schedule_back_sweet.png in Resources */,
@@ -1803,6 +1828,7 @@
 				B6B10E0918AF0C9E004E3229 /* ic_edit_shift_color_8@2x.png in Resources */,
 				2AF0758818ACC4B00008D875 /* FXCalendarView.xib in Resources */,
 				B6B10E0618AF0C9E004E3229 /* ic_edit_shift_color_7.png in Resources */,
+				2A2D8D9A18BD7E01006C32C1 /* ic_bg_bar_button_sweet.png in Resources */,
 				2A3F496E18AE197C00D3137D /* ic_nurse@2x.png in Resources */,
 				2A50DF2018BAF0C30033FE11 /* ic_bar_bt_theme_girlie_done.png in Resources */,
 				2A3C24D618AB5CC100C20A04 /* img_add_shift_home_title@2x.png in Resources */,
@@ -1858,8 +1884,10 @@
 				2A3C24A918AB1BFE00C20A04 /* MoreVC.xib in Resources */,
 				2A394C2618A9FF7600F30F2D /* Default-568h@2x.png in Resources */,
 				2A394C1F18A9FF7600F30F2D /* Icon-Small@2x_ios7.png in Resources */,
+				2A2D8D9718BD7E01006C32C1 /* ic_bt_add_girlie.png in Resources */,
 				C000F2FB18AF6C2000280464 /* ic_injection_needle.png in Resources */,
 				2A50DF3018BAFD970033FE11 /* girlie_ic_toolbar_more.png in Resources */,
+				2A2D8D9B18BD7E01006C32C1 /* ic_bg_bar_button_girlie.png in Resources */,
 				2A4F228318B456BE00A5C97C /* schedule_bg_0@2x.png in Resources */,
 				2A50DF2F18BAFD970033FE11 /* girlie_ic_toolbar_more@2x.png in Resources */,
 				2A4F22A018B4575000A5C97C /* MoreCellTitle.xib in Resources */,
@@ -1875,6 +1903,7 @@
 				2A50DF3318BAFD970033FE11 /* girlie_ic_toolbar_add_schedule.png in Resources */,
 				2A3C24F318AB7FFA00C20A04 /* img_add_schedule_home_title.png in Resources */,
 				B651F30718B4BF6000E8577B /* icon_right_more_cell@2x.png in Resources */,
+				2A2D8D9918BD7E01006C32C1 /* ic_bt_add_girlie@2x.png in Resources */,
 				2A4F228118B456BE00A5C97C /* home_add_quick_schedule_time_bg@2x.png in Resources */,
 				2A3F496218AE096A00D3137D /* img_bg_home_cell_schedule_1@2x.png in Resources */,
 				2A75E63618ADA96600E74E4F /* AddMemberVC.xib in Resources */,
@@ -1882,8 +1911,10 @@
 				2AF0758318ACB60A0008D875 /* FXDayView.xib in Resources */,
 				2A516C9F18AC5E1800F82B5A /* AddScheduleCategoryNameVC.xib in Resources */,
 				2A6FDB7418AF1ACA00D33D21 /* icon_writer_content_add_sc.png in Resources */,
+				2A2D8D9618BD7E01006C32C1 /* ic_bt_add_sweet.png in Resources */,
 				2A4F227B18B456BE00A5C97C /* schedule_bg_7@2x.png in Resources */,
 				C000F2FC18AF6C2000280464 /* ic_injection_needle@2x.png in Resources */,
+				2A2D8D9C18BD7E01006C32C1 /* ic_bg_bar_button_sweet@2x.png in Resources */,
 				2A394C5118AA1EE300F30F2D /* HomeNaviBarView.xib in Resources */,
 				2A4F227D18B456BE00A5C97C /* schedule_bg_8@2x.png in Resources */,
 				2A516C9918AC5C1A00F82B5A /* ScheduleCategoryVC.xib in Resources */,
@@ -1937,6 +1968,7 @@
 				2A3F495018AE032500D3137D /* HomeCellAddShift.xib in Resources */,
 				2A8A861418B845B200332B68 /* theme_default_pink.plist in Resources */,
 				2A50DF1F18BAF0C30033FE11 /* ic_bar_bt_theme_girlie_email.png in Resources */,
+				2A2D8D9D18BD7E01006C32C1 /* ic_bg_bar_button_girlie@2x.png in Resources */,
 				2A4F228518B456BE00A5C97C /* schedule_bg_1@2x.png in Resources */,
 				2A3C24A418AB1BF100C20A04 /* RankingVC.xib in Resources */,
 				2A50DF0C18BAE1110033FE11 /* theme_girlie.plist in Resources */,
