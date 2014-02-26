@@ -7,6 +7,7 @@
 //
 
 #import "NMSelectionStringView.h"
+#import "FXThemeManager.h"
 
 #import "CDMember.h"
 
@@ -50,7 +51,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-        _colorSelectBackground = SELECTED_BACKGROUND_COLOR;
+//        _colorSelectBackground = SELECTED_BACKGROUND_COLOR;
+        _colorSelectBackground = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain];
         self.clipsToBounds = YES;
     }
     return self;

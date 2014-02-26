@@ -83,18 +83,19 @@
             _lbMember.text = @"0 members";
         } else {
             _lbMember.text = @"";
-            int count = 0;
             for (CDMember *item in shift.pk_shift) {
-                
-                if (count == [shift.pk_shift count] - 1) {
-                    _lbMember.text = [_lbMember.text stringByAppendingFormat:@"%@",item.name];
-                } else {
-                    _lbMember.text = [_lbMember.text stringByAppendingFormat:@"%@, ",item.name];
+                if (item.isDisplay) {
+                    _lbMember.text = [_lbMember.text stringByAppendingFormat:@"%@,",item.name];
                 }
-        
-                count++;
             }
+            
+            if ([_lbMember.text length] > 1) {
+                _lbMember.text = [_lbMember.text substringToIndex:[_lbMember.text length] - 1];
+            }
+            
         }
+        
+        
         
         //load alert
 //        _lbAlert.text = [NSString stringWithFormat:@"%d alerts",(int)[shift.pk_shiftalert count]];
