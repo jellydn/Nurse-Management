@@ -80,6 +80,8 @@
 {
     if (animated) {
         [_tableView reloadData];
+        _indicator.hidden = YES;
+        [_indicator stopAnimating];
     }
 }
 
@@ -339,6 +341,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         if (indexPath.row == 1) {
             NSLog(@"ListShiftPatternVC");
             ListShiftPatternVC *vc = [[ListShiftPatternVC alloc] init];
