@@ -68,6 +68,8 @@
     ChooseTimeView *_chooseTimeView;
     
     CDShift *_shift;
+    
+    NSInteger _indexSelectShiftCategory;
 }
 
 - (IBAction)cancel:(id)sender;
@@ -108,6 +110,10 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    
+    if (_indexSelectShiftCategory >= 0) {
+        [self addshiftViewWithIndex:_indexSelectShiftCategory];
+    }
 
 }
 
@@ -118,6 +124,8 @@
     
     _btnStartTime.tag = START_TIME;
     _btnEndTime.tag = END_TIME;
+    
+    _indexSelectShiftCategory = -1;
     
     // init time picker view
     _timePickerView = [[NMTimePickerView alloc] init];
@@ -215,6 +223,11 @@
 #pragma mark - AddShiftViewDelegate
 - (void) addShiftView:(AddShiftView*)addShiftView didSelectWithIndex:(int)index
 {
+    [self addshiftViewWithIndex:index];
+}
+
+- (void)addshiftViewWithIndex:(NSInteger)index
+{
     NSLog(@"Add Shift select item with index: %d", index);
     CDShiftCategory *shiftCategory = [[AppDelegate shared] getshiftCategoryWithID:index];
     _shift.fk_shift_category = shiftCategory;
@@ -224,7 +237,7 @@
     
     // get time from shift category
     _startTime = [Common dateAppenedFromDate:_date andTime:shiftCategory.timeStart];
-   _endTime = [Common dateAppenedFromDate:_date andTime:shiftCategory.timeEnd];
+    _endTime = [Common dateAppenedFromDate:_date andTime:shiftCategory.timeEnd];
     [self setAllDay:_isAllDay];
     
     _btnSave.enabled = YES;
@@ -234,6 +247,7 @@
     for (ShiftCategoryItem *item in shiftItems)
     {
         if (item.shiftCategoryID == index) {
+            _indexSelectShiftCategory = index;
             _imvShiftCategoryBG.image = [UIImage imageNamed:item.image];
             _lblShiftCategoryName.text = item.name;
             _lblShiftCategoryName.textColor = item.textColor;
@@ -242,6 +256,8 @@
     
     [_chooseTimeView setStartDate:_startTime];
     [self hideAddShift];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hide_mask_view_addShiftView" object:nil];
 }
 
 - (void) addShiftViewDidSelectShowListShiftPattern:(AddShiftView*)addShiftView
@@ -532,6 +548,7 @@
     _isAllDay = NO;
     [self setAllDay:_isAllDay];
     _btnSave.enabled = NO;
+    _indexSelectShiftCategory = -1;
     _imvShiftCategoryBG.image = [UIImage imageNamed:@""];
     _lblShiftCategoryName.text = @"";
     [self setDefaultTime];
