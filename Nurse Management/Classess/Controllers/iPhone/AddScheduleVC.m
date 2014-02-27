@@ -21,6 +21,7 @@
 #import "CDScheduleAlert.h"
 #import "CDSchedule.h"
 #import "FXViewController.h"
+#import "FXCalendarData.h"
 
 @interface AddScheduleVC ()<UITextViewDelegate, NSFetchedResultsControllerDelegate, ChooseTimeViewDelegate, AddScheduleViewDelegate, NMTimePickerViewDelegate, ChooseTimeViewDelegate, UIActionSheetDelegate>{
     NSDate *_startTime;
@@ -90,6 +91,8 @@
         _bgReview.image = [UIImage imageNamed:item.image];
         
     }
+
+    self.lbTile.text = [NSString stringWithFormat:@"%d月%d日",[FXCalendarData getMonthWithDate:_selectDate], [FXCalendarData getDayWithDate:_selectDate]];
     
     [self setDataEdit];
 }

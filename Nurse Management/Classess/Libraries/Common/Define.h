@@ -39,6 +39,9 @@
 
 #define TEXT_ALL_DAY            @"終日"
 
+//edit/add shift category
+#define TEXT_VALIDATION_NAME_SHIFT_CATEGORY @"Please enter up to 2 characters."
+
 // Google Analytics
 #define GA_HOMEVC                   @"Calendar screen"
 
