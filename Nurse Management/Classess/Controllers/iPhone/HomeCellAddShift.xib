@@ -142,9 +142,9 @@
                 <outlet property="imgCategory" destination="OuH-1Z-81P" id="j1v-lz-nz6"/>
                 <outlet property="lbAlert" destination="Lxz-JB-i1S" id="KXJ-mv-uHQ"/>
                 <outlet property="lbCategoryName" destination="nLq-Cl-p1g" id="el5-Tu-LpC"/>
-                <outlet property="lbDay" destination="Kc4-MA-PPV" id="ej5-X8-mqo"/>
+                <outlet property="lbDay" destination="KHL-2E-szv" id="aQS-wp-po6"/>
                 <outlet property="lbMember" destination="bVY-oi-iZN" id="jBY-Fs-Saf"/>
-                <outlet property="lbMonth" destination="KHL-2E-szv" id="RxE-oA-pWZ"/>
+                <outlet property="lbMonth" destination="Kc4-MA-PPV" id="sxR-rX-D5Z"/>
                 <outlet property="lbTime" destination="b65-zT-reY" id="RPu-pu-lTD"/>
                 <outlet property="lbWeekDay" destination="Zjc-q5-5V0" id="SkJ-Bo-Mn5"/>
                 <outlet property="viewAdd" destination="Q3h-OE-7nN" id="73E-Ou-bri"/>
