@@ -208,6 +208,8 @@
 		2A75E64318ADA98800E74E4F /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A75E64218ADA98800E74E4F /* Member.m */; };
 		2A75E64618ADA9AB00E74E4F /* ic_cell_shift.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E64418ADA9AB00E74E4F /* ic_cell_shift.png */; };
 		2A75E64718ADA9AB00E74E4F /* ic_cell_shift@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A75E64518ADA9AB00E74E4F /* ic_cell_shift@2x.png */; };
+		2A808DDC18BF218700797205 /* ScheduleCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A808DDA18BF218700797205 /* ScheduleCategoryCell.m */; };
+		2A808DDD18BF218700797205 /* ScheduleCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A808DDB18BF218700797205 /* ScheduleCategoryCell.xib */; };
 		2A8A860C18B839E600332B68 /* screen_theme_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A8A860618B839E600332B68 /* screen_theme_0.png */; };
 		2A8A860D18B839E600332B68 /* screen_theme_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A8A860718B839E600332B68 /* screen_theme_1.png */; };
 		2A8A860E18B839E600332B68 /* screen_theme_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A8A860818B839E600332B68 /* screen_theme_2.png */; };
@@ -632,6 +634,9 @@
 		2A75E64218ADA98800E74E4F /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Member.m; sourceTree = "<group>"; };
 		2A75E64418ADA9AB00E74E4F /* ic_cell_shift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_cell_shift.png; sourceTree = "<group>"; };
 		2A75E64518ADA9AB00E74E4F /* ic_cell_shift@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_cell_shift@2x.png"; sourceTree = "<group>"; };
+		2A808DD918BF218700797205 /* ScheduleCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCategoryCell.h; sourceTree = "<group>"; };
+		2A808DDA18BF218700797205 /* ScheduleCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCategoryCell.m; sourceTree = "<group>"; };
+		2A808DDB18BF218700797205 /* ScheduleCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCategoryCell.xib; sourceTree = "<group>"; };
 		2A8A860618B839E600332B68 /* screen_theme_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_theme_0.png; sourceTree = "<group>"; };
 		2A8A860718B839E600332B68 /* screen_theme_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_theme_1.png; sourceTree = "<group>"; };
 		2A8A860818B839E600332B68 /* screen_theme_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_theme_2.png; sourceTree = "<group>"; };
@@ -1616,6 +1621,7 @@
 		2A516C9418AC5BFD00F82B5A /* ScheduleCategoryVC */ = {
 			isa = PBXGroup;
 			children = (
+				2A808DDE18BF219700797205 /* Cell */,
 				2A516C9518AC5C1A00F82B5A /* ScheduleCategoryVC.h */,
 				2A516C9618AC5C1A00F82B5A /* ScheduleCategoryVC.m */,
 				2A516C9718AC5C1A00F82B5A /* ScheduleCategoryVC.xib */,
@@ -1685,6 +1691,16 @@
 				2A6FDB7318AF1ACA00D33D21 /* icon_reminder_add_sc.png */,
 			);
 			name = Schedule;
+			sourceTree = "<group>";
+		};
+		2A808DDE18BF219700797205 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2A808DD918BF218700797205 /* ScheduleCategoryCell.h */,
+				2A808DDA18BF218700797205 /* ScheduleCategoryCell.m */,
+				2A808DDB18BF218700797205 /* ScheduleCategoryCell.xib */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		2A8A860518B839E600332B68 /* screen_themes */ = {
@@ -1856,6 +1872,7 @@
 				2A6FDB7818AF1ACA00D33D21 /* icon_category_add_sc@2x.png in Resources */,
 				2A75E64618ADA9AB00E74E4F /* ic_cell_shift.png in Resources */,
 				B68951BC18BD79E9003BE5E8 /* ic_edit_schedule_color_8.png in Resources */,
+				2A808DDD18BF218700797205 /* ScheduleCategoryCell.xib in Resources */,
 				2A394C2818A9FF7600F30F2D /* Default@2x.png in Resources */,
 				2AAE596D18B604FA003FA40E /* no_icon.png in Resources */,
 				2AAE597018B60636003FA40E /* white_arrow.png in Resources */,
@@ -2146,6 +2163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A808DDC18BF218700797205 /* ScheduleCategoryCell.m in Sources */,
 				2A3F495D18AE085D00D3137D /* HomeCellSchedule.m in Sources */,
 				2A75E63518ADA96600E74E4F /* AddMemberVC.m in Sources */,
 				2AF0758118ACAC250008D875 /* FXDay.m in Sources */,
