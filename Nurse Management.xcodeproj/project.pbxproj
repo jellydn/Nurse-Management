@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A11814B18BF2D0D00110C7B /* MemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A11814918BF2D0D00110C7B /* MemberCell.m */; };
+		2A11814C18BF2D0D00110C7B /* MemberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A11814A18BF2D0D00110C7B /* MemberCell.xib */; };
 		2A394BCB18A9FD5300F30F2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A394BCA18A9FD5300F30F2D /* Foundation.framework */; };
 		2A394BCD18A9FD5300F30F2D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A394BCC18A9FD5300F30F2D /* CoreGraphics.framework */; };
 		2A394BCF18A9FD5300F30F2D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A394BCE18A9FD5300F30F2D /* UIKit.framework */; };
@@ -396,6 +398,9 @@
 		0643085018BC4A750098AE85 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
 		0643085118BC4A750098AE85 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
 		0643085218BC4A750098AE85 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		2A11814818BF2D0D00110C7B /* MemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberCell.h; sourceTree = "<group>"; };
+		2A11814918BF2D0D00110C7B /* MemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberCell.m; sourceTree = "<group>"; };
+		2A11814A18BF2D0D00110C7B /* MemberCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemberCell.xib; sourceTree = "<group>"; };
 		2A394BC718A9FD5300F30F2D /* Nurse Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nurse Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A394BCA18A9FD5300F30F2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2A394BCC18A9FD5300F30F2D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -878,6 +883,16 @@
 				0643085218BC4A750098AE85 /* libGoogleAnalyticsServices.a */,
 			);
 			path = "Google Analytics";
+			sourceTree = "<group>";
+		};
+		2A11814718BF2CE800110C7B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2A11814818BF2D0D00110C7B /* MemberCell.h */,
+				2A11814918BF2D0D00110C7B /* MemberCell.m */,
+				2A11814A18BF2D0D00110C7B /* MemberCell.xib */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		2A394BBE18A9FD5300F30F2D = {
@@ -1739,6 +1754,7 @@
 		B6B10DDC18AF0B2A004E3229 /* MemberShiftVC */ = {
 			isa = PBXGroup;
 			children = (
+				2A11814718BF2CE800110C7B /* Cell */,
 				2A75E63718ADA97700E74E4F /* ListMembersVC.h */,
 				2A75E63818ADA97700E74E4F /* ListMembersVC.m */,
 				2A75E63918ADA97700E74E4F /* ListMembersVC.xib */,
@@ -1953,6 +1969,7 @@
 				2A50DF1618BAEC9C0033FE11 /* bg_theme_sweet@2x.png in Resources */,
 				2A50DF3B18BAFE2D0033FE11 /* bg_tool_bar_theme_girlie.png in Resources */,
 				2A4F229618B4570700A5C97C /* icon_right_more_cell@2x.png in Resources */,
+				2A11814C18BF2D0D00110C7B /* MemberCell.xib in Resources */,
 				2A50DF2218BAF0C30033FE11 /* ic_bar_bt_theme_girlie_email@2x.png in Resources */,
 				B68951BD18BD79E9003BE5E8 /* ic_edit_schedule_color_8@2x.png in Resources */,
 				C0DF5DA918BB3D720065E115 /* term-privacy_three.html in Resources */,
@@ -2170,6 +2187,7 @@
 				2A97526918B6021100C0946E /* AppItem.m in Sources */,
 				2A394C3118AA009100F30F2D /* Reachability.m in Sources */,
 				C0CB919318B83A2F00D61253 /* NMSelectionStringView.m in Sources */,
+				2A11814B18BF2D0D00110C7B /* MemberCell.m in Sources */,
 				2A3C24A318AB1BF100C20A04 /* RankingVC.m in Sources */,
 				2A394C2E18A9FFBC00F30F2D /* User.m in Sources */,
 				C0B2B1D818B44F7100CF4B76 /* CDScheduleAlert.m in Sources */,
