@@ -201,7 +201,6 @@
     if (error) {
         NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
     }
-    NSLog(@"chieu dai la %d", [_fetchedResultsControllerScheduleCategory.fetchedObjects count]);
     if ([_fetchedResultsControllerScheduleCategory.fetchedObjects count] == 0) {
         
         //read file

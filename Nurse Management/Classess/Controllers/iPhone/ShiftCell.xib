@@ -37,7 +37,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" red="0.9882352941176471" green="0.95294117647058818" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </tableViewCellContentView>
             <connections>
                 <outlet property="iconShift" destination="WQ7-tc-4Px" id="ugy-h9-RWL"/>
