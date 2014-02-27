@@ -48,6 +48,12 @@
 {
     [super viewDidLoad];
     
+    if (_typeShift) {
+        self.lbTile.text = @"シフト追加";
+    } else {
+        self.lbTile.text = @"シフト編集";
+    }
+    
     _btnBeginTime.tag = START_TIME;
     _btnEndTime.tag = END_TIME;
 
