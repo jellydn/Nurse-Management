@@ -881,12 +881,12 @@
     // shift duration
     if (!_shift.isAllDay) {
         _isAllDay = NO;
+        _startTime = [NSDate dateWithTimeIntervalSince1970:_shift.timeStart];
+        _endTime = [NSDate dateWithTimeIntervalSince1970:_shift.timeEnd];
     } else {
         _isAllDay = YES;
+        [self setDefaultTime];
     }
-    
-    _startTime = [NSDate dateWithTimeIntervalSince1970:_shift.timeStart];
-    _endTime = [NSDate dateWithTimeIntervalSince1970:_shift.timeEnd];
     
     [self setAllDay:_isAllDay];
     
