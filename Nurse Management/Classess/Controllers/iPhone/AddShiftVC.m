@@ -33,6 +33,9 @@
 //#define kOFFSET_FOR_KEYBOARD 160.0
 #define kOFFSET_FOR_KEYBOARD 217.0
 #define MEMO_PLACEHOLDER_TEXT    @"メモがあったら入力しよう"
+#define KEYBOARD_SHOW_FIRST     1
+#define KEYBOARD_SHOW_SECOND     2
+
 #define IS_IPHONE_5 (((double)[[UIScreen mainScreen] bounds].size.height) == ((double)568))
 
 @interface AddShiftVC () <UITextViewDelegate, UIActionSheetDelegate, ChooseTimeViewDelegate, AddShiftViewDelegate, NMSelectionStringViewDelegate, NSFetchedResultsControllerDelegate, NMTimePickerViewDelegate>
@@ -70,6 +73,7 @@
     CDShift *_shift;
     
     NSInteger _indexSelectShiftCategory;
+    int _subKeyBoard;
 }
 
 - (IBAction)cancel:(id)sender;
@@ -126,6 +130,7 @@
     _btnEndTime.tag = END_TIME;
     
     _indexSelectShiftCategory = -1;
+    _subKeyBoard = 0;
     
     // init time picker view
     _timePickerView = [[NMTimePickerView alloc] init];
@@ -202,7 +207,7 @@
         //move the main view, so that the keyboard does not hide it.
         if  (self.view.frame.origin.y >= 0)
         {
-            [self setViewMovedUp:YES];
+//            [self setViewMovedUp:YES];
         }
         
         if ([textView.text isEqualToString:MEMO_PLACEHOLDER_TEXT]) {
@@ -443,14 +448,28 @@
 - (void)keyboardWillShow:(NSNotification *)notification {
     NSLog(@"keyboard show");
     
+//    if (_subKeyBoard == 0) {
+//        
+//    } else if (_subKeyBoard == 1) {
+//        
+//    } else if (_subKeyBoard == 2) {
+//        
+//    }
+    
     // Animate the current view out of the way
-    if (self.view.frame.origin.y >= 0)
+    if (self.view.frame.origin.y >= 0 && _subKeyBoard == 0)
     {
-        [self setViewMovedUp:YES];
+        [self setViewMovedUp:YES withOffset:kOFFSET_FOR_KEYBOARD];
+        _subKeyBoard = KEYBOARD_SHOW_FIRST;
     }
     else if (self.view.frame.origin.y < 0)
     {
-        [self setViewMovedUp:NO];
+        if (_subKeyBoard == KEYBOARD_SHOW_FIRST) {
+            [self setViewMovedUp:YES withOffset:30.0];
+            _subKeyBoard = KEYBOARD_SHOW_SECOND;
+        }
+//        else
+//            [self setViewMovedUp:NO];
     }
 }
 
@@ -462,7 +481,11 @@
     }
     else if (self.view.frame.origin.y < 0)
     {
-        [self setViewMovedUp:NO];
+        if (_subKeyBoard == KEYBOARD_SHOW_FIRST)
+            [self setViewMovedUp:NO withOffset:kOFFSET_FOR_KEYBOARD];
+        else
+            [self setViewMovedUp:NO withOffset:kOFFSET_FOR_KEYBOARD + 30.0];
+        _subKeyBoard = 0;
     }
     
 }
@@ -500,6 +523,39 @@
         // revert back to the normal state.
         rect.origin.y += kOFFSET_FOR_KEYBOARD + number;
         rect.size.height -= kOFFSET_FOR_KEYBOARD;
+    }
+    self.view.frame = rect;
+    
+    [UIView commitAnimations];
+}
+
+-(void)setViewMovedUp:(BOOL)movedUp withOffset: (float)keyboardOffset
+{
+    [self.view bringSubviewToFront:_scrollView];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3]; // if you want to slide up the view
+    
+    int number = 0;
+    if (!IS_IPHONE_5)
+        number = 40;
+    
+    CGRect rect = self.view.frame;
+    if (movedUp)
+    {
+        // 1. move the view's origin up so that the text field that will be hidden come above the keyboard
+        // 2. increase the size of the view so that the area behind the keyboard is covered up.
+        
+        if (_subKeyBoard == KEYBOARD_SHOW_FIRST)
+            number = 0;
+        
+        rect.origin.y -= keyboardOffset + number;
+        rect.size.height += keyboardOffset;
+    }
+    else
+    {
+        // revert back to the normal state.
+        rect.origin.y += keyboardOffset + number;
+        rect.size.height -= keyboardOffset;
     }
     self.view.frame = rect;
     
