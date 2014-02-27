@@ -730,6 +730,8 @@
 		2AF0758418ACC4B00008D875 /* FXCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXCalendarView.h; sourceTree = "<group>"; };
 		2AF0758518ACC4B00008D875 /* FXCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXCalendarView.m; sourceTree = "<group>"; };
 		2AF0758618ACC4B00008D875 /* FXCalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FXCalendarView.xib; sourceTree = "<group>"; };
+		B62E9D5A18BEEFB30081B8C6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B62E9D5B18BEEFB30081B8C6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B651F30418B4BF6000E8577B /* icon_right_more_cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_right_more_cell.png; path = "Nurse Management/Resources/Images/Common/icon_right_more_cell.png"; sourceTree = SOURCE_ROOT; };
 		B651F30518B4BF6000E8577B /* icon_right_more_cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_right_more_cell@2x.png"; path = "Nurse Management/Resources/Images/Common/icon_right_more_cell@2x.png"; sourceTree = SOURCE_ROOT; };
 		B689519A18BD79E8003BE5E8 /* ic_edit_schedule_color_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_edit_schedule_color_1.png; sourceTree = "<group>"; };
@@ -1820,6 +1822,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ja,
 			);
 			mainGroup = 2A394BBE18A9FD5300F30F2D;
 			productRefGroup = 2A394BC818A9FD5300F30F2D /* Products */;
@@ -2235,6 +2238,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2A394BD618A9FD5300F30F2D /* en */,
+				B62E9D5A18BEEFB30081B8C6 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -2243,6 +2247,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2A394BF318A9FD5300F30F2D /* en */,
+				B62E9D5B18BEEFB30081B8C6 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
