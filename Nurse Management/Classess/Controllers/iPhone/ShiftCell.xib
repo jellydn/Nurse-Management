@@ -39,6 +39,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="iconShift" destination="WQ7-tc-4Px" id="ugy-h9-RWL"/>
                 <outlet property="lbName" destination="Sac-Da-nR9" id="U96-di-FWf"/>
