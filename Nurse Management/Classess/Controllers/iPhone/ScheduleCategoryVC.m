@@ -16,6 +16,7 @@
 #import "CDScheduleCategory.h"
 #import "AppDelegate.h"
 #import "FXViewController.h"
+#import "ScheduleCategoryCell.h"
 @interface ScheduleCategoryVC ()<AddScheduleCategoryDelegate>
 {
     __weak IBOutlet UIView *_viewNavi;
@@ -28,6 +29,7 @@
 
 - (IBAction)backVC:(id)sender;
 - (IBAction)addScheduleName:(id)sender;
+- (IBAction)switchChanged:(id)sender;
 
 @end
 
@@ -78,27 +80,19 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *cellIdentifier = @"SwitchCell";
-    UITableViewCell* aCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if( aCell == nil ) {
-        aCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    ScheduleCategoryCell *cellR = [tableView dequeueReusableCellWithIdentifier:@"ScheduleCategoryCell"];
+    if (cellR == nil) {
+        cellR = [[NSBundle mainBundle] loadNibNamed:@"ScheduleCategoryCell" owner:self options:nil][0];
+        
     }
     
-    CDScheduleCategory *scheduleCategory = [_fetchedResultsControllerScheduleCategory.fetchedObjects objectAtIndex:indexPath.row];
+    CDScheduleCategory *scheduleCategory    = [_fetchedResultsControllerScheduleCategory.fetchedObjects objectAtIndex:indexPath.row];
+    cellR.lbTitle.text                      = scheduleCategory.name;
+    cellR.switchView.on                     = scheduleCategory.isEnable;
+    cellR.switchView.tag = indexPath.row;
     
-    aCell.textLabel.text = scheduleCategory.name;
-    UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
-    aCell.accessoryView = switchView;
-    switchView.tag = indexPath.row;
-    NSLog(@"trang thai %d", scheduleCategory.isDefault);
-    if (scheduleCategory.isEnable)
-        [switchView setOn:YES animated:NO];
-    else
-        [switchView setOn:NO animated:NO];
     
-    [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    return aCell;
+    return cellR;
 }
 
 #pragma mark - UITableViewDelegate
@@ -136,7 +130,8 @@
     }];
 }
 
-- (void) switchChanged:(id)sender {
+- (IBAction)switchChanged:(id)sender {
+    
     UISwitch* switchControl = sender;
     
     if ([_fetchedResultsControllerScheduleCategory.fetchedObjects objectAtIndex:switchControl.tag]) {
@@ -149,6 +144,8 @@
         [[AppDelegate shared] saveContext];
         
     }
+    
+    
 }
 
 #pragma mark - Others
@@ -204,7 +201,6 @@
     if (error) {
         NSLog(@"%@ core data error: %@", [self class], error.localizedDescription);
     }
-    NSLog(@"chieu dai la %d", [_fetchedResultsControllerScheduleCategory.fetchedObjects count]);
     if ([_fetchedResultsControllerScheduleCategory.fetchedObjects count] == 0) {
         
         //read file

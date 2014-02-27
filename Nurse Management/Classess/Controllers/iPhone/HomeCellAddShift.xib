@@ -30,14 +30,14 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kc4-MA-PPV">
                                 <rect key="frame" x="3" y="4" width="26" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="12"/>
                                 <color key="textColor" red="0.46274509800000002" green="0.36862745099999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KHL-2E-szv">
                                 <rect key="frame" x="22" y="15" width="33" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
                                 <color key="textColor" red="0.46274509800000002" green="0.36862745099999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -142,9 +142,9 @@
                 <outlet property="imgCategory" destination="OuH-1Z-81P" id="j1v-lz-nz6"/>
                 <outlet property="lbAlert" destination="Lxz-JB-i1S" id="KXJ-mv-uHQ"/>
                 <outlet property="lbCategoryName" destination="nLq-Cl-p1g" id="el5-Tu-LpC"/>
-                <outlet property="lbDay" destination="Kc4-MA-PPV" id="ej5-X8-mqo"/>
+                <outlet property="lbDay" destination="KHL-2E-szv" id="aQS-wp-po6"/>
                 <outlet property="lbMember" destination="bVY-oi-iZN" id="jBY-Fs-Saf"/>
-                <outlet property="lbMonth" destination="KHL-2E-szv" id="RxE-oA-pWZ"/>
+                <outlet property="lbMonth" destination="Kc4-MA-PPV" id="sxR-rX-D5Z"/>
                 <outlet property="lbTime" destination="b65-zT-reY" id="RPu-pu-lTD"/>
                 <outlet property="lbWeekDay" destination="Zjc-q5-5V0" id="SkJ-Bo-Mn5"/>
                 <outlet property="viewAdd" destination="Q3h-OE-7nN" id="73E-Ou-bri"/>

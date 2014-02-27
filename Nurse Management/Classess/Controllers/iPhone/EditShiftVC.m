@@ -18,7 +18,7 @@
 #define BUTTON_BG_COLOR	 [UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]
 #define TITLE_COLOR	 [UIColor colorWithRed:126.0/255.0 green:96.0/255.0 blue:39.0/255.0 alpha:1.0]
 #import "FXViewController.h"
-@interface EditShiftVC ()<UITextFieldDelegate,NMTimePickerViewDelegate,UIActionSheetDelegate>{
+@interface EditShiftVC ()<UITextFieldDelegate,NMTimePickerViewDelegate,UIActionSheetDelegate, UIAlertViewDelegate>{
     CDShiftCategory *_shiftCategory;
     NSDate *_startTime;
     NSDate *_endTime;
@@ -60,6 +60,16 @@
     _timePickerView.datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
     
     [self configView];
+    
+    //fix add new
+    if (_typeShift) {
+        self.lbTile.text = @"シフト追加";
+        _backgrounReview.image = [UIImage imageNamed:@"bg_dashed_frame.png"];
+        _reviewCategory.text = @"";
+        
+    } else {
+        self.lbTile.text = @"シフト編集";
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -215,6 +225,22 @@
 
 
 - (IBAction)save:(id)sender {
+    
+    
+    //check textfield
+    if ([[Common trimString:_txtName.text] length] > 2) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:APP_NAME
+                                                        message:TEXT_VALIDATION_NAME_SHIFT_CATEGORY
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
+        [alert show];
+        
+        return;
+    } else {
+        _name = _txtName.text;
+    }
+    
    
     if (!_insertId) {
         
@@ -297,15 +323,24 @@
             break;
     }
 }
+
+
+#pragma mark - UITextViewDelegate
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    
     NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    if ([newString length] > 2) {
-        return NO;
+    if ([newString length] <= 2) {
+        _reviewCategory.text = newString;
     }
-    _reviewCategory.text = newString;
-    _name = newString;
+    
     return YES;
+    
+    
+    _reviewCategory.text = newString;
+//    _name = newString;
+//    return YES;
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
@@ -366,7 +401,7 @@
 }
 
 - (IBAction)delete:(id)sender {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Delete", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"取り消し" destructiveButtonTitle:nil otherButtonTitles:@"削除", nil];
     [actionSheet showInView:self.view];
 
 }
@@ -403,5 +438,16 @@
             break;
     }
 }
+
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    [_txtName becomeFirstResponder];
+}
+
+
+
 
 @end
