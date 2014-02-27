@@ -16,7 +16,6 @@
                 <outlet property="btIsAllTime" destination="3xe-MO-d68" id="SOC-kA-43U"/>
                 <outlet property="btSave" destination="qbl-LL-99E" id="w9N-ed-rdt"/>
                 <outlet property="btStarTime" destination="5Gx-yb-imP" id="Pwo-RH-cth"/>
-                <outlet property="lbName" destination="eT3-yr-6ix" id="vnW-rh-9mY"/>
                 <outlet property="lbTile" destination="oXm-y2-6Dv" id="euj-lv-wN7"/>
                 <outlet property="reviewName" destination="VjB-j0-Keg" id="PW2-G3-DUb"/>
                 <outlet property="textViewContent" destination="gYj-h8-RZc" id="vsR-9S-uEc"/>
@@ -152,8 +151,12 @@
                     <rect key="frame" x="17" y="176" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_dashed_frame.png" id="63i-P1-sSG">
+                    <rect key="frame" x="247" y="70" width="56" height="49"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_review_add_schedule.png" id="Fh4-la-4he">
-                    <rect key="frame" x="250" y="72" width="50" height="43"/>
+                    <rect key="frame" x="250" y="73" width="50" height="43"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="美容院" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VjB-j0-Keg">
@@ -164,7 +167,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1tb-C9-a3i">
-                    <rect key="frame" x="250" y="72" width="50" height="45"/>
+                    <rect key="frame" x="250" y="71" width="50" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal">
@@ -217,8 +220,10 @@
         </view>
     </objects>
     <resources>
+        <image name="bg_dashed_frame.png" width="56" height="49"/>
         <image name="bg_edit_shift_time.png" width="225" height="44"/>
         <image name="bg_review_add_schedule.png" width="56" height="49"/>
+        <image name="ic_bg_bar_button.png" width="75" height="29"/>
         <image name="ic_bg_bar_button.png" width="75" height="29"/>
         <image name="icon_category_add_sc.png" width="19" height="20"/>
         <image name="icon_reminder_add_sc.png" width="15" height="15"/>
