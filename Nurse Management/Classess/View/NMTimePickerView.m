@@ -10,7 +10,9 @@
 
 #define DEFAULT_BACKGROUND_COLOR    [UIColor colorWithRed:215/255.0 green:224/255.0 blue:221/255.0 alpha:1.0]
 #define DEFAULT_COLOR_BAR_BUTTON    [UIColor colorWithRed:30/255.0 green:30/255.0 blue:30/255.0 alpha:1.0]
-#define DEFAULT_FONT_BAR_BUTTON     [UIFont boldSystemFontOfSize:17.0]
+#define DEFAULT_FONT_BAR_BUTTON     [UIFont boldSystemFontOfSize:15.0]
+
+#define DEFAULT_TINT_NAVI_BAR_COLOR [UIColor colorWithRed:101/255.0 green:135/255.0 blue:199/255.0 alpha:1.0]
 
 @interface NMTimePickerView()
 
@@ -38,13 +40,14 @@
         [self.navigationBar pushNavigationItem:navigationItem animated:NO];        
         [self.navigationBar setTintColor:DEFAULT_BACKGROUND_COLOR];
         
-        UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc] initWithTitle:@"肖去" style:UIBarButtonItemStyleBordered target:self action:@selector(tapToCancel)];
+        UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc] initWithTitle:@"肖去" style:UIBarButtonItemStylePlain target:self action:@selector(tapToCancel)];
         NSDictionary *attrTextCancel = [NSDictionary dictionaryWithObjectsAndKeys:
                                     DEFAULT_COLOR_BAR_BUTTON,NSForegroundColorAttributeName,
                                     DEFAULT_FONT_BAR_BUTTON,NSFontAttributeName,
                                     nil];
         [btnCancel setTitleTextAttributes:attrTextCancel
                                                     forState:UIControlStateNormal];
+        [btnCancel setTintColor:DEFAULT_TINT_NAVI_BAR_COLOR];
           
         
         UIBarButtonItem *btnDone = [[UIBarButtonItem alloc] initWithTitle:@"完了" style:UIBarButtonItemStylePlain target:self action:@selector(tapToDone)];
@@ -54,6 +57,7 @@
                                     nil];
         [btnDone setTitleTextAttributes:attrTextDone
                                  forState:UIControlStateNormal];
+        [btnDone setTintColor:DEFAULT_TINT_NAVI_BAR_COLOR];
        
         
         self.navigationBar.topItem.rightBarButtonItems = @[btnDone, btnCancel];

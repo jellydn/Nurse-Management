@@ -124,7 +124,7 @@
     lable.tag = index+TAG_LABEL;
     lable.text = dic[[NSString stringWithFormat:@"%d",index+KEY_VALUE]];
     lable.numberOfLines = 2;
-    lable.font = [UIFont fontWithName:@"Helvetica Neue" size:11];
+    lable.font = [UIFont fontWithName:@"Hiragino Kaku Gothic ProN W3" size:14];
     
     if (stringStatus != nil && [stringStatus integerValue] == 1) {
         lable.textColor = [UIColor whiteColor];
