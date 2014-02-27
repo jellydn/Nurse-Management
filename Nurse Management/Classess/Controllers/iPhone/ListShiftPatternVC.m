@@ -176,6 +176,7 @@
     ShiftCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShiftCell"];
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ShiftCell" owner:self options:nil] lastObject];
+        cell.backgroundColor = [UIColor clearColor];
     }
     CDShiftCategory *cdShiftCategory = [self.fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:indexPath.row];
     cell.lbName.text = cdShiftCategory.name;
