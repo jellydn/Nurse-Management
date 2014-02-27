@@ -330,7 +330,6 @@
     <resources>
         <image name="bg_edit_shift_time.png" width="225" height="44"/>
         <image name="ic_bg_bar_button.png" width="75" height="29"/>
-        <image name="ic_bg_bar_button.png" width="75" height="29"/>
         <image name="ic_edit_shift_color_1.png" width="37" height="46"/>
         <image name="ic_edit_shift_color_10.png" width="37" height="46"/>
         <image name="ic_edit_shift_color_2.png" width="37" height="46"/>
