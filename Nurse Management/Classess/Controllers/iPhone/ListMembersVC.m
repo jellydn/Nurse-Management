@@ -10,6 +10,7 @@
 #import "CDMember.h"
 #import "AddMemberVC.h"
 #import "FXNavigationController.h"
+#import "MemberCell.h"
 
 @interface ListMembersVC () <UITableViewDataSource, UITableViewDelegate, AddMemberDelegate> {
     __weak IBOutlet UIView *_viewNavi;
@@ -22,6 +23,7 @@
 
 - (IBAction)backVC:(id)sender;
 - (IBAction)addMember:(id)sender;
+- (IBAction)switchChanged:(id)sender ;
 
 @end
 
@@ -168,30 +170,20 @@
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-            NSString *cellIdentifier = @"SwitchCell";
-            UITableViewCell* aCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-            if( aCell == nil ) {
-                aCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-            }
-    
 
+    MemberCell *cellR = [tableView dequeueReusableCellWithIdentifier:@"MemberCell"];
+    if (cellR == nil) {
+        cellR = [[NSBundle mainBundle] loadNibNamed:@"MemberCell" owner:self options:nil][0];
+        
+    }
+    
     CDMember *member = [_fetchedResultsControllerMember.fetchedObjects objectAtIndex:indexPath.row];
+    cellR.lbTitle.text                      = member.name;
+    cellR.switchView.on                     = member.isDisplay;
+    cellR.switchView.tag = indexPath.row;
     
-    aCell.textLabel.text = member.name;
     
-    UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
-    aCell.accessoryView = switchView;
-    switchView.tag = indexPath.row;
-    
-    if (member.isDisplay)
-        [switchView setOn:YES animated:NO];
-    else
-        [switchView setOn:NO animated:NO];
-    
-    [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
-
-    return aCell;
+    return cellR;
 }
 
 #pragma mark - UITableViewDelegate
@@ -251,7 +243,7 @@
     }];
 }
 
-- (void) switchChanged:(id)sender {
+- (IBAction)switchChanged:(id)sender {
     UISwitch* switchControl = sender;
     
     if ([_fetchedResultsControllerMember.fetchedObjects objectAtIndex:switchControl.tag]) {

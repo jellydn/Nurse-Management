@@ -33,6 +33,9 @@
 //#define kOFFSET_FOR_KEYBOARD 160.0
 #define kOFFSET_FOR_KEYBOARD 217.0
 #define MEMO_PLACEHOLDER_TEXT    @"メモがあったら入力しよう"
+#define KEYBOARD_SHOW_FIRST     1
+#define KEYBOARD_SHOW_SECOND     2
+
 #define IS_IPHONE_5 (((double)[[UIScreen mainScreen] bounds].size.height) == ((double)568))
 
 @interface AddShiftVC () <UITextViewDelegate, UIActionSheetDelegate, ChooseTimeViewDelegate, AddShiftViewDelegate, NMSelectionStringViewDelegate, NSFetchedResultsControllerDelegate, NMTimePickerViewDelegate>
@@ -70,6 +73,7 @@
     CDShift *_shift;
     
     NSInteger _indexSelectShiftCategory;
+    int _subKeyBoard;
 }
 
 - (IBAction)cancel:(id)sender;
@@ -126,6 +130,7 @@
     _btnEndTime.tag = END_TIME;
     
     _indexSelectShiftCategory = -1;
+    _subKeyBoard = 0;
     
     // init time picker view
     _timePickerView = [[NMTimePickerView alloc] init];
@@ -158,8 +163,8 @@
     } else {
         _shift = [[AppDelegate shared] getShiftWithShiftID:_shiftID];
         [self loadShiftFromCoreData];
-        _btnSave.enabled = YES;
-        _btnSaveAndNext.enabled = YES;
+//        _btnSave.enabled = YES;
+//        _btnSaveAndNext.enabled = YES;
     }
     
 }
@@ -201,7 +206,7 @@
         //move the main view, so that the keyboard does not hide it.
         if  (self.view.frame.origin.y >= 0)
         {
-            [self setViewMovedUp:YES];
+//            [self setViewMovedUp:YES];
         }
         
         if ([textView.text isEqualToString:MEMO_PLACEHOLDER_TEXT]) {
@@ -239,8 +244,8 @@
     _endTime = [Common dateAppenedFromDate:_date andTime:shiftCategory.timeEnd];
     [self setAllDay:_isAllDay];
     
-    _btnSave.enabled = YES;
-    _btnSaveAndNext.enabled = YES;
+//    _btnSave.enabled = YES;
+//    _btnSaveAndNext.enabled = YES;
     
     NSMutableArray *shiftItems = [self convertShiftObject];
     for (ShiftCategoryItem *item in shiftItems)
@@ -314,10 +319,15 @@
 }
 
 - (IBAction)save:(id)sender {
-    [self saveShiftToCoreData];
-    [self.navigationController dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    
+    if (!_shift.fk_shift_category) {
+        [Common showAlert:@"カテゴリを選択してください。" title:@""];
+    } else {
+        [self saveShiftToCoreData];
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }
 }
 
 - (IBAction)chooseShiftCategory:(id)sender {
@@ -365,7 +375,7 @@
         [self clearDataFromUI];
         
     } else
-        [Common showAlert:@"継続してシフトカテゴリを選択してください。" title:@""];
+        [Common showAlert:@"カテゴリを選択してください。" title:@""];
 
 }
 
@@ -437,14 +447,28 @@
 - (void)keyboardWillShow:(NSNotification *)notification {
     NSLog(@"keyboard show");
     
+//    if (_subKeyBoard == 0) {
+//        
+//    } else if (_subKeyBoard == 1) {
+//        
+//    } else if (_subKeyBoard == 2) {
+//        
+//    }
+    
     // Animate the current view out of the way
-    if (self.view.frame.origin.y >= 0)
+    if (self.view.frame.origin.y >= 0 && _subKeyBoard == 0)
     {
-        [self setViewMovedUp:YES];
+        [self setViewMovedUp:YES withOffset:kOFFSET_FOR_KEYBOARD];
+        _subKeyBoard = KEYBOARD_SHOW_FIRST;
     }
     else if (self.view.frame.origin.y < 0)
     {
-        [self setViewMovedUp:NO];
+        if (_subKeyBoard == KEYBOARD_SHOW_FIRST) {
+            [self setViewMovedUp:YES withOffset:30.0];
+            _subKeyBoard = KEYBOARD_SHOW_SECOND;
+        }
+//        else
+//            [self setViewMovedUp:NO];
     }
 }
 
@@ -456,7 +480,11 @@
     }
     else if (self.view.frame.origin.y < 0)
     {
-        [self setViewMovedUp:NO];
+        if (_subKeyBoard == KEYBOARD_SHOW_FIRST)
+            [self setViewMovedUp:NO withOffset:kOFFSET_FOR_KEYBOARD];
+        else
+            [self setViewMovedUp:NO withOffset:kOFFSET_FOR_KEYBOARD + 30.0];
+        _subKeyBoard = 0;
     }
     
 }
@@ -465,7 +493,7 @@
 - (void) configView
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
-    _lbTile.text = [NSString stringWithFormat:@"%d月%d日",[FXCalendarData getDayWithDate:_date], [FXCalendarData getMonthWithDate:_date]];
+    _lbTile.text = [NSString stringWithFormat:@"%d月%d日",[FXCalendarData getMonthWithDate:_date], [FXCalendarData getDayWithDate:_date]];
     [_scrollView setContentOffset:CGPointMake(0.0, 64.0)];
     [_scrollView setContentSize:CGSizeMake(320.0, 510.0)];
 }
@@ -494,6 +522,39 @@
         // revert back to the normal state.
         rect.origin.y += kOFFSET_FOR_KEYBOARD + number;
         rect.size.height -= kOFFSET_FOR_KEYBOARD;
+    }
+    self.view.frame = rect;
+    
+    [UIView commitAnimations];
+}
+
+-(void)setViewMovedUp:(BOOL)movedUp withOffset: (float)keyboardOffset
+{
+    [self.view bringSubviewToFront:_scrollView];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3]; // if you want to slide up the view
+    
+    int number = 0;
+    if (!IS_IPHONE_5)
+        number = 40;
+    
+    CGRect rect = self.view.frame;
+    if (movedUp)
+    {
+        // 1. move the view's origin up so that the text field that will be hidden come above the keyboard
+        // 2. increase the size of the view so that the area behind the keyboard is covered up.
+        
+        if (_subKeyBoard == KEYBOARD_SHOW_FIRST)
+            number = 0;
+        
+        rect.origin.y -= keyboardOffset + number;
+        rect.size.height += keyboardOffset;
+    }
+    else
+    {
+        // revert back to the normal state.
+        rect.origin.y += keyboardOffset + number;
+        rect.size.height -= keyboardOffset;
     }
     self.view.frame = rect;
     
@@ -537,7 +598,6 @@
 - (void) loadChooseTimeView {
     _chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 302, 320 - 15*2, 44)];
     _chooseTimeView.delegate = self;
-//    [_chooseTimeView setStartDate:_date];
     [_chooseTimeView setStartDate:_startTime];
     [_scrollView addSubview:_chooseTimeView];
 }
@@ -546,7 +606,6 @@
     
     _isAllDay = NO;
     [self setAllDay:_isAllDay];
-    _btnSave.enabled = NO;
     _indexSelectShiftCategory = -1;
     _imvShiftCategoryBG.image = [UIImage imageNamed:@""];
     _lblShiftCategoryName.text = @"";
@@ -557,7 +616,7 @@
     _arrAlerts = nil;
     _txvMemo.text = MEMO_PLACEHOLDER_TEXT;
     _txvMemo.textColor = [UIColor lightGrayColor];
-    _btnSaveAndNext.enabled = NO;
+    [_scrollView scrollRectToVisible:CGRectMake(0, 0, 320, _scrollView.frame.size.height) animated:YES];
     
 }
 
@@ -779,8 +838,9 @@
 }
 
 - (void) saveShiftToCoreData {
-    if (_isNewShift)
+    if (_isNewShift) {
         _shift.id = [[AppDelegate shared] lastShiftID] + 1;
+    }
     
     _shift.isAllDay = _isAllDay;
     
@@ -880,12 +940,12 @@
     // shift duration
     if (!_shift.isAllDay) {
         _isAllDay = NO;
+        _startTime = [NSDate dateWithTimeIntervalSince1970:_shift.timeStart];
+        _endTime = [NSDate dateWithTimeIntervalSince1970:_shift.timeEnd];
     } else {
         _isAllDay = YES;
+        [self setDefaultTime];
     }
-    
-    _startTime = [NSDate dateWithTimeIntervalSince1970:_shift.timeStart];
-    _endTime = [NSDate dateWithTimeIntervalSince1970:_shift.timeEnd];
     
     [self setAllDay:_isAllDay];
     
@@ -902,7 +962,6 @@
         [_arrAlerts addObject:[NSDate dateWithTimeIntervalSince1970:shiftAlert.onTime]];
     }
     
-//    [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_date];
     [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_startTime];
     
     if (_shift.memo == nil || [_shift.memo isEqualToString:@""]) {

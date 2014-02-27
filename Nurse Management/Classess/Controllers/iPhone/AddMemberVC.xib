@@ -75,7 +75,7 @@
                     <rect key="frame" x="11" y="72" width="106" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.3411764706" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" id="Lf9-e9-XUR">
@@ -86,6 +86,7 @@
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test" minimumFontSize="17" id="DST-BE-Ztr">
                     <rect key="frame" x="11" y="98" width="298" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.3411764705882353" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
@@ -107,6 +108,7 @@
         </view>
     </objects>
     <resources>
+        <image name="ic_bg_bar_button.png" width="75" height="29"/>
         <image name="ic_bg_bar_button.png" width="75" height="29"/>
     </resources>
 </document>
