@@ -79,7 +79,7 @@
     [_chooseTimeView setStartDate:_selectDate];
     
     [self.view addSubview:_chooseTimeView];
-    [self setDefaultTime];
+    //[self setDefaultTime];
     [self fetchedResultsControllerScheduleCategory];
     
     if ([self.fetchedResultsControllerScheduleCategory.fetchedObjects count] > 0) {
@@ -137,11 +137,21 @@
             NSLog(@"alert: %d --- : %f",item.id, item.onTime);
             [_arrAlerts addObject:[NSDate dateWithTimeIntervalSince1970:item.onTime]];
         }
-        [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_selectDate];
+        
+        [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_scheduleEditItem.timeStart];
 
         
     }else{
         _btDelete.hidden = YES;
+        
+        // set nearest time in roof
+        _startTime = [FXCalendarData dateNexHourFormDate:[NSDate date]];
+        _beginTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+        
+        _endTime = [FXCalendarData dateNexHourFormDate:_startTime];
+        _EndTime.text   = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+        
+        [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_startTime];
     }
 }
 -(void)loadScheduleDate
@@ -256,7 +266,10 @@
                         _getDate,
                         _textViewContent.text];
     
+    
     NSDictionary *info = [NSDictionary dictionaryWithObjects:values forKeys:keys];
+    
+    NSLog(@"aaaaaa: %@",info);
     
     if (_scheduleEditItem) {
         [[AppDelegate shared] editScheduleWithInfo:info scheduleID:_scheduleEditItem.scheduleID];
