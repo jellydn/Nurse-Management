@@ -361,7 +361,6 @@
 		C000F2FC18AF6C2000280464 /* ic_injection_needle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F018AF6C2000280464 /* ic_injection_needle@2x.png */; };
 		C000F2FD18AF6C2000280464 /* ic_memo.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F118AF6C2000280464 /* ic_memo.png */; };
 		C000F2FE18AF6C2000280464 /* ic_memo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C000F2F218AF6C2000280464 /* ic_memo@2x.png */; };
-		C0487D0A18BD903D00077DFA /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0643085218BC4A750098AE85 /* libGoogleAnalyticsServices.a */; };
 		C0AD15E618B4A7C500709E81 /* NMTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AD15E318B4A7C500709E81 /* NMTimePickerView.m */; };
 		C0B2B1D518B44F7000CF4B76 /* CDShiftMember.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1D418B44F7000CF4B76 /* CDShiftMember.m */; };
 		C0B2B1D818B44F7100CF4B76 /* CDScheduleAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B2B1D718B44F7100CF4B76 /* CDScheduleAlert.m */; };
@@ -376,6 +375,7 @@
 		C0DF5DA918BB3D720065E115 /* term-privacy_three.html in Resources */ = {isa = PBXBuildFile; fileRef = C0DF5DA618BB3D720065E115 /* term-privacy_three.html */; };
 		C0DF5DAE18BB3D930065E115 /* TermVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C0DF5DAB18BB3D930065E115 /* TermVC.m */; };
 		C0DF5DAF18BB3D930065E115 /* TermVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0DF5DAC18BB3D930065E115 /* TermVC.xib */; };
+		C931976818BF2DBC0019A96D /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0643085218BC4A750098AE85 /* libGoogleAnalyticsServices.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -842,7 +842,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0487D0A18BD903D00077DFA /* libGoogleAnalyticsServices.a in Frameworks */,
+				C931976818BF2DBC0019A96D /* libGoogleAnalyticsServices.a in Frameworks */,
 				2AC8E6A018BC322A005C47FC /* libz.dylib in Frameworks */,
 				2AC8E69D18BC2E9F005C47FC /* SystemConfiguration.framework in Frameworks */,
 				2A394BCD18A9FD5300F30F2D /* CoreGraphics.framework in Frameworks */,
@@ -2360,6 +2360,7 @@
 					"/Users/indanang/Documents/Repositories/Git/Nurse-Management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
 					"/Users/huynhducdung/Developers/mobile/Nurse\\ Management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
 					"/Volumes/DATA/PhuNQ/iOS/nurse_management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
+					"/Volumes/Data/Projects/Nurse-Management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2380,6 +2381,7 @@
 					"/Users/indanang/Documents/Repositories/Git/Nurse-Management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
 					"/Users/huynhducdung/Developers/mobile/Nurse\\ Management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
 					"/Volumes/DATA/PhuNQ/iOS/nurse_management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
+					"/Volumes/Data/Projects/Nurse-Management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;

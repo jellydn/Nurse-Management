@@ -215,7 +215,7 @@
     }];
 }
 - (IBAction)delete:(id)sender {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Delete", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"取り消し" destructiveButtonTitle:nil otherButtonTitles:@"削除", nil];
     [actionSheet showInView:self.view];
 }
 #pragma mark - UIActionSheetDelegate
