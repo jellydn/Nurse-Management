@@ -543,7 +543,6 @@
 - (void) loadChooseTimeView {
     _chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 302, 320 - 15*2, 44)];
     _chooseTimeView.delegate = self;
-//    [_chooseTimeView setStartDate:_date];
     [_chooseTimeView setStartDate:_startTime];
     [_scrollView addSubview:_chooseTimeView];
 }
@@ -552,7 +551,6 @@
     
     _isAllDay = NO;
     [self setAllDay:_isAllDay];
-//    _btnSave.enabled = NO;
     _indexSelectShiftCategory = -1;
     _imvShiftCategoryBG.image = [UIImage imageNamed:@""];
     _lblShiftCategoryName.text = @"";
@@ -563,7 +561,7 @@
     _arrAlerts = nil;
     _txvMemo.text = MEMO_PLACEHOLDER_TEXT;
     _txvMemo.textColor = [UIColor lightGrayColor];
-//    _btnSaveAndNext.enabled = NO;
+    [_scrollView scrollRectToVisible:CGRectMake(0, 0, 320, _scrollView.frame.size.height) animated:YES];
     
 }
 
