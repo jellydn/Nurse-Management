@@ -48,12 +48,6 @@
 {
     [super viewDidLoad];
     
-    if (_typeShift) {
-        self.lbTile.text = @"シフト追加";
-    } else {
-        self.lbTile.text = @"シフト編集";
-    }
-    
     _btnBeginTime.tag = START_TIME;
     _btnEndTime.tag = END_TIME;
 
@@ -66,6 +60,16 @@
     _timePickerView.datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
     
     [self configView];
+    
+    //fix add new
+    if (_typeShift) {
+        self.lbTile.text = @"シフト追加";
+        _backgrounReview.image = [UIImage imageNamed:@"bg_dashed_frame.png"];
+        _reviewCategory.text = @"";
+        
+    } else {
+        self.lbTile.text = @"シフト編集";
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
