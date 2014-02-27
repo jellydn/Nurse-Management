@@ -156,7 +156,6 @@
         _txvMemo.textColor = [UIColor lightGrayColor];
         
     } else {
-        
         _shift = [[AppDelegate shared] getShiftWithShiftID:_shiftID];
         [self loadShiftFromCoreData];
         _btnSave.enabled = YES;
