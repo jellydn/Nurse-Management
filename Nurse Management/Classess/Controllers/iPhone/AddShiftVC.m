@@ -159,8 +159,8 @@
         
         _shift = [[AppDelegate shared] getShiftWithShiftID:_shiftID];
         [self loadShiftFromCoreData];
-        _btnSave.enabled = YES;
-        _btnSaveAndNext.enabled = YES;
+//        _btnSave.enabled = YES;
+//        _btnSaveAndNext.enabled = YES;
     }
     
 }
@@ -240,8 +240,8 @@
     _endTime = [Common dateAppenedFromDate:_date andTime:shiftCategory.timeEnd];
     [self setAllDay:_isAllDay];
     
-    _btnSave.enabled = YES;
-    _btnSaveAndNext.enabled = YES;
+//    _btnSave.enabled = YES;
+//    _btnSaveAndNext.enabled = YES;
     
     NSMutableArray *shiftItems = [self convertShiftObject];
     for (ShiftCategoryItem *item in shiftItems)
@@ -315,10 +315,15 @@
 }
 
 - (IBAction)save:(id)sender {
-    [self saveShiftToCoreData];
-    [self.navigationController dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    
+    if (!_shift.fk_shift_category) {
+        [Common showAlert:@"カテゴリを選択してください。" title:@""];
+    } else {
+        [self saveShiftToCoreData];
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }
 }
 
 - (IBAction)chooseShiftCategory:(id)sender {
@@ -366,7 +371,7 @@
         [self clearDataFromUI];
         
     } else
-        [Common showAlert:@"継続してシフトカテゴリを選択してください。" title:@""];
+        [Common showAlert:@"カテゴリを選択してください。" title:@""];
 
 }
 
@@ -466,7 +471,7 @@
 - (void) configView
 {
     _viewNavi.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
-    _lbTile.text = [NSString stringWithFormat:@"%d月%d日",[FXCalendarData getDayWithDate:_date], [FXCalendarData getMonthWithDate:_date]];
+    _lbTile.text = [NSString stringWithFormat:@"%d月%d日",[FXCalendarData getMonthWithDate:_date], [FXCalendarData getDayWithDate:_date]];
     [_scrollView setContentOffset:CGPointMake(0.0, 64.0)];
     [_scrollView setContentSize:CGSizeMake(320.0, 510.0)];
 }
@@ -547,7 +552,7 @@
     
     _isAllDay = NO;
     [self setAllDay:_isAllDay];
-    _btnSave.enabled = NO;
+//    _btnSave.enabled = NO;
     _indexSelectShiftCategory = -1;
     _imvShiftCategoryBG.image = [UIImage imageNamed:@""];
     _lblShiftCategoryName.text = @"";
@@ -558,7 +563,7 @@
     _arrAlerts = nil;
     _txvMemo.text = MEMO_PLACEHOLDER_TEXT;
     _txvMemo.textColor = [UIColor lightGrayColor];
-    _btnSaveAndNext.enabled = NO;
+//    _btnSaveAndNext.enabled = NO;
     
 }
 
@@ -780,8 +785,9 @@
 }
 
 - (void) saveShiftToCoreData {
-    if (_isNewShift)
+    if (_isNewShift) {
         _shift.id = [[AppDelegate shared] lastShiftID] + 1;
+    }
     
     _shift.isAllDay = _isAllDay;
     
@@ -903,7 +909,6 @@
         [_arrAlerts addObject:[NSDate dateWithTimeIntervalSince1970:shiftAlert.onTime]];
     }
     
-//    [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_date];
     [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_startTime];
     
     if (_shift.memo == nil || [_shift.memo isEqualToString:@""]) {
