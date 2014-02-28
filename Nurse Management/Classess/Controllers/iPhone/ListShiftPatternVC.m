@@ -188,6 +188,8 @@
         cell.lbShift.text = [NSString stringWithFormat:@"%@～%@",cdShiftCategory.timeStart, cdShiftCategory.timeEnd];
     }
     
+    cell.lbName.textColor = [UIColor colorWithRed:91/255.0 green:80/255.0 blue:77/255.0 alpha:1.0];
+    
     // set image
     if ([cdShiftCategory.color isEqualToString:@"color0"]) {
         cell.iconShift.image = [UIImage imageNamed:@"icon_r1_c1.png"];
@@ -212,15 +214,18 @@
     else
     if ([cdShiftCategory.color isEqualToString:@"color5"]) {
        cell.iconShift.image = [UIImage imageNamed:@"icon_r3_c1.png"];
+        cell.lbName.textColor =  [UIColor whiteColor];
     }
     else
     if ([cdShiftCategory.color isEqualToString:@"color6"])
     {
         cell.iconShift.image = [UIImage imageNamed:@"icon_r3_c3.png"];
+        cell.lbName.textColor =  [UIColor whiteColor];
     }
     else
     if ([cdShiftCategory.color isEqualToString:@"color7"]) {
         cell.iconShift.image = [UIImage imageNamed:@"icon_r3_c5.png"];
+        cell.lbName.textColor =  [UIColor whiteColor];
     }
     else
     if ([cdShiftCategory.color isEqualToString:@"color8"]) {
