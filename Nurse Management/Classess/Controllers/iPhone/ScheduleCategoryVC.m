@@ -84,6 +84,11 @@
     if (cellR == nil) {
         cellR = [[NSBundle mainBundle] loadNibNamed:@"ScheduleCategoryCell" owner:self options:nil][0];
         
+        if (![Common isIOS7]) {
+            CGRect rect             = cellR.lbTitle.frame;
+            rect.origin.y           += 4;
+            cellR.lbTitle.frame     = rect;
+        }
     }
     
     CDScheduleCategory *scheduleCategory    = [_fetchedResultsControllerScheduleCategory.fetchedObjects objectAtIndex:indexPath.row];

@@ -174,7 +174,11 @@
     MemberCell *cellR = [tableView dequeueReusableCellWithIdentifier:@"MemberCell"];
     if (cellR == nil) {
         cellR = [[NSBundle mainBundle] loadNibNamed:@"MemberCell" owner:self options:nil][0];
-        
+        if (![Common isIOS7]) {
+            CGRect rect             = cellR.lbTitle.frame;
+            rect.origin.y           += 4;
+            cellR.lbTitle.frame     = rect;
+        }
     }
     
     CDMember *member = [_fetchedResultsControllerMember.fetchedObjects objectAtIndex:indexPath.row];

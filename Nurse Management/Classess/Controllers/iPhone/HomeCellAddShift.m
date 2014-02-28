@@ -80,7 +80,7 @@
         
         //load member
         if ([shift.pk_shift count] == 0) {
-            _lbMember.text = @"0 members";
+            _lbMember.text = @"";
         } else {
             _lbMember.text = @"";
             for (CDMember *item in shift.pk_shift) {
@@ -100,7 +100,7 @@
         //load alert
 //        _lbAlert.text = [NSString stringWithFormat:@"%d alerts",(int)[shift.pk_shiftalert count]];
         if ([shift.pk_shiftalert count] == 0)
-            _lbAlert.text = @"0 alerts";
+            _lbAlert.text = @"";
         else {
             int count = 0;
             _lbAlert.text = @"";
