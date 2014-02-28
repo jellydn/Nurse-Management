@@ -139,7 +139,9 @@
             <connections>
                 <outlet property="btAdd" destination="J21-CG-uo7" id="Gum-on-Bhd"/>
                 <outlet property="btEdit" destination="ubm-wA-QNY" id="FD7-nw-aOY"/>
+                <outlet property="imgAlertIcon" destination="iRZ-gE-YWE" id="h9H-KT-zNj"/>
                 <outlet property="imgCategory" destination="OuH-1Z-81P" id="j1v-lz-nz6"/>
+                <outlet property="imgMemberIcon" destination="Jgq-QD-Pya" id="KNP-wy-9v6"/>
                 <outlet property="lbAlert" destination="Lxz-JB-i1S" id="KXJ-mv-uHQ"/>
                 <outlet property="lbCategoryName" destination="nLq-Cl-p1g" id="el5-Tu-LpC"/>
                 <outlet property="lbDay" destination="KHL-2E-szv" id="aQS-wp-po6"/>

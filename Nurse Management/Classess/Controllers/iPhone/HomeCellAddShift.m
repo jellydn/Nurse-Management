@@ -81,6 +81,7 @@
         //load member
         if ([shift.pk_shift count] == 0) {
             _lbMember.text = @"";
+            _imgMemberIcon.hidden = YES;
         } else {
             _lbMember.text = @"";
             for (CDMember *item in shift.pk_shift) {
@@ -93,6 +94,8 @@
                 _lbMember.text = [_lbMember.text substringToIndex:[_lbMember.text length] - 1];
             }
             
+            _imgMemberIcon.hidden = NO;
+            
         }
         
         
@@ -100,7 +103,10 @@
         //load alert
 //        _lbAlert.text = [NSString stringWithFormat:@"%d alerts",(int)[shift.pk_shiftalert count]];
         if ([shift.pk_shiftalert count] == 0)
+        {
             _lbAlert.text = @"";
+            _imgAlertIcon.hidden = YES;
+        }
         else {
             int count = 0;
             _lbAlert.text = @"";
@@ -118,6 +124,8 @@
                 }
                 count++;
             }
+            
+            _imgAlertIcon.hidden = NO;
         }
         
     } else {

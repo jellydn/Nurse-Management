@@ -40,7 +40,7 @@
         [self.navigationBar pushNavigationItem:navigationItem animated:NO];        
         [self.navigationBar setTintColor:DEFAULT_BACKGROUND_COLOR];
         
-        UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc] initWithTitle:@"肖去" style:UIBarButtonItemStylePlain target:self action:@selector(tapToCancel)];
+        UIBarButtonItem *btnCancel = [[UIBarButtonItem alloc] initWithTitle:@"消去" style:UIBarButtonItemStylePlain target:self action:@selector(tapToCancel)];
         NSDictionary *attrTextCancel = [NSDictionary dictionaryWithObjectsAndKeys:
                                     DEFAULT_COLOR_BAR_BUTTON,NSForegroundColorAttributeName,
                                     DEFAULT_FONT_BAR_BUTTON,NSFontAttributeName,
