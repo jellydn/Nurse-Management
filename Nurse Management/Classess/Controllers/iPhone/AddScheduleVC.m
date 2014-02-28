@@ -33,7 +33,7 @@
     NSMutableArray *_arrAlerts;
     ChooseTimeView *_chooseTimeView;
     CDSchedule *_schedule;
-    BOOL _isShowAddScheduleView;
+    BOOL _isShowAddScheduleView, _isSeletedCategory, _isAddNew;
 }
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsControllerScheduleCategory;
 
@@ -85,10 +85,10 @@
     if ([self.fetchedResultsControllerScheduleCategory.fetchedObjects count] > 0) {
         CDScheduleCategory *scheduleCategory = self.fetchedResultsControllerScheduleCategory.fetchedObjects[0];
         _getIDScheduleCategory = scheduleCategory.id;
-        _lbName.text     = scheduleCategory.name;
-        _reviewName.text = scheduleCategory.name;
-        ScheduleCategoryItem *item = [ScheduleCategoryItem convertForCDObject:scheduleCategory];
-        _bgReview.image = [UIImage imageNamed:item.image];
+//        _lbName.text     = scheduleCategory.name;
+//        _reviewName.text = scheduleCategory.name;
+//        ScheduleCategoryItem *item = [ScheduleCategoryItem convertForCDObject:scheduleCategory];
+//        _bgReview.image = [UIImage imageNamed:item.image];
         
     }
 
@@ -143,6 +143,8 @@
         
     }else{
         _btDelete.hidden = YES;
+        _isAddNew = YES;
+        _isSeletedCategory = NO;
         
         // set nearest time in roof
         _startTime = [FXCalendarData dateNexHourFormDate:[NSDate date]];
@@ -250,6 +252,12 @@
     }
 }
 - (IBAction)saveData:(id)sender {
+    
+    if (_isAddNew && !_isSeletedCategory) {
+        [Common showAlert:@"Please, choice schedule category." title:APP_NAME];
+        return;
+    }
+    
     NSArray *keys = @[@"schedule_category_id",
                       @"start_time",
                       @"end_time",
@@ -378,6 +386,8 @@
 
 - (void) didSelectCategory:(AddScheduleView*)addScheduleView categoryID:(int)categoryID
 {
+    _isSeletedCategory = YES;
+    
     _getIDScheduleCategory = categoryID;
     AppDelegate *appdelagate = [AppDelegate shared];
     CDScheduleCategory *scheduleCategory = [appdelagate getScheduleCategoryWithID:categoryID];
