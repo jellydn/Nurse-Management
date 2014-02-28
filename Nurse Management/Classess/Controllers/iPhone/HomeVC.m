@@ -886,8 +886,8 @@
         {
             int month = [FXCalendarData getMonthWithDate:_selectDate];
             
-            NSString *emailTitle = [NSString stringWithFormat:@"%d月の勤務", month];
-            NSString *messageBody = [NSString stringWithFormat:@"%d月の勤務表を送ります", month];
+            NSString *emailTitle = [NSString stringWithFormat:@"%d月のシフト", month];
+            NSString *messageBody = [NSString stringWithFormat:@"%d月のシフト表を送ります", month];
 //            NSArray *toRecipents = [NSArray arrayWithObject:@"support@appcoda.com"];
             
             MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
@@ -1017,7 +1017,7 @@
             break;
         case MFMailComposeResultSent:
             NSLog(@"Mail sent");
-            [Common showAlert:@"メールが送信された。" title:@""];
+            [Common showAlert:@"メールが送信されました。" title:@""];
             break;
         case MFMailComposeResultFailed:
             NSLog(@"Mail sent failure: %@", [error localizedDescription]);
@@ -1035,7 +1035,7 @@
     if (error)
         [Common showAlert:[NSString stringWithFormat:@"エラー： %@", [error localizedDescription]] title:@""];
     else
-        [Common showAlert:@"写真が保存された。" title:@""];
+        [Common showAlert:@"画像が保存されました。" title:@""];
 }
 
 #pragma mark - Action
