@@ -543,8 +543,22 @@
     NSLog(@"send mail");
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"シフトカレンダーをシェア" delegate:self cancelButtonTitle:@"キャンセル" destructiveButtonTitle:nil otherButtonTitles:@"シフトをメールで送信", @"シフトをLINEで送信", @"カレンダー画像を保存", @"カレンダー画像をLINEで送信", nil];
+    
     [actionSheet showInView:self.view];
 
+}
+
+- (void)willPresentActionSheet:(UIActionSheet *)actionSheet {
+    for (UIView *_currentView in actionSheet.subviews) {
+        if ([_currentView isKindOfClass:[UILabel class]]) {
+            UILabel *lb = ((UILabel *)_currentView);
+            [lb setFont:[UIFont boldSystemFontOfSize:20.f]];
+            
+            CGRect rect = lb.frame;
+            rect.size.height += 25;
+            lb.frame = rect;
+        }
+    }
 }
 
 #pragma mark - HomeToolBarViewDelegate 
