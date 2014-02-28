@@ -11,6 +11,7 @@
 @interface ScheduleCategoryCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel    *lbTitle;
+@property (nonatomic, weak) IBOutlet UITextView    *tvTitle;
 @property (nonatomic, weak) IBOutlet UISwitch   *switchView;
 
 @end

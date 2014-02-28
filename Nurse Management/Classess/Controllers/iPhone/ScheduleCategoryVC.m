@@ -88,11 +88,18 @@
             CGRect rect             = cellR.lbTitle.frame;
             rect.origin.y           += 4;
             cellR.lbTitle.frame     = rect;
+            
+            cellR.tvTitle.hidden = YES;
+            cellR.lbTitle.hidden = NO;
+        } else {
+            cellR.tvTitle.hidden = NO;
+            cellR.lbTitle.hidden = YES;
         }
     }
     
     CDScheduleCategory *scheduleCategory    = [_fetchedResultsControllerScheduleCategory.fetchedObjects objectAtIndex:indexPath.row];
-    cellR.lbTitle.text                      = scheduleCategory.name;
+    cellR.lbTitle.text  = scheduleCategory.name;
+    cellR.tvTitle.text  = scheduleCategory.name;
     cellR.switchView.on                     = scheduleCategory.isEnable;
     cellR.switchView.tag = indexPath.row;
     
