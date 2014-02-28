@@ -82,7 +82,8 @@
         lable.tag = i+TAG_LABEL;
         lable.text = arr[i];
         lable.numberOfLines = 2;
-        lable.font = [UIFont fontWithName:@"Hiragino Kaku Gothic ProN W3" size:10];
+        //lable.font = [UIFont fontWithName:@"Hiragino Kaku Gothic ProN W3" size:10];
+        lable.font = [UIFont fontWithName:@"Futura" size:12.2];
         
         if (stringStatus != nil && [stringStatus integerValue] == 1) {
             
