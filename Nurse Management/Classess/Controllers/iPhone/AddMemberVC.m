@@ -8,6 +8,7 @@
 
 #import "AddMemberVC.h"
 #import "CDMember.h"
+#import "Common.h"
 
 @interface AddMemberVC () <UIActionSheetDelegate, UITextFieldDelegate> {
     
@@ -18,7 +19,6 @@
     __weak IBOutlet UIButton *_btnSave;
     
     CDMember *_member;
-    
     
 }
 
@@ -78,18 +78,18 @@
 
 #pragma mark - UITextfieldDelegate
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    NSString *str = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    NSInteger len = [str length];
-    
-    if (len > 0)
-        _btnSave.enabled = YES;
-    else
-        _btnSave.enabled = NO;
-    
-    return YES;
-}
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+//{
+//    NSString *str = [textField.text stringByReplacingCharactersInRange:range withString:string];
+//    NSInteger len = [str length];
+//    
+//    if (len > 0)
+//        _btnSave.enabled = YES;
+//    else
+//        _btnSave.enabled = NO;
+//    
+//    return YES;
+//}
 
 #pragma mark - Actions
 
@@ -100,12 +100,17 @@
 }
 
 - (IBAction)save:(id)sender {
-    if (!_insertId)
-        _member.name = _txfName.text;
-    [_delegate saveMemberName:_txfName.text andInsertId:_insertId];
-    [self.navigationController dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    if (![_txfName.text isEqualToString:@""]) {
+        if (!_insertId)
+            _member.name = _txfName.text;
+        [_delegate saveMemberName:_txfName.text andInsertId:_insertId];
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    } else {
+        [Common showAlert:@"名前を入力してください。" title:@""];
+    }
+    
 }
 
 - (IBAction)delete:(id)sender {
@@ -125,7 +130,7 @@
         _txfName.text = @"";
         _txfName.placeholder = @"A看護師長";
         _btnDelete.hidden = YES;
-        _btnSave.enabled = NO;
+//        _btnSave.enabled = NO;
         
     } else {
         
