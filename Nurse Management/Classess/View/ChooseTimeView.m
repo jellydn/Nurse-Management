@@ -59,7 +59,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    NSArray *arr = @[@"on time",@"15 minutes",@"30 minutes",@"1 hour",@"2 hours",@"choose time"];
+    NSArray *arr = @[@"on time",@"15 minutes",@"30 minutes",@"1    hour",@"2    hours",@"choose time"];
     float deltal = (rect.size.width - WIDTH_ITEM * NUMBER_OF_ITEM)/(NUMBER_OF_ITEM - 1);
     for (int i = 0; i < NUMBER_OF_ITEM; i++) {
         
