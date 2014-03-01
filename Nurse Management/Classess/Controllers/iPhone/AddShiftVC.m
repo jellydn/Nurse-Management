@@ -371,7 +371,7 @@
             _shift = nil;
         _shift = [NSEntityDescription insertNewObjectForEntityForName:ENTITY_SHIFT inManagedObjectContext:[AppDelegate shared].managedObjectContext];
         _date = [FXCalendarData nextDateFrom:_date];
-        _lbTile.text = [NSString stringWithFormat:@"%d月%d日",[FXCalendarData getDayWithDate:_date], [FXCalendarData getMonthWithDate:_date]];
+        _lbTile.text = [NSString stringWithFormat:@"%d月%d日", [FXCalendarData getMonthWithDate:_date], [FXCalendarData getDayWithDate:_date]];
         [self clearDataFromUI];
         
     } else

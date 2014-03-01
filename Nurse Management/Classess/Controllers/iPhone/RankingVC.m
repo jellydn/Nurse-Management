@@ -77,6 +77,13 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    
+    if ( navigationType == UIWebViewNavigationTypeLinkClicked ) {
+        //NSLog(@"url : %@",[[request URL] absoluteString] );
+        [[UIApplication sharedApplication] openURL:[request URL]];
+        return NO;
+    }
+    
     return YES;
     
 }
