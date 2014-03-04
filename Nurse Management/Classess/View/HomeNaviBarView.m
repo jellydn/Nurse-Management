@@ -34,15 +34,15 @@
 
 - (void) initNavi
 {
-    for(NSString *fontfamilyname in [UIFont familyNames])
-    {
-        NSLog(@"family:'%@'",fontfamilyname);
-        for(NSString *fontName in [UIFont fontNamesForFamilyName:fontfamilyname])
-        {
-            NSLog(@"\tfont:'%@'",fontName);
-        }
-        NSLog(@"-------------");
-    }
+//    for(NSString *fontfamilyname in [UIFont familyNames])
+//    {
+//        NSLog(@"family:'%@'",fontfamilyname);
+//        for(NSString *fontName in [UIFont fontNamesForFamilyName:fontfamilyname])
+//        {
+//            NSLog(@"\tfont:'%@'",fontName);
+//        }
+//        NSLog(@"-------------");
+//    }
     
     NSDictionary *fonts = [[FXThemeManager shared].themeData objectForKey:@"fonts"];
     NSString *fontName = [fonts objectForKey:@"navi"];
