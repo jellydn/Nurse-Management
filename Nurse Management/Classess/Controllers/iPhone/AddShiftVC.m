@@ -297,8 +297,11 @@
     if (done) {
         if (picker.datePicker.tag == START_TIME) {
             
-            _startTime = picker.datePicker.date;
-            _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+            _startTime          = picker.datePicker.date;
+            _lblStartTime.text  = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+            
+            _endTime            = [FXCalendarData dateNexHourFormDateNoTrimMin:picker.datePicker.date];
+            _lblEndTime.text    = [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
             
         } else if (picker.datePicker.tag == END_TIME) {
             

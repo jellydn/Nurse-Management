@@ -200,6 +200,9 @@
             
             _startTime = picker.datePicker.date;
             _txtBeginTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+            
+            _endTime            = [FXCalendarData dateNexHourFormDateNoTrimMin:picker.datePicker.date];
+            _txtEndTime.text    = [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
        
         } else if (picker.datePicker.tag == END_TIME) {
             

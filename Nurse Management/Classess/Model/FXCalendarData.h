@@ -44,6 +44,7 @@
 + (NSDate*) prevDateFrom:(NSDate*)date;
 + (NSDate*) saturdayOfWeek:(NSDate*)date;
 + (NSDate*) dateNexHourFormDate:(NSDate*)date;
++ (NSDate*) dateNexHourFormDateNoTrimMin:(NSDate*)date;
 + (NSDate*) dateWithSetHourWithHour:(NSInteger)hour date:(NSDate*)date;
 + (NSDate*) trimSecOfDateWithDate:(NSDate*)date;
 
