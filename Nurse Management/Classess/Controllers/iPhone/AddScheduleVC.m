@@ -254,7 +254,7 @@
 - (IBAction)saveData:(id)sender {
     
     if (_isAddNew && !_isSeletedCategory) {
-        [Common showAlert:@"Please, choice schedule category." title:APP_NAME];
+        [Common showAlert:@"スケジュールカテゴリーを選択してください。" title:APP_NAME];
         return;
     }
     

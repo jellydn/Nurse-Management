@@ -177,6 +177,12 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ShiftCell" owner:self options:nil] lastObject];
         cell.backgroundColor = [UIColor clearColor];
+        
+        if(![Common isIOS7]){
+            CGRect rect = cell.lbName.frame;
+            rect.origin.y += 3;
+            cell.lbName.frame = rect;
+        }
     }
     CDShiftCategory *cdShiftCategory = [self.fetchedResultsControllerShiftCategory.fetchedObjects objectAtIndex:indexPath.row];
     cell.lbName.text = cdShiftCategory.name;

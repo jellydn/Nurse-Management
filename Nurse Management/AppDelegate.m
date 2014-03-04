@@ -610,7 +610,7 @@ static NSString *const kAllowTracking   = @"allowTracking";
                 
                 localNotification.fireDate                      = date;
                 localNotification.alertBody                     = [NSString stringWithFormat:@"Schedule on %@",
-                                                                   [Common convertTimeToStringWithFormat:@"MMM dd, yyyy" date:date]];
+                                                                   [Common convertTimeToStringWithFormat:@"M月d日, yyyy" date:date]];
                 localNotification.applicationIconBadgeNumber    = 0;
                 localNotification.soundName                     = UILocalNotificationDefaultSoundName;
                 localNotification.userInfo                      = info;
