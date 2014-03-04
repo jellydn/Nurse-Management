@@ -99,6 +99,16 @@
                     <rect key="frame" x="0.0" y="105" width="320" height="56"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <view contentMode="scaleToFill" id="spa-PI-gxq">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.73471380740000003" green="0.55772764590000001" blue="0.23009856400000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="qjW-OL-oIT">
+                            <rect key="frame" x="0.0" y="55" width="320" height="1"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.73471380740000003" green="0.55772764590000001" blue="0.23009856400000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_r1_c1.png" id="OLh-hY-dzl">
                             <rect key="frame" x="256" y="5" width="57" height="46"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -148,6 +158,16 @@
                     <rect key="frame" x="0.0" y="285" width="320" height="149"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <view contentMode="scaleToFill" id="66t-Pd-Nbs">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.73471380740000003" green="0.55772764590000001" blue="0.23009856400000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="pJm-mZ-JOR">
+                            <rect key="frame" x="0.0" y="148" width="320" height="1"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.73471380740000003" green="0.55772764590000001" blue="0.23009856400000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IY6-u1-tzr">
                             <rect key="frame" x="13" y="10" width="46" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -329,6 +349,7 @@
     </objects>
     <resources>
         <image name="bg_edit_shift_time.png" width="225" height="44"/>
+        <image name="ic_bg_bar_button.png" width="75" height="29"/>
         <image name="ic_bg_bar_button.png" width="75" height="29"/>
         <image name="ic_edit_shift_color_1.png" width="37" height="46"/>
         <image name="ic_edit_shift_color_10.png" width="37" height="46"/>

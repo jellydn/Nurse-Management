@@ -438,6 +438,10 @@
             _lbTimeStart.text   = [Common convertTimeToStringWithFormat:@"HH:mm" date:_datePicker.date];
             _dateTimeStart      = _datePicker.date;
             [_chooseTimeView setStartDate:_datePicker.date];
+            
+            _dateTimeEnd        = [FXCalendarData dateNexHourFormDateNoTrimMin:_datePicker.date];
+            _lbTimeEnd.text   = [Common convertTimeToStringWithFormat:@"HH:mm" date:_dateTimeEnd];
+            
         } else {
             _lbTimeEnd.text     = [Common convertTimeToStringWithFormat:@"HH:mm" date:_datePicker.date];
             _dateTimeEnd        = _datePicker.date;
