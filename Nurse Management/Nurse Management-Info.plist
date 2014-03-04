@@ -54,5 +54,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Giddyup-Std.otf</string>
+		<string>Bernie-Condensed Normal.ttf</string>
+		<string>Bernie-Condensed Bold.ttf</string>
+	</array>
 </dict>
 </plist>

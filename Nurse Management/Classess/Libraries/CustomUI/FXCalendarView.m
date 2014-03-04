@@ -37,6 +37,22 @@
         _headerView.backgroundColor = [[FXThemeManager shared] getColorWithKey:_fxThemeColorCalendarHeader];
     }
     
+    NSDictionary *fonts = [[FXThemeManager shared].themeData objectForKey:@"fonts"];
+    NSString *fontName = [fonts objectForKey:@"navi"];
+    if (fontName && ![fontName isEqualToString:@""]) {
+        int size = [[fonts objectForKey:@"calendarSize"] integerValue];
+        
+        NSLog(@"font name: %@ --- size: %d", fontName, size);
+        
+        for (UILabel *lb in _headerViewSunday.subviews) {
+            lb.font = [UIFont fontWithName:fontName size:size];
+        }
+        
+        for (UILabel *lb in _headerViewMonday.subviews) {
+            lb.font = [UIFont fontWithName:fontName size:size];
+        }
+    }
+    
     //set first of calendar
     if ([[NSUserDefaults standardUserDefaults] objectForKey:FIRST_OF_CALENDAR]) {
         
@@ -334,6 +350,24 @@
 
 - (void) reloadTheme
 {
+    
+    NSDictionary *fonts = [[FXThemeManager shared].themeData objectForKey:@"fonts"];
+    NSString *fontName = [fonts objectForKey:@"navi"];
+    if (fontName && ![fontName isEqualToString:@""]) {
+        
+        int size = [[fonts objectForKey:@"calendarSize"] integerValue];
+        
+        NSLog(@"font name: %@ --- size: %d", fontName, size);
+        
+        for (UILabel *lb in _headerViewSunday.subviews) {
+            lb.font = [UIFont fontWithName:fontName size:size];
+        }
+        
+        for (UILabel *lb in _headerViewMonday.subviews) {
+            lb.font = [UIFont fontWithName:fontName size:size];
+        }
+    }
+    
     //set theme for header
     if ([[FXThemeManager shared] getImageWithKey:_fxThemeImageCalendarHeader]) {
         _headerView.backgroundColor = [[UIColor alloc] initWithPatternImage:[[FXThemeManager shared] getImageWithKey:_fxThemeImageCalendarHeader]];

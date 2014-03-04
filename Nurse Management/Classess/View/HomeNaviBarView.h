@@ -22,6 +22,7 @@
 - (IBAction)sendMail:(id)sender;
 
 - (void) setTitleWithDay:(NSInteger)day month:(NSInteger)month year:(NSInteger)year;
+- (void) initNavi;
 
 @end
 

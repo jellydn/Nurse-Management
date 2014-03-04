@@ -7,6 +7,7 @@
 //
 
 #import "HomeNaviBarView.h"
+#import "FXThemeManager.h"
 
 @interface HomeNaviBarView ()
 
@@ -31,10 +32,42 @@
     }
 }
 
+- (void) initNavi
+{
+    for(NSString *fontfamilyname in [UIFont familyNames])
+    {
+        NSLog(@"family:'%@'",fontfamilyname);
+        for(NSString *fontName in [UIFont fontNamesForFamilyName:fontfamilyname])
+        {
+            NSLog(@"\tfont:'%@'",fontName);
+        }
+        NSLog(@"-------------");
+    }
+    
+    NSDictionary *fonts = [[FXThemeManager shared].themeData objectForKey:@"fonts"];
+    NSString *fontName = [fonts objectForKey:@"navi"];
+    
+    if (fontName && ![fontName isEqualToString:@""]) {
+        int size = [[fonts objectForKey:@"naviSize"] integerValue];
+        
+         NSLog(@"font name: %@ --- size: %d", fontName, size);
+        
+        //_lbDay.font     = [UIFont fontWithName:fontName size:15];
+        _lbMonth.font   = [UIFont fontWithName:fontName size:size];
+        //_lbYear.font    = [UIFont fontWithName:fontName size:15];
+        
+    } else {
+        NSLog(@"User fonts default");
+    }
+}
+
 #pragma mark - Public method
 
 - (void) setTitleWithDay:(NSInteger)day month:(NSInteger)month year:(NSInteger)year
 {
+    
+    
+    
     _lbDay.text = [NSString stringWithFormat:@"%ld",(long)month];
     _lbYear.text = [NSString stringWithFormat:@"%ld",(long)year];
     

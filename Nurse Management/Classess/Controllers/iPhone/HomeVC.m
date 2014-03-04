@@ -443,6 +443,7 @@
                                                                options:nil][0];
     _naviView.delegate           = self;
     _naviView.frame              = CGRectMake(0, detalIOS, 320, 64);
+    [_naviView initNavi];
     _naviView.backgroundColor    = [[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar];
     
     [self.view addSubview:_naviView];
