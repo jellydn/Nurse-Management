@@ -640,10 +640,10 @@
         _btnAllDay.backgroundColor = ALERT_BG_COLOR;
         _btnStartTime.enabled = NO;
         _lblStartTime.textColor = [UIColor grayColor];
-        _lblStartTime.text = @"00:00";
+        _lblStartTime.text = [Common convertTimeToStringWithFormat:@"M月d日" date:_date];
         _btnEndTime.enabled = NO;
         _lblEndTime.textColor = [UIColor grayColor];
-        _lblEndTime.text = @"24:00";
+        _lblEndTime.text = [Common convertTimeToStringWithFormat:@"M月d日" date:_date];;
         
     } else {
         
@@ -944,6 +944,7 @@
         _endTime = [NSDate dateWithTimeIntervalSince1970:_shift.timeEnd];
     } else {
         _isAllDay = YES;
+        
         [self setDefaultTime];
     }
     

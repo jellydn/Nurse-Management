@@ -121,8 +121,8 @@
         } else {
             _isAllDay = YES;
             [_btIsAllTime setBackgroundColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorMain]];
-            _beginTime.text   = @"00:00";
-            _EndTime.text     = @"00:00";
+            _beginTime.text   = [Common convertTimeToStringWithFormat:@"M月d日" date:_selectDate];
+            _EndTime.text     = [Common convertTimeToStringWithFormat:@"M月d日" date:_selectDate];
             _btEndTime.enabled = NO;
             _btStarTime.enabled = NO;
         }
@@ -311,8 +311,8 @@
         } else {
             _isAllDay = YES;
             [_btIsAllTime setBackgroundColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorMain]];
-            _beginTime.text   = @"00:00";
-            _EndTime.text     = @"00:00";
+            _beginTime.text   = [Common convertTimeToStringWithFormat:@"M月d日" date:_selectDate];;
+            _EndTime.text     = [Common convertTimeToStringWithFormat:@"M月d日" date:_selectDate];;
             _btEndTime.enabled = NO;
             _btStarTime.enabled = NO;
         }

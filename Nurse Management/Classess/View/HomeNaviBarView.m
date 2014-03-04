@@ -35,7 +35,7 @@
 
 - (void) setTitleWithDay:(NSInteger)day month:(NSInteger)month year:(NSInteger)year
 {
-    _lbDay.text = [NSString stringWithFormat:@"%ld",(long)day];
+    _lbDay.text = [NSString stringWithFormat:@"%ld",(long)month];
     _lbYear.text = [NSString stringWithFormat:@"%ld",(long)year];
     
     NSArray *months = @[@"January",
