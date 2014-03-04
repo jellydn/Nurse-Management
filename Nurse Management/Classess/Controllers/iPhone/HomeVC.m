@@ -542,7 +542,11 @@
 {
     NSLog(@"send mail");
     
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"シフトカレンダーをシェア" delegate:self cancelButtonTitle:@"キャンセル" destructiveButtonTitle:nil otherButtonTitles:@"シフトをメールで送信", @"シフトをLINEで送信", @"カレンダー画像を保存", @"カレンダー画像をLINEで送信", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"シフトカレンダーをシェア" delegate:self cancelButtonTitle:@"キャンセル" destructiveButtonTitle:nil otherButtonTitles:
+                                  @"シフトをメールで送信",
+                                  @"カレンダー画像を保存",
+                                  @"シフトをLINEで送信",
+                                  @"カレンダー画像をLINEで送信", nil];
     
     [actionSheet showInView:self.view];
 

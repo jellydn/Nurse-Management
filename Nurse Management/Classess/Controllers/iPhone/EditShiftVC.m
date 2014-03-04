@@ -64,8 +64,8 @@
     //fix add new
     if (_typeShift) {
         self.lbTile.text = @"シフト追加";
-        _backgrounReview.image = [UIImage imageNamed:@"bg_dashed_frame.png"];
-        _reviewCategory.text = @"";
+        //_backgrounReview.image = [UIImage imageNamed:@"bg_dashed_frame.png"];
+        //_reviewCategory.text = @"";
         
     } else {
         self.lbTile.text = @"シフト編集";
