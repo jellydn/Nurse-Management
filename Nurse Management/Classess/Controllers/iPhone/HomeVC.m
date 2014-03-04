@@ -1033,9 +1033,13 @@
 
 - (void) image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo {
     if (error)
+    {
         [Common showAlert:[NSString stringWithFormat:@"エラー： %@", [error localizedDescription]] title:@""];
+    }
     else
+    {
         [Common showAlert:@"画像が保存されました。" title:@""];
+    }
 }
 
 #pragma mark - Action
