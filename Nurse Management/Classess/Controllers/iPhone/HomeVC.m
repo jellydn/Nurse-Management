@@ -911,6 +911,17 @@
         case 1:     // send LINE with a shift
         {
             
+            NSData *data = [self captureScreenshot];
+            UIImage *image = [UIImage imageWithData:data];
+            UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+            
+            break;
+        }
+            
+        case 2:     // save calendar image
+        {
+            
+            
             CDShift *shift = [[AppDelegate shared] getShiftWithDate:self.selectDate];
             NSLog(@"selected date: %@", self.selectDate);
             if ([CSLINEOpener canOpenLINE]) {
@@ -977,16 +988,6 @@
             } else {
                 [CSLINEOpener openAppStore];
             }
-            
-            break;
-        }
-            
-        case 2:     // save calendar image
-        {
-            NSData *data = [self captureScreenshot];
-            UIImage *image = [UIImage imageWithData:data];
-            UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-            
             
             break;
         }
