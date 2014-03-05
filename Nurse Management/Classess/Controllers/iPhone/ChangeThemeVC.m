@@ -78,6 +78,7 @@
         [self setThemeWith:button.tag];
         
         [_scrollView setContentOffset:CGPointMake(button.tag* 200 + 50, 0) animated:YES];
+        [self changeThemeForScroll];
         index = -1;
     }
     
@@ -173,6 +174,7 @@
         int page = (scrollView.contentOffset.x - 50) / 200;
         [_scrollView setContentOffset:CGPointMake(page* 200 + 50, 0) animated:YES];
         [self setThemeWith:page];
+        [self changeThemeForScroll];
     }
 }
 
@@ -182,9 +184,46 @@
     [_scrollView setContentOffset:CGPointMake(page* 200 + 50, 0) animated:YES];
     
     [self setThemeWith:page];
+    [self changeThemeForScroll];
 }
 
-
+- (void) changeThemeForScroll
+{
+    switch (_pageCurrent) {
+        case 0:
+        {
+            [[FXThemeManager shared] changeThemeWithName:_fxThemeNameDefault];
+            break;
+        }
+        case 1:
+        {
+            [[FXThemeManager shared] changeThemeWithName:_fxThemeNameDefaultGreen];
+            break;
+        }
+        case 2:
+        {
+            [[FXThemeManager shared] changeThemeWithName:_fxThemeNameDefaultOrange];
+            break;
+        }
+        case 3:
+        {
+            [[FXThemeManager shared] changeThemeWithName:_fxThemeNameDefaultPink];
+            break;
+        }
+        case 4:
+        {
+            [[FXThemeManager shared] changeThemeWithName:_fxThemeNameGirlie];
+            break;
+        }
+        case 5:
+        {
+            [[FXThemeManager shared] changeThemeWithName:_fxThemeNameSweet];
+            break;
+        }
+        default:
+            break;
+    }
+}
 
 
 

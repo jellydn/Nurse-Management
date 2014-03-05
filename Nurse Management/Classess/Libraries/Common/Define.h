@@ -9,7 +9,8 @@
 #ifndef NurseManagement_Define_h
 #define NurseManagement_Define_h
 
-#define APP_NAME @"Nurse Management"
+//#define APP_NAME @"Nurse Management"
+#define APP_NAME @""
 
 #define START_TIME      10
 #define END_TIME        20

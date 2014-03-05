@@ -78,7 +78,7 @@ static FXThemeManager *shared = nil;
     NSString *plistPath     = [[NSBundle mainBundle] pathForResource:_themeFileData ofType:@"plist"];
     _themeData              =[[NSDictionary alloc] initWithContentsOfFile:plistPath];
     
-    NSLog(@"%@", _themeData);
+    //NSLog(@"%@", _themeData);
 }
 
 #pragma mark - Public Method
@@ -86,7 +86,7 @@ static FXThemeManager *shared = nil;
 {
     if (![[NSUserDefaults standardUserDefaults] objectForKey:_fxThemeStringName]) {
         
-        self.themeName = _fxThemeNameDefault;
+        self.themeName = _fxThemeNameDefaultPink;
         [[NSUserDefaults standardUserDefaults] setObject:self.themeName forKey:_fxThemeStringName];
         [[NSUserDefaults standardUserDefaults] synchronize];
         

@@ -240,10 +240,10 @@
             {
                 NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:path];
                 NSArray *totalCategory = [dict objectForKey:@"ShiftCategory"];
-                NSLog(@" totalCategory %@",totalCategory);
+            
                 //Creater coredata
                 for (int i = 0 ; i < [totalCategory count]; i++) {
-                    NSLog(@" key %d object %@",i, totalCategory[i]);
+                
                     CDShiftCategory *cdShiftCategory = (CDShiftCategory *)[NSEntityDescription insertNewObjectForEntityForName:@"CDShiftCategory" inManagedObjectContext:_appDelegate.managedObjectContext];
                     NSArray *tmpArr = totalCategory[i];
                     
@@ -262,7 +262,6 @@
                     
                     cdShiftCategory.color = tmpArr[4];
                     
-                    NSLog(@" name %@ is All Day %d", cdShiftCategory.name, cdShiftCategory.isAllDay);
                     
                 }
                 
