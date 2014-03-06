@@ -30,6 +30,8 @@
 + (NSInteger) numberMonthFromDate:(NSDate*)fromDate toDate:(NSDate*)toDate;
 + (NSInteger) numberDayOfMonthWithDate:(NSDate*)date;
 
++ (NSArray *) daysInMonthWihtDate: (NSDate *)date;
+
 //Day
 
 + (NSInteger) getDayWithDate:(NSDate*)date;

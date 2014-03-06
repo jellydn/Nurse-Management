@@ -104,6 +104,21 @@
     return days.length;
 }
 
++ (NSArray *) daysInMonthWihtDate: (NSDate *)date {
+    NSMutableArray *daysInMonth = [[NSMutableArray alloc] init];
+    // get list of days within month
+    NSRange days = [[self getCalendarCurrent] rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:date];
+    // get the components from the date
+    NSDateComponents *components = [[self getCalendarCurrent] components:(NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:date];
+    // get the dates by change the day component and add to an array
+    for (int i = days.location; i < days.location + days.length; i++) {
+        [components setDay:i];
+        [daysInMonth addObject:[[self getCalendarCurrent] dateFromComponents:components]];
+    }
+    
+    return daysInMonth;
+}
+
 #pragma mark - DAY
 
 + (NSInteger) getDayWithDate:(NSDate*)date

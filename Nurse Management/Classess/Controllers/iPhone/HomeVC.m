@@ -526,6 +526,26 @@
     
 }
 
+//- (NSString *) weekdayByLetterFromDay: (int)weekday {
+//    
+//    BOOL isFirstOfSunday = NO;
+//    if ([[NSUserDefaults standardUserDefaults] integerForKey:FIRST_OF_CALENDAR] == 0) {
+//        _isFirstOfSunday            = YES;
+//    } else {
+//        _isFirstOfSunday            = NO;
+//    }
+//    
+//    switch (weekday) {
+//        case 1:
+//            if ()
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    
+//}
+
 #pragma mark - HomeNaviBarViewDelegate
 - (void) homeNaviBarViewDidSelectToDay:(HomeNaviBarView*)homeNaviBarView
 {
@@ -908,7 +928,7 @@
             break;
         }
             
-        case 1:     // send LINE with a shift
+        case 1:     // save calendar image
         {
             
             NSData *data = [self captureScreenshot];
@@ -918,10 +938,36 @@
             break;
         }
             
-        case 2:     // save calendar image
+        case 2:     // send LINE with shifts in that month
         {
+//            NSLog(@"days in month: \n%@", [FXCalendarData daysInMonthWihtDate:self.selectDate]);
+            if ([CSLINEOpener canOpenLINE]) {
+                
+                NSArray *weekdays = [NSArray arrayWithObjects:@"日", @"月", @"火", @"水", @"木", @"金", @"土", nil];
+                
+                int month = [FXCalendarData getMonthWithDate:_selectDate];
+                NSString *shiftInformation = [NSString stringWithFormat:@"%d月の勤務表を送ります\n", month];
+                
+                for (NSDate *date in [FXCalendarData daysInMonthWihtDate:self.selectDate]) {
+                    CDShift *shift = [[AppDelegate shared] getShiftWithDate:date];
+                    ShiftCategoryItem *shiftCategory = [ShiftCategoryItem convertForCDObject:shift.fk_shift_category];
+                    
+                    int day = [FXCalendarData getDayWithDate:date];
+                    NSString *weekDay = [weekdays objectAtIndex:([FXCalendarData getWeekDayWithDate:date] - 1)];
+                    NSString *shiftName = (shift && shiftCategory) ? shiftCategory.name : @"";
+                    shiftInformation = [shiftInformation stringByAppendingString:[NSString stringWithFormat:@"%d日(%@)・・%@\n", day, weekDay, shiftName]];
+                }
+                
+                NSLog(@"message: %@", shiftInformation);
+                [CSLINEOpener openLINEAppWithText:shiftInformation];
+                
+            } else {
+                [CSLINEOpener openAppStore];
+            }
             
             
+            
+            /*
             CDShift *shift = [[AppDelegate shared] getShiftWithDate:self.selectDate];
             NSLog(@"selected date: %@", self.selectDate);
             if ([CSLINEOpener canOpenLINE]) {
@@ -988,7 +1034,7 @@
             } else {
                 [CSLINEOpener openAppStore];
             }
-            
+            */
             break;
         }
             
@@ -1091,20 +1137,5 @@
     [_tableView reloadData];
     [_tableView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end
