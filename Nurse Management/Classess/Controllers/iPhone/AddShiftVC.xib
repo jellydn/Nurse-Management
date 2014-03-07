@@ -11,6 +11,7 @@
                 <outlet property="_btnEndTime" destination="FmI-pu-CJo" id="UD7-N2-Rra"/>
                 <outlet property="_btnSave" destination="lkI-CA-5Jq" id="M2P-Mt-Feo"/>
                 <outlet property="_btnSaveAndNext" destination="Rrm-Dw-huo" id="SNN-dV-wgW"/>
+                <outlet property="_btnSaveAndNextDate" destination="Rrm-Dw-huo" id="PRs-hJ-qle"/>
                 <outlet property="_btnStartTime" destination="MBM-3i-3hZ" id="jCA-Sr-JjD"/>
                 <outlet property="_imvShiftCategoryBG" destination="EiO-0M-n1F" id="FvQ-Jm-Caw"/>
                 <outlet property="_lbTile" destination="XdA-gB-cwt" id="qvQ-bG-FDB"/>

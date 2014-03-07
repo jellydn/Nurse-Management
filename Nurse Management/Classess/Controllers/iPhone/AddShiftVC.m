@@ -49,6 +49,7 @@
     __weak IBOutlet UIButton *_btnSave;
     __weak IBOutlet UIButton *_btnSaveAndNext;
     __weak IBOutlet UIButton *_btnAllDay;
+    __weak IBOutlet UIButton *_btnSaveAndNextDate;
     __weak IBOutlet UILabel *_lblStartTime;
     __weak IBOutlet UILabel *_lblEndTime;
     __weak IBOutlet UILabel *_lblShiftCategoryName;
@@ -214,6 +215,7 @@
             textView.textColor = [UIColor blackColor]; //optional
         }
     }
+    _btnSaveAndNext.hidden = YES;
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView
@@ -222,6 +224,8 @@
         textView.text = MEMO_PLACEHOLDER_TEXT;
         textView.textColor = [UIColor lightGrayColor]; //optional
     }
+    
+    _btnSaveAndNext.hidden = NO;
 }
 
 #pragma mark - AddShiftViewDelegate
