@@ -111,7 +111,7 @@
                             <rect key="frame" x="256" y="5" width="57" height="46"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="日勤" minimumFontSize="17" clearButtonMode="whileEditing" id="hM6-ea-LpU">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="美容院" minimumFontSize="17" clearButtonMode="whileEditing" id="hM6-ea-LpU">
                             <rect key="frame" x="15" y="13" width="233" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
