@@ -3,46 +3,45 @@
 <plist version="1.0">
 <dict>
 	<key>ScheduleCategory</key>
-    <array>
+	<array>
 		<string>美容院</string>
-        <string>マツエク</string>
-        <string>飲み会</string>
-        <string>￼ランチ</string>
-        <string>女子会</string>
-        <string>デート</string>
-        <string>￼買い物</string>
-        <string>病院</string>
-        <string>誕生日</string>
-        <string>旅行</string>
-        <string>結婚式</string>
-        <string>￼2次会</string>
-        <string>￼カラオケ</string>
-        <string>映画</string>
-        <string>コンサート</string>
-        <string>保育園</string>
-        <string>￼幼稚園</string>
-        <string>お迎え</string>
-        <string>ママ友</string>
-        <string>給料日</string>
+		<string>マツエク</string>
+		<string>飲み会</string>
+		<string>￼ランチ</string>
+		<string>女子会</string>
+		<string>デート</string>
+		<string>￼買い物</string>
+		<string>病院</string>
+		<string>誕生日</string>
+		<string>旅行</string>
+		<string>結婚式</string>
+		<string>￼2次会</string>
+		<string>￼カラオケ</string>
+		<string>映画</string>
+		<string>コンサート</string>
+		<string>保育園</string>
+		<string>￼幼稚園</string>
+		<string>お迎え</string>
+		<string>ママ友</string>
+		<string>その他</string>
 	</array>
-
 	<key>Member</key>
 	<array>
 		<string>A看護師長</string>
-        <string>B主任</string>
-        <string>C主任</string>
-        <string>D主任</string>
-        <string>E先輩</string>
-        <string>F先輩</string>
-        <string>G先輩</string>
-        <string>Hさん</string>
-        <string>Iさん</string>
-        <string>Jさん</string>
-        <string>Kさん</string>
-        <string>Lさん</string>
+		<string>B主任</string>
+		<string>C主任</string>
+		<string>D主任</string>
+		<string>E先輩</string>
+		<string>F先輩</string>
+		<string>G先輩</string>
+		<string>Hさん</string>
+		<string>Iさん</string>
+		<string>Jさん</string>
+		<string>Kさん</string>
+		<string>Lさん</string>
 	</array>
 	<key>ShiftCategory</key>
-    <array>
+	<array>
 		<array>
 			<string>日勤</string>
 			<string>08:30</string>
@@ -113,14 +112,14 @@
 			<integer>0</integer>
 			<string>color9</string>
 		</array>
-        <array>
+		<array>
 			<string>入り</string>
 			<string>08:00</string>
 			<string>19:30</string>
 			<integer>0</integer>
 			<string>color0</string>
 		</array>
-        <array>
+		<array>
 			<string>入り</string>
 			<string>08:00</string>
 			<string>19:30</string>
@@ -128,6 +127,5 @@
 			<string>color1</string>
 		</array>
 	</array>
-
 </dict>
 </plist>
