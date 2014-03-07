@@ -67,6 +67,14 @@
     //set navi view
     if ([Common isIOS7]) {
         [self.navigationController.navigationBar setBarTintColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar]];
+        
+        if ([[FXThemeManager shared].themeName isEqualToString:_fxThemeNameGirlie] ||
+            [[FXThemeManager shared].themeName isEqualToString:_fxThemeNameSweet]) {
+            [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
+        } else {
+            [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
+        }
+        
     } else {
         [self.navigationController.navigationBar setTintColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar]];
     }
@@ -177,6 +185,14 @@
         
         if ([Common isIOS7]) {
             [self.navigationController.navigationBar setBarTintColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar]];
+            
+            if ([[FXThemeManager shared].themeName isEqualToString:_fxThemeNameGirlie] ||
+                [[FXThemeManager shared].themeName isEqualToString:_fxThemeNameSweet]) {
+                [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
+            } else {
+                [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
+            }
+            
         } else {
             [self.navigationController.navigationBar setTintColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorNaviBar]];
         }
