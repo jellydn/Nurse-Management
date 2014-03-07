@@ -103,6 +103,10 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.73471380739795911" green="0.55772764592403801" blue="0.23009856400490006" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
+                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="bg_dashed_frame.png" id="prT-nm-8en">
+                            <rect key="frame" x="253" y="2" width="63" height="52"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sicon_r1_c1.png" id="6jR-bg-sqF">
                             <rect key="frame" x="256" y="5" width="57" height="46"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -270,6 +274,7 @@
         </view>
     </objects>
     <resources>
+        <image name="bg_dashed_frame.png" width="56" height="49"/>
         <image name="ic_bg_bar_button.png" width="75" height="29"/>
         <image name="ic_edit_schedule_color_1.png" width="37" height="46"/>
         <image name="ic_edit_schedule_color_10.png" width="37" height="46"/>

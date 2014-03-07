@@ -109,8 +109,12 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.73471380740000003" green="0.55772764590000001" blue="0.23009856400000001" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
+                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="bg_dashed_frame.png" id="nj0-fE-Q9a">
+                            <rect key="frame" x="258" y="6" width="58" height="46"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_r1_c1.png" id="OLh-hY-dzl">
-                            <rect key="frame" x="256" y="5" width="57" height="46"/>
+                            <rect key="frame" x="261" y="9" width="51" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="日勤" minimumFontSize="17" clearButtonMode="whileEditing" id="IcZ-sA-l6e">
@@ -123,7 +127,7 @@
                             </connections>
                         </textField>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日勤" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gzy-CK-rJI">
-                            <rect key="frame" x="256" y="17" width="57" height="21"/>
+                            <rect key="frame" x="258" y="18" width="57" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.36470588235294116" green="0.31372549019607843" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
@@ -348,6 +352,7 @@
         </view>
     </objects>
     <resources>
+        <image name="bg_dashed_frame.png" width="56" height="49"/>
         <image name="bg_edit_shift_time.png" width="225" height="44"/>
         <image name="ic_bg_bar_button.png" width="75" height="29"/>
         <image name="ic_edit_shift_color_1.png" width="37" height="46"/>
