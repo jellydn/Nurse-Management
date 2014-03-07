@@ -69,5 +69,14 @@
 		<key>calendarSize</key>
 		<integer>0</integer>
 	</dict>
+	<key>calendar</key>
+	<dict>
+		<key>button_edit_shift</key>
+		<string>ic_home_cell_edit_shitf_pink.png</string>
+		<key>color_current_day</key>
+		<string>#FACEC8</string>
+		<key>image_date_shift_cell</key>
+		<string>img_bg_home_cell_shift_pink.png</string>
+	</dict>
 </dict>
 </plist>

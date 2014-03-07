@@ -8,7 +8,7 @@
 
 #import "FXDayView.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "FXThemeManager.h"
 
 @implementation FXDayView
 
@@ -148,8 +148,15 @@
     if (day.isCurrent) {
         if (day.isSelect) {
             self.backgroundColor = [UIColor clearColor];
+            
         } else {
-            self.backgroundColor = [UIColor colorWithRed:218.0/255.0 green:228.0/255.0 blue:254.0/255.0 alpha:1.0];
+            
+            NSDictionary *dicCalendar = [[FXThemeManager shared].themeData objectForKey:@"calendar"];
+            self.backgroundColor = [[FXThemeManager shared] colorFromHexString:[dicCalendar objectForKey:@"color_current_day"]];
+            
+            
+            //self.backgroundColor = [UIColor colorWithRed:218.0/255.0 green:228.0/255.0 blue:254.0/255.0 alpha:1.0];
+            
         }
     } else {
         self.backgroundColor = [UIColor clearColor];

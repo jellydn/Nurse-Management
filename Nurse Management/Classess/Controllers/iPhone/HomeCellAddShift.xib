@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="img_bg_home_cell_shift.png" id="NL5-nq-8pu">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="img_bg_home_cell_shift.png" id="NL5-nq-8pu">
                                 <rect key="frame" x="15" y="11" width="40" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -141,6 +141,7 @@
                 <outlet property="btEdit" destination="ubm-wA-QNY" id="FD7-nw-aOY"/>
                 <outlet property="imgAlertIcon" destination="iRZ-gE-YWE" id="h9H-KT-zNj"/>
                 <outlet property="imgCategory" destination="OuH-1Z-81P" id="j1v-lz-nz6"/>
+                <outlet property="imgDate" destination="NL5-nq-8pu" id="Qp0-kQ-UFA"/>
                 <outlet property="imgMemberIcon" destination="Jgq-QD-Pya" id="KNP-wy-9v6"/>
                 <outlet property="lbAlert" destination="Lxz-JB-i1S" id="KXJ-mv-uHQ"/>
                 <outlet property="lbCategoryName" destination="nLq-Cl-p1g" id="el5-Tu-LpC"/>

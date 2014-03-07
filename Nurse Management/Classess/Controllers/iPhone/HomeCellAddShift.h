@@ -24,6 +24,7 @@
 @property (nonatomic, weak) IBOutlet UIImageView *imgCategory;
 @property (nonatomic, weak) IBOutlet UIImageView *imgAlertIcon;
 @property (nonatomic, weak) IBOutlet UIImageView *imgMemberIcon;
+@property (nonatomic, weak) IBOutlet UIImageView *imgDate;
 
 
 @property (nonatomic, weak) IBOutlet UIView  *viewAdd;

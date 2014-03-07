@@ -11,6 +11,7 @@
 #import "Common.h"
 #import "ShiftCategoryItem.h"
 #import "Define.h"
+#import "FXThemeManager.h"
 
 @interface HomeCellAddShift ()
 
@@ -54,6 +55,13 @@
                                @"fri",
                                @"sat",];
     _lbWeekDay.text = arrayWeekDays[[FXCalendarData getWeekDayWithDate:date]];
+    
+    //change icon button edit shift
+    NSDictionary *dicCalendar = [[FXThemeManager shared].themeData objectForKey:@"calendar"];
+    [_btEdit setImage:[UIImage imageNamed:[dicCalendar objectForKey:@"button_edit_shift"]] forState:UIControlStateNormal];
+    
+    //image date
+    _imgDate.image = [UIImage imageNamed:[dicCalendar objectForKey:@"image_date_shift_cell"]];
     
     if (shift) {
         

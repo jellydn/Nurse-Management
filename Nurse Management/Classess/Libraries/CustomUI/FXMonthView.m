@@ -326,7 +326,6 @@
 
 - (IBAction)selectDay:(id)sender
 {
-    
     UIButton *button = (UIButton*)sender;
     
     if (button.tag == _indexSelect && !_isViewFull) {
@@ -376,7 +375,9 @@
 {
     for (FXDayView *dayView in _viewContainerDays.subviews) {
         if (dayView.tag == oldSelect) {
-            [dayView reloadInfo:_days[oldSelect]];
+            FXDay *oldDay = _days[oldSelect];
+            oldDay.isSelect = NO;
+            [dayView reloadInfo:oldDay];
             continue;
         }
         
@@ -800,10 +801,6 @@
         _isViewFull = YES;
     }
     
-//    for (UIView *view in self.subviews) {
-//        [view removeFromSuperview];
-//    }
-    
     _indexSelect        = -1;
     _widthCell          = self.frame.size.width / 7;
     _heightCell         = 60;
@@ -812,8 +809,6 @@
     frame.size.height   = _heightCell*6 + 1;
     self.frame          = frame;
     
-    
-    //[self initLayout];
     [self reloadLayout:50 newHeight:60];
 }
 
@@ -825,10 +820,6 @@
         _isViewFull = NO;
     }
     
-//    for (UIView *view in self.subviews) {
-//        [view removeFromSuperview];
-//    }
-    
     _indexSelect        = -1;
     _widthCell          = self.frame.size.width / 7;
     _heightCell         = 50;
@@ -836,15 +827,24 @@
     CGRect frame        = self.frame;
     frame.size.height   = _heightCell*6 + 1;
     self.frame          = frame;
-    
-    
-    //[self initLayout];
+
     [self reloadLayout:60 newHeight:50];
 }
 
 - (void) reloadTheme
 {
     _viewSelect.backgroundColor     = [[FXThemeManager shared] getColorWithKey:_fxThemeColorMain];
+    
+    if (_delegate) {
+        for (FXDayView *dayView in _viewContainerDays.subviews) {
+            if (dayView.day.isCurrent) {
+                NSDictionary *dicCalendar = [[FXThemeManager shared].themeData objectForKey:@"calendar"];
+                dayView.backgroundColor = [[FXThemeManager shared] colorFromHexString:[dicCalendar objectForKey:@"color_current_day"]];
+                break;
+            }
+        }
+    }
+    
 }
 
 - (void) reloadChangeFirstOfCalendar:(BOOL)isFirstOfSunday
