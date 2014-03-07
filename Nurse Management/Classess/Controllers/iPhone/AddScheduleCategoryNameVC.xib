@@ -107,7 +107,7 @@
                             <rect key="frame" x="253" y="2" width="63" height="52"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sicon_r1_c1.png" id="6jR-bg-sqF">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="schedule_bg_0.png" id="6jR-bg-sqF">
                             <rect key="frame" x="256" y="5" width="57" height="46"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -286,6 +286,6 @@
         <image name="ic_edit_schedule_color_7.png" width="37" height="46"/>
         <image name="ic_edit_schedule_color_8.png" width="37" height="46"/>
         <image name="ic_edit_schedule_color_9.png" width="37" height="46"/>
-        <image name="sicon_r1_c1.png" width="100" height="88"/>
+        <image name="schedule_bg_0.png" width="50" height="44"/>
     </resources>
 </document>

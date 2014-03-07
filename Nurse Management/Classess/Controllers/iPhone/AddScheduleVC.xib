@@ -160,7 +160,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VjB-j0-Keg">
-                    <rect key="frame" x="250" y="83" width="48" height="32"/>
+                    <rect key="frame" x="250" y="81" width="48" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.4823529412" green="0.35294117650000001" blue="0.1843137255" alpha="1" colorSpace="deviceRGB"/>
@@ -222,7 +222,6 @@
     <resources>
         <image name="bg_dashed_frame.png" width="56" height="49"/>
         <image name="bg_edit_shift_time.png" width="225" height="44"/>
-        <image name="ic_bg_bar_button.png" width="75" height="29"/>
         <image name="ic_bg_bar_button.png" width="75" height="29"/>
         <image name="icon_category_add_sc.png" width="19" height="20"/>
         <image name="icon_reminder_add_sc.png" width="15" height="15"/>

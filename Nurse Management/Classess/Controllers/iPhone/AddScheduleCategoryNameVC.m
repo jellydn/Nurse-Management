@@ -64,44 +64,47 @@
     UIButton *button = (UIButton*)sender;
     _reviewCategory.textColor = [UIColor colorWithRed:93.0/255.0 green:80.0/255.0 blue:76.0/255.0 alpha:1.0];
     _typeColor = [NSString stringWithFormat:@"%d", button.tag];
-    switch (button.tag) {
-        case 0:
-            _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c1.png"];
-            break;
-        case 1:
-            _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c3.png"];
-            break;
-        case 2:
-            _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c5.png"];
-            break;
-        case 3:
-            _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c7.png"];
-            break;
-        case 4:
-            _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c9.png"];
-            break;
-        case 5:
-            _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c1.png"];
-            _reviewCategory.textColor = [UIColor whiteColor];
-            break;
-        case 6:
-            _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c3.png"];
-            _reviewCategory.textColor = [UIColor whiteColor];
-            break;
-        case 7:
-            _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c5.png"];
-            _reviewCategory.textColor = [UIColor whiteColor];
-            break;
-        case 8:
-            _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c7.png"];
-            break;
-        case 9:
-            _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c9.png"];
-            break;
-        default:
-            _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c1.png"];
-            break;
-    }
+    
+    _backgrounReview.image = [UIImage imageNamed:[NSString stringWithFormat:@"schedule_bg_%d.png",button.tag]];
+    
+//    switch (button.tag) {
+//        case 0:
+//            _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c1.png"];
+//            break;
+//        case 1:
+//            _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c3.png"];
+//            break;
+//        case 2:
+//            _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c5.png"];
+//            break;
+//        case 3:
+//            _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c7.png"];
+//            break;
+//        case 4:
+//            _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c9.png"];
+//            break;
+//        case 5:
+//            _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c1.png"];
+//            _reviewCategory.textColor = [UIColor whiteColor];
+//            break;
+//        case 6:
+//            _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c3.png"];
+//            _reviewCategory.textColor = [UIColor whiteColor];
+//            break;
+//        case 7:
+//            _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c5.png"];
+//            _reviewCategory.textColor = [UIColor whiteColor];
+//            break;
+//        case 8:
+//            _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c7.png"];
+//            break;
+//        case 9:
+//            _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c9.png"];
+//            break;
+//        default:
+//            _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c1.png"];
+//            break;
+//    }
 }
 
 - (IBAction)delete:(id)sender {
@@ -168,44 +171,47 @@
        _txtName.text = _scheduleCategory.name;
         _reviewCategory.text = _scheduleCategory.name;
         _typeColor = _scheduleCategory.color;
-        switch ([ _scheduleCategory.color intValue]) {
-            case 0:
-                _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c1.png"];
-                break;
-            case 1:
-                _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c3.png"];
-                break;
-            case 2:
-                _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c5.png"];
-                break;
-            case 3:
-                _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c7.png"];
-                break;
-            case 4:
-                _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c9.png"];
-                break;
-            case 5:
-                _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c1.png"];
-                _reviewCategory.textColor = [UIColor whiteColor];
-                break;
-            case 6:
-                _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c3.png"];
-                _reviewCategory.textColor = [UIColor whiteColor];
-                break;
-            case 7:
-                _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c5.png"];
-                _reviewCategory.textColor = [UIColor whiteColor];
-                break;
-            case 8:
-                _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c7.png"];
-                break;
-            case 9:
-                _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c9.png"];
-                break;
-            default:
-                _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c1.png"];
-                break;
-        }
+        
+        _backgrounReview.image = [UIImage imageNamed:[NSString stringWithFormat:@"schedule_bg_%d.png",[ _scheduleCategory.color intValue]]];
+        
+//        switch ([ _scheduleCategory.color intValue]) {
+//            case 0:
+//                _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c1.png"];
+//                break;
+//            case 1:
+//                _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c3.png"];
+//                break;
+//            case 2:
+//                _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c5.png"];
+//                break;
+//            case 3:
+//                _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c7.png"];
+//                break;
+//            case 4:
+//                _backgrounReview.image = [UIImage imageNamed:@"sicon_r1_c9.png"];
+//                break;
+//            case 5:
+//                _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c1.png"];
+//                _reviewCategory.textColor = [UIColor whiteColor];
+//                break;
+//            case 6:
+//                _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c3.png"];
+//                _reviewCategory.textColor = [UIColor whiteColor];
+//                break;
+//            case 7:
+//                _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c5.png"];
+//                _reviewCategory.textColor = [UIColor whiteColor];
+//                break;
+//            case 8:
+//                _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c7.png"];
+//                break;
+//            case 9:
+//                _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c9.png"];
+//                break;
+//            default:
+//                _backgrounReview.image = [UIImage imageNamed:@"sicon_r3_c1.png"];
+//                break;
+//        }
 
     }
     
