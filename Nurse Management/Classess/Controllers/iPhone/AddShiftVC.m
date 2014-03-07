@@ -328,7 +328,7 @@
 - (IBAction)save:(id)sender {
     
     if (!_shift.fk_shift_category) {
-        [Common showAlert:@"カテゴリを選択してください。" title:@""];
+        [Common showAlert:@"シフトカテゴリーを選択してください。" title:@""];
     } else {
         [self saveShiftToCoreData];
         [self.navigationController dismissViewControllerAnimated:YES completion:^{
@@ -382,7 +382,7 @@
         [self clearDataFromUI];
         
     } else
-        [Common showAlert:@"カテゴリを選択してください。" title:@""];
+        [Common showAlert:@"シフトカテゴリーを選択してください。" title:@""];
 
 }
 
