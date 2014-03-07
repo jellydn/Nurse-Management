@@ -677,30 +677,34 @@
 
 - (void) addLocalNotificationForDate: (CDShiftAlert *) alarm {
     NSDate *alarmDate = [NSDate dateWithTimeIntervalSince1970:alarm.onTime];
-    NSLog(@"shift alarm date: %@", alarmDate);
     
-    NSArray *keys = @[@"shift_id",
-                      @"alarm_id",
-                      @"alarm_date",
-                      ];
-    
-    NSArray *values = @[[NSString stringWithFormat:@"%d",alarm.shiftId],
-                        [NSString stringWithFormat:@"%d",alarm.id],
-                        alarmDate];
-    
-    NSDictionary *info = [NSDictionary dictionaryWithObjects:values forKeys:keys];
-    
-    
-    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-    localNotification.fireDate = alarmDate;
-    localNotification.alertBody = [NSString stringWithFormat:@"Shift on %@", [Common convertTimeToStringWithFormat:@"MMM dd, yyyy" date:alarmDate]];
-    localNotification.alertAction = @"View";
-    localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    localNotification.applicationIconBadgeNumber = 0;
-    localNotification.soundName = UILocalNotificationDefaultSoundName;
-    localNotification.userInfo = info;
-    
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    if ([[FXCalendarData trimSecOfDateWithDate:alarmDate] timeIntervalSince1970] > [[NSDate date] timeIntervalSince1970])
+    {
+        NSLog(@"shift alarm date: %@", alarmDate);
+        
+        NSArray *keys = @[@"shift_id",
+                          @"alarm_id",
+                          @"alarm_date",
+                          ];
+        
+        NSArray *values = @[[NSString stringWithFormat:@"%d",alarm.shiftId],
+                            [NSString stringWithFormat:@"%d",alarm.id],
+                            alarmDate];
+        
+        NSDictionary *info = [NSDictionary dictionaryWithObjects:values forKeys:keys];
+        
+        
+        UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+        localNotification.fireDate = alarmDate;
+        localNotification.alertBody = [NSString stringWithFormat:@"Shift on %@", [Common convertTimeToStringWithFormat:@"MMM dd, yyyy" date:alarmDate]];
+        localNotification.alertAction = @"View";
+        localNotification.timeZone = [NSTimeZone defaultTimeZone];
+        localNotification.applicationIconBadgeNumber = 0;
+        localNotification.soundName = UILocalNotificationDefaultSoundName;
+        localNotification.userInfo = info;
+        
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    }
 }
 
 #pragma mark - Core Data

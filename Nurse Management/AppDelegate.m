@@ -604,7 +604,7 @@ static NSString *const kAllowTracking   = @"allowTracking";
             
             alert.fk_alert_schedule = schedule;
             
-            if ([date timeIntervalSince1970] > [[NSDate date] timeIntervalSince1970]) {
+            if ([[FXCalendarData trimSecOfDateWithDate:date] timeIntervalSince1970] > [[NSDate date] timeIntervalSince1970]) {
                 //add Push notification local
                 UILocalNotification* localNotification          = [[UILocalNotification alloc] init];
                 
