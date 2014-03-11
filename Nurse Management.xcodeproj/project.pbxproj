@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2552C00018CF191D00FF8F89 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0643085218BC4A750098AE85 /* libGoogleAnalyticsServices.a */; };
 		2A11814B18BF2D0D00110C7B /* MemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A11814918BF2D0D00110C7B /* MemberCell.m */; };
 		2A11814C18BF2D0D00110C7B /* MemberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A11814A18BF2D0D00110C7B /* MemberCell.xib */; };
 		2A394BCB18A9FD5300F30F2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A394BCA18A9FD5300F30F2D /* Foundation.framework */; };
@@ -401,7 +402,6 @@
 		C0DF5DA918BB3D720065E115 /* term-privacy_three.html in Resources */ = {isa = PBXBuildFile; fileRef = C0DF5DA618BB3D720065E115 /* term-privacy_three.html */; };
 		C0DF5DAE18BB3D930065E115 /* TermVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C0DF5DAB18BB3D930065E115 /* TermVC.m */; };
 		C0DF5DAF18BB3D930065E115 /* TermVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0DF5DAC18BB3D930065E115 /* TermVC.xib */; };
-		C931976818BF2DBC0019A96D /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0643085218BC4A750098AE85 /* libGoogleAnalyticsServices.a */; };
 		C931977218BF36390019A96D /* ic_bg_bar_button_girlie.png in Resources */ = {isa = PBXBuildFile; fileRef = C931976A18BF36390019A96D /* ic_bg_bar_button_girlie.png */; };
 		C931977318BF36390019A96D /* ic_bg_bar_button_girlie@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C931976B18BF36390019A96D /* ic_bg_bar_button_girlie@2x.png */; };
 		C931977418BF36390019A96D /* ic_bg_bar_button_sweet.png in Resources */ = {isa = PBXBuildFile; fileRef = C931976C18BF36390019A96D /* ic_bg_bar_button_sweet.png */; };
@@ -911,7 +911,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C931976818BF2DBC0019A96D /* libGoogleAnalyticsServices.a in Frameworks */,
+				2552C00018CF191D00FF8F89 /* libGoogleAnalyticsServices.a in Frameworks */,
 				2AC8E6A018BC322A005C47FC /* libz.dylib in Frameworks */,
 				2AC8E69D18BC2E9F005C47FC /* SystemConfiguration.framework in Frameworks */,
 				2A394BCD18A9FD5300F30F2D /* CoreGraphics.framework in Frameworks */,
@@ -2510,11 +2510,25 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Volumes/MacData/TienLP/Code/NurseManagement/04/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
-					"/Users/indanang/Documents/Repositories/Git/Nurse-Management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
-					"/Users/huynhducdung/Developers/mobile/Nurse\\ Management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
-					"/Volumes/DATA/PhuNQ/iOS/nurse_management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
-					"/Volumes/Data/Projects/Nurse-Management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
+					/Volumes/MacData/TienLP/Code/NurseManagement/04/Nurse,
+					Management/Classess/Libraries/Google,
+					Analytics,
+					"/Users/indanang/Documents/Repositories/Git/Nurse-Management/Nurse",
+					Management/Classess/Libraries/Google,
+					Analytics,
+					/Users/huynhducdung/Developers/mobile/Nurse,
+					Management/Nurse,
+					Management/Classess/Libraries/Google,
+					Analytics,
+					/Volumes/DATA/PhuNQ/iOS/nurse_management/Nurse,
+					Management/Classess/Libraries/Google,
+					Analytics,
+					"/Volumes/Data/Projects/Nurse-Management/Nurse",
+					Management/Classess/Libraries/Google,
+					Analytics,
+					"$(PROJECT_DIR)/Nurse",
+					Management/Classess/Libraries/Google,
+					Analytics,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2531,11 +2545,25 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Volumes/MacData/TienLP/Code/NurseManagement/04/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
-					"/Users/indanang/Documents/Repositories/Git/Nurse-Management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
-					"/Users/huynhducdung/Developers/mobile/Nurse\\ Management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
-					"/Volumes/DATA/PhuNQ/iOS/nurse_management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
-					"/Volumes/Data/Projects/Nurse-Management/Nurse\\ Management/Classess/Libraries/Google\\ Analytics",
+					/Volumes/MacData/TienLP/Code/NurseManagement/04/Nurse,
+					Management/Classess/Libraries/Google,
+					Analytics,
+					"/Users/indanang/Documents/Repositories/Git/Nurse-Management/Nurse",
+					Management/Classess/Libraries/Google,
+					Analytics,
+					/Users/huynhducdung/Developers/mobile/Nurse,
+					Management/Nurse,
+					Management/Classess/Libraries/Google,
+					Analytics,
+					/Volumes/DATA/PhuNQ/iOS/nurse_management/Nurse,
+					Management/Classess/Libraries/Google,
+					Analytics,
+					"/Volumes/Data/Projects/Nurse-Management/Nurse",
+					Management/Classess/Libraries/Google,
+					Analytics,
+					"$(PROJECT_DIR)/Nurse",
+					Management/Classess/Libraries/Google,
+					Analytics,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
