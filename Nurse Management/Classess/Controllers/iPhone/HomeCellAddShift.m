@@ -63,6 +63,13 @@
     //image date
     _imgDate.image = [UIImage imageNamed:[dicCalendar objectForKey:@"image_date_shift_cell"]];
     
+    //change rect
+    if ([[FXThemeManager shared].themeName isEqualToString:_fxThemeNameGirlie]) {
+        _lbWeekDay.frame = CGRectMake(17, 43, 40, 21);
+    } else {
+        _lbWeekDay.frame = CGRectMake(15, 46, 40, 21);
+    }
+    
     if (shift) {
         
         _viewAdd.hidden     = YES;

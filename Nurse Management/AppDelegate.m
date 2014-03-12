@@ -25,8 +25,6 @@ static __weak AppDelegate *shared = nil;
 static NSString *const kTrackingId      = @"UA-48355055-1";
 static NSString *const kAllowTracking   = @"allowTracking";
 
-//
-
 @implementation AppDelegate
 
 + (AppDelegate *)shared
