@@ -57,6 +57,11 @@
                                                  name:FIRST_OF_CALENDAR
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(eventListenerDidReceiveNotification:)
+                                                 name:OPEN_AD_VIEW
+                                               object:nil];
+    
     //set background
     if ([[FXThemeManager shared] getImageWithKey:_fxThemeImageBackground]) {
         self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[[FXThemeManager shared] getImageWithKey:_fxThemeImageBackground]];
@@ -111,6 +116,8 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:_fxThemeNotificationChangeTheme object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DID_ADD_SCHEDULE object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:FIRST_OF_CALENDAR object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OPEN_AD_VIEW object:nil];
 }
 
 - (void) viewDidDisappear:(BOOL)animated

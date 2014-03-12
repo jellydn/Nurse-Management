@@ -56,6 +56,7 @@
 
 - (IBAction)backVC:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_AD_VIEW object:nil userInfo:nil];
 }
 
 #pragma mark - Others

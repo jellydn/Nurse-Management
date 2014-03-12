@@ -30,6 +30,9 @@
 #define URL_WS_OTHER_APP        @"http://ad.smaad.jp/moreApps/dataJSON/?zoneId=61517948&type=ios&start=%d&limit=%d"
 #define URL_WS_RANKING         @"http://app.grillshop.info/ranking/ranking.html"
 
+#define URL_WEB_AD_BANER                @"http://www.google.com/"
+#define URL_WEB_AD_OPENT_SAFARI         @"http://www.google.com/"
+
 // time formats
 #define TIME_FORMAT_DMY_HYPHEN      @"dd-MM-yyyy"
 #define TIME_FORMAT_FULL            @"dd-MM-yyyy HH:mm"
@@ -37,6 +40,7 @@
 //index first of Calendar
 #define FIRST_OF_CALENDAR           @"FIRST_OF_CALENDAR"
 #define HIDE_MEMBER                 @"HIDE_MEMBER"
+#define OPEN_AD_VIEW                @"OPEN_AD_VIEW"
 
 #define TEXT_ALL_DAY            @"終日"
 

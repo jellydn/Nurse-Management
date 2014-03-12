@@ -24,6 +24,11 @@
     _viewMask.alpha = 0;
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"hide_mask_view_addShiftView" object:nil];
+}
+
 - (void)hideMaskView
 {
         

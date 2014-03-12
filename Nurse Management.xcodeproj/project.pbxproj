@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		25B1431218CFF1C700D5F260 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0643085218BC4A750098AE85 /* libGoogleAnalyticsServices.a */; };
+		25B1431718CFF9D000D5F260 /* ADView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B1431518CFF9D000D5F260 /* ADView.m */; };
+		25B1431818CFF9D000D5F260 /* ADView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25B1431618CFF9D000D5F260 /* ADView.xib */; };
+		25B1431A18CFF9E900D5F260 /* ic_button_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 25B1431918CFF9E900D5F260 /* ic_button_close.png */; };
 		2A11814B18BF2D0D00110C7B /* MemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A11814918BF2D0D00110C7B /* MemberCell.m */; };
 		2A11814C18BF2D0D00110C7B /* MemberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A11814A18BF2D0D00110C7B /* MemberCell.xib */; };
 		2A394BCB18A9FD5300F30F2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A394BCA18A9FD5300F30F2D /* Foundation.framework */; };
@@ -430,6 +433,10 @@
 		0643085018BC4A750098AE85 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
 		0643085118BC4A750098AE85 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
 		0643085218BC4A750098AE85 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		25B1431418CFF9D000D5F260 /* ADView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADView.h; sourceTree = "<group>"; };
+		25B1431518CFF9D000D5F260 /* ADView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADView.m; sourceTree = "<group>"; };
+		25B1431618CFF9D000D5F260 /* ADView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADView.xib; sourceTree = "<group>"; };
+		25B1431918CFF9E900D5F260 /* ic_button_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_close.png; sourceTree = "<group>"; };
 		2A11814818BF2D0D00110C7B /* MemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberCell.h; sourceTree = "<group>"; };
 		2A11814918BF2D0D00110C7B /* MemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberCell.m; sourceTree = "<group>"; };
 		2A11814A18BF2D0D00110C7B /* MemberCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemberCell.xib; sourceTree = "<group>"; };
@@ -949,6 +956,16 @@
 			path = "Google Analytics";
 			sourceTree = "<group>";
 		};
+		25B1431318CFF9A200D5F260 /* ADView */ = {
+			isa = PBXGroup;
+			children = (
+				25B1431418CFF9D000D5F260 /* ADView.h */,
+				25B1431518CFF9D000D5F260 /* ADView.m */,
+				25B1431618CFF9D000D5F260 /* ADView.xib */,
+			);
+			name = ADView;
+			sourceTree = "<group>";
+		};
 		2A11814718BF2CE800110C7B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1233,6 +1250,7 @@
 		2A394C3318AA022600F30F2D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				25B1431318CFF9A200D5F260 /* ADView */,
 				C0CB918E18B83A2E00D61253 /* ChooseTimeView.h */,
 				C0CB918F18B83A2E00D61253 /* ChooseTimeView.m */,
 				C0CB919018B83A2E00D61253 /* NMSelectionStringView.h */,
@@ -1511,6 +1529,7 @@
 		2A3C24D218AB5BF700C20A04 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				25B1431918CFF9E900D5F260 /* ic_button_close.png */,
 				B68951C218BD884F003BE5E8 /* sicon_r1_c1.png */,
 				B68951C318BD884F003BE5E8 /* sicon_r1_c3.png */,
 				B68951C418BD884F003BE5E8 /* sicon_r1_c5.png */,
@@ -2066,6 +2085,7 @@
 				B68951D118BD884F003BE5E8 /* sicon_r3_c1.png in Resources */,
 				2A3C24F018AB78C900C20A04 /* AddScheduleView.xib in Resources */,
 				B6B10DE118AF0C3A004E3229 /* EditShiftVC.xib in Resources */,
+				25B1431A18CFF9E900D5F260 /* ic_button_close.png in Resources */,
 				B6B10E0818AF0C9E004E3229 /* ic_edit_shift_color_8.png in Resources */,
 				B68951B318BD79E9003BE5E8 /* ic_edit_schedule_color_3@2x.png in Resources */,
 				B68951BE18BD79E9003BE5E8 /* ic_edit_schedule_color_9.png in Resources */,
@@ -2189,6 +2209,7 @@
 				B68951D518BD884F003BE5E8 /* sicon_r3_c9.png in Resources */,
 				B68951CE18BD884F003BE5E8 /* sicon_r1_c5.png in Resources */,
 				B68951C018BD79E9003BE5E8 /* ic_edit_schedule_color_10.png in Resources */,
+				25B1431818CFF9D000D5F260 /* ADView.xib in Resources */,
 				2A3C24CB18AB593300C20A04 /* icon_r1_c7.png in Resources */,
 				2A394C1D18A9FF7600F30F2D /* Icon-Small.png in Resources */,
 				2A70131C18C95F4F0011B272 /* ic_home_cell_edit_shitf_pink@2x.png in Resources */,
@@ -2354,6 +2375,7 @@
 				2A3C24EF18AB78C900C20A04 /* AddScheduleView.m in Sources */,
 				B6B10DE018AF0C3A004E3229 /* EditShiftVC.m in Sources */,
 				2A97527C18B6024100C0946E /* SBJsonParser.m in Sources */,
+				25B1431718CFF9D000D5F260 /* ADView.m in Sources */,
 				2A75E64318ADA98800E74E4F /* Member.m in Sources */,
 				2A394C3C18AA028100F30F2D /* FXNavigationController.m in Sources */,
 				C0B2B1E418B44F7100CF4B76 /* CDShift.m in Sources */,

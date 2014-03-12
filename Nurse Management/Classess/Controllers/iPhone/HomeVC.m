@@ -20,6 +20,7 @@
 #import "HomeToolBarView.h"
 #import "AddShiftView.h"
 #import "AddScheduleView.h"
+#import "ADView.h"
 
 #import "RankingVC.h"
 #import "MoreVC.h"
@@ -43,13 +44,14 @@
 #import "ScheduleCategoryItem.h"
 #import "ScheduleItem.h"
 
-@interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate, FXCalendarViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
+@interface HomeVC ()<HomeNaviBarViewDelegate, HomeToolBarViewDelegate, AddShiftViewDelegate, AddScheduleViewDelegate, FXCalendarViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, ADViewDelegate>
 {
     HomeNaviBarView *_naviView ;
     HomeToolBarView *_toolBarView;
     
     AddShiftView    *_addShiftView;
     AddScheduleView *_addScheduleView;
+    ADView          *_adView;
     
     FXCalendarView  *_calendarView;
     
@@ -88,6 +90,7 @@
     [self loadHomeToolBar];
     [self loadHomeAddShiftView];
     [self loadHomeAddScheduleView];
+    [self loadADView];
     
     // load core data
     [self fetchedResultsControllerMember];
@@ -408,6 +411,25 @@
         
         [_calendarView reloadChangeFirstDayOfCalendar];
         
+    } else if ([[notif name] isEqualToString:OPEN_AD_VIEW]) {
+        
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:OPEN_AD_VIEW]) {
+            
+            if ([[NSUserDefaults standardUserDefaults] integerForKey:OPEN_AD_VIEW] > 4) {
+                return;
+            } else {
+                int count = [[NSUserDefaults standardUserDefaults] integerForKey:OPEN_AD_VIEW] + 1;
+                [[NSUserDefaults standardUserDefaults] setInteger:count forKey:OPEN_AD_VIEW];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+            
+        } else {
+            [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:OPEN_AD_VIEW];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        
+        [_adView show];
+        
     }
 }
 
@@ -508,6 +530,23 @@
     
     [self.view addSubview:_addScheduleView];
     
+}
+
+- (void)loadADView
+{
+    _adView = [[NSBundle mainBundle] loadNibNamed:@"ADView"
+                                            owner:self
+                                          options:nil][0];
+    
+    float detalIOS      = [Common isIOS7] ? 0 : 20;
+    float height        = [Common checkScreenIPhone5] ? 568 : 480;
+    
+    _adView.delegate    = self;
+    _adView.frame       = CGRectMake(0, 0, 320, height - detalIOS);
+    
+    [_adView initADView];
+    
+    [self.view addSubview:_adView];
 }
 
 - (NSData *) captureScreenshot {
@@ -1137,5 +1176,33 @@
     [_tableView reloadData];
     [_tableView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
+
+
+#pragma mark - ADView
+- (void) adViewDidClose:(ADView*)adView
+{
+    
+}
+
+- (void) adViewDidShow:(ADView*)adView
+{
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end
