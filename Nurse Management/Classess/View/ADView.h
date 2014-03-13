@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol ADViewDelegate;
-@interface ADView : UIView
+@interface ADView : UIView<UIWebViewDelegate>
 
 @property (nonatomic, weak) id <ADViewDelegate> delegate;
 

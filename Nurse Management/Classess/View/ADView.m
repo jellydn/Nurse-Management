@@ -80,5 +80,27 @@
     }];
 }
 
+#pragma mark - WebViewDelegate
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    return YES;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    NSString* js =
+    @"var meta = document.createElement('meta'); "
+    @"meta.setAttribute( 'name', 'viewport' ); "
+    @"meta.setAttribute( 'content', 'width = 260px, initial-scale = 1.0, user-scalable = yes' ); "
+    @"document.getElementsByTagName('head')[0].appendChild(meta)";
+    
+    [[self webView] stringByEvaluatingJavaScriptFromString: js];
+}
+
 
 @end

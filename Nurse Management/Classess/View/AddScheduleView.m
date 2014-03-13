@@ -182,7 +182,7 @@
         lb.text             = item.name;
         lb.backgroundColor  = [UIColor clearColor];
         lb.textColor        = item.textColor;
-        lb.font             = [UIFont systemFontOfSize:14.0];
+        lb.font             = [UIFont systemFontOfSize:13.0];
         lb.textAlignment    = NSTextAlignmentCenter;
         lb.numberOfLines    = 2;
         lb.tag              = item.scheduleCategoryID + 100;

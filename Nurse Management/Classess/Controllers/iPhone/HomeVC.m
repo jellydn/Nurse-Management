@@ -402,6 +402,9 @@
         [self loadHomeAddScheduleView];
         
         [_calendarView reloadTheme];
+        
+        [self.view bringSubviewToFront:_adView];
+        
     } else if ([[notif name] isEqualToString:DID_ADD_SCHEDULE]) {
         [_calendarView reloadData];
         self.scheduleOnDate = [[AppDelegate shared] getSchedulesOnDate:_selectDate];
