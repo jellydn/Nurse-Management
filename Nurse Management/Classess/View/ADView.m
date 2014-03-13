@@ -9,6 +9,7 @@
 #import "ADView.h"
 #import "Define.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Common.h"
 
 @interface ADView ()
 
@@ -30,6 +31,14 @@
     _viewContainerWeb.layer.masksToBounds   = YES;
     
     self.alpha = 0;
+    
+    if (![Common checkScreenIPhone5]) {
+        for (UIView *view in self.subviews) {
+            CGRect rect     = view.frame;
+            rect.origin.y   -= 40;
+            view.frame      = rect;
+        }
+    }
 }
 
 - (void) show
