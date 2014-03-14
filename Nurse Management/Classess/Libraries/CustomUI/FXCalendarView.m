@@ -51,6 +51,14 @@
         for (UILabel *lb in _headerViewMonday.subviews) {
             lb.font = [UIFont fontWithName:fontName size:size];
         }
+    } else {
+        for (UILabel *lb in _headerViewSunday.subviews) {
+            lb.font = [UIFont systemFontOfSize:11];
+        }
+        
+        for (UILabel *lb in _headerViewMonday.subviews) {
+            lb.font = [UIFont systemFontOfSize:11];
+        }
     }
     
     //set first of calendar
@@ -365,6 +373,14 @@
         
         for (UILabel *lb in _headerViewMonday.subviews) {
             lb.font = [UIFont fontWithName:fontName size:size];
+        }
+    } else {
+        for (UILabel *lb in _headerViewSunday.subviews) {
+            lb.font = [UIFont systemFontOfSize:11];
+        }
+        
+        for (UILabel *lb in _headerViewMonday.subviews) {
+            lb.font = [UIFont systemFontOfSize:11];
         }
     }
     

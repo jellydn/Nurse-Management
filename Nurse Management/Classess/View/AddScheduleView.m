@@ -161,6 +161,8 @@
     
     _viewSelect.frame = CGRectMake(13, 25, 54, 48);
     
+    float fontSize = 13.0;
+    
     for (ScheduleCategoryItem *item in schedules) {
         
         if (temp == 0) {
@@ -175,18 +177,52 @@
         
         [_scrollScheduleView addSubview:button];
         
-        UILabel *lb         = [[UILabel alloc] initWithFrame:CGRectMake((temp / 10) * 320 + (temp % 5) * 60 + 15,
-                                                                        (temp % 10) >= 5 ? 95 : 30,
-                                                                        50,
-                                                                        44)];
-        lb.text             = item.name;
-        lb.backgroundColor  = [UIColor clearColor];
-        lb.textColor        = item.textColor;
-        lb.font             = [UIFont systemFontOfSize:13.0];
-        lb.textAlignment    = NSTextAlignmentCenter;
-        lb.numberOfLines    = 2;
-        lb.tag              = item.scheduleCategoryID + 100;
-        [_scrollScheduleView addSubview:lb];
+        if ([Common isIOS7]) {
+        
+            NSDictionary* attribs = @{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]};
+            CGSize size = [item.name sizeWithAttributes:attribs];
+            
+            float line = ([item.name length] > 3) ? 0 : 5;
+            
+            if (([item.name length] == 4 && (size.width > 39 && size.width < 46.9)) ||
+                ([item.name length] == 4 && size.width == 39 )) {
+                line = 5;
+            }
+    
+            
+            UITextView *lb         = [[UITextView alloc] initWithFrame:CGRectMake((temp / 10) * 320 + (temp % 5) * 60 + 15,
+                                                                                  ((temp % 10) >= 5 ? 95 : 30) + line,
+                                                                                  50,
+                                                                                  44)];
+            lb.text             = item.name;
+            lb.backgroundColor  = [UIColor clearColor];
+            lb.textColor        = item.textColor;
+            lb.font             = [UIFont systemFontOfSize:fontSize];
+            lb.textAlignment    = NSTextAlignmentCenter;
+            lb.userInteractionEnabled = NO;
+            lb.tag              = item.scheduleCategoryID + 100;
+            
+            
+            [_scrollScheduleView addSubview:lb];
+        } else {
+            
+            UILabel *lb         = [[UILabel alloc] initWithFrame:CGRectMake((temp / 10) * 320 + (temp % 5) * 60 + 15,
+                                                                            (temp % 10) >= 5 ? 95 : 30,
+                                                                            50,
+                                                                            44)];
+            lb.text             = item.name;
+            lb.backgroundColor  = [UIColor clearColor];
+            lb.textColor        = item.textColor;
+            lb.font             = [UIFont systemFontOfSize:fontSize];
+            lb.textAlignment    = NSTextAlignmentCenter;
+            lb.numberOfLines    = 2;
+            lb.tag              = item.scheduleCategoryID + 100;
+            
+            
+            [_scrollScheduleView addSubview:lb];
+        }
+        
+        
         
         
         rect.origin.x = (temp / 10) * 320 + (temp % 5) * 60 + 15;
@@ -450,7 +486,8 @@
     }];
 }
 
-#pragma mark - Time
+#pragma mark - Others
+
 
 
 #pragma mark - ChooseTimeViewDelegate
