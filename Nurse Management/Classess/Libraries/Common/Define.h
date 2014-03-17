@@ -11,6 +11,7 @@
 
 //#define APP_NAME @"Nurse Management"
 #define APP_NAME @""
+#define APP_NAME_GA @"Nurse Management"
 
 #define START_TIME      10
 #define END_TIME        20
@@ -60,7 +61,7 @@
 
 
 // ON / OFF AD BANNER
-#define ADVIEW_IS_OPEN              NO  // NO = hide banner, YES = show banner
+#define ADVIEW_IS_OPEN              YES  // NO = hide banner, YES = show banner
 
 
 

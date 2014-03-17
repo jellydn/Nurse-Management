@@ -51,7 +51,7 @@ static NSString *const kAllowTracking   = @"allowTracking";
     // tradeoff between battery usage and timely dispatch.
     [GAI sharedInstance].dispatchInterval           = 120;
     [GAI sharedInstance].trackUncaughtExceptions    = YES;
-    self.tracker = [[GAI sharedInstance] trackerWithName:APP_NAME trackingId:kTrackingId];
+    self.tracker = [[GAI sharedInstance] trackerWithName:APP_NAME_GA trackingId:kTrackingId];
     
     // set status bar
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
