@@ -57,4 +57,12 @@
 #define GA_LISTMEMBERSVC            @"List Members screen"
 #define GA_ADDMEMBERVC              @"Add Member screen"
 
+
+
+// ON / OFF AD BANNER
+#define ADVIEW_IS_OPEN              NO  // NO = hide banner, YES = show banner
+
+
+
+
 #endif

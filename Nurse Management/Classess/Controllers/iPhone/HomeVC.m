@@ -416,6 +416,10 @@
         
     } else if ([[notif name] isEqualToString:OPEN_AD_VIEW]) {
         
+        if (!ADVIEW_IS_OPEN) {
+            return;
+        }
+        
         if ([[NSUserDefaults standardUserDefaults] objectForKey:OPEN_AD_VIEW]) {
             
             if ([[NSUserDefaults standardUserDefaults] integerForKey:OPEN_AD_VIEW] > 4) {
