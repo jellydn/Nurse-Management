@@ -713,17 +713,12 @@ static NSString *const kAllowTracking   = @"allowTracking";
 
 - (NSMutableArray*) getSchedulesOnDate:(NSDate*)date
 {
-    //NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
     NSMutableArray *schedules = [[NSMutableArray alloc] init];
     
     for (CDSchedule *itemCD in self.fetchedResultsControllerSchedule.fetchedObjects) {
         
         NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:itemCD.onDate];
-        //NSString *strTemp = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate];
-     
-        //if ([strTemp isEqualToString:strDate]) {
-            //[schedules addObject:[ScheduleItem convertForCDObjet:itemCD]];
-        //}
+
         [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&date interval:NULL forDate:date];
         [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&tempDate interval:NULL forDate:tempDate];
         
@@ -732,6 +727,14 @@ static NSString *const kAllowTracking   = @"allowTracking";
             //NSLog(@"The same:");
             //return item;
             [schedules addObject:[ScheduleItem convertForCDObjet:itemCD]];
+        } else {
+            
+            NSTimeInterval toDay = [date timeIntervalSince1970];
+            
+            if (itemCD.timeEnd >= toDay) {
+                [schedules addObject:[ScheduleItem convertForCDObjet:itemCD]];
+            }
+            
         }
     }
     
@@ -868,6 +871,42 @@ static NSString *const kAllowTracking   = @"allowTracking";
             [arrayColor addObject:item.fk_schedule_category.color];
             
             [_dictionarySchedule setObject:arrayColor forKey:strDate];
+        }
+        
+        //add item with time more days
+        NSTimeInterval timeStart    = item.timeStart;
+        NSTimeInterval timeEnd      = item.timeEnd;
+        NSString *toDay             = strDate;
+        
+        NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:timeStart];
+        
+        while (timeStart <= timeEnd) {
+            
+            NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate];
+            
+            if ([strDate isEqualToString:toDay]) {
+                
+                tempDate = [FXCalendarData nextDateFrom:tempDate];
+                timeStart = [tempDate timeIntervalSince1970];
+                
+                continue;
+            }
+            
+            if ([_dictionarySchedule objectForKey:strDate]) {
+                NSMutableArray *arrayColor = [_dictionarySchedule objectForKey:strDate];
+                [arrayColor addObject:item.fk_schedule_category.color];
+                
+                [_dictionarySchedule setObject:arrayColor forKey:strDate];
+            } else {
+                NSMutableArray *arrayColor = [[NSMutableArray alloc] init];
+                [arrayColor addObject:item.fk_schedule_category.color];
+                
+                [_dictionarySchedule setObject:arrayColor forKey:strDate];
+            }
+            
+            //
+            tempDate = [FXCalendarData nextDateFrom:tempDate];
+            timeStart = [tempDate timeIntervalSince1970];
         }
         
     }
