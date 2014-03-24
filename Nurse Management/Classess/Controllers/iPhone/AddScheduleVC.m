@@ -113,8 +113,8 @@
         if (!_scheduleEditItem.isAllDay) {
             _isAllDay = NO;
             [_btIsAllTime setBackgroundColor:[UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]];
-            _beginTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
-            _EndTime.text     = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+            _beginTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_startTime];
+            _EndTime.text     = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_endTime];
             _btEndTime.enabled = YES;
             _btStarTime.enabled = YES;
             
@@ -148,10 +148,10 @@
         
         // set nearest time in roof
         _startTime = [FXCalendarData dateNexHourFormDate:[NSDate date]];
-        _beginTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+        _beginTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_startTime];
         
         _endTime = [FXCalendarData dateNexHourFormDate:_startTime];
-        _EndTime.text   = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+        _EndTime.text   = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_endTime];
         
         [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_startTime];
     }
@@ -292,10 +292,10 @@
     
     // set nearest time in roof
     _startTime = [FXCalendarData dateNexHourFormDate:[NSDate date]];
-    _beginTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+    _beginTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_startTime];
     
     _endTime = [FXCalendarData dateNexHourFormDate:_startTime];
-    _EndTime.text   = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+    _EndTime.text   = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_endTime];
     
 }
 - (IBAction)chooseTime:(id)sender {
@@ -304,8 +304,8 @@
         if (_isAllDay) {
             _isAllDay = NO;
             [_btIsAllTime setBackgroundColor:[UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]];
-            _beginTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
-            _EndTime.text     = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+            _beginTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_startTime];
+            _EndTime.text     = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_endTime];
             _btEndTime.enabled = YES;
             _btStarTime.enabled = YES;
         } else {
@@ -358,15 +358,15 @@
         if (picker.datePicker.tag == START_TIME) {
             
             _startTime      = picker.datePicker.date;
-            _beginTime.text = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+            _beginTime.text = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_startTime];
             
             _endTime        = [FXCalendarData dateNexHourFormDateNoTrimMin:picker.datePicker.date];
-            _EndTime.text   = [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+            _EndTime.text   = [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_endTime];
             
         } else if (picker.datePicker.tag == END_TIME) {
             
             _endTime = picker.datePicker.date;
-            _EndTime.text     = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+            _EndTime.text     = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_endTime];
             
         }
     }

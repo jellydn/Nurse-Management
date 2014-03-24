@@ -75,8 +75,8 @@
         _dateTimeEnd        = [FXCalendarData dateNexHourFormDate:_dateTimeStart];
         _arrayTimeAlerts    = nil;
         
-        _lbTimeStart.text   = [Common convertTimeToStringWithFormat:@"HH:mm" date:_dateTimeStart];
-        _lbTimeEnd.text     = [Common convertTimeToStringWithFormat:@"HH:mm" date:_dateTimeEnd];
+        _lbTimeStart.text   = [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_dateTimeStart];
+        _lbTimeEnd.text     = [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_dateTimeEnd];
         
         _btStartTime.enabled    = YES;
         _btEndTime.enabled      = YES;
@@ -393,8 +393,8 @@
         if (_isAllDay) {
             _isAllDay = NO;
             [_btAllDay setBackgroundColor:[UIColor colorWithRed:216.0/255.0 green:224.0/255.0 blue:221.0/255.0 alpha:1.0]];
-            _lbTimeStart.text   = (_dateTimeStart == nil) ? [Common convertTimeToStringWithFormat:@"M月d日" date:_selectDate] : [Common convertTimeToStringWithFormat:@"HH:mm" date:_dateTimeStart];
-            _lbTimeEnd.text     = (_dateTimeEnd == nil) ? [Common convertTimeToStringWithFormat:@"M月d日" date:_selectDate] : [Common convertTimeToStringWithFormat:@"HH:mm" date:_dateTimeEnd];
+            _lbTimeStart.text   = (_dateTimeStart == nil) ? [Common convertTimeToStringWithFormat:@"M月d日" date:_selectDate] : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_dateTimeStart];
+            _lbTimeEnd.text     = (_dateTimeEnd == nil) ? [Common convertTimeToStringWithFormat:@"M月d日" date:_selectDate] : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_dateTimeEnd];
             
             _btStartTime.enabled    = YES;
             _btEndTime.enabled      = YES;
@@ -402,8 +402,8 @@
         } else {
             _isAllDay = YES;
             [_btAllDay setBackgroundColor:[[FXThemeManager shared] getColorWithKey:_fxThemeColorMain]];
-            _lbTimeStart.text   = [Common convertTimeToStringWithFormat:@"M月d日" date:_selectDate];
-            _lbTimeEnd.text     = [Common convertTimeToStringWithFormat:@"M月d日" date:_selectDate];
+            _lbTimeStart.text   = [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_selectDate];
+            _lbTimeEnd.text     = [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_selectDate];
             
             _btStartTime.enabled    = NO;
             _btEndTime.enabled      = NO;
@@ -474,15 +474,15 @@
         _isShowPicker = NO;
         
         if (_isSetTimeStart) {
-            _lbTimeStart.text   = [Common convertTimeToStringWithFormat:@"HH:mm" date:_datePicker.date];
+            _lbTimeStart.text   = [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_datePicker.date];
             _dateTimeStart      = _datePicker.date;
             [_chooseTimeView setStartDate:_datePicker.date];
             
             _dateTimeEnd        = [FXCalendarData dateNexHourFormDateNoTrimMin:_datePicker.date];
-            _lbTimeEnd.text   = [Common convertTimeToStringWithFormat:@"HH:mm" date:_dateTimeEnd];
+            _lbTimeEnd.text   = [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_dateTimeEnd];
             
         } else {
-            _lbTimeEnd.text     = [Common convertTimeToStringWithFormat:@"HH:mm" date:_datePicker.date];
+            _lbTimeEnd.text     = [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_datePicker.date];
             _dateTimeEnd        = _datePicker.date;
         }
         

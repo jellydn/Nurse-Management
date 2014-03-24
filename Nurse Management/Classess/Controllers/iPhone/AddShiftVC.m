@@ -302,15 +302,15 @@
         if (picker.datePicker.tag == START_TIME) {
             
             _startTime          = picker.datePicker.date;
-            _lblStartTime.text  = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+            _lblStartTime.text  = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_startTime];
             
             _endTime            = [FXCalendarData dateNexHourFormDateNoTrimMin:picker.datePicker.date];
-            _lblEndTime.text    = [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+            _lblEndTime.text    = [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_endTime];
             
         } else if (picker.datePicker.tag == END_TIME) {
             
             _endTime = picker.datePicker.date;
-            _lblEndTime.text     = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+            _lblEndTime.text     = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_endTime];
             
         }
     }
@@ -633,10 +633,10 @@
     NSDate *currentDate = [FXCalendarData dateWithSetHourWithHour:[FXCalendarData getHourWithDate:[NSDate date]] date:_date];
     
     _startTime = [FXCalendarData dateNexHourFormDate:currentDate];
-    _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+    _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_startTime];
     
     _endTime = [FXCalendarData dateNexHourFormDate:_startTime];
-    _lblEndTime.text   = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+    _lblEndTime.text   = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_endTime];
     
 }
 
@@ -659,7 +659,7 @@
         _btnStartTime.enabled = YES;
         _lblStartTime.textColor = TITLE_COLOR;
         if (_startTime)
-            _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_startTime];
+            _lblStartTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_startTime];
         else
             _lblStartTime.text = @"00:00";
         
@@ -667,7 +667,7 @@
         _btnEndTime.enabled = YES;
         _lblEndTime.textColor = TITLE_COLOR;
         if (_endTime)
-            _lblEndTime.text   = (_endTime == nil || endHour == 0) ? @"24:00" : [Common convertTimeToStringWithFormat:@"HH:mm" date:_endTime];
+            _lblEndTime.text   = (_endTime == nil || endHour == 0) ? @"24:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_endTime];
         else
             _lblEndTime.text = @"24:00";
         
