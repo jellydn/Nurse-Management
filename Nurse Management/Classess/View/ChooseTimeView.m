@@ -262,7 +262,7 @@
 - (void)tapChooseTime
 {
     _nMTimePicker.delegate = self;
-    _nMTimePicker.datePicker.datePickerMode = UIDatePickerModeTime;
+    _nMTimePicker.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
     //datePicker.picker.minuteInterval = 5;
     _nMTimePicker.datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
 //    nMTimePicker.navigationBar.topItem.title = @"";

@@ -65,6 +65,7 @@
         
         self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 44, 320, 216)];
         //self.datePicker.date = [NSDate date];
+        self.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
         [self.actionSheet addSubview:self.datePicker];
     }
     return self;

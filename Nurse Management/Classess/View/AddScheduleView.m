@@ -37,7 +37,7 @@
     self.hidden = YES;
     
     _datePicker.calendar        = [NSCalendar autoupdatingCurrentCalendar];
-    _datePicker.datePickerMode  = UIDatePickerModeTime;
+    _datePicker.datePickerMode  = UIDatePickerModeDateAndTime;
     
     NSDictionary *tempDic = [[FXThemeManager shared].themeData objectForKey:_fxThemeOthersAddSchedule];
     
@@ -413,14 +413,17 @@
         
     } else if (button.tag == 1) {
         _isSetTimeStart = YES;
+        _datePicker.date        = _dateTimeStart;
         
         if (_dateTimeEnd) {
             _datePicker.minimumDate = nil;
             _datePicker.maximumDate = _dateTimeEnd;
+            
         }
         
     } else if (button.tag == 2) {
         _isSetTimeStart = NO;
+        _datePicker.date    = _dateTimeEnd;
         
         if (_dateTimeStart) {
             _datePicker.minimumDate = _dateTimeStart;

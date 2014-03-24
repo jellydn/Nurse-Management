@@ -70,7 +70,7 @@
     _getDate = [FXCalendarData dateWithSetHourWithHour:[FXCalendarData getHourWithDate:[NSDate date]] date:_selectDate];
     _timePickerView = [[NMTimePickerView alloc] init];
     _timePickerView.delegate = self;
-    _timePickerView.datePicker.datePickerMode = UIDatePickerModeTime;
+    _timePickerView.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
     _timePickerView.datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
     // view choose time
 

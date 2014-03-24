@@ -136,7 +136,7 @@
     // init time picker view
     _timePickerView = [[NMTimePickerView alloc] init];
     _timePickerView.delegate = self;
-    _timePickerView.datePicker.datePickerMode = UIDatePickerModeTime;
+    _timePickerView.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
     _timePickerView.datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"];
     
     // load core data
