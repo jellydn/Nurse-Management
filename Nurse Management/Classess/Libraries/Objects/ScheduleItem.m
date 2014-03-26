@@ -40,9 +40,9 @@
         
     } else {
         if (isStart) {
-            return [Common convertTimeToStringWithFormat:@"HH:mm" date:_timeStart];
+            return [Common convertTimeToStringWithFormat:@"M/dd HH:mm" date:_timeStart];
         } else {
-            return [Common convertTimeToStringWithFormat:@"HH:mm" date:_timeEnd];
+            return [Common convertTimeToStringWithFormat:@"M/dd HH:mm" date:_timeEnd];
         }
     }
     

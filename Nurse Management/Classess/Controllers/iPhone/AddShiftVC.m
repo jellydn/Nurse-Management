@@ -243,9 +243,23 @@
     _shift.isAllDay = shiftCategory.isAllDay;
     _isAllDay = shiftCategory.isAllDay;
     
+
+    //check time start/end in category
+    NSArray *arrayStart = [shiftCategory.timeStart componentsSeparatedByString:@":"];
+    int tempStart = [arrayStart[0] integerValue] * 60 + [arrayStart[1] integerValue];
+    
+    NSArray *arrayEnd = [shiftCategory.timeEnd componentsSeparatedByString:@":"];
+    int tempEnd = [arrayEnd[0] integerValue] * 60 + [arrayEnd[1] integerValue];
+    
     // get time from shift category
-    _startTime = [Common dateAppenedFromDate:_date andTime:shiftCategory.timeStart];
-    _endTime = [Common dateAppenedFromDate:_date andTime:shiftCategory.timeEnd];
+    _startTime  = [Common dateAppenedFromDate:_date andTime:shiftCategory.timeStart];
+    
+    if (tempEnd < tempStart) {
+        _endTime = [Common dateAppenedFromDate:[FXCalendarData nextDateFrom:_date] andTime:shiftCategory.timeEnd];
+    } else {
+        _endTime = [Common dateAppenedFromDate:_date andTime:shiftCategory.timeEnd];
+    }
+    
     [self setAllDay:_isAllDay];
     
 //    _btnSave.enabled = YES;

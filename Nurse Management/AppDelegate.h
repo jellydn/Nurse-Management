@@ -58,9 +58,11 @@
 // dic
 @property (nonatomic, strong) NSMutableDictionary *dictionaryShift;
 @property (nonatomic, strong) NSMutableDictionary *dictionarySchedule;
+@property (nonatomic, strong) NSMutableDictionary *dictionaryScheduleItem;
 
 - (void) initDictionaryShift;
 - (void) initDictionarySchedule;
+- (void) initDictionaryScheduleItem;
 - (ShiftCategoryItem*) getShiftCategoryWithDate:(NSDate*)date;
 
 // share

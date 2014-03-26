@@ -2581,6 +2581,12 @@
 					"$(PROJECT_DIR)/Nurse",
 					Management/Classess/Libraries/Google,
 					Analytics,
+					"$(PROJECT_DIR)/Nurse",
+					Management/Classess/Libraries/Google,
+					Analytics,
+					"$(PROJECT_DIR)/Nurse",
+					Management/Classess/Libraries/Google,
+					Analytics,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2611,6 +2617,12 @@
 					Management/Classess/Libraries/Google,
 					Analytics,
 					"/Volumes/Data/Projects/Nurse-Management/Nurse",
+					Management/Classess/Libraries/Google,
+					Analytics,
+					"$(PROJECT_DIR)/Nurse",
+					Management/Classess/Libraries/Google,
+					Analytics,
+					"$(PROJECT_DIR)/Nurse",
 					Management/Classess/Libraries/Google,
 					Analytics,
 					"$(PROJECT_DIR)/Nurse",

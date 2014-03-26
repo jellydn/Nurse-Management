@@ -77,6 +77,7 @@ static NSString *const kAllowTracking   = @"allowTracking";
     //init dictionary
     [self initDictionaryShift];
     [self initDictionarySchedule];
+    [self initDictionaryScheduleItem];
     
     // Handle launching from a notification
     UILocalNotification *locationNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
@@ -183,6 +184,7 @@ static NSString *const kAllowTracking   = @"allowTracking";
     } else if (controller == _fetchedResultsControllerSchedule ||
                controller == _fetchedResultsControllerScheduleCategory) {
         [self initDictionarySchedule];
+        [self initDictionaryScheduleItem];
     }
 }
 
@@ -713,32 +715,37 @@ static NSString *const kAllowTracking   = @"allowTracking";
 
 - (NSMutableArray*) getSchedulesOnDate:(NSDate*)date
 {
-    NSMutableArray *schedules = [[NSMutableArray alloc] init];
+    NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
+    return [_dictionaryScheduleItem objectForKey:strDate];
     
-    for (CDSchedule *itemCD in self.fetchedResultsControllerSchedule.fetchedObjects) {
-        
-        NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:itemCD.onDate];
-
-        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&date interval:NULL forDate:date];
-        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&tempDate interval:NULL forDate:tempDate];
-        
-        NSComparisonResult result = [date compare:tempDate];
-        if (result == NSOrderedSame) {
-            //NSLog(@"The same:");
-            //return item;
-            [schedules addObject:[ScheduleItem convertForCDObjet:itemCD]];
-        } else {
-            
-            NSTimeInterval toDay = [date timeIntervalSince1970];
-            
-            if (itemCD.timeEnd >= toDay) {
-                [schedules addObject:[ScheduleItem convertForCDObjet:itemCD]];
-            }
-            
-        }
-    }
+    ///////
     
-    return schedules;
+//    NSMutableArray *schedules = [[NSMutableArray alloc] init];
+//    
+//    for (CDSchedule *itemCD in self.fetchedResultsControllerSchedule.fetchedObjects) {
+//        
+//        NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:itemCD.onDate];
+//
+//        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&date interval:NULL forDate:date];
+//        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&tempDate interval:NULL forDate:tempDate];
+//        
+//        NSComparisonResult result = [date compare:tempDate];
+//        if (result == NSOrderedSame) {
+//            //NSLog(@"The same:");
+//            //return item;
+//            [schedules addObject:[ScheduleItem convertForCDObjet:itemCD]];
+//        } else {
+//            
+//            NSTimeInterval toDay = [date timeIntervalSince1970];
+//            
+//            if (itemCD.timeEnd >= toDay) {
+//                [schedules addObject:[ScheduleItem convertForCDObjet:itemCD]];
+//            }
+//            
+//        }
+//    }
+//    
+//    return schedules;
 }
 
 - (NSMutableArray*) getColorsSchedulesOnDate:(NSDate*)date
@@ -913,6 +920,76 @@ static NSString *const kAllowTracking   = @"allowTracking";
     
     
     NSLog(@"initDictionarySchedule ---- end");
+}
+
+- (void) initDictionaryScheduleItem
+{
+    NSLog(@"initDictionarySchedule");
+    if (_dictionaryScheduleItem) {
+        [_dictionaryScheduleItem removeAllObjects];
+    } else {
+        _dictionaryScheduleItem = [[NSMutableDictionary alloc] init];
+    }
+    
+    
+    for (CDSchedule *item in self.fetchedResultsControllerSchedule.fetchedObjects) {
+        
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:item.onDate];
+        NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:date];
+        
+        if ([_dictionaryScheduleItem objectForKey:strDate]) {
+            NSMutableArray *arrayColor = [_dictionaryScheduleItem objectForKey:strDate];
+            
+            [arrayColor addObject:[ScheduleItem convertForCDObjet:item]];
+            
+            [_dictionaryScheduleItem setObject:arrayColor forKey:strDate];
+        } else {
+            NSMutableArray *arrayColor = [[NSMutableArray alloc] init];
+            [arrayColor addObject:[ScheduleItem convertForCDObjet:item]];
+            
+            [_dictionaryScheduleItem setObject:arrayColor forKey:strDate];
+        }
+        
+        //add item with time more days
+        NSTimeInterval timeStart    = item.timeStart;
+        NSTimeInterval timeEnd      = item.timeEnd;
+        NSString *toDay             = strDate;
+        
+        NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:timeStart];
+        
+        while (timeStart <= timeEnd) {
+            
+            NSString *strDate = [Common convertTimeToStringWithFormat:@"dd-MM-yyyy" date:tempDate];
+            
+            if ([strDate isEqualToString:toDay]) {
+                
+                tempDate = [FXCalendarData nextDateFrom:tempDate];
+                timeStart = [tempDate timeIntervalSince1970];
+                
+                continue;
+            }
+            
+            if ([_dictionaryScheduleItem objectForKey:strDate]) {
+                NSMutableArray *arrayColor = [_dictionaryScheduleItem objectForKey:strDate];
+                [arrayColor addObject:[ScheduleItem convertForCDObjet:item]];
+                
+                [_dictionaryScheduleItem setObject:arrayColor forKey:strDate];
+            } else {
+                NSMutableArray *arrayColor = [[NSMutableArray alloc] init];
+                [arrayColor addObject:[ScheduleItem convertForCDObjet:item]];
+                
+                [_dictionaryScheduleItem setObject:arrayColor forKey:strDate];
+            }
+            
+            //
+            tempDate = [FXCalendarData nextDateFrom:tempDate];
+            timeStart = [tempDate timeIntervalSince1970];
+        }
+        
+    }
+    
+    
+    NSLog(@"initDictionaryScheduleItem ---- end");
 }
 
 - (ShiftCategoryItem*) getShiftCategoryWithDate:(NSDate*)date
