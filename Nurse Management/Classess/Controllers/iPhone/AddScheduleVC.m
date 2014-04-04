@@ -147,7 +147,8 @@
         _isSeletedCategory = NO;
         
         // set nearest time in roof
-        _startTime = [FXCalendarData dateNexHourFormDate:[NSDate date]];
+        _selectDate = [FXCalendarData dateWithSetHourWithHour:[FXCalendarData getHourWithDate:[NSDate date]] date:_selectDate];
+        _startTime = [FXCalendarData dateNexHourFormDate:_selectDate];
         _beginTime.text   = (_startTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_startTime];
         
         _endTime = [FXCalendarData dateNexHourFormDate:_startTime];
