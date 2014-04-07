@@ -360,6 +360,7 @@
 - (IBAction)chooseTimeMode:(id)sender {
     
     _isAllDay = !_isAllDay;
+    _chooseTimeView.isAllDay = _isAllDay;
     [self setAllDay:_isAllDay];
     
 }
@@ -619,6 +620,7 @@
 - (void) loadChooseTimeView {
     _chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 302, 320 - 15*2, 44)];
     _chooseTimeView.delegate = self;
+    _chooseTimeView.isAllDay = _isAllDay;
     [_chooseTimeView setStartDate:_startTime];
     [_scrollView addSubview:_chooseTimeView];
 }
@@ -655,6 +657,7 @@
 }
 
 - (void) setAllDay: (BOOL)isAllDay {
+    
     
     if (isAllDay == YES) {
         
@@ -973,6 +976,7 @@
         [self setDefaultTime];
     }
     
+    _chooseTimeView.isAllDay = _isAllDay;
     [self setAllDay:_isAllDay];
     
     // shift members

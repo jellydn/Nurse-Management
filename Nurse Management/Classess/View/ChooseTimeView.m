@@ -12,7 +12,7 @@
 #import "FXThemeManager.h"
 
 //---------define--------------
-#define NUMBER_OF_ITEM   6
+#define NUMBER_OF_ITEM   8
 #define WIDTH_ITEM       42.0f
 #define HEIGHT_ITEM      44.0f
 
@@ -59,11 +59,19 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    NSArray *arr = @[@"on time",@"15 minutes",@"30 minutes",@"1    hour",@"2    hours",@"choose time"];
-    float deltal = (rect.size.width - WIDTH_ITEM * NUMBER_OF_ITEM)/(NUMBER_OF_ITEM - 1);
+    NSArray *arr = @[@"on time",@"15 minutes",@"30 minutes",@"1    hour",@"2    hours",@"choose time", @"1      day", @"2     day"];
+    float deltal = (rect.size.width - WIDTH_ITEM * (NUMBER_OF_ITEM - 2))/(NUMBER_OF_ITEM - 1 - 2);
     for (int i = 0; i < NUMBER_OF_ITEM; i++) {
         
-        float originX = (deltal + WIDTH_ITEM)*i;
+        int temp = i;
+        
+        if (i == 6) {
+            temp = 1;
+        } else if (i == 7) {
+            temp = 2;
+        }
+        
+        float originX = (deltal + WIDTH_ITEM)*temp;
         //init view
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(originX, 0, WIDTH_ITEM, HEIGHT_ITEM)];
         view.tag = i+TAG_VIEW;
@@ -116,6 +124,11 @@
         
     }
     _nMTimePicker = [[NMTimePickerView alloc] init];
+    
+    //
+    if (_isAllDay == NO) {
+        self.isAllDay = NO;
+    }
 }
 
 - (void)tapToChooseItem:(UIButton *)button
@@ -220,6 +233,22 @@
                     case 5:
                     {
                         NSDate *date = _dateChooseTime?_dateChooseTime:[NSDate date];
+                        [arrayNumberOfTimeSelected addObject:date];
+                    }
+                        break;
+                    case 6:
+                    {
+                        NSTimeInterval time = [_startDate timeIntervalSince1970];
+                        time -= 120*60*24;
+                        NSDate *date = [NSDate dateWithTimeIntervalSince1970:time];
+                        [arrayNumberOfTimeSelected addObject:date];
+                    }
+                        break;
+                    case 7:
+                    {
+                        NSTimeInterval time = [_startDate timeIntervalSince1970];
+                        time -= 120*60*24*2;
+                        NSDate *date = [NSDate dateWithTimeIntervalSince1970:time];
                         [arrayNumberOfTimeSelected addObject:date];
                     }
                         break;
@@ -364,9 +393,105 @@
     }if ([dateSellected timeIntervalSince1970] + 120*60 == [startDate timeIntervalSince1970]) {
         
         return 4;
+    }if ([dateSellected timeIntervalSince1970] + 120*60*24 == [startDate timeIntervalSince1970]) {
+        
+        return 6;
+    }if ([dateSellected timeIntervalSince1970] + 120*60*24*2 == [startDate timeIntervalSince1970]) {
+        
+        return 7;
     }
     
     return 5;
 }
+
+#pragma mark - Setter
+- (void) setIsAllDay:(BOOL)isAllDay
+{
+    _isAllDay = isAllDay;
+    
+    for (UIView *subView in self.subviews) {
+        
+        switch (subView.tag - TAG_VIEW) {
+            case 0:
+            {
+                break;
+            }
+            case 1:
+            {
+                break;
+            }
+            case 2:
+            {
+                break;
+            }
+            case 3:
+            {
+                break;
+            }
+            case 4:
+            {
+                break;
+            }
+            case 5:
+            {
+                break;
+            }
+            case 6:
+            {
+                subView.hidden = !_isAllDay;
+                break;
+            }
+            case 7:
+            {
+                subView.hidden = !_isAllDay;
+                break;
+            }
+            default:
+                break;
+        }
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

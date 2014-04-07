@@ -316,6 +316,7 @@
     
     _chooseTimeView             = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 140, 320 - 15*2, 44)];
     _chooseTimeView.delegate    = self;
+    _chooseTimeView.isAllDay    = _isAllDay;
     [_chooseTimeView setStartDate:_dateTimeStart];
     [_chooseTimeView setColorForActiontionChoose:[[FXThemeManager shared] getColorWithKey:_fxThemeColorMain]];
     [_viewTime addSubview:_chooseTimeView];
@@ -408,6 +409,8 @@
             _btStartTime.enabled    = NO;
             _btEndTime.enabled      = NO;
         }
+        
+        _chooseTimeView.isAllDay = _isAllDay;
         
         return;
         

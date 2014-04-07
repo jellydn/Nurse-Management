@@ -76,6 +76,7 @@
 
     _chooseTimeView = [[ChooseTimeView alloc] initWithFrame:CGRectMake(15, 210, 320 - 15*2, 44)];
     _chooseTimeView.delegate = self;
+    _chooseTimeView.isAllDay = _isAllDay;
     [_chooseTimeView setStartDate:_selectDate];
     
     [self.view addSubview:_chooseTimeView];
@@ -131,13 +132,16 @@
         if (_arrAlerts) {
             _arrAlerts = nil;
         }
+        
         _arrAlerts = [[NSMutableArray alloc] init];
         CDSchedule *cdSchedule = [[AppDelegate shared] getScheduleByID:_scheduleEditItem.scheduleID];
         for (CDScheduleAlert *item in cdSchedule.pk_schedule) {
             NSLog(@"alert: %d --- : %f",item.id, item.onTime);
             [_arrAlerts addObject:[NSDate dateWithTimeIntervalSince1970:item.onTime]];
+            [_arrayTimeAlerts addObject:[NSDate dateWithTimeIntervalSince1970:item.onTime]];
         }
         
+        _chooseTimeView.isAllDay = _isAllDay;
         [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_scheduleEditItem.timeStart];
 
         
@@ -154,7 +158,7 @@
         _endTime = [FXCalendarData dateNexHourFormDate:_startTime];
         _EndTime.text   = (_endTime == nil) ? @"00:00" : [Common convertTimeToStringWithFormat:@"M月d日 HH:mm" date:_endTime];
         
-        [_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_startTime];
+        //[_chooseTimeView reloadDataWithArrayDate:_arrAlerts andStartDate:_startTime];
     }
 }
 -(void)loadScheduleDate
@@ -317,6 +321,9 @@
             _btEndTime.enabled = NO;
             _btStarTime.enabled = NO;
         }
+        
+        _chooseTimeView.isAllDay = _isAllDay;
+        
         return;
         
     } else {

@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) id <ChooseTimeViewDelegate> delegate;
 
+@property(nonatomic) BOOL isAllDay;
+
 - (void)setStartDate:(NSDate *)date;
 
 - (void)setColorForActiontionChoose:(UIColor *)color;
