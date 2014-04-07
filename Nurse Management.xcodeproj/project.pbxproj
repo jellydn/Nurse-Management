@@ -1966,6 +1966,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Le Phuong Tien";
 				TargetAttributes = {
+					2A394BC618A9FD5300F30F2D = {
+						DevelopmentTeam = XUYAJ7X97H;
+					};
 					2A394BE618A9FD5300F30F2D = {
 						TestTargetID = 2A394BC618A9FD5300F30F2D;
 					};
@@ -2526,6 +2529,7 @@
 		2A394BFA18A9FD5300F30F2D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Nurse Management/Nurse Management-Prefix.pch";
 				INFOPLIST_FILE = "Nurse Management/Nurse Management-Info.plist";
@@ -2546,6 +2550,9 @@
 					Management/Classess/Libraries/Google,
 					Analytics,
 					"/Volumes/Data/Projects/Nurse-Management/Nurse",
+					Management/Classess/Libraries/Google,
+					Analytics,
+					"$(PROJECT_DIR)/Nurse",
 					Management/Classess/Libraries/Google,
 					Analytics,
 					"$(PROJECT_DIR)/Nurse",
@@ -2603,6 +2610,7 @@
 		2A394BFB18A9FD5300F30F2D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Nurse Management/Nurse Management-Prefix.pch";
 				INFOPLIST_FILE = "Nurse Management/Nurse Management-Info.plist";
@@ -2623,6 +2631,9 @@
 					Management/Classess/Libraries/Google,
 					Analytics,
 					"/Volumes/Data/Projects/Nurse-Management/Nurse",
+					Management/Classess/Libraries/Google,
+					Analytics,
+					"$(PROJECT_DIR)/Nurse",
 					Management/Classess/Libraries/Google,
 					Analytics,
 					"$(PROJECT_DIR)/Nurse",
