@@ -581,14 +581,24 @@ static NSString *const kAllowTracking   = @"allowTracking";
     schedule.memo                   = [info objectForKey:@"memo"];
     
     NSDate *onDate                  = [info objectForKey:@"select_date"];
-    schedule.onDate                 = [onDate timeIntervalSince1970];
-    
-    NSDate *timeEndDate             = [info objectForKey:@"end_time"];
-    schedule.timeEnd                = [timeEndDate timeIntervalSince1970];
-    
     NSDate *timeStartDate           = [info objectForKey:@"start_time"];
-    schedule.timeStart              = [timeStartDate timeIntervalSince1970];
+    NSDate *timeEndDate             = [info objectForKey:@"end_time"];
     
+   
+    NSDate *tempOnDate              = [FXCalendarData trimDate:onDate];
+    NSDate *tempStartDate           = [FXCalendarData trimDate:timeStartDate];
+    
+    if ([tempOnDate timeIntervalSince1970] >= [tempStartDate timeIntervalSince1970] &&
+        [tempOnDate timeIntervalSince1970] <= [timeEndDate timeIntervalSince1970]) {
+        schedule.onDate                 = [onDate timeIntervalSince1970];
+        schedule.timeEnd                = [timeEndDate timeIntervalSince1970];
+        schedule.timeStart              = [timeStartDate timeIntervalSince1970];
+    } else {
+        schedule.onDate                 = [tempStartDate timeIntervalSince1970];
+        schedule.timeEnd                = [timeEndDate timeIntervalSince1970];
+        schedule.timeStart              = [timeStartDate timeIntervalSince1970];
+    }
+
     schedule.fk_schedule_category   = [self getScheduleCategoryWithID:[[info objectForKey:@"schedule_category_id"] integerValue]];
     
     
@@ -651,13 +661,23 @@ static NSString *const kAllowTracking   = @"allowTracking";
         schedule.memo                   = [info objectForKey:@"memo"];
         
         NSDate *onDate                  = [info objectForKey:@"select_date"];
-        schedule.onDate                 = [onDate timeIntervalSince1970];
-        
-        NSDate *timeEndDate             = [info objectForKey:@"end_time"];
-        schedule.timeEnd                = [timeEndDate timeIntervalSince1970];
-        
         NSDate *timeStartDate           = [info objectForKey:@"start_time"];
-        schedule.timeStart              = [timeStartDate timeIntervalSince1970];
+        NSDate *timeEndDate             = [info objectForKey:@"end_time"];
+        
+        
+        NSDate *tempOnDate              = [FXCalendarData trimDate:onDate];
+        NSDate *tempStartDate           = [FXCalendarData trimDate:timeStartDate];
+        
+        if ([tempOnDate timeIntervalSince1970] >= [tempStartDate timeIntervalSince1970] &&
+            [tempOnDate timeIntervalSince1970] <= [timeEndDate timeIntervalSince1970]) {
+            schedule.onDate                 = [onDate timeIntervalSince1970];
+            schedule.timeEnd                = [timeEndDate timeIntervalSince1970];
+            schedule.timeStart              = [timeStartDate timeIntervalSince1970];
+        } else {
+            schedule.onDate                 = [tempStartDate timeIntervalSince1970];
+            schedule.timeEnd                = [timeEndDate timeIntervalSince1970];
+            schedule.timeStart              = [timeStartDate timeIntervalSince1970];
+        }
         
         schedule.fk_schedule_category   = [self getScheduleCategoryWithID:[[info objectForKey:@"schedule_category_id"] integerValue]];
         

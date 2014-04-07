@@ -285,8 +285,10 @@
     NSLog(@"aaaaaa: %@",info);
     
     if (_scheduleEditItem) {
+        NSLog(@"edit");
         [[AppDelegate shared] editScheduleWithInfo:info scheduleID:_scheduleEditItem.scheduleID];
     }else{
+        NSLog(@"new");
         [[AppDelegate shared] addQuickScheduleWithInfo:info];
     }
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
@@ -334,7 +336,7 @@
             
             if (_startTime) {
                 _timePickerView.datePicker.minimumDate = nil;
-                _timePickerView.datePicker.maximumDate = _endTime;
+                //_timePickerView.datePicker.maximumDate = _endTime;
             }
             
             
@@ -346,7 +348,7 @@
             
             if (_endTime) {
                 _timePickerView.datePicker.minimumDate = _startTime;
-                _timePickerView.datePicker.maximumDate = nil;
+                //_timePickerView.datePicker.maximumDate = nil;
             }
         }
         

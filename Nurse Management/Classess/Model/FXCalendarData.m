@@ -245,6 +245,23 @@
     return  [[self getCalendarCurrent] dateFromComponents:comp];
 }
 
++ (NSDate*) trimDate:(NSDate*)date
+{
+    NSDateComponents *comp = [[self getCalendarCurrent] components:(NSYearCalendarUnit |
+                                                                    NSMonthCalendarUnit |
+                                                                    NSDayCalendarUnit |
+                                                                    NSHourCalendarUnit |
+                                                                    NSMinuteCalendarUnit |
+                                                                    NSSecondCalendarUnit)
+                                                          fromDate:date];
+    
+    [comp setSecond:0];
+    [comp setMinute:0];
+    [comp setHour:0];
+    
+    return  [[self getCalendarCurrent] dateFromComponents:comp];
+}
+
 
 #pragma mark - HOUR
 + (NSInteger) getHourWithDate:(NSDate*)date

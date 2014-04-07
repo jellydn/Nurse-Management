@@ -49,6 +49,7 @@
 + (NSDate*) dateNexHourFormDateNoTrimMin:(NSDate*)date;
 + (NSDate*) dateWithSetHourWithHour:(NSInteger)hour date:(NSDate*)date;
 + (NSDate*) trimSecOfDateWithDate:(NSDate*)date;
++ (NSDate*) trimDate:(NSDate*)date;
 
 // Hour
 + (NSInteger) getHourWithDate:(NSDate*)date;

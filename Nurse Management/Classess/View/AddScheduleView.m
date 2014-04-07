@@ -420,7 +420,7 @@
         
         if (_dateTimeEnd) {
             _datePicker.minimumDate = nil;
-            _datePicker.maximumDate = _dateTimeEnd;
+            //_datePicker.maximumDate = _dateTimeEnd;
             
         }
         
@@ -429,7 +429,7 @@
         _datePicker.date    = _dateTimeEnd;
         
         if (_dateTimeStart) {
-            _datePicker.minimumDate = _dateTimeStart;
+            //_datePicker.minimumDate = _dateTimeStart;
             _datePicker.maximumDate = nil;
         }
     } else {
