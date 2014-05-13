@@ -31,8 +31,12 @@
 
 @protocol AddShiftViewDelegate <NSObject>
 
+@required
 - (void) addShiftView:(AddShiftView*)addShiftView didSelectWithIndex:(int)index;
 - (void) addShiftViewDidSelectShowListShiftPattern:(AddShiftView*)addShiftView;
 - (void) addShiftViewDidSelectCloseView:(AddShiftView*)addShiftView;
+
+@optional
+- (void) seleteDeteleShiftDay;
 
 @end

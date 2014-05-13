@@ -24,5 +24,6 @@
 @property (nonatomic, strong)   UIColor *textColor;
 
 + (ShiftCategoryItem*) convertForCDObject:(CDShiftCategory*)cdShiftCategory;
++ (ShiftCategoryItem*) getItemDelete;
 
 @end

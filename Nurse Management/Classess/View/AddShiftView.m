@@ -46,13 +46,18 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            if (_delegate && [_delegate respondsToSelector:@selector(addShiftView:didSelectWithIndex:)]) {
-                UIButton *button = (UIButton*)sender;
-                
-                [_delegate addShiftView:self didSelectWithIndex:(int)button.tag - 100];
-                
-            }else {
-                _viewMask.alpha = 0;
+            UIButton *button = (UIButton*)sender;
+            if (button.tag - 100 >= 0) {
+                if (_delegate && [_delegate respondsToSelector:@selector(addShiftView:didSelectWithIndex:)]) {
+                    [_delegate addShiftView:self didSelectWithIndex:(int)button.tag - 100];
+                    
+                }else {
+                    _viewMask.alpha = 0;
+                }
+            } else if (button.tag - 100 >= -1)  {
+                if (_delegate && [_delegate respondsToSelector:@selector(seleteDeteleShiftDay)]) {
+                    [_delegate seleteDeteleShiftDay];
+                }
             }
 
         });
@@ -80,7 +85,7 @@
     NSLog(@"total %d", (int)[shifts count]);
     
     for (UIView *view in _scrollView.subviews) {
-        if (view.tag > 99) {
+        if (view.tag >= 99) {
             [view removeFromSuperview];
         }
     }

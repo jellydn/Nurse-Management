@@ -43,6 +43,7 @@
 - (CDShift*) getShiftWithDate:(NSDate*)date;
 - (CDShift*) getShiftWithShiftID:(int32_t)shiftID;
 - (void) addQuickShiftWithShiftCategoryID:(int)categoryID date:(NSDate*)date;
+- (void) deleteShiftWithDate:(NSDate*)date;
 - (int) lastShiftID;
 
 - (CDScheduleCategory*) getScheduleCategoryWithID:(int)categoryID;

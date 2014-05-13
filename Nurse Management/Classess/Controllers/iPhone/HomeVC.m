@@ -672,6 +672,7 @@
 #pragma mark - Add Shift
 - (NSMutableArray*) convertShiftObject
 {
+    
     NSMutableArray *shifts = [[NSMutableArray alloc] init];
     
     for (CDShiftCategory *cdShift in self.fetchedResultsControllerShiftCategory.fetchedObjects) {
@@ -686,6 +687,13 @@
             [shifts addObject:item];
         }
         
+    }
+    
+    //fix
+    if ([shifts count] < 10) {
+        [shifts addObject:[ShiftCategoryItem getItemDelete]];
+    } else {
+        [shifts insertObject:[ShiftCategoryItem getItemDelete] atIndex:9];
     }
     
     return shifts;
@@ -746,6 +754,12 @@
 - (void) addShiftViewDidSelectCloseView:(AddShiftView*)addShiftView
 {
     [self hideAddShift];
+}
+
+- (void) seleteDeteleShiftDay
+{
+    [[AppDelegate shared] deleteShiftWithDate:_selectDate];
+    [_calendarView setNextSelectDate];
 }
 
 #pragma mark - AddScheduleViewDelegate 

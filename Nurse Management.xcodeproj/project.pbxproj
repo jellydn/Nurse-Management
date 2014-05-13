@@ -10,7 +10,8 @@
 		25B1431718CFF9D000D5F260 /* ADView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B1431518CFF9D000D5F260 /* ADView.m */; };
 		25B1431818CFF9D000D5F260 /* ADView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25B1431618CFF9D000D5F260 /* ADView.xib */; };
 		25B1431A18CFF9E900D5F260 /* ic_button_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 25B1431918CFF9E900D5F260 /* ic_button_close.png */; };
-		25EACA5718D14E1300768B24 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0643085218BC4A750098AE85 /* libGoogleAnalyticsServices.a */; };
+		25CFC3911921B4550027A670 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25CFC3901921B4550027A670 /* libGoogleAnalyticsServices.a */; };
+		25CFC3931921B8C80027A670 /* icon_r0.png in Resources */ = {isa = PBXBuildFile; fileRef = 25CFC3921921B8C80027A670 /* icon_r0.png */; };
 		2A11814B18BF2D0D00110C7B /* MemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A11814918BF2D0D00110C7B /* MemberCell.m */; };
 		2A11814C18BF2D0D00110C7B /* MemberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A11814A18BF2D0D00110C7B /* MemberCell.xib */; };
 		2A394BCB18A9FD5300F30F2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A394BCA18A9FD5300F30F2D /* Foundation.framework */; };
@@ -432,11 +433,12 @@
 		0643084F18BC4A750098AE85 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
 		0643085018BC4A750098AE85 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
 		0643085118BC4A750098AE85 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		0643085218BC4A750098AE85 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		25B1431418CFF9D000D5F260 /* ADView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADView.h; sourceTree = "<group>"; };
 		25B1431518CFF9D000D5F260 /* ADView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADView.m; sourceTree = "<group>"; };
 		25B1431618CFF9D000D5F260 /* ADView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADView.xib; sourceTree = "<group>"; };
 		25B1431918CFF9E900D5F260 /* ic_button_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_button_close.png; sourceTree = "<group>"; };
+		25CFC3901921B4550027A670 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		25CFC3921921B8C80027A670 /* icon_r0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_r0.png; sourceTree = "<group>"; };
 		2A11814818BF2D0D00110C7B /* MemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberCell.h; sourceTree = "<group>"; };
 		2A11814918BF2D0D00110C7B /* MemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberCell.m; sourceTree = "<group>"; };
 		2A11814A18BF2D0D00110C7B /* MemberCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemberCell.xib; sourceTree = "<group>"; };
@@ -918,10 +920,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25EACA5718D14E1300768B24 /* libGoogleAnalyticsServices.a in Frameworks */,
 				2AC8E6A018BC322A005C47FC /* libz.dylib in Frameworks */,
 				2AC8E69D18BC2E9F005C47FC /* SystemConfiguration.framework in Frameworks */,
 				2A394BCD18A9FD5300F30F2D /* CoreGraphics.framework in Frameworks */,
+				25CFC3911921B4550027A670 /* libGoogleAnalyticsServices.a in Frameworks */,
 				2A394BD118A9FD5300F30F2D /* CoreData.framework in Frameworks */,
 				2A394BCF18A9FD5300F30F2D /* UIKit.framework in Frameworks */,
 				2A394BCB18A9FD5300F30F2D /* Foundation.framework in Frameworks */,
@@ -945,13 +947,13 @@
 		0643084B18BC4A750098AE85 /* Google Analytics */ = {
 			isa = PBXGroup;
 			children = (
+				25CFC3901921B4550027A670 /* libGoogleAnalyticsServices.a */,
 				0643084C18BC4A750098AE85 /* GAI.h */,
 				0643084D18BC4A750098AE85 /* GAIDictionaryBuilder.h */,
 				0643084E18BC4A750098AE85 /* GAIFields.h */,
 				0643084F18BC4A750098AE85 /* GAILogger.h */,
 				0643085018BC4A750098AE85 /* GAITrackedViewController.h */,
 				0643085118BC4A750098AE85 /* GAITracker.h */,
-				0643085218BC4A750098AE85 /* libGoogleAnalyticsServices.a */,
 			);
 			path = "Google Analytics";
 			sourceTree = "<group>";
@@ -1500,6 +1502,7 @@
 		2A3C24BD18AB592000C20A04 /* ShiftBG */ = {
 			isa = PBXGroup;
 			children = (
+				25CFC3921921B8C80027A670 /* icon_r0.png */,
 				C000F2E718AF6C2000280464 /* bg_dashed_frame.png */,
 				C000F2E818AF6C2000280464 /* bg_dashed_frame@2x.png */,
 				C000F2E918AF6C2000280464 /* bg_duration.png */,
@@ -2136,6 +2139,7 @@
 				2A50DF3818BAFDC00033FE11 /* HomeGirlieToolBarView.xib in Resources */,
 				B6B10DFB18AF0C9E004E3229 /* ic_edit_shift_color_1@2x.png in Resources */,
 				2A4F228018B456BE00A5C97C /* home_add_quick_schedule_time_bg.png in Resources */,
+				25CFC3931921B8C80027A670 /* icon_r0.png in Resources */,
 				2A3C24A918AB1BFE00C20A04 /* MoreVC.xib in Resources */,
 				2A394C2618A9FF7600F30F2D /* Default-568h@2x.png in Resources */,
 				2A394C1F18A9FF7600F30F2D /* Icon-Small@2x_ios7.png in Resources */,
@@ -2600,6 +2604,9 @@
 					"$(PROJECT_DIR)/Nurse",
 					Management/Classess/Libraries/Google,
 					Analytics,
+					"$(PROJECT_DIR)/Nurse",
+					Management/Classess/Libraries/Google,
+					Analytics,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2631,6 +2638,9 @@
 					Management/Classess/Libraries/Google,
 					Analytics,
 					"/Volumes/Data/Projects/Nurse-Management/Nurse",
+					Management/Classess/Libraries/Google,
+					Analytics,
+					"$(PROJECT_DIR)/Nurse",
 					Management/Classess/Libraries/Google,
 					Analytics,
 					"$(PROJECT_DIR)/Nurse",

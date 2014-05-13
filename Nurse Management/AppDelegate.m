@@ -548,6 +548,19 @@ static NSString *const kAllowTracking   = @"allowTracking";
     
 }
 
+- (void) deleteShiftWithDate:(NSDate*)date
+{
+    CDShift *cdShift = [self getShiftWithDate:date];
+    
+    if (cdShift) {
+        [self.managedObjectContext deleteObject:cdShift];
+        [self saveContext];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hide_mask_view_addShiftView" object:nil];
+    
+}
+
 - (CDScheduleCategory*) getScheduleCategoryWithID:(int)categoryID
 {
     for (CDScheduleCategory *item in self.fetchedResultsControllerScheduleCategory.fetchedObjects) {

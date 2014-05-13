@@ -58,6 +58,10 @@
         
         _image = @"icon_r3_c9.png";
         
+    } else if ([color isEqualToString:@"color00"]) {
+        
+        _image = @"icon_r0.png";
+        
     }
 }
 
@@ -71,6 +75,20 @@
     item.strTimeEnd      = cdShiftCategory.timeEnd;
     item.strTimeStart    = cdShiftCategory.timeStart;
     item.isAllDay        = cdShiftCategory.isAllDay;
+    
+    return item;
+}
+
++ (ShiftCategoryItem*) getItemDelete
+{
+    ShiftCategoryItem *item = [[ShiftCategoryItem alloc] init];
+    
+    item.shiftCategoryID = -1;
+    item.name            = @"なし";
+    item.color           = @"color00";
+    item.strTimeEnd      = 0;
+    item.strTimeStart    = 0;
+    item.isAllDay        = NO;
     
     return item;
 }

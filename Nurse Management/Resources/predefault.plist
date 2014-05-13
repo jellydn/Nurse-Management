@@ -92,13 +92,6 @@
 			<string>color6</string>
 		</array>
 		<array>
-			<string>深夜</string>
-			<string>00:30</string>
-			<string>09:00</string>
-			<integer>0</integer>
-			<string>color7</string>
-		</array>
-		<array>
 			<string>日長</string>
 			<string>08:50</string>
 			<string>19:30</string>
@@ -111,6 +104,13 @@
 			<string>19:30</string>
 			<integer>0</integer>
 			<string>color9</string>
+		</array>
+        <array>
+			<string>深夜</string>
+			<string>00:30</string>
+			<string>09:00</string>
+			<integer>0</integer>
+			<string>color7</string>
 		</array>
 		<array>
 			<string>入り</string>
